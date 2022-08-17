@@ -4,7 +4,7 @@ const homeSchema = require('../models/userschema');
 
 // index
 Router.get('/',(err,res)=>{
-    res.render('login',{tab:"Login"})
+    res.render('login',{tab:"Login-as"})
 })
 
 // if registered
