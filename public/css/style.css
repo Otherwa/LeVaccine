@@ -1,0 +1,54 @@
+@import url('http://fonts.cdnfonts.com/css/dot-matrix');
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+
+/* navbar */
+body {
+	margin: 0;
+}
+
+ul.topnav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+ul.topnav li {
+	float: left;
+}
+
+ul.topnav li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 1rem 1.2rem;
+	text-decoration: none;
+	margin: 0;
+	font-size: 1.3rem;
+	font-family: 'Dot Matrix', sans-serif;
+}
+
+ul.topnav li a:hover:not(.active) {
+	background-color: gray;
+	color: white;
+	transition: all 0.5s;
+}
+
+ul.topnav li a.active {
+	background-color: #FF1E00;
+}
+
+ul.topnav li.right {
+	float: right;
+}
+
+@media screen and (max-width: 621px) {
+
+	ul.topnav li.right,
+	ul.topnav li {
+		float: none;
+	}
+}
+
+/* body */

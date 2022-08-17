@@ -1,0 +1,32 @@
+/* body */
+.container_header {
+    width: auto;
+    height: 50vh;
+    padding: 1rem;
+    font-family: monospace;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.container_header p {
+    transition: all 0.5s;
+    font-size: 2.3rem;
+    margin-left: 8vw;
+    color: #000000;
+}
+
+.container .text {
+    /* columns: 10rem 2; */
+    background-color: whitesmoke;
+    padding: 2rem;
+    margin: 1rem;
+    font: 1rem 'Dot Matrix', sans-serif;
+}
+
+@media screen and (min-width: 621px) {
+    .container_header p {
+        font-size: 5.3rem;
+        transition: all 0.5s;
+    }
+}

@@ -1,0 +1,62 @@
+// basic libs
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+// routes for all action idividual
+const accountRouter = require('./routes/accountrouter')
+
+// ports
+const port = process.env.port || 8080;
+
+// start init
+const app  = express();
+
+// db con
+mongoose.connect('mongodb://localhost:27017/Drugs',{useNewUrlParser:true})
+const db = mongoose.connection;
+db.on("error",()=>{console.log("error in conection");})
+db.once('open',()=>{console.log("Connected");})
+
+//render for htmls
+app.set('view engine','ejs')
+
+//css js etc flies
+app.use(express.static('public'))
+
+//idk
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+//homeroute
+app.use('/account', accountRouter)
+
+
+// default route
+app.get('/', (req, res) => {
+    res.render('index', {tab:"Le-Vaccine"})
+})
+
+// education
+app.get('/education', (req, res) => {
+    res.render('education', {tab:"Education"})
+})
+
+// contact
+app.get('/contact', (req, res) => {
+    res.render('education', {tab:"Contact"})
+})
+
+// blogs
+app.get('/blog', (req, res) => {
+    res.render('blog', {tab:"Blog"})
+})
+
+// services
+app.get('/services', (req, res) => {
+    res.render('services', {tab:"Services"})
+})
+
+app.listen(port)
