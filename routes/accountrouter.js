@@ -1,74 +1,106 @@
 const express = require('express');
-const Router  = express.Router();
-const homeSchema = require('../models/userschema');
+const Router = express.Router();
+const usersSchema = require('../models/userschema');
+
+//account
+
 
 // index
-Router.get('/',(err,res)=>{
-    res.render('login',{tab:"Login-as"})
+Router.get('/', (err, res) => {
+    res.status(200).render('whichlogin', { title: "Login-as" })
 })
 
-// if registered
-Router.post('/register',async(req,res)=>{
-   try{
-       const {
-           name,
-           number,
-           email,
-           password,
-           cpassword
-       } = req.body;
+// user
+Router.get('/user', (req, res) => {
+    res.status(200).render('user', { title: "User" })
+})
 
-    if(password === cpassword ){
-       
-         const userData = new homeSchema({
+// account creation
+Router.get('/user/createaccount', (req, res) => {
+    res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
+})
+
+// if creation successfull
+Router.post('/user/createaccount', async (req, res) => {
+    try {
+        // set date
+        const date = new Date()
+
+        console.log(date)
+        const {
+            username,
+            password,
+            cpassword,
             name,
-            number,
-            email,
-            password
-         })
-         userData.save(err=>{
-             if(err){
-                console.log("err")
-             }else{
-                res.render('dashboard', {name : 'name'})
-             }
-         })
-       
-    const useremail = await homeSchema.findOne({email:email});
-     if(email === useremail.email){
-        res.render('register',{title :'',password:'',email:'Email is Already there plz chose different one'})
-     }else{
-         console.log('err')
-     }
+            age,
+            gender,
+            address,
+            mail,
+            phone,
+            city,
+            region,
+            pincode,
+            state,
+            country,
+        } = req.body
 
-    }else{
-        res.render('register',{title :'',password:'Password not Matching',email:''})
-    }
-   }catch(error){
+        if (password === cpassword) {
+            const userData = new usersSchema({
+                username,
+                password,
+                name,
+                age,
+                gender,
+                address,
+                mail,
+                phone,
+                city,
+                region,
+                pincode,
+                state,
+                country,
+                date
+            })
+            userData.save(err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Created" })
+                }
+            })
 
-    res.render('register',{title :'Error in Code',password:'',email:''})
-   }
-})
-
-// login
-Router.post('/login',(req,res)=>{
-    
-    const {
-        email,
-        password    
-    } = req.body;
-
-    homeSchema.findOne({email:email},(err,result)=>{
-        
-        if(email === result.email && password === result.password){
-            res.render('dashboard', {name : result.name})
-        }else{
-            console.log(err)
-
+            // await function to check if the user exsist or not via mail or username
+            const user_check = await usersSchema.findOne({ $or: [{ username: username }, { mail: mail }] })
+            if (mail === user_check.mail) {
+                res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "A User Already Exists this email" })
+            } else if (username === user_check.username) {
+                res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "A User Already Exists with this username" })
+            }
+        } else {
+            res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
         }
-    })
+    }
+    catch (err) {
+        console.msg(err)
+    }
 })
 
+// account login
+Router.get('/user/login', (req, res) => {
+    res.render('userlogin', { title: "Create Account" })
+})
 
+Router.post('/user/login', (req, res) => {
+    res.render('userlogin', { title: "Create Account" })
+})
+// producer
+Router.get('/producer', (req, res) => {
+    res.render('producer', { title: "Producer" })
+})
+
+// provider
+Router.get('/provider', (req, res) => {
+    res.render('provider', { title: "Provider" })
+})
 
 module.exports = Router;

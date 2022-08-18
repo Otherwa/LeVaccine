@@ -16,17 +16,22 @@
     <!-- navbar -->
     <ul class="topnav">
         <li><a href="/">Home</a></li>
-        <li><a class="active" href="/education">Eduction</a></li>
+        <li><a href="/education">Education</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/services">Services</a></li>
-        <li class="right"><a href="/account">Account</a></li>
+        <li class="right"><a class="active" href="/account">Account</a></li>
     </ul>
     <!-- main context -->
     <div class="container_header">
         <p>
             <%= title %>
         </p>
+    </div>
+    <div class="con">
+        <form method="post" action="/account/user/login">
+            <input type="submit" value="submit">
+        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script type="text/javascript" src="/js/main.js"></script>
