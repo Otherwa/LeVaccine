@@ -1,49 +1,32 @@
 const express = require('express');
 const Router = express.Router();
 const usersSchema = require('../models/userschema');
-
+const dashboardRouter = require('../')
 //account
 
 
 // index
 Router.get('/', (err, res) => {
-    res.status(200).render('whichlogin', { title: "Login-as" })
+    res.status(200).render('account/whichlogin', { title: "Login-as" })
 })
 
 // user
 Router.get('/user', (req, res) => {
-    res.status(200).render('user', { title: "User" })
+    res.status(200).render('account/user', { title: "User" })
 })
 
 // account creation
 Router.get('/user/createaccount', (req, res) => {
-    res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
+    res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
 })
 
 // if creation successfull
-Router.post('/user/createaccount', async (req, res) => {
+Router.post('/user/createaccount', (req, res) => {
     try {
         // set date
         const date = new Date()
-
         console.log(date)
-        const {
-            username,
-            password,
-            cpassword,
-            name,
-            age,
-            gender,
-            address,
-            mail,
-            phone,
-            city,
-            region,
-            pincode,
-            state,
-            country,
-        } = req.body
-
+        const { username, password, cpassword, name, age, gender, address, mail, phone, city, region, pincode, state, country } = req.body
         if (password === cpassword) {
             const userData = new usersSchema({
                 username,
@@ -61,46 +44,48 @@ Router.post('/user/createaccount', async (req, res) => {
                 country,
                 date
             })
-            userData.save(err => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Created" })
-                }
-            })
-
-            // await function to check if the user exsist or not via mail or username
-            const user_check = await usersSchema.findOne({ $or: [{ username: username }, { mail: mail }] })
-            if (mail === user_check.mail) {
-                res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "A User Already Exists this email" })
-            } else if (username === user_check.username) {
-                res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "A User Already Exists with this username" })
+            var user_check = usersSchema.findOne({ username: username, mail: mail })
+            if (username === user_check.username) {
+                console.log("error")
+            } else {
+                userData.save(err => {
+                    if (err) {
+                        console.error(err);
+                        res.status(400).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Already exisits" })
+                    } else {
+                        res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Your Account was successfully created" })
+                    }
+                })
             }
         } else {
-            res.status(200).render('usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
+            res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
         }
     }
     catch (err) {
-        console.msg(err)
+        console.log(err)
     }
 })
 
 // account login
 Router.get('/user/login', (req, res) => {
-    res.render('userlogin', { title: "Create Account" })
+    res.status(200).render('account/userlogin', { title: "Login" })
 })
 
+// if login is successful
 Router.post('/user/login', (req, res) => {
-    res.render('userlogin', { title: "Create Account" })
+    // if successful render dashboard with userData
+
+    res.render('account/userdash',)
 })
+
 // producer
 Router.get('/producer', (req, res) => {
-    res.render('producer', { title: "Producer" })
+    res.render('account/producer', { title: "Producer" })
 })
 
 // provider
 Router.get('/provider', (req, res) => {
-    res.render('provider', { title: "Provider" })
+    res.render('account/provider', { title: "Provider" })
 })
 
 module.exports = Router;

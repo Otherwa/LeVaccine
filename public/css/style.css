@@ -1,6 +1,16 @@
 @import url('http://fonts.cdnfonts.com/css/dot-matrix');
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 
+
+/* scroll bar */
+body::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #FF1E00;
+}
+
 /* navbar */
 body {
 	margin: 0;

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="image/png" sizes="16x16" rel="icon"
+        href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/createaccount.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <ul class="topnav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/services">Services</a></li>
+        <li class="right"><a class="active" href="/account">Account</a></li>
+    </ul>
+    <!-- main context -->
+    <div class="container_header">
+        <p>
+            <%= title %>
+        </p>
+    </div>
+    <div class="con">
+        <p class="status">
+            <%= status %>
+        </p>
+        <form method="post" class="formflx" action="/account/user/createaccount">
+            <p class="login_stat">Already have an account? <a href="login">Login</a></p>
+            <br>
+            <div class="container">
+                <br>
+                <p class="reg_stat">
+                    <%= msg %>
+                </p>
+                <br>
+                <div class="form-label">
+                    <P>Username</P>
+                    <input type="text" name="username" placeholder="Username" id="username" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Password</P>
+                    <input type="password" name="password" placeholder="Password" id="password" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Re-Type Password</P>
+                    <input type="password" name="cpassword" placeholder="Verfiy Password" id="cpassword" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Name</P>
+                    <input type="text" name="name" placeholder="Name" id="name" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Age</P>
+                    <input type="number" name="age" placeholder="Age" id="age" required><br>
+                </div>
+
+                <div class="form-label">
+                    <p>Gender</p>
+                    <select name="gender" class="gen" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-label">
+                    <P>Address</P>
+                    <input type="text" name="address" placeholder="Address" id="address" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Email</P>
+                    <input type="email" name="mail" placeholder="Email" id="mail" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Phone</P>
+                    <input type="number" name="phone" placeholder="Phone" id="phone" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>City</P>
+                    <input type="text" name="city" placeholder="City" id="city" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Region</P>
+                    <input type="text" name="region" placeholder="Region" id="region" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>Pincode</P>
+                    <input type="text" name="pincode" placeholder="Pincode" id="pincode" required><br>
+                </div>
+
+                <div class="form-label">
+                    <P>State</P>
+                    <input type="text" name="state" placeholder="State" id="state" required><br>
+                </div>
+
+                <br>
+                <input type="submit" name="submit" class="button-5" id="submit" value="submit">
+            </div>
+        </form>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/createaccount.js"></script>
+</body>
+
+</html>

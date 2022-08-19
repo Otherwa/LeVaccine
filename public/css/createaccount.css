@@ -2,7 +2,102 @@
     padding: 2rem;
 }
 
-.con p {
+.con .status {
     font-family: 'Recursive', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    margin-left: 8vw;
+}
+
+.con .login_stat {
+    font-family: 'Recursive', sans-serif;
+    font-size: 1rem;
+    margin-right: auto;
+    margin-left: 9%;
+}
+
+.container .reg_stat {
+    font-family: 'Recursive', sans-serif;
+    font-size: 1rem;
+}
+
+.form-label {
+    font-family: 'Dot Matrix', sans-serif;
+}
+
+.gen {
+    width: 60vw;
+}
+
+.form-label p {
+    font-size: 1.2rem;
+}
+
+.con form input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+select {
+    width: 58vw;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: horizontal;
+    margin: 0.89rem 0 0.89rem 0;
+    font-family: 'Recursive', sans-serif;
+}
+
+.sub {
+    float: right;
+    width: 6rem;
+    height: 2.5rem;
+    border: none;
+    font-family: 'Dot Matrix';
+    background-color: greenyellow;
+}
+
+/* CSS */
+.button-5 {
+    float: right;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Dot Matrix', sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+}
+
+.button-5:hover,
+.button-5:focus {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+    transform: translateY(-3px);
+}
+
+.button-5:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+}
+
+.formflx {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -30,9 +30,9 @@ const userSchema = new schema({
         required: true,
     },
     mail: {
+        unique: true,
         type: String,
         required: true,
-        unique: true,
     },
     phone: {
         type: String,
@@ -58,10 +58,6 @@ const userSchema = new schema({
         type: String,
         required: true,
     },
-    // recovery: {
-    //     type: String,
-    //     required: true,
-    // }
 }, {
     versionKey: false //here
 })
