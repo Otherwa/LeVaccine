@@ -12,12 +12,12 @@ Router.get('/', (err, res) => {
 
 // user
 Router.get('/user', (req, res) => {
-    res.status(200).render('account/user', { title: "User" })
+    res.status(200).render('account/user/user', { title: "User" })
 })
 
 // account creation
 Router.get('/user/createaccount', (req, res) => {
-    res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
+    res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
 })
 
 // if creation successfull
