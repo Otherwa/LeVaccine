@@ -11,7 +11,6 @@ const port = process.env.PORT || 8080;
 
 // start init
 const app = express();
-
 // db con
 // mongoose.connect('mongodb://localhost:27017/DRugs', { useNewUrlParser: true })
 mongoose.connect('mongodb+srv://Otherwa:vLsLS2jXafe4Nb6n@cluster0.wijcrrf.mongodb.net/Drugs', { useNewUrlParser: true })
