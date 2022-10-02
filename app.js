@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const accountRouter = require('./routes/accountrouter')
 
 // ports
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 // start init
 const app = express();
