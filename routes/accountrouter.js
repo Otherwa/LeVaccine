@@ -83,6 +83,16 @@ Router.get('/producer', (req, res) => {
     res.render('account/producer', { title: "Producer" })
 })
 
+
+//test data to show users
+Router.get('/test', (req, res) => {
+    usersSchema.find({}, (err, data) => {
+        console.log(data)
+        res.send(data)
+    })
+})
+
+
 // provider
 Router.get('/provider', (req, res) => {
     res.render('account/provider', { title: "Provider" })
