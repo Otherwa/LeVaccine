@@ -14,8 +14,10 @@ const userSchema = new schema({
         required: true
     },
     name: {
-        type: String,
-        required: true
+        first_name: {
+            type: String,
+            required: true
+        }
     },
     age: {
         type: String,

@@ -1,7 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 const usersSchema = require('../models/userschema');
-const dashboardRouter = require('../')
+
 //account
 
 
@@ -51,14 +51,14 @@ Router.post('/user/createaccount', (req, res) => {
                 userData.save(err => {
                     if (err) {
                         console.error(err);
-                        res.status(400).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Already exisits" })
+                        res.status(400).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Already exisits" })
                     } else {
-                        res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Your Account was successfully created" })
+                        res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Your Account was successfully created" })
                     }
                 })
             }
         } else {
-            res.status(200).render('account/usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
+            res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
         }
     }
     catch (err) {
@@ -68,7 +68,7 @@ Router.post('/user/createaccount', (req, res) => {
 
 // account login
 Router.get('/user/login', (req, res) => {
-    res.status(200).render('account/userlogin', { title: "Login" })
+    res.status(200).render('account/user/userlogin', { title: "Login" })
 })
 
 // if login is successful
