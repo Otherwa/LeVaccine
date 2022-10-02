@@ -14,7 +14,7 @@ const app = express();
 
 // db con
 // mongoose.connect('mongodb://localhost:27017/DRugs', { useNewUrlParser: true })
-mongoose.connect('mongodb+srv://Otherwa:@cluster0.wijcrrf.mongodb.net/Drugs', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://Otherwa:vLsLS2jXafe4Nb6n@cluster0.wijcrrf.mongodb.net/Drugs', { useNewUrlParser: true })
 const db = mongoose.connection;
 db.on("error", () => { console.log("error in conection"); })
 db.once('open', () => { console.log("Connected"); })
