@@ -60,4 +60,4 @@ app.get('/services', (req, res) => {
     res.render('services', { title: "Services" })
 })
 
-app.listen(por);
+app.listen(port);
