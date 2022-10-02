@@ -14,7 +14,7 @@ const app = express();
 
 // db con
 // mongoose.connect('mongodb://localhost:27017/DRugs', { useNewUrlParser: true })
-mongoose.connect('mongodb+srv://Otherwa:ReOxM2AZbRfJ6yT4@cluster0.wijcrrf.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://Otherwa:@cluster0.wijcrrf.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
 const db = mongoose.connection;
 db.on("error", () => { console.log("error in conection"); })
 db.once('open', () => { console.log("Connected"); })
@@ -60,6 +60,4 @@ app.get('/services', (req, res) => {
     res.render('services', { title: "Services" })
 })
 
-app.listen(port, () => {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(por);
