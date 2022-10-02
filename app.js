@@ -59,4 +59,6 @@ app.get('/services', (req, res) => {
     res.render('services', { title: "Services" })
 })
 
-app.listen(port)
+app.listen(port, () => {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
