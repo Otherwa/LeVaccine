@@ -88,7 +88,7 @@ Router.get('/producer', (req, res) => {
 Router.get('/test', (req, res) => {
     usersSchema.find({}, (err, data) => {
         console.log(data)
-        res.send(data)
+        res.json(data)
     })
 })
 
