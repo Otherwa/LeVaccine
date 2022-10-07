@@ -2,12 +2,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+var axios = require('axios');
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter')
 
 // ports
 const port = process.env.PORT || 8080;
+
+
+
+
+
+
+
+
+
+
 
 // start init
 const app = express();
@@ -42,6 +53,36 @@ app.get('/', (req, res) => {
 // education
 app.get('/education', (req, res) => {
     res.render('education', { title: "Education" })
+})
+
+//far cry API retrivel
+app.get('/api/:username', (req, res) => {
+    let config = {
+        method: 'post',
+        url: 'https://data.mongodb-api.com/app/data-wekqv/endpoint/data/v1/action/find',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': 'atL6BCofYg4y64buefRdEdDmZHNowkk5hFoOB40b9Lve1zUjQqM7lbScNLDZGmGj',
+        },
+        data: {
+            "collection": "users",
+            "database": "Drugs",
+            "dataSource": "Cluster0",
+            "filter": {
+                "username": req.params.username
+            }
+        }
+    }
+    //get api val
+    axios(config)
+        .then(function (response) {
+            let data = response.data;
+            res.json(data.documents[0]);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 })
 
 // contact
