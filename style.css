@@ -1,0 +1,87 @@
+:root {
+  --dl-color-gray-500: #595959;
+  --dl-color-gray-700: #999999;
+  --dl-color-gray-900: #D9D9D9;
+  --dl-size-size-unit: 1rem;
+  --dl-color-gray-black: #000000;
+  --dl-color-gray-white: #FFFFFF;
+  --dl-space-space-unit: 1em;
+  --dl-color-primary-100: #370511ff;
+  --dl-color-primary-500: #643843ff;
+  --dl-color-primary-700: #775860ff;
+  --dl-size-size-halfunit: 0.5rem;
+  --dl-radius-radius-round: 50%;
+  --dl-size-size-doubleunit: 2rem;
+  --dl-size-size-tripleunit: 3rem;
+  --dl-space-space-halfunit: 0.5em;
+  --dl-radius-radius-radius2: 2px;
+  --dl-radius-radius-radius4: 4px;
+  --dl-radius-radius-radius8: 8px;
+  --dl-space-space-quadruple: 4em;
+  --dl-space-space-doubleunit: 2em;
+  --dl-space-space-tripleunit: 3em;
+}
+.teleport-show {
+  display: flex !important;
+}
+.button {
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: 600;
+  text-transform: none;
+  text-decoration: none;
+}
+.list-item {
+  display: list-item;
+}
+.list {
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  font-family: Poppins;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  font-family: Poppins;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.subheading {
+  font-size: 1.6rem;
+  font-family: Poppins;
+  font-weight: 400;
+  text-transform: none;
+  text-decoration: none;
+}
+.heading {
+  font-size: 3rem;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: 1.55;
+  text-transform: none;
+  text-decoration: none;
+}
+.content {
+  font-size: 16px;
+  font-family: Poppins;
+  font-weight: 400;
+  line-height: 1.55;
+  text-transform: none;
+  text-decoration: none;
+}
