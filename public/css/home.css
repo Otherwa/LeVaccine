@@ -1441,7 +1441,7 @@
   align-self: center;
 }
 
-@media(max-width: 991px) {
+@media(max-width: 891px) {
   .home-hero {
     padding: var(--dl-space-space-threeunits);
     flex-direction: column;
