@@ -100,4 +100,8 @@ app.get('/services', (req, res) => {
     res.render('services', { title: "Services" })
 })
 
+// about
+app.get('/about', (req, res) => {
+    res.render('contact', { title: "Contact" })
+})
 app.listen(port);
