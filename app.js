@@ -19,9 +19,6 @@ const port = process.env.PORT || 8080;
 // models
 const usersemails = require('./models/useremails');
 
-
-
-
 // start init
 const app = express();
 
