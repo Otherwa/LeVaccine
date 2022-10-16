@@ -1,6 +1,4 @@
-
 const mongoose = require('mongoose');
-
 const schema = mongoose.Schema;
 
 const Email_schema = new schema({

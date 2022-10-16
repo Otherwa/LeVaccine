@@ -1,14 +1,7 @@
-// basic libs
-const express = require('express');
-// mongo connet
-const URL = require('./config/connection_config').con;
 
-// mongoose
-const mongoose = require('./config/connect');
-
-// render
-const bodyParser = require('body-parser');
-
+const express = require('express'); // basic libs
+const bodyParser = require('body-parser'); // render
+const { connect } = require('./config/connect');
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter')
@@ -18,6 +11,7 @@ const port = process.env.PORT || 8080;
 
 // models
 const usersemails = require('./models/useremails');
+
 
 // start init
 const app = express();
@@ -37,39 +31,39 @@ app.use(bodyParser.json())
 //account
 app.use('/account', accountRouter)
 
+// disconnect
+
 
 // default route
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
     // post ajax in index.js
-    console.log(req.body);
-    const email = req.body.email
-    const date = req.body.date
+    await connect();
 
     const userData = new usersemails({
-        email: email,
-        date: date
+        email: req.body.email,
+        date: req.body.date
     })
-    // subscriber added
-    var user_check = usersemails.findOne({ email: email })
-    if (email === user_check.email) {
+
+    var user_check = usersemails.findOne({ email: req.body.email })
+    if (req.body.email === user_check.email) {
         console.log("error")
     } else {
+        // subscriber added
         userData.save(err => {
             if (err) {
                 console.error(err);
                 // already subscribed
-                res.send({ alreadysubscribed: "404" })
+                res.send({ alreadysubscribed: "404" }).status(404)
             } else {
-                res.send({ alreadysubscribed: "200" })
+                res.send({ alreadysubscribed: "200" }).status(200)
             }
         });
     }
 });
-
 
 // education
 app.get('/education', (req, res) => {
@@ -96,4 +90,5 @@ app.get('/services', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('contact', { title: "Contact" })
 })
+
 app.listen(port);

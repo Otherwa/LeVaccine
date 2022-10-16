@@ -58,9 +58,12 @@ $('#emailclick').click(() => {
             success: function (res) {
                 console.log(res)
                 if (res.alreadysubscribed == "404") {
-                    $('#subscribed').show().text("already exists");
+                    $('#error').hide();
+                    $('#subscribed').fadeIn();
+                    $('#subscribed p').fadeIn().text('Already Subscribed 🛐')
                 } else {
-                    $('#subscribed').show().text("Registerd");
+                    $('#subscribed').fadeIn()
+                    $('#subscribed p').fadeIn().text('Subscribed Sucessfully 🔥')
                     $('#error').hide();
                 }
             }
@@ -68,6 +71,6 @@ $('#emailclick').click(() => {
     }
     else {
         $('#subscribed').hide();
-        $('#error').show();
+        $('#error').fadeIn();
     }
 });
