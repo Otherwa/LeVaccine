@@ -3,9 +3,9 @@ const schema = mongoose.Schema;
 
 const Email_schema = new schema({
     email: {
+        unique: true,
         required: true,
         type: 'string',
-        unique: true,
     },
     date: {
         required: true,
