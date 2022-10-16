@@ -33,9 +33,8 @@
               <a href="/blog">Blogs</a>
             </span></span>
             <span class="navigation-links1-text3"><span><a href="/service">Services</a></span></span>
-            <span class="navigation-links1-text3"><span><a href="/contact" class="navigation-links1-navlink on-hover">
-                  <span>Contact</span>
-                </a></span></span>
+            <span class="navigation-links1-text3"><span><a href="/contact" class="on-hover">
+                  Contact</a></span></span>
           </nav>
         </div>
         <div class="home-btn-group">
@@ -71,9 +70,8 @@
                 <a href="/blog">Blogs</a>
               </span></span>
               <span class="navigation-links1-text3"><span><a href="/service">Services</a></span></span>
-              <span class="navigation-links1-text3"><span><a href="/contact" class="navigation-links1-navlink on-hover">
-                    <span>Contact</span>
-                  </a></span></span>
+              <span class="navigation-links1-text3"><span><a href="/contact" class="on-hover">
+                    Contact</a></span></span>
             </nav>
           </div>
           <div>
@@ -167,8 +165,12 @@
             </span>
           </span>
           <div class="home-container07">
-            <input type="text" placeholder="Email here..." class="home-textinput input" />
-            <button class="home-button2 button">Subscribe</button>
+            <input type="email" placeholder="Email here..." id="emailval" name="email" class="home-textinput input" />
+            <button class="home-button2 button" id="emailclick">Subscribe</button>
+            <br>
+            <span id="error" style="display:none">Error</span>
+            <span id="subscribed" style="display:none">Scrubided</span>
+            <br>
           </div>
         </div>
         <img alt="image"
@@ -531,46 +533,14 @@
       </footer>
     </div>
   </div>
-  <script src="/js/index.js"></script>
   <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
     integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
-
-  <!-- scroll reveal js -->
-  <script type="text/javascript">
-    ScrollReveal({ reset: true });
-    let config = {
-      delay: 375,
-      duration: 500,
-      viewFactor: 0.5,
-      useDelay: 'always',
-      origin: 'bottom',
-      distance: '50px'
-    }
-
-    let config1 = {
-      delay: 475,
-      duration: 500,
-      useDelay: 'always',
-    }
-
-    let config2 = {
-      delay: 475,
-      duration: 650,
-      useDelay: 'always',
-      scale: '0.99',
-      origin: 'right',
-      distance: '50px'
-    }
-
-
-    ScrollReveal().reveal($("#hero-image"), config);
-    ScrollReveal().reveal($(".home-header1"), config1);
-    ScrollReveal().reveal($(".home-container05"), config2);
-    ScrollReveal().reveal($(".home-text"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
-
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>

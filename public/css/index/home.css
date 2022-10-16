@@ -588,13 +588,16 @@
 }
 
 .home-textinput {
-  font-size: 0.75rem;
+  height: 2.3rem;
+  width: 14rem;
+  font-size: 0.85rem;
   border-color: var(--dl-color-gray-500);
   border-radius: var(--dl-radius-radius-radius4);
 }
 
 .home-button2 {
-  font-size: 0.75rem;
+  height: 2.3rem;
+  font-size: 0.85rem;
   transition: 0.3s;
   margin-left: var(--dl-space-space-unit);
   border-color: var(--dl-color-gray-500);
@@ -1475,7 +1478,7 @@
   }
 
   .home-text02 {
-    text-align: center;
+    text-align: left;
     padding-left: var(--dl-space-space-fourunits);
   }
 
