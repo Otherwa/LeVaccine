@@ -1,7 +1,9 @@
 $('#error').hide();
 $('#subscribed').hide();
 
-
+$(document).ready(() => {
+    getLocation();
+})
 const validateEmail = (email) => {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -50,11 +52,9 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        console.log(error);
     }
 }
-
-getLocation();
 
 var lat;
 var lon;
