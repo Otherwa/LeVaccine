@@ -45,7 +45,7 @@ app.post('/', async (req, res) => {
     console.log(req.body)
     const userData = new usersemails({
         email: req.body.email,
-        pos: [req.body.lat, req.body.lon],
+        pos: [parseFloat(req.body.lat), parseFloat(req.body.lon)],
         date: req.body.date
     })
 
