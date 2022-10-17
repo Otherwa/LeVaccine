@@ -42,9 +42,10 @@ app.get('/', (req, res) => {
 app.post('/', async (req, res) => {
     // post ajax in index.js
     await connect();
-
+    console.log(req.body)
     const userData = new usersemails({
         email: req.body.email,
+        pos: [req.body.lat, req.body.lon],
         date: req.body.date
     })
 

@@ -45,6 +45,23 @@ ScrollReveal().reveal($(".home-text"), { delay: 600, origin: 'bottom', distance:
 ScrollReveal().reveal($(".home-container06"), { delay: 600, origin: 'left', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-image3"), { delay: 600, origin: 'right', distance: '25px' }, config);
 
+// location
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+getLocation();
+
+var lat;
+var lon;
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+}
 
 // if value valid send to mongo subscribe collection
 $('#emailclick').click(() => {
@@ -55,7 +72,7 @@ $('#emailclick').click(() => {
         $.ajax({
             url: '/',
             type: 'POST',
-            data: { email: email, date: date },
+            data: { email: email, lat: lat, lon: lon, date: date },
             success: function (res) {
                 // console.log(res)
                 if (res.alreadysubscribed == "404") {

@@ -7,6 +7,7 @@ const Email_schema = new schema({
         required: true,
         type: 'string',
     },
+    pos: { type: Array, "default": [], required: true },
     date: {
         required: true,
         type: 'string',
