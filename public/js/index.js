@@ -43,6 +43,7 @@ ScrollReveal().reveal($(".home-header1"), config1);
 ScrollReveal().reveal($(".home-container05"), config2);
 ScrollReveal().reveal($(".home-text"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container06"), { delay: 600, origin: 'left', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-image3"), { delay: 600, origin: 'right', distance: '25px' }, config);
 
 
 // if value valid send to mongo subscribe collection
@@ -56,14 +57,14 @@ $('#emailclick').click(() => {
             type: 'POST',
             data: { email: email, date: date },
             success: function (res) {
-                console.log(res)
+                // console.log(res)
                 if (res.alreadysubscribed == "404") {
                     $('#error').hide();
                     $('#subscribed').fadeIn();
-                    $('#subscribed p').fadeIn().text('Already Subscribed 🛐')
+                    $('#subscribed code').delay(500).fadeIn().text('Already Subscribed 🛐')
                 } else {
                     $('#subscribed').fadeIn()
-                    $('#subscribed p').fadeIn().text('Subscribed Sucessfully 🔥')
+                    $('#subscribed code').fadeIn().text('Subscribed Sucessfully 🔥')
                     $('#error').hide();
                 }
             }
