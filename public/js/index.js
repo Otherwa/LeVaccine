@@ -56,8 +56,9 @@ function getLocation() {
     }
 }
 
-var lat;
-var lon;
+// for mobile users
+var lat = 00;
+var lon = 00;
 function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
