@@ -43,9 +43,10 @@ let config2 = {
 ScrollReveal().reveal($("#hero-image"), config);
 ScrollReveal().reveal($(".home-header1"), config1);
 ScrollReveal().reveal($(".home-container05"), config2);
-ScrollReveal().reveal($(".home-text"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
-ScrollReveal().reveal($(".home-container06"), { delay: 600, origin: 'left', distance: '25px' }, config);
-ScrollReveal().reveal($(".home-image3"), { delay: 600, origin: 'right', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-text"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container06"), { delay: 500, origin: 'left', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container08"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-image3"), { delay: 500, origin: 'right', distance: '25px' }, config);
 
 // location
 function getLocation() {
@@ -67,6 +68,7 @@ function showPosition(position) {
 // if value valid send to mongo subscribe collection
 $('#emailclick').click(() => {
     const email = $('#emailval').val();
+    $('#emailval').val('')
     const date = new Date();
     if (validateEmail(email)) {
         console.log(email);
@@ -79,7 +81,7 @@ $('#emailclick').click(() => {
                 if (res.alreadysubscribed == "404") {
                     $('#error').hide();
                     $('#subscribed').fadeIn();
-                    $('#subscribed code').delay(500).fadeIn().text('{Already Subscribed 🛐}')
+                    $('#subscribed code').delay(200).fadeIn().text('{Already Subscribed 🛐}')
                 } else {
                     $('#subscribed').fadeIn()
                     $('#subscribed code').fadeIn().text('{Subscribed Sucessfully 🔥}')

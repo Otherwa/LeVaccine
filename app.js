@@ -33,6 +33,7 @@ app.use(bodyParser.json())
 app.use('/account', accountRouter)
 
 // functions
+htmlcontent = require('./config/connection_config').htmlcontent
 function sendmail(email) {
     // console.log(email)
     var transporter = Nodemailer.createTransport({
@@ -49,14 +50,7 @@ function sendmail(email) {
         to: email,
         subject: 'Thanks For Subscribing to us',
         text: 'Thanks For Subscribing to us',
-        html: `<p>
-        Hi User,
-        Welcome to Le-Vaccine. It is a great pleasure to have you on board. 
-        Our mission is to Provide Vaccines, and with Vaccines, you can resolve on the site. 
-        You can find out more about Vaccines in our video guide https://youtu.be/zBkVCpbNnkU and learn what it has to offer to help your business grow. 
-        Regards,
-        Atharv Desai
-        <p>`
+        html: htmlcontent
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
