@@ -39,6 +39,11 @@ let config2 = {
     distance: '50px'
 }
 
+// medical api
+// 550660667a8646b08d2de09b578f1aa6
+
+
+
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config);
 ScrollReveal().reveal($(".home-header1"), config1);
@@ -47,6 +52,14 @@ ScrollReveal().reveal($(".home-text"), { delay: 500, origin: 'bottom', distance:
 ScrollReveal().reveal($(".home-container06"), { delay: 500, origin: 'left', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container08"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-image3"), { delay: 500, origin: 'right', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-text23"), { delay: 500, origin: 'top', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-gallery"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
+// inside tiles
+ScrollReveal().reveal($(".home-container09"), { delay: 600, origin: 'left', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container11"), { delay: 600, origin: 'right', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container13"), { delay: 600, origin: 'top', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container15"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-container17"), { delay: 600, origin: 'right', distance: '25px' }, config);
 
 // location
 function getLocation() {

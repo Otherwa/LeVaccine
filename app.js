@@ -2,7 +2,8 @@
 const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
 const { connect } = require('./config/connect');
-const Nodemailer = require('nodemailer');
+const Nodemailer = require('nodemailer');//mailOptions
+const fetch = require('node-fetch');
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter')
@@ -61,12 +62,22 @@ function sendmail(email) {
         }
     });
 }
+// news functions
 
 // default route
-app.get('/', (req, res) => {
-    res.render('index')
+app.get('/', async (req, res) => {
+
+    // GET
+    const response = await fetch('https://newsapi.org/v2/everything?q=(Vaccines OR Medical)&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await response.json();
+    // console.log(data.articles);
+    res.render('index', { data: data.articles })
 })
 
+// email Register
 app.post('/', async (req, res) => {
     // post ajax in index.js
     await connect();

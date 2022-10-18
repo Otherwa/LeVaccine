@@ -18,6 +18,8 @@
     "express": "^4.18.1",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.2",
+    "newsapi": "^2.4.1",
+    "node-fetch": "^2.6.7",
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.19"
   }
