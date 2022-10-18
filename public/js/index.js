@@ -79,10 +79,10 @@ $('#emailclick').click(() => {
                 if (res.alreadysubscribed == "404") {
                     $('#error').hide();
                     $('#subscribed').fadeIn();
-                    $('#subscribed code').delay(500).fadeIn().text('Already Subscribed 🛐')
+                    $('#subscribed code').delay(500).fadeIn().text('{Already Subscribed 🛐}')
                 } else {
                     $('#subscribed').fadeIn()
-                    $('#subscribed code').fadeIn().text('Subscribed Sucessfully 🔥')
+                    $('#subscribed code').fadeIn().text('{Subscribed Sucessfully 🔥}')
                     $('#error').hide();
                 }
             }
