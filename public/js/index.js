@@ -60,6 +60,7 @@ ScrollReveal().reveal($(".home-container11"), { delay: 600, origin: 'right', dis
 ScrollReveal().reveal($(".home-container13"), { delay: 600, origin: 'top', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container15"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container17"), { delay: 600, origin: 'right', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-steps"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 
 // location
 function getLocation() {
@@ -94,10 +95,10 @@ $('#emailclick').click(() => {
                 if (res.alreadysubscribed == "404") {
                     $('#error').hide();
                     $('#subscribed').fadeIn();
-                    $('#subscribed code').delay(200).fadeIn().text('{Already Subscribed 🛐}')
+                    $('#subscribed code').delay(100).fadeIn().text('Already Subscribed 🛐')
                 } else {
                     $('#subscribed').fadeIn()
-                    $('#subscribed code').fadeIn().text('{Subscribed Sucessfully 🔥}')
+                    $('#subscribed code').fadeIn().text('Subscribed Sucessfully 🔥')
                     $('#error').hide();
                 }
             }

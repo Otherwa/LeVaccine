@@ -8,4 +8,9 @@ async function connect() {
     mongo.once('open', () => { console.log("Connected service"); })
 }
 
-module.exports = { connect }
+async function dis() {
+    mongoose.disconnect();
+    console.log("disconnected");
+}
+
+module.exports = { connect, dis }

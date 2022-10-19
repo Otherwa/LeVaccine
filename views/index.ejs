@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div>
+  <div style="padding:0.1rem">
     <div class="home-container">
 
       <header data-role="Header" class="home-header1">
@@ -246,15 +246,18 @@
       <div class="home-gallery">
         <div class="home-container09">
           <div class="home-container10">
-            <h1 class="home-text24">
+            <p class="home-text24">
               <%= data[0].title %>
                 <cite>
                   <%= data[0].author %>
                 </cite>
-            </h1>
+            </p>
             <br>
             <span class="home-text25">
               <span>
+                <p>
+                  <%= data[0].source.name %>
+                </p>
                 <span>
                   <%= data[0].description %>
                 </span>
@@ -270,53 +273,67 @@
         </div>
         <div class="home-container11">
           <div class="home-container12">
-            <h1 class="home-text27">
+            <p class="home-text27">
               <%= data[1].title %>
                 <cite>
                   <%= data[1].author %>
                 </cite>
-            </h1>
+            </p>
             <br>
             <span class="home-text28">
+              <p>
+                <%= data[1].source.name %>
+              </p>
               <span>
                 <%= data[1].description %>
+              </span>
+              <span>
+                <%= data[1].publishedAt %>
+              </span>
+              <span>
+                <a style="color:yellow" href="<%= data[1].url %>" target="_blank"> More ...</a>
               </span>
             </span>
           </div>
         </div>
         <div class="home-container13">
           <div class="home-container14">
-            <h1 class="home-text30">
+            <p class="home-text30">
               <%= data[2].title %>
                 <cite>
                   <%= data[2].author %>
                 </cite>
-            </h1>
+            </p>
             <span class="home-text31">
+              <p>
+                <%= data[2].source.name %>
+              </p>
               <span>
-                <span>
-                  <%= data[0].description %>
-                </span>
-                <span>
-                  <%= data[0].publishedAt %>
-                </span>
-                <span>
-                  <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
-                </span>
+                <%= data[2].description %>
               </span>
+              <span>
+                <%= data[2].publishedAt %>
+              </span>
+              <span>
+                <a style="color:yellow" href="<%= data[2].url %>" target="_blank"> More ...</a>
+              </span>
+            </span>
             </span>
             </span>
           </div>
         </div>
         <div class="home-container15">
           <div class="home-container16">
-            <h1 class="home-text33">
+            <p class="home-text33">
               <%= data[3].title %>
                 <cite>
                   <%= data[3].author %>
                 </cite>
-            </h1>
+            </p>
             <span class="home-text34">
+              <p>
+                <%= data[3].source.name %>
+              </p>
               <span>
                 <%= data[3].description %>
               </span>
@@ -332,13 +349,16 @@
         </div>
         <div class="home-container17">
           <div class="home-container18">
-            <h1 class="home-text36">
+            <p class="home-text36">
               <%= data[4].title %>
                 <cite>
                   <%= data[4].author %>
                 </cite>
-            </h1>
+            </p>
             <span class="home-text37">
+              <p>
+                <%= data[4].source.name %>
+              </p>
               <span>
                 <%= data[4].description %>
               </span>
@@ -354,13 +374,16 @@
         </div>
         <div class="home-container19">
           <div class="home-container20">
-            <h1 class="home-text39">
+            <p class="home-text39">
               <%= data[5].title %>
                 <cite>
                   <%= data[5].author %>
                 </cite>
-            </h1>
+            </p>
             <span class="home-text40">
+              <p>
+                <%= data[5].source.name %>
+              </p>
               <span>
                 <%= data[5].description %>
               </span>
@@ -377,7 +400,7 @@
       </div>
 
       <div class="home-steps">
-        <h1 class="home-text42"><span>Discover Our Process</span></h1>
+        <p class="home-text42"><span>Discover Our Process</span></p>
         <span class="home-text44">
           <span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -481,7 +504,6 @@
       </div>
       <footer class="home-footer">
         <div class="home-container36">
-          <div class="home-logo"></div>
           <div class="home-links-container">
             <div class="home-container37">
               <div class="home-company-container">

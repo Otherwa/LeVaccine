@@ -1,6 +1,7 @@
 const express = require('express');
 const Router = express.Router();
 const usersSchema = require('../models/userschema');
+const { connect, dis } = require('../config/connect');
 
 //account
 
@@ -85,11 +86,13 @@ Router.get('/producer', (req, res) => {
 
 
 //test data to show users
-Router.get('/test', (req, res) => {
-    usersSchema.find({}, (err, data) => {
+Router.get('/test', async (req, res) => {
+    await connect();
+    usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
         console.log(data)
         res.json(data)
     })
+    await dis();
 })
 
 
