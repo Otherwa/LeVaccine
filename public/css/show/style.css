@@ -37,6 +37,11 @@
   --ppink: rgb(255, 31, 161);
 }
 
+@font-face {
+  font-family: dot;
+  src: url(DOTMATRI.TTF);
+}
+
 .button {
   color: var(--dl-color-gray-black);
   display: inline-block;

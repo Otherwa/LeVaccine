@@ -8,12 +8,12 @@ const { connect, dis } = require('../config/connect');
 
 // index
 Router.get('/', (err, res) => {
-    res.status(200).render('account/whichlogin', { title: "Login-as" })
+    res.status(200).render('account/whichlogin')
 })
 
 // user
-Router.get('/user', (req, res) => {
-    res.status(200).render('account/user/user', { title: "User" })
+Router.get('/login', (req, res) => {
+    res.status(200).render('account/login')
 })
 
 // account creation
@@ -90,7 +90,7 @@ Router.get('/test', async (req, res) => {
     await connect();
     usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
         console.log(data)
-        res.json(data)
+        res.send(data)
     })
     await dis();
 })

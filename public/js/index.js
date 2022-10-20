@@ -42,8 +42,6 @@ let config2 = {
 // medical api
 // 550660667a8646b08d2de09b578f1aa6
 
-
-
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config);
 ScrollReveal().reveal($(".home-header1"), config1);
