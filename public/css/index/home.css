@@ -2186,7 +2186,6 @@ body {
   border-style: solid;
   border-width: 0.01rem;
   border-radius: 0.2rem;
-  transition: 0.3s;
 }
 
 h2 .myFont {
@@ -2194,6 +2193,17 @@ h2 .myFont {
 }
 
 .register:hover {
-  color: white;
-  background-color: black;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+
+.cur {
+  border-radius: 1.8rem;
+  transition: 0.4s;
+}
+
+.cur:hover {
+  box-shadow: 0.5rem 0.5rem black !important;
+  transition: 0.4s;
+  translate: -0.25rem -0.252rem;
 }
