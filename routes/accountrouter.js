@@ -90,7 +90,7 @@ Router.get('/test', async (req, res) => {
     await connect();
     usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
         console.log(data)
-        res.json(data)
+        res.send(data)
     })
     await dis();
 })
