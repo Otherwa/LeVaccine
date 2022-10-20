@@ -15,6 +15,6 @@ Le-Vaccine a Centralized Vaccine Solution for people living in this challenging 
 
   
 # Cool | Kooler
-<img src="https://user-images.githubusercontent.com/67428572/188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png" style="width:20rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/67428572/196998434-8a1b850f-3454-4946-be89-a8fc8e0a5241.png" style="width:20rem;">
+<img src="https://user-images.githubusercontent.com/67428572/188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png" style="width:25rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/67428572/196998434-8a1b850f-3454-4946-be89-a8fc8e0a5241.png" style="width:25rem;">
 
 
