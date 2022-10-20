@@ -13,8 +13,8 @@ Le-Vaccine a Centralized Vaccine Solution for people living in this challenging 
 
 # In-Dev Concept
 
-# Cool
-![ss1](https://user-images.githubusercontent.com/67428572/188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png)
+  
+# Cool | Kooler
+<img src="https://user-images.githubusercontent.com/67428572/188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png" style="width:30rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/67428572/196998434-8a1b850f-3454-4946-be89-a8fc8e0a5241.png" style="width:30rem;">
 
-#Cooler
-![Screenshot 2022-10-20 212446](https://user-images.githubusercontent.com/67428572/196998434-8a1b850f-3454-4946-be89-a8fc8e0a5241.png)
+
