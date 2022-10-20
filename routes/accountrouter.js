@@ -92,7 +92,7 @@ Router.get('/test', async (req, res) => {
         console.log(data)
         res.send(data)
     })
-    await dis();
+    // await dis();
 })
 
 
