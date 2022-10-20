@@ -1,9 +1,0 @@
-.con {
-    display: flex;
-    flex-direction: column;
-    padding: 1.2rem;
-}
-
-.con p {
-    font-family: 'Recursive', sans-serif;
-}

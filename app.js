@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
         headers: { 'Content-Type': 'application/json' }
     });
     const data = await response.json();
-    console.log(data.articles);
+    // console.log(data.articles);
     res.render('index', { data: data.articles })
 })
 
@@ -99,7 +99,7 @@ app.post('/', async (req, res) => {
                 res.send({ alreadysubscribed: "200" }).status(200)
             }
         });
-        await dis()
+        // await dis()
     }
     // email sent
     sendmail(req.body.email);
@@ -108,7 +108,7 @@ app.post('/', async (req, res) => {
 
 // education
 app.get('/education', (req, res) => {
-    res.render('education',)
+    res.render('education')
 })
 
 
@@ -129,7 +129,7 @@ app.get('/services', (req, res) => {
 
 // about
 app.get('/about', (req, res) => {
-    res.render('contact', { title: "Contact" })
+    res.render('about')
 })
 
 app.listen(port);
