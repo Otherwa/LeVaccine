@@ -2196,3 +2196,70 @@ h2 .myFont {
     color: white;
     background-color: black;
 }
+
+
+/* split parrallex */
+
+.education {
+    height: 100%;
+    display: flex;
+}
+
+.education-title {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 !important;
+}
+
+.education-title p {
+    width: 90%;
+    line-height: 1.6rem;
+    font-size: 0.9rem;
+}
+
+.education-title>h2 {
+    font-size: 3.5rem;
+}
+
+.education-pages {
+    width: 50%;
+}
+
+.education-pages div {
+    display: flex;
+    height: 100vh;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.education-pages div>p {
+    width: 80%;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.education-pages div:nth-child(1) {
+    background-color: yellow;
+}
+
+.education-pages div:nth-child(2) {
+    background-color: red;
+}
+
+.education-pages div:nth-child(3) {
+    background-color: green;
+}
+
+
+@media (max-width: 768px) {
+    .education {
+        flex-direction: column;
+        align-items: center;
+    }
+}

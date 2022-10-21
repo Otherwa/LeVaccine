@@ -75,7 +75,6 @@ Router.get('/user/login', (req, res) => {
 // if login is successful
 Router.post('/user/login', (req, res) => {
     // if successful render dashboard with userData
-
     res.render('account/userdash',)
 })
 
