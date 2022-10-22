@@ -4,17 +4,20 @@ $('#subscribed').hide();
 $(document).ready(() => {
     getLocation();
 })
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+
+//validates email on subscribtion 
 const validateEmail = (email) => {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
 
-document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-});
-
 ScrollReveal({ reset: true });
+
 let config = {
     delay: 375,
     duration: 500,
