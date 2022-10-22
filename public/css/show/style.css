@@ -42,6 +42,129 @@
   src: url(DOTMATRI.TTF);
 }
 
+.navigation-links1-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.navigation-links1-text1 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links1-text2 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links1-text3 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links1-navlink {
+  margin-left: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+@media(max-width: 767px) {
+  .navigation-links1-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navigation-links1-text {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links1-text1 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links1-text2 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links1-text3 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links1-navlink {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
+
+.navigation-links-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.navigation-links-text1 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links-text2 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links-text3 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+.navigation-links-text4 {
+  margin-left: var(--dl-space-space-twounits);
+}
+
+
+
+
+
+
+
+
+@media(max-width: 767px) {
+  .navigation-links-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navigation-links-text {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links-text1 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links-text2 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links-text3 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+
+  .navigation-links-text4 {
+    margin-left: 0;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
+
 .button {
   color: var(--dl-color-gray-black);
   display: inline-block;
@@ -140,4 +263,36 @@ img {
 
 .und {
   text-decoration: underline;
+}
+
+
+.myFont {
+  font-family: dot !important;
+}
+
+.register {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-style: solid;
+  border-width: 0.01rem;
+  border-radius: 0.2rem;
+}
+
+h2 .myFont {
+  font-weight: 100;
+}
+
+.register:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+
+.cur {
+  border-radius: 1.8rem;
+  transition: 0.4s;
+}
+
+.cur:hover {
+  box-shadow: 0.5rem 0.5rem black !important;
+  transition: 0.4s;
+  translate: -0.25rem -0.252rem;
 }

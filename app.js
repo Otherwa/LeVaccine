@@ -2,18 +2,15 @@
 const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
 const { connect, dis } = require('./config/connect');
-const Nodemailer = require('nodemailer');//mailOptions
-const fetch = require('node-fetch');
+const { sendmail, sendnews, sendedunews } = require('./commonfunctions/commonfunc');
+const usersemails = require('./models/useremails'); // models
+
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter')
 
 // ports
 const port = process.env.PORT || 8080;
-
-// models
-const usersemails = require('./models/useremails');
-
 
 // start init
 const app = express();
@@ -33,45 +30,11 @@ app.use(bodyParser.json())
 //account routes
 app.use('/account', accountRouter)
 
-// functions
-htmlcontent = require('./config/connection_config').htmlcontent
-function sendmail(email) {
-    // console.log(email)
-    var transporter = Nodemailer.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        auth: {
-            user: 'levaccine69@gmail.com',
-            pass: 'wjfofdrbrqgumdgx'
-        }
-    });
-
-    var mailOptions = {
-        from: 'levaccine69@gmail.com',
-        to: email,
-        subject: 'Thanks For Subscribing to us',
-        text: 'Thanks For Subscribing to us',
-        html: htmlcontent
-    };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-}
-// news functions
 
 // default route
 app.get('/', async (req, res) => {
     // GET
-    const response = await fetch('https://newsapi.org/v2/everything?q=(Vaccines OR Medical)&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
-    const data = await response.json();
+    const data = await sendnews();
     // console.log(data.articles);
     res.render('index', { data: data.articles })
 })
@@ -107,8 +70,11 @@ app.post('/', async (req, res) => {
 });
 
 // education
-app.get('/education', (req, res) => {
-    res.render('education')
+app.get('/education', async (req, res) => {
+    const data = await sendedunews();
+    console.log(data.articles);
+    // console.log(data)
+    res.render('education', { data: data.articles })
 })
 
 

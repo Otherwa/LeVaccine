@@ -1,8 +1,8 @@
 module.exports = {
-    con: 'mongodb+srv://Otherwa:vLsLS2jXafe4Nb6n@cluster0.wijcrrf.mongodb.net/Drugs',
-    location: [],
-    site: 'Mongoaltas',
-    htmlcontent: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  con: 'mongodb+srv://Otherwa:vLsLS2jXafe4Nb6n@cluster0.wijcrrf.mongodb.net/Drugs',
+  location: [],
+  site: 'Mongoaltas',
+  htmlcontent: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
     <!--[if gte mso 9]>
@@ -218,7 +218,7 @@ module.exports = {
       <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
     <div class="v-text-align" align="left">
       <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://levaccine.herokuapp.com/service" style="height:37px; v-text-anchor:middle; width:154px;" arcsize="11%"  strokecolor="#0dce84" strokeweight="1px" fillcolor="#ffffff"><w:anchorlock/><center style="color:#000000;font-family:'Montserrat',sans-serif;"><![endif]-->  
-        <a href="https://levaccine.herokuapp.com/service" target="_blank" class="v-button" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #000000; background-color: #ffffff; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:65%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;border-top-color: #0dce84; border-top-style: solid; border-top-width: 1px; border-left-color: #0dce84; border-left-style: solid; border-left-width: 1px; border-right-color: #0dce84; border-right-style: solid; border-right-width: 1px; border-bottom-color: #0dce84; border-bottom-style: solid; border-bottom-width: 1px;">
+        <a href="https://levaccine.herokuapp.com/services" target="_blank" class="v-button" style="box-sizing: border-box;display: inline-block;font-family:'Montserrat',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #000000; background-color: #ffffff; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:65%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;border-top-color: #0dce84; border-top-style: solid; border-top-width: 1px; border-left-color: #0dce84; border-left-style: solid; border-left-width: 1px; border-right-color: #0dce84; border-right-style: solid; border-right-width: 1px; border-bottom-color: #0dce84; border-bottom-style: solid; border-bottom-width: 1px;">
           <span style="display:block;padding:10px 20px;line-height:120%;"><strong><span style="font-size: 14px; line-height: 16.8px;">Learn More</span></strong></span>
         </a>
       <!--[if mso]></center></v:roundrect><![endif]-->
