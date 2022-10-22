@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 const edurls_schema = new schema({
     url: {
+        unique: true,
         required: true,
         type: 'string',
     },
