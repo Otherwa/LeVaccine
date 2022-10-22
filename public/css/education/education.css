@@ -2077,89 +2077,6 @@ h2 .myFont {
 
 /* split parrallex */
 
-.education {
-    height: 100%;
-    display: flex;
-}
-
-.education-title {
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: left;
-    margin: 0 !important;
-}
-
-.education-title p {
-    width: 60%;
-    line-height: 1.6rem;
-    font-size: 0.9rem;
-}
-
-.education-title>h2 {
-    font-size: 3.5rem;
-}
-
-.education-pages {
-    width: 50%;
-}
-
-.education-pages div {
-    display: flex;
-    height: 100vh;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.education-pages div>p {
-    width: 80%;
-    line-height: 30px;
-    font-size: 18px;
-}
-
-.education-pages div {
-    margin: 1rem;
-    border-radius: 0.5rem;
-}
-
-.education-pages div:nth-child(1) {
-
-    background-color: yellow;
-}
-
-.education-pages div:nth-child(2) {
-    background-color: red;
-}
-
-.education-pages div:nth-child(3) {
-    background-color: green;
-}
-
-
-@media (max-width: 768px) {
-    .education {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .education-pages {
-        width: 100%;
-        padding: 0.9rem;
-    }
-
-    .education-pages div>p {
-        width: 70%;
-    }
-
-    .scrollmagic-pin-spacer {
-        width: 100% !important;
-    }
-}
 
 .cur {
     border-radius: 1.8rem;
@@ -2170,4 +2087,29 @@ h2 .myFont {
     box-shadow: 0.5rem 0.5rem black !important;
     transition: 0.4s;
     translate: -0.25rem -0.252rem;
+}
+
+.container {
+    overflow: hidden;
+    width: 100%;
+    /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+.responsive-iframe {
+    border-radius: 0.5rem;
+    width: 60vw;
+    height: 69vh;
+}
+
+.education-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+@media (max-width: 581px) {
+    .responsive-iframe {
+        width: 77vw;
+        height: 29vh;
+    }
 }

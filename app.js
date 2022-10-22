@@ -4,10 +4,13 @@ const bodyParser = require('body-parser'); // render
 const { connect, dis } = require('./config/connect');
 const { sendmail, sendnews, sendedunews } = require('./commonfunctions/commonfunc');
 const usersemails = require('./models/useremails'); // models
+const edurls = require('./models/edurls'); // models
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 
 // routes for all action idividual
-const accountRouter = require('./routes/accountrouter')
+const accountRouter = require('./routes/accountrouter');
+
 
 // ports
 const port = process.env.PORT || 8080;
@@ -71,10 +74,15 @@ app.post('/', async (req, res) => {
 
 // education
 app.get('/education', async (req, res) => {
-    const data = await sendedunews();
-    console.log(data.articles);
-    // console.log(data)
-    res.render('education', { data: data.articles })
+    await connect();
+    // var data = edurls.findOne({});
+    edurls.find({}, { "_id": 0, "url": 1 }, (err, data) => {
+        if (err) {
+            res.render('education', { data: data })
+        } else {
+            res.render('education', { data: data })
+        }
+    })
 })
 
 
@@ -96,6 +104,39 @@ app.get('/services', (req, res) => {
 // about
 app.get('/about', (req, res) => {
     res.render('about')
+})
+
+
+// apis
+app.get('/api/edurls/:url&:apikey', async (req, res) => {
+
+    let youtube = "https://www.youtube.com/embed/"
+    let url = youtube + req.params.url
+    let apikey = req.params.apikey
+    let date = new Date();
+
+    await connect();
+
+    if (apikey == "69420qwerty" || apikey == "supersaiyan1" || apikey == "tatakae") {
+        // post ajax in index.js
+        // console.log(req.body)
+        const edurl = new edurls({
+            url: url,
+            date: date
+        })
+        // save
+        edurl.save(err => {
+            if (err) {
+                res.send({ "msg": "Fail", "status": "404", "url": url, "apikey": apikey, "err": err }).status(404)
+            } else {
+                res.send({ "msg": "Ok", "status": "200", "url": url, "apikey": apikey }).status(404)
+            }
+        });
+
+    } else {
+        res.json({ "msg": "Somethings Wrong" })
+    }
+
 })
 
 app.listen(port);
