@@ -80,10 +80,14 @@ app.get('/education', async (req, res) => {
         if (err) {
             res.render('education', { data: data })
         } else {
-            res.render('education', { data: data })
+            edurls.countDocuments({}, (err, usercount) => {
+                console.log(usercount)
+                res.render('education', { data: data, count: usercount })
+            })
+
         }
     })
-})
+});
 
 
 // contact
