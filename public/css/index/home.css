@@ -561,6 +561,10 @@
   font-family: dot;
 }
 
+.head {
+  font-size: 1.24rem;
+}
+
 .home-text25 {
   color: var(--dl-color-gray-white);
   margin-top: var(--dl-space-space-halfunit);
