@@ -5,6 +5,10 @@ $(document).ready(() => {
     getLocation();
 })
 
+$(window).on('load', () => {
+    $('.preload').fadeOut(1900);
+})
+
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 });

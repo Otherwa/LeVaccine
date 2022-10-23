@@ -7,4 +7,12 @@ let config = {
     useDelay: 'always',
 }
 
+$(window).on('load', () => {
+    $('.preload').fadeOut(1900);
+})
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+
 ScrollReveal().reveal($(".container"), config);

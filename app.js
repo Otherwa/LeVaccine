@@ -5,6 +5,8 @@ const { connect, dis } = require('./config/connect');
 const { sendmail, sendnews, sendedunews } = require('./commonfunctions/commonfunc');
 const usersemails = require('./models/useremails'); // models
 const edurls = require('./models/edurls'); // models
+const compression = require('compression')
+
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 
@@ -23,6 +25,9 @@ app.set('view engine', 'ejs')
 
 //css js etc flies
 app.use(express.static('public'))
+
+// compression for fast loads
+app.use(compression())
 
 //idk parseres
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -78,10 +83,10 @@ app.get('/education', async (req, res) => {
     // var data = edurls.findOne({});
     edurls.find({}, { "_id": 0, "url": 1 }, (err, data) => {
         if (err) {
-            res.render('education', { data: data })
+            res.render('error')
         } else {
             edurls.countDocuments({}, (err, usercount) => {
-                console.log(usercount)
+                // console.log(usercount)
                 res.render('education', { data: data, count: usercount })
             })
 
