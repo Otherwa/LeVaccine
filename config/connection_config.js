@@ -346,5 +346,7 @@ module.exports = {
     </body>
     
     </html>
-    `
+    `,
+  email: 'levaccine69@gmail.com',
+  pass: 'wjfofdrbrqgumdgx'
 }

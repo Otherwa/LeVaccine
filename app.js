@@ -1,13 +1,14 @@
 
 const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
-const { connect, dis } = require('./config/connect');
-const { sendmail, sendnews, sendedunews } = require('./commonfunctions/commonfunc');
+const { connect } = require('./config/connect');
+const { sendmail, sendnews } = require('./commonfunctions/commonfunc');
 const usersemails = require('./models/useremails'); // models
 const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 
 require('events').EventEmitter.prototype._maxListeners = 100;
+
 
 
 // routes for all action idividual
@@ -25,6 +26,9 @@ app.set('view engine', 'ejs')
 
 //css js etc flies
 app.use(express.static('public'))
+
+//session
+
 
 // compression for fast loads
 app.use(compression())

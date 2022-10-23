@@ -1,15 +1,34 @@
-const Nodemailer = require('nodemailer');//mailOptions
-const fetch = require('node-fetch');//for fetch api
+// connection string
+const { connect } = require('../config/connect');
+// models for docs0
+const usersSchema = require('../models/userschema');
+
+// nodemailer
 htmlcontent = require('../config/connection_config').htmlcontent
 
+// mail service
+const Nodemailer = require('nodemailer');//mailOptions
+// news fetch
+const fetch = require('node-fetch');//for fetch api
+
+
+
+// passport authentication for username and password by passport
+const passport = require('passport')
+const session = require('express-session');
+const bcrypt = require('bcrypt')
+const localStrategy = require('passport-local').Strategy;
+
+
+// mail service
 function sendmail(email) {
     // console.log(email)
     var transporter = Nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
         auth: {
-            user: 'levaccine69@gmail.com',
-            pass: 'wjfofdrbrqgumdgx'
+            user: require('../config/connection_config').email,
+            pass: require('../config/connection_config').pass
         }
     });
 
@@ -30,6 +49,7 @@ function sendmail(email) {
     });
 }
 
+// home page
 function sendnews() {
     let data = fetch('https://newsapi.org/v2/everything?q=(Vaccines OR Medical)&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6')
         .then((response) => response.json())
@@ -44,6 +64,7 @@ function sendnews() {
     return data;
 }
 
+// news education
 function sendedunews() {
     let data = fetch('https://newsapi.org/v2/everything?q=medical&pageSize=3&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6')
         .then((response) => response.json())
@@ -59,4 +80,46 @@ function sendedunews() {
 }
 
 
-module.exports = { sendmail, sendnews, sendedunews }
+//pasport module for user verification
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    usersSchema.findById(id, function (err, user) {
+        done(err, user);
+    });
+});
+
+passport.use(new localStrategy(async function (username, password, done) {
+    await connect();
+    usersSchema.findOne({ username: username }, function (err, user) {
+        if (err) return done(err);
+        if (!user) return done(null, false, { message: 'Incorrect username.' });
+
+        bcrypt.compare(password, user.password, function (err, res) {
+            if (err) return done(err);
+            if (res === false) return done(null, false, { message: 'Incorrect password.' });
+
+            return done(null, user);
+        });
+    });
+}));
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next()
+    } else {
+        res.redirect('/account/user/login');
+    }
+}
+
+function isLoggedOut(req, res, next) {
+    if (!req.isAuthenticated()) { return next(); }
+    else {
+        res.redirect('/account/user/dash');
+    }
+}
+
+
+module.exports = { sendmail, session, sendnews, sendedunews, passport, isLoggedIn, isLoggedOut, bcrypt }

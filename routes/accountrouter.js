@@ -1,9 +1,21 @@
 const express = require('express');
 const Router = express.Router();
 const usersSchema = require('../models/userschema');
-const { connect, dis } = require('../config/connect');
+const { connect } = require('../config/connect');
 
-//account
+const { passport, session, isLoggedIn, isLoggedOut, bcrypt } = require('../commonfunctions/commonfunc');
+
+// for session management of user passport mo
+// passport start
+Router.use(session({
+    secret: "verygoodsecret",
+    resave: false,
+    saveUninitialized: true
+}));
+
+//account session
+Router.use(passport.initialize());
+Router.use(passport.session());
 
 
 // index
@@ -12,75 +24,70 @@ Router.get('/', (err, res) => {
 })
 
 // user
-Router.get('/login', (req, res) => {
-    res.status(200).render('account/login')
+Router.get('/user', (req, res) => {
+    res.status(200).render('account/user')
 })
 
 // account creation
-Router.get('/user/createaccount', (req, res) => {
-    res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: " " })
+Router.get('/user/signup', (req, res) => {
+    res.status(200).render('account/user/signup')
 })
 
+
 // if creation successfull
-Router.post('/user/createaccount', (req, res) => {
-    try {
-        // set date
-        const date = new Date()
-        console.log(date)
-        const { username, password, cpassword, name, age, gender, address, mail, phone, city, region, pincode, state, country } = req.body
-        if (password === cpassword) {
-            const userData = new usersSchema({
-                username,
-                password,
-                name,
-                age,
-                gender,
-                address,
-                mail,
-                phone,
-                city,
-                region,
-                pincode,
-                state,
-                country,
-                date
-            })
-            var user_check = usersSchema.findOne({ username: username, mail: mail })
-            if (username === user_check.username) {
-                console.log("error")
-            } else {
-                userData.save(err => {
-                    if (err) {
-                        console.error(err);
-                        res.status(400).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Account Already exisits" })
-                    } else {
-                        res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Your Account was successfully created" })
-                    }
-                })
-            }
-        } else {
-            res.status(200).render('account/user/usercreateaccount', { title: "Create Account", status: "Login", msg: "Passwords Do not match" })
-        }
-    }
-    catch (err) {
-        console.log(err)
-    }
+Router.post('/user/signup', async (req, res) => {
+    await connect();
+
+    var username = req.body.username;
+    var password = req.body.password;
+    const exists = await usersSchema.exists({ username: username });
+    if (exists) {
+        res.redirect('/account/user/login');
+        return;
+    };
+
+    bcrypt.genSalt(10, function (err, salt) {
+        if (err) return next(err);
+        bcrypt.hash(password, salt, function (err, hash) {
+            if (err) return next(err);
+
+            const newAdmin = new usersSchema({
+                username: username,
+                password: hash
+            });
+
+            newAdmin.save();
+            res.redirect('/account/user/login');
+        });
+    });
 })
 
 // account login
-Router.get('/user/login', (req, res) => {
-    res.status(200).render('account/user/userlogin', { title: "Login" })
+Router.get('/user/login', isLoggedOut, (req, res) => {
+    res.status(200).render('account/user/login')
 })
 
 // if login is successful
-Router.post('/user/login', (req, res) => {
-    // if successful render dashboard with userData
-    res.render('account/userdash',)
-})
+Router.post('/user/login', passport.authenticate('local', {
+    successRedirect: '/account/user/dash',
+    failureRedirect: '/account/user/login'
+}))
+
+Router.get('/user/dash', isLoggedIn, async (req, res) => {
+    res.render('account/user/dashboard')
+});
+
+Router.get('/user/logout', function (req, res) {
+    req.logout(function (err) {
+        if (!err) {
+            res.redirect('/account/user');
+        }
+    });
+});
 
 // producer
 Router.get('/producer', (req, res) => {
-    res.render('account/producer', { title: "Producer" })
+    res.render('account/producer')
 })
 
 
@@ -94,10 +101,14 @@ Router.get('/test', async (req, res) => {
     // await dis();
 })
 
-
 // provider
 Router.get('/provider', (req, res) => {
-    res.render('account/provider', { title: "Provider" })
+    res.render('account/provider')
+})
+
+//error custom
+Router.get("*", (req, res) => {
+    res.render('error')
 })
 
 module.exports = Router;
