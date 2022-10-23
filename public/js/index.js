@@ -6,7 +6,7 @@ $(document).ready(() => {
 })
 
 $(window).on('load', () => {
-    $('.preload').fadeOut(1900);
+    $('.preload').fadeOut(1500);
 })
 
 document.addEventListener('contextmenu', function (e) {

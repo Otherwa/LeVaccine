@@ -2,41 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="16x16" rel="icon"
-        href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <title>Home</title>
+    <title>Le-Vaccine</title>
+    <meta property="og:title" content="Le-Vaccine" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet" href="/css/show/style.css" />
+    <link href="/css/whichlogin/whichlogin.css" rel="stylesheet" />
 </head>
 
 <body>
-    <!-- navbar -->
-    <ul class="topnav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/education">Education</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/services">Services</a></li>
-        <li class="right"><a class="active" href="/account">Account</a></li>
-    </ul>
-    <!-- main context -->
-    <div class="container_header">
-        <p>
-            <%= title %>
-        </p>
-        <br>
+    <div style="padding:0.1rem">
+        <div class="preload">
+            <img src="https://art.pixilart.com/8afb782c4601281.gif" alt="loading" style="width:4rem;height:auto">
+        </div>
+        <div class="home-container">
+            <br>
+            <%- include('../partial/login-nav') %>
+                <br>
+                <br>
+                <h1 class="education-title">Login-As</h1>
+                <br>
+                <br>
+                <a href="/account/user">User</a>
+                <a href="/account/producer">Producer</a>
+                <a href="/account/provider">Provider</a>
+                <br>
+                <br>
+                <!-- temp -->
+                <div class="home-separator"></div>
+                <footer class="home-footer">
+                    <%- include('../partial/foot'); %>
+                </footer>
+                <br>
+                <div class="home-separator"></div>
+                <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
+                        target="_blank">Otherwa</a>,
+                    All Rights Reserved.</span>
+                <br>
+        </div>
     </div>
-    <div class="con">
-        <a href="/account/user">User</a> <br>
-        <a href="/account/producer">Producer</a> <br>
-        <a href="/account/provider">Provider</a> <br>
-    </div>
+    <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="/js/whichlogin.js"></script>
+
 </body>
+
+</html>
 
 </html>
