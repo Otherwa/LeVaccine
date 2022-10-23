@@ -350,7 +350,7 @@
 
 .home-container04 {
   flex: 0 0 auto;
-  width: 25rem;
+  width: 23.5rem;
   height: auto;
   display: flex;
   align-items: space-between;
@@ -1463,7 +1463,6 @@
   .home-container04 {
     position: relative;
     align-self: flex-start;
-    align-items: center;
     align-items: center;
   }
 
