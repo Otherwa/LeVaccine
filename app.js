@@ -39,6 +39,7 @@ app.use(bodyParser.json())
 app.use('/account', accountRouter)
 
 
+
 // default route
 app.get('/', async (req, res) => {
     // GET
@@ -146,6 +147,11 @@ app.get('/api/edurls/:url&:apikey', async (req, res) => {
         res.json({ "msg": "Somethings Wrong" })
     }
 
+})
+
+//error custom
+app.get("*", (req, res) => {
+    res.render('error')
 })
 
 app.listen(port);
