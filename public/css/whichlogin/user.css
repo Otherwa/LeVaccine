@@ -2057,61 +2057,11 @@ body {
     font-family: dot !important;
 }
 
-.register {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-style: solid;
-    border-width: 0.01rem;
-    border-radius: 0.2rem;
-    transition: 0.3s;
-}
-
-h2 .myFont {
-    font-weight: 100;
-}
-
-.register:hover {
-    color: white;
-    background-color: black;
-}
-
-
-/* split parrallex */
-
-
-.cur {
-    border-radius: 1.8rem;
-    transition: 0.4s;
-}
-
-.cur:hover {
-    box-shadow: 0.5rem 0.5rem black !important;
-    transition: 0.4s;
-    translate: -0.25rem -0.252rem;
-}
-
-.container {
-    overflow: hidden;
-    width: 100%;
-    /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-}
-
-.responsive-iframe {
-    border-radius: 0.5rem;
-    width: 60vw;
-    height: 69vh;
-}
-
-.education-pages {
+.form {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    align-items: center;
+    gap: 2rem;
 }
 
-
-@media (max-width: 581px) {
-    .responsive-iframe {
-        width: 77vw;
-        height: 29vh;
-    }
-
-}
+@media (max-width: 581px) {}

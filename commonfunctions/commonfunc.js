@@ -100,13 +100,13 @@ passport.use(new localStrategy(async function (username, password, done) {
         bcrypt.compare(password, user.password, function (err, res) {
             if (err) return done(err);
             if (res === false) return done(null, false, { message: 'Incorrect password.' });
-
+            // console.log(user);
             return done(null, user);
         });
     });
 }));
 
-function isLoggedIn(req, res, next) {
+function authenticationmiddleware(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     } else {
@@ -122,4 +122,4 @@ function isLoggedOut(req, res, next) {
 }
 
 
-module.exports = { sendmail, session, sendnews, sendedunews, passport, isLoggedIn, isLoggedOut, bcrypt }
+module.exports = { sendmail, session, sendnews, sendedunews, passport, authenticationmiddleware, isLoggedOut, bcrypt }

@@ -3,12 +3,14 @@ const Router = express.Router();
 const usersSchema = require('../models/userschema');
 const { connect } = require('../config/connect');
 
-const { passport, session, isLoggedIn, isLoggedOut, bcrypt } = require('../commonfunctions/commonfunc');
+const { passport, session, authenticationmiddleware, isLoggedOut, bcrypt } = require('../commonfunctions/commonfunc');
 
-// for session management of user passport mo
+
+
+// for session management of user passport module
 // passport start
 Router.use(session({
-    secret: "verygoodsecret",
+    secret: require('../config/connection_config').pass,
     resave: false,
     saveUninitialized: true
 }));
@@ -63,24 +65,31 @@ Router.post('/user/signup', async (req, res) => {
 })
 
 // account login
-Router.get('/user/login', isLoggedOut, (req, res) => {
+Router.get('/user/login', (req, res) => {
     res.status(200).render('account/user/login')
 })
 
+//passing data from login to dash board via redirect
+const data = []
 // if login is successful
 Router.post('/user/login', passport.authenticate('local', {
-    successRedirect: '/account/user/dash',
+    // if not valid send to error via module in common fucntions
+    // successRedirect: '/account/user/dash',
     failureRedirect: '/account/user/login'
-}))
+}), (req, res) => {
+    data.push(req.user)
+    res.redirect('/account/user/dash')
+})
 
-Router.get('/user/dash', isLoggedIn, async (req, res) => {
-    res.render('account/user/dashboard')
+
+Router.get('/user/dash', authenticationmiddleware, (req, res) => {
+    res.render('account/user/dashboard', { data: data })
 });
 
 Router.get('/user/logout', function (req, res) {
     req.logout(function (err) {
         if (!err) {
-            res.redirect('/account/user');
+            res.redirect('/account/user/login');
         }
     });
 });

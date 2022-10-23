@@ -6,6 +6,7 @@ const { sendmail, sendnews } = require('./commonfunctions/commonfunc');
 const usersemails = require('./models/useremails'); // models
 const edurls = require('./models/edurls'); // models
 const compression = require('compression')
+const nocache = require('nocache');
 
 require('events').EventEmitter.prototype._maxListeners = 100;
 
@@ -27,8 +28,8 @@ app.set('view engine', 'ejs')
 //css js etc flies
 app.use(express.static('public'))
 
-//session
-
+//no cache session
+app.use(nocache());
 
 // compression for fast loads
 app.use(compression())
@@ -42,7 +43,7 @@ app.use(bodyParser.json())
 //account routes
 app.use('/account', accountRouter)
 
-
+app.set('etag', false)
 
 // default route
 app.get('/', async (req, res) => {
