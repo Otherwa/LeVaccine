@@ -76,16 +76,14 @@ const data = []
 // if login is successful
 Router.post('/user/login', passport.authenticate('local', {
     // if not valid send to error via module in common fucntions
-    // successRedirect: '/account/user/dash',
+    successRedirect: '/account/user/dash',
     failureRedirect: '/account/user/login'
-}), (req, res) => {
-    data.push(req.user)
-    res.redirect('/account/user/dash')
 })
+)
 
 
 Router.get('/user/dash', authenticationmiddleware, (req, res) => {
-    res.render('account/user/dashboard', { data: data })
+    res.render('account/user/dashboard', { data: req.user })
 });
 
 Router.get('/user/logout', function (req, res) {
