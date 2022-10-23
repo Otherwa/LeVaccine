@@ -8,7 +8,7 @@ const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 const nocache = require('nocache');
 
-require('events').EventEmitter.prototype._maxListeners = 100;
+require('events').EventEmitter.prototype._maxListeners = 500;
 
 
 
