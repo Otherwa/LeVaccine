@@ -41,8 +41,9 @@ Router.post('/user/signup', async (req, res) => {
     await connect();
 
     var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
-    const exists = await usersSchema.exists({ username: username });
+    const exists = await usersSchema.exists({ email: email });
     if (exists) {
         res.redirect('/account/user/login');
         return;
@@ -55,6 +56,7 @@ Router.post('/user/signup', async (req, res) => {
 
             const newAdmin = new usersSchema({
                 username: username,
+                email: email,
                 password: hash
             });
 
