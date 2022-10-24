@@ -101,7 +101,7 @@ Router.get('/user/verify/:email', async (req, res) => {
     console.log(email)
 
     var exsist = await usersSchema.findOne({ email: email });
-    console.log(exsist)
+    // console.log(exsist)
     // if exis
     if (exsist === null) {
         res.json({ msg: "no user" })
