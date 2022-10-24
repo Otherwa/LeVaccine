@@ -3,7 +3,7 @@ const Router = express.Router();
 const usersSchema = require('../models/userschema');
 const { connect } = require('../config/connect');
 
-const { passport, session, authenticationmiddleware, isLoggedOut, bcrypt } = require('../commonfunctions/commonfunc');
+const { passport, session, authenticationmiddleware, isLoggedOut, bcrypt, sendmail } = require('../commonfunctions/commonfunc');
 
 
 
@@ -61,13 +61,14 @@ Router.post('/user/signup', async (req, res) => {
             });
 
             newAdmin.save();
+            sendmail(mail);
             res.redirect('/account/user/login');
         });
     });
 })
 
 // account login
-Router.get('/user/login', (req, res) => {
+Router.get('/user/login', isLoggedOut, (req, res) => {
     res.status(200).render('account/user/login')
 })
 
