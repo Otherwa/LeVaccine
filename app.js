@@ -8,7 +8,7 @@ const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 const nocache = require('nocache');
 
-require('events').EventEmitter.prototype._maxListeners = 500;
+require('events').EventEmitter.prototype._maxListeners = 900;
 
 
 
@@ -30,6 +30,7 @@ app.use(express.static('public'))
 
 //no cache session
 app.use(nocache());
+
 
 // compression for fast loads
 app.use(compression())
