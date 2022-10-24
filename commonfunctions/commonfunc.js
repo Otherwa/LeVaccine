@@ -37,7 +37,7 @@ function sendSignupEmail(email) {
         subject: 'Thanks For Registering',
         text: 'Thanks For Registering',
         html: `
-        <a href="http://levaccine.herokuapp.com/account/users/verify/`+ email + `">` + `Verify</a>
+        <a href="http://levaccine.herokuapp.com/account/user/verify/`+ email + `">` + `Verify</a>
         <br>
         <p>Please Continue to Verify Your Account</p>
         `
