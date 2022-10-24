@@ -111,13 +111,12 @@ Router.get('/user/verify/:email', async (req, res) => {
             const filter = { email: email };
             const update = { $set: { verified: true } };
 
-
-            await usersSchema.findOneAndUpdate(filter, update, (err, result) => {
+            usersSchema.findOneAndUpdate(filter, update, (err, result) => {
                 if (err) {
                     res.json(err)
                 }
                 else {
-                    res.json({ msg: "verifed" })
+                    res.json({ msg: "verifed", res: result })
                 }
             });
         } else {
