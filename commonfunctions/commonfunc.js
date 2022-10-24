@@ -5,6 +5,7 @@ const usersSchema = require('../models/userschema');
 
 // nodemailer
 htmlcontent = require('../config/connection_config').htmlcontent
+htmlcontent1 = require('../config/connection_config').htmlcontent1
 
 // mail service
 const Nodemailer = require('nodemailer');//mailOptions
@@ -19,6 +20,37 @@ const session = require('express-session');
 const bcrypt = require('bcrypt')
 const localStrategy = require('passport-local').Strategy;
 
+// send signup email
+function sendSignupEmail(email) {
+    var transporter = Nodemailer.createTransport({
+        service: 'gmail',
+        host: 'smtp.gmail.com',
+        auth: {
+            user: require('../config/connection_config').email,
+            pass: require('../config/connection_config').pass
+        }
+    });
+
+    var mailOptions = {
+        from: 'levaccine69@gmail.com',
+        to: email,
+        subject: 'Thanks For Registering',
+        text: 'Thanks For Registering',
+        html: `
+        <a href="http://levaccine.herokuapp.com/account/users/verify/`+ email + `">` + `Verify</a>
+        <br>
+        <p>Please Continue to Verify Your Account</p>
+        `
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 
 // mail service
 function sendmail(email) {
@@ -122,4 +154,4 @@ function isLoggedOut(req, res, next) {
 }
 
 
-module.exports = { sendmail, session, sendnews, sendedunews, passport, authenticationmiddleware, isLoggedOut, bcrypt }
+module.exports = { sendmail, session, sendnews, sendedunews, passport, authenticationmiddleware, sendSignupEmail, isLoggedOut, bcrypt }

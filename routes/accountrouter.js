@@ -3,7 +3,7 @@ const Router = express.Router();
 const usersSchema = require('../models/userschema');
 const { connect } = require('../config/connect');
 
-const { passport, session, authenticationmiddleware, isLoggedOut, bcrypt, sendmail } = require('../commonfunctions/commonfunc');
+const { passport, session, authenticationmiddleware, sendSignupEmail, isLoggedOut, bcrypt, sendmail } = require('../commonfunctions/commonfunc');
 
 
 
@@ -61,7 +61,7 @@ Router.post('/user/signup', async (req, res) => {
             });
 
             newAdmin.save();
-            sendmail(mail);
+            sendSignupEmail(email);
             res.redirect('/account/user/login');
         });
     });
@@ -95,6 +95,36 @@ Router.get('/user/logout', function (req, res) {
     });
 });
 
+Router.get('/user/verify/:email', async (req, res) => {
+    var email = req.params.email;
+    await connect();
+    console.log(email)
+
+    var exsist = await usersSchema.findOne({ email: email });
+    console.log(exsist)
+    // if exis
+    if (exsist === null) {
+        res.json({ msg: "no user" })
+    }
+    else {
+        if (exsist.verified === false) {
+            const filter = { email: email };
+            const update = { $set: { verified: true } };
+
+
+            await usersSchema.findOneAndUpdate(filter, update, (err, result) => {
+                if (err) {
+                    res.json(err)
+                }
+                else {
+                    res.json({ msg: "verifed" })
+                }
+            });
+        } else {
+            res.json({ msg: "already verified" })
+        }
+    }
+});
 // producer
 Router.get('/producer', (req, res) => {
     res.render('account/producer')
