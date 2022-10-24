@@ -25,8 +25,13 @@
                 <div class="con">
                     <%= data%>
                         <br>
-                        <br>
-                        <a href="/account/user/logout">Logout</a>
+                        <% if(data.verified===true ){ %>
+                            <p style="color:green">Veified</p>
+                            <% } else{ %>
+                                <p style="color:red">Not Veified</p>
+                                <% } %>
+                                    <br>
+                                    <a href="/account/user/logout">Logout</a>
                 </div>
                 <br>
                 <!-- temp -->
