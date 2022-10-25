@@ -8,7 +8,7 @@ const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 const nocache = require('nocache');
 const flash = require('connect-flash');
-const session = require('express-session');
+const session = require('cookie-session');
 const cookie = require('cookie-parser');
 
 require('events').EventEmitter.prototype._maxListeners = 900;
