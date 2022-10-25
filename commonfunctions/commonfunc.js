@@ -114,5 +114,36 @@ function sendedunews() {
     return data;
 }
 
+//midleware functions
+//middleware auth function verify and set a web token 
+async function auth(req, res, next) {
+    const cookie = req.cookies.jwt
+    console.log(cookie)
+    if (cookie != undefined) {
+        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
+            if (err) return res.json({ msg: err.message });
+            req.user = result;
+            console.log(req.user)
+            next();
+        })
+    } else {
+        return res.redirect('/account/user/login');
+    }
+}
 
-module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt }
+async function isauth(req, res, next) {
+    const cookie = req.cookies.jwt
+    console.log(cookie)
+    if (cookie != undefined) {
+        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
+            if (err) return res.json({ msg: err.message });
+            req.user = result;
+            console.log(req.user)
+            return res.redirect('/account/user/dash');
+        })
+    } else {
+        next();
+    }
+}
+
+module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth }

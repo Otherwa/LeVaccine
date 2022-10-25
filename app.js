@@ -12,8 +12,12 @@ const generateApiKey = require('generate-api-key').default;
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
+// test api key
+// Mz4JvdpVs+fLInlqItU5C_3_C0OZR
+
 // models
 const usersemails = require('./models/useremails'); // models
+const usersSchema = require('./models/userschema'); // models
 const edurls = require('./models/edurls'); // models
 const api = require('./models/apis') //model
 
@@ -147,6 +151,7 @@ app.get('/api', auth, (req, res) => {
     res.render('apis/api')
 })
 
+// api key genration
 app.post('/api', async (req, res) => {
     const key = generateApiKey();
     const date = new Date();
@@ -166,6 +171,7 @@ app.post('/api', async (req, res) => {
     });
 })
 
+// educztion videos update api
 app.get('/api/edurls/:url&:apikey', async (req, res) => {
 
     let youtube = "https://www.youtube.com/embed/"
@@ -196,8 +202,23 @@ app.get('/api/edurls/:url&:apikey', async (req, res) => {
     } else {
         res.json({ "msg": "Somethings Wrong" })
     }
-
 })
+
+app.get('/api/peoples&:api', async (req, res) => {
+    await connect();
+    const apikey = req.params.api;
+    const exsist = await api.findOne({ apikey: apikey }).lean()
+    // gets an object contain
+    // console.log(exsist)
+    if (exsist != null) {
+        usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
+            console.log(data)
+            res.send(data)
+        })
+    }
+    // await dis();
+})
+
 
 //error custom
 app.get("*", (req, res) => {

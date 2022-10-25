@@ -4,40 +4,8 @@ const usersSchema = require('../models/userschema');
 const { connect } = require('../config/connect');
 
 
-const { sendSignupEmail, bcrypt, jwt } = require('../commonfunctions/commonfunc');
+const { sendSignupEmail, bcrypt, jwt, auth, isauth } = require('../commonfunctions/commonfunc');
 
-
-//midleware functions
-//middleware auth function verify and set a web token 
-async function auth(req, res, next) {
-    const cookie = req.cookies.jwt
-    console.log(cookie)
-    if (cookie != undefined) {
-        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
-            if (err) return res.json({ msg: err.message });
-            req.user = result;
-            console.log(req.user)
-            next();
-        })
-    } else {
-        return res.redirect('/account/user/login');
-    }
-}
-
-async function isauth(req, res, next) {
-    const cookie = req.cookies.jwt
-    console.log(cookie)
-    if (cookie != undefined) {
-        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
-            if (err) return res.json({ msg: err.message });
-            req.user = result;
-            console.log(req.user)
-            return res.redirect('/account/user/dash');
-        })
-    } else {
-        next();
-    }
-}
 
 // index
 Router.get('/', (err, res) => {
@@ -87,6 +55,7 @@ Router.post('/user/signup', async (req, res) => {
     }
 })
 
+//auth in common functions
 // account login
 Router.get('/user/login', isauth, (req, res) => {
     res.render('account/user/login', { err: req.flash('message') });
@@ -130,7 +99,7 @@ Router.post('/user/login', async (req, res) => {
 // get live data on refresh and cookie saved in cookie for each sesion
 async function livedata(req, res, next) {
     req.user = await usersSchema.findOne({ email: req.user.email });
-    console.log(req.user);
+    // console.log(req.user);
     next();
 }
 
@@ -180,16 +149,6 @@ Router.get('/producer', (req, res) => {
     res.render('account/producer')
 })
 
-
-//test data to show users
-Router.get('/test', async (req, res) => {
-    await connect();
-    usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
-        console.log(data)
-        res.send(data)
-    })
-    // await dis();
-})
 
 // provider
 Router.get('/provider', (req, res) => {
