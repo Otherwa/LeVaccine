@@ -2324,10 +2324,29 @@ h2 .myFont {
   translate: -0.25rem -0.252rem;
 }
 
-.cur {
-  border-radius: 1.5rem;
+.curget {
+  border-radius: 1.6rem;
   transition: 0.4s;
-  width: 10.5rem;
+  width: 9.5rem;
+  color: white;
+  background-color: black;
+  height: 3.5rem;
+}
+
+.curget:hover {
+  box-shadow: 0.5rem 0.5rem black !important;
+  transition: 0.4s;
+  color: #000000;
+  background-color: var(--ppink);
+  ;
+  translate: -0.25rem -0.252rem;
+}
+
+
+.cur {
+  border-radius: 1.6rem;
+  transition: 0.4s;
+  width: 9.5rem;
   height: 3.5rem;
 }
 

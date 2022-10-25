@@ -7,6 +7,8 @@ const usersemails = require('./models/useremails'); // models
 const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 const nocache = require('nocache');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
@@ -16,11 +18,23 @@ require('events').EventEmitter.prototype._maxListeners = 900;
 const accountRouter = require('./routes/accountrouter');
 
 
+
 // ports
 const port = process.env.PORT || 8080;
 
 // start init
 const app = express();
+
+// session
+app.use(session({
+    secret: require('./config/connection_config').pass,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxage: 6100000 }
+}));
+
+// for error flashing
+app.use(flash())
 
 //render for htmls
 app.set('view engine', 'ejs')
@@ -30,7 +44,6 @@ app.use(express.static('public'))
 
 //no cache session
 app.use(nocache());
-
 
 // compression for fast loads
 app.use(compression())

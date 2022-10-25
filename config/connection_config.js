@@ -348,5 +348,6 @@ module.exports = {
     </html>
     `,
   email: 'levaccine69@gmail.com',
-  pass: 'wjfofdrbrqgumdgx'
+  pass: 'wjfofdrbrqgumdgx',
+  jwt_token: 'Tatakae'
 }

@@ -23,15 +23,19 @@
                 <br>
                 <br>
                 <div class="con">
-                    <%= data%>
-                        <br>
-                        <% if(data.verified===true ){ %>
-                            <p style="color:green">Veified</p>
-                            <% } else{ %>
-                                <p style="color:red">Not Veified</p>
-                                <% } %>
-                                    <br>
-                                    <a href="/account/user/logout">Logout</a>
+                    <%= data.username%><br>
+                        <%= data.email%><br>
+                            <%= data.password%><br>
+                                <%= data.iat%><br>
+                                    your token: -<%= token %>
+                                        <br>
+                                        <% if(data.verified===true ){ %>
+                                            <p style="color:green">Veified</p>
+                                            <% } else{ %>
+                                                <p style="color:red">Not Veified</p>
+                                                <% } %>
+                                                    <br>
+                                                    <a href="/account/user/logout">Logout</a>
                 </div>
                 <br>
                 <!-- temp -->
