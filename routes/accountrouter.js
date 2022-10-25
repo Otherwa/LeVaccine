@@ -113,7 +113,7 @@ async function livedata(req, res, next) {
     next();
 }
 
-Router.get('/user/dash', auth, livedata, async (req, res) => {
+Router.get('/user/dash', auth, async (req, res) => {
     // token set or not
     console.log(token)
     console.log(req.user);
