@@ -185,4 +185,4 @@ Router.get("*", (req, res) => {
     res.render('error')
 })
 
-module.exports = Router;
+module.exports = { Router, auth };
