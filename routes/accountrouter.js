@@ -136,10 +136,8 @@ Router.get('/user/verify/:email', async (req, res) => {
     var email = req.params.email;
     await connect();
     console.log(email)
-
     var exsist = await usersSchema.findOne({ email: email });
-    // console.log(exsist)
-    // if exis
+
     if (exsist === null) {
         res.json({ msg: "no user" })
     }
@@ -153,8 +151,7 @@ Router.get('/user/verify/:email', async (req, res) => {
                     res.json(err)
                 }
                 else {
-                    res.json({ msg: "verifed", res: result })
-                    res.send('Your Account was verified redirecting')
+                    res.json({ msg: "verifed redirecting any minute", res: result })
                 }
             });
         } else {
