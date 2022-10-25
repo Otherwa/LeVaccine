@@ -79,7 +79,7 @@ Router.post('/user/login', async (req, res) => {
                 // return res.status(200).json({ msg: "Login success" })
                 const token = jwt.sign(user, require('../config/connection_config').jwt_token)
                 res.cookie("jwt", token, {
-                    expires: new Date(Date.now() + 60000), //6 hrs login
+                    expires: new Date(Date.now() + 2 * 60 * 60 * 1000), //2 hrs login
                     httpOnly: true
                 });
                 console.log(res.cookie);
