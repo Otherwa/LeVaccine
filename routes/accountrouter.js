@@ -3,22 +3,12 @@ const Router = express.Router();
 const usersSchema = require('../models/userschema');
 const { connect } = require('../config/connect');
 
-const { passport, session, authenticationmiddleware, sendSignupEmail, isLoggedOut, bcrypt, sendmail } = require('../commonfunctions/commonfunc');
+
+const { sendSignupEmail, bcrypt, jwt } = require('../commonfunctions/commonfunc');
 
 
-
-// for session management of user passport module
-// passport start
-Router.use(session({
-    secret: require('../config/connection_config').pass,
-    resave: false,
-    saveUninitialized: true
-}));
-
-//account session
-Router.use(passport.initialize());
-Router.use(passport.session());
-
+// to verify each request token for login/logout
+var token;
 
 // index
 Router.get('/', (err, res) => {
@@ -43,56 +33,101 @@ Router.post('/user/signup', async (req, res) => {
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
+
     const exists = await usersSchema.exists({ email: email });
     if (exists) {
-        res.redirect('/account/user/login');
+        res.redirect('/account/user/signup');
         return;
-    };
-
-    bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(password, salt, function (err, hash) {
+    } else {
+        bcrypt.genSalt(10, function (err, salt) {
             if (err) return next(err);
+            bcrypt.hash(password, salt, function (err, hash) {
+                if (err) return next(err);
 
-            const newAdmin = new usersSchema({
-                username: username,
-                email: email,
-                password: hash
+                const user = new usersSchema({
+                    username: username,
+                    email: email,
+                    password: hash
+                });
+
+                user.save();
+                sendSignupEmail(email);
+                res.redirect('/account/user/login');
             });
-
-            newAdmin.save();
-            sendSignupEmail(email);
-            res.redirect('/account/user/login');
         });
-    });
+    }
 })
 
 // account login
-Router.get('/user/login', isLoggedOut, (req, res) => {
-    res.status(200).render('account/user/login')
+Router.get('/user/login', (req, res) => {
+    res.render('account/user/login', { err: req.flash('message') });
 })
 
-//passing data from login to dash board via redirect
-const data = []
+
 // if login is successful
-Router.post('/user/login', passport.authenticate('local', {
-    // if not valid send to error via module in common fucntions
-    successRedirect: '/account/user/dash',
-    failureRedirect: '/account/user/login'
+Router.post('/user/login', async (req, res) => {
+    var username = req.body.username;
+    var password = req.body.password;
+    await connect();
+
+    const user = await usersSchema.findOne({ username: username }).lean()
+    console.log(user);
+    if (user != null) {
+        bcrypt.compare(password, user.password, function (err, data) {
+            if (err) res.send({ msg: 'no user' })
+            //if both match than you can do anything
+            if (data) {
+                // return res.status(200).json({ msg: "Login success" })
+                token = jwt.sign(user, require('../config/connection_config').jwt_token)
+                console.log(token)
+                res.redirect('/account/user/dash')
+            } else {
+                return res.status(401).json({ msg: "Invalid credencial" })
+            }
+        });
+    } else {
+        req.flash('message', 'No user exsist')
+        res.redirect('/account/user/login');
+        return;
+    }
 })
-)
 
+//middleware auth function verify and set a web token 
+async function auth(req, res, next) {
+    if (token !== undefined) {
+        await jwt.verify(token, require('../config/connection_config').jwt_token, (err, result) => {
+            if (err) return res.json({ msg: err.message });
+            req.user = result;
+            console.log(req.user)
+            next();
+        })
+    } else {
+        return res.redirect('/account/user/login');
+    }
+}
 
-Router.get('/user/dash', authenticationmiddleware, (req, res) => {
+// get live data on refresh
+async function livedata(req, res, next) {
+    req.user = await usersSchema.findOne({ email: req.user.email });
+    console.log(req.user);
+    next();
+}
+
+Router.get('/user/dash', auth, livedata, async (req, res) => {
+    // token set or not
+    console.log(token)
+    console.log(req.user);
+    res.render('account/user/dashboard', { data: req.user, token: token });
+});
+
+Router.get('/user/dash', auth, async (req, res) => {
+    console.log(req.user);
     res.render('account/user/dashboard', { data: req.user })
 });
 
 Router.get('/user/logout', function (req, res) {
-    req.logout(function (err) {
-        if (!err) {
-            res.redirect('/account/user/login');
-        }
-    });
+    token = undefined;
+    res.redirect('/account/user/login')
 });
 
 Router.get('/user/verify/:email', async (req, res) => {
@@ -117,6 +152,7 @@ Router.get('/user/verify/:email', async (req, res) => {
                 }
                 else {
                     res.json({ msg: "verifed", res: result })
+                    res.send('Your Account was verified redirecting')
                 }
             });
         } else {

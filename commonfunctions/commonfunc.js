@@ -3,6 +3,9 @@ const { connect } = require('../config/connect');
 // models for docs0
 const usersSchema = require('../models/userschema');
 
+// jwt
+const jwt = require('jsonwebtoken');
+
 // nodemailer
 htmlcontent = require('../config/connection_config').htmlcontent
 htmlcontent1 = require('../config/connection_config').htmlcontent1
@@ -14,11 +17,11 @@ const fetch = require('node-fetch');//for fetch api
 
 
 
+
 // passport authentication for username and password by passport
-const passport = require('passport')
+
 const session = require('express-session');
 const bcrypt = require('bcrypt')
-const localStrategy = require('passport-local').Strategy;
 
 // send signup email
 function sendSignupEmail(email) {
@@ -112,46 +115,4 @@ function sendedunews() {
 }
 
 
-//pasport module for user verification
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function (id, done) {
-    usersSchema.findById(id, function (err, user) {
-        done(err, user);
-    });
-});
-
-passport.use(new localStrategy(async function (username, password, done) {
-    await connect();
-    usersSchema.findOne({ username: username }, function (err, user) {
-        if (err) return done(err);
-        if (!user) return done(null, false, { message: 'Incorrect username.' });
-
-        bcrypt.compare(password, user.password, function (err, res) {
-            if (err) return done(err);
-            if (res === false) return done(null, false, { message: 'Incorrect password.' });
-            // console.log(user);
-            return done(null, user);
-        });
-    });
-}));
-
-function authenticationmiddleware(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next()
-    } else {
-        res.redirect('/account/user/login');
-    }
-}
-
-function isLoggedOut(req, res, next) {
-    if (!req.isAuthenticated()) { return next(); }
-    else {
-        res.redirect('/account/user/dash');
-    }
-}
-
-
-module.exports = { sendmail, session, sendnews, sendedunews, passport, authenticationmiddleware, sendSignupEmail, isLoggedOut, bcrypt }
+module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt }
