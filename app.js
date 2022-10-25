@@ -3,21 +3,23 @@ const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
 const { connect } = require('./config/connect');
 const { sendmail, sendnews } = require('./commonfunctions/commonfunc');
-const usersemails = require('./models/useremails'); // models
-const edurls = require('./models/edurls'); // models
 const compression = require('compression')
 const nocache = require('nocache');
 const flash = require('connect-flash');
 const session = require('cookie-session');
 const cookie = require('cookie-parser');
+const generateApiKey = require('generate-api-key').default;
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
-
+// models
+const usersemails = require('./models/useremails'); // models
+const edurls = require('./models/edurls'); // models
+const api = require('./models/apis') //model
 
 // routes for all action idividual
-const accountRouter = require('./routes/accountrouter');
-
+const accountRouter = require('./routes/accountrouter').Router;
+const auth = require('./routes/accountrouter').auth
 
 
 // ports
@@ -139,7 +141,31 @@ app.get('/about', (req, res) => {
 })
 
 
+
 // apis
+app.get('/api', auth, (req, res) => {
+    res.render('apis/api')
+})
+
+app.post('/api', async (req, res) => {
+    const key = generateApiKey();
+    const date = new Date();
+    const api_in = new api({
+        apikey: key,
+        date: date
+    })
+    await connect();
+
+    api_in.save(err => {
+        if (err) {
+            console.log(err);
+            res.send({ generated: "404" }).status(404)
+        } else {
+            res.send({ generated: "200", apikey: key }).status(200)
+        }
+    });
+})
+
 app.get('/api/edurls/:url&:apikey', async (req, res) => {
 
     let youtube = "https://www.youtube.com/embed/"
@@ -148,8 +174,10 @@ app.get('/api/edurls/:url&:apikey', async (req, res) => {
     let date = new Date();
 
     await connect();
-
-    if (apikey == "69420qwerty" || apikey == "supersaiyan1" || apikey == "tatakae") {
+    const exsist = await api.findOne({ apikey: apikey }).lean()
+    // gets an object contain
+    // console.log(exsist)
+    if (exsist != null) {
         // post ajax in index.js
         // console.log(req.body)
         const edurl = new edurls({
