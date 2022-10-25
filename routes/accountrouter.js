@@ -7,8 +7,7 @@ const { connect } = require('../config/connect');
 const { sendSignupEmail, bcrypt, jwt } = require('../commonfunctions/commonfunc');
 
 
-// to verify each request token for login/logout
-var token;
+
 
 // index
 Router.get('/', (err, res) => {
@@ -78,8 +77,12 @@ Router.post('/user/login', async (req, res) => {
             //if both match than you can do anything
             if (data) {
                 // return res.status(200).json({ msg: "Login success" })
-                token = jwt.sign(user, require('../config/connection_config').jwt_token)
-                console.log(token)
+                const token = jwt.sign(user, require('../config/connection_config').jwt_token)
+                res.cookie("jwt", token, {
+                    expires: new Date(Date.now() + 60000), //6 hrs login
+                    httpOnly: true
+                });
+                console.log(res.cookie);
                 res.redirect('/account/user/dash')
             } else {
                 return res.status(401).json({ msg: "Invalid credencial" })
@@ -94,8 +97,10 @@ Router.post('/user/login', async (req, res) => {
 
 //middleware auth function verify and set a web token 
 async function auth(req, res, next) {
-    if (token !== undefined) {
-        await jwt.verify(token, require('../config/connection_config').jwt_token, (err, result) => {
+    const cookie = req.cookies.jwt
+    console.log(cookie)
+    if (cookie != undefined) {
+        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
             if (err) return res.json({ msg: err.message });
             req.user = result;
             console.log(req.user)
@@ -106,30 +111,27 @@ async function auth(req, res, next) {
     }
 }
 
-// get live data on refresh
+// get live data on refresh and cookie saved in cookie for each sesion
 async function livedata(req, res, next) {
     req.user = await usersSchema.findOne({ email: req.user.email });
     console.log(req.user);
     next();
 }
 
-Router.get('/user/dash', auth, async (req, res) => {
-    // token set or not
-    console.log(token)
+Router.get('/user/dash', auth, livedata, async (req, res) => {
+    // token set or 
+    const cookie = req.cookies.jwt;
     console.log(req.user);
-    res.render('account/user/dashboard', { data: req.user, token: token });
+    res.render('account/user/dashboard', { data: req.user, token: cookie });
 });
 
-Router.get('/user/dash', auth, async (req, res) => {
-    console.log(req.user);
-    res.render('account/user/dashboard', { data: req.user })
-});
 
 Router.get('/user/logout', function (req, res) {
-    token = undefined;
+    res.clearCookie('jwt'); //clear cookie
     res.redirect('/account/user/login')
 });
 
+// email verification
 Router.get('/user/verify/:email', async (req, res) => {
     var email = req.params.email;
     await connect();
