@@ -12,6 +12,9 @@ const generateApiKey = require('generate-api-key').default;
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
+// test api key
+// Mz4JvdpVs+fLInlqItU5C_3_C0OZR
+
 // models
 const usersemails = require('./models/useremails'); // models
 const usersSchema = require('./models/userschema'); // models
