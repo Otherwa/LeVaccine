@@ -150,16 +150,6 @@ Router.get('/producer', (req, res) => {
 })
 
 
-//test data to show users
-Router.get('/test', async (req, res) => {
-    await connect();
-    usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
-        console.log(data)
-        res.send(data)
-    })
-    // await dis();
-})
-
 // provider
 Router.get('/provider', (req, res) => {
     res.render('account/provider')
