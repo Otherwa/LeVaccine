@@ -9,6 +9,7 @@ const compression = require('compression')
 const nocache = require('nocache');
 const flash = require('connect-flash');
 const session = require('express-session');
+const cookie = require('cookie-parser');
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
@@ -35,6 +36,8 @@ app.use(session({
 
 // for error flashing
 app.use(flash())
+
+app.use(cookie());
 
 //render for htmls
 app.set('view engine', 'ejs')
