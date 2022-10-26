@@ -30,6 +30,7 @@ Router.post('/user/signup', async (req, res) => {
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
+    console.log(email)
 
     const exists = await usersSchema.exists({ email: email });
     if (exists) {
