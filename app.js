@@ -97,13 +97,12 @@ app.post('/', async (req, res) => {
                 res.send({ alreadysubscribed: "404" }).status(404)
             } else {
                 res.send({ alreadysubscribed: "200" }).status(200)
+                sendmail(req.body.email);
             }
         });
         // await dis()
     }
     // email sent
-    sendmail(req.body.email);
-
 });
 
 // education
@@ -215,6 +214,8 @@ app.get('/api/peoples&:api', async (req, res) => {
             console.log(data)
             res.send(data)
         })
+    } else {
+        res.json({ msg: 'err' })
     }
     // await dis();
 })

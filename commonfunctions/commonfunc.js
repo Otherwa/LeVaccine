@@ -7,8 +7,8 @@ const usersSchema = require('../models/userschema');
 const jwt = require('jsonwebtoken');
 
 // nodemailer
-htmlcontent = require('../config/connection_config').htmlcontent
-htmlcontent1 = require('../config/connection_config').htmlcontent1
+var htmlcontent = require('../config/connection_config').htmlcontent
+var htmlcontent1 = require('../config/connection_config').htmlcontent1
 
 // mail service
 const Nodemailer = require('nodemailer');//mailOptions
@@ -23,16 +23,19 @@ const fetch = require('node-fetch');//for fetch api
 const session = require('express-session');
 const bcrypt = require('bcrypt')
 
+// email
+var transporter = Nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+        user: require('../config/connection_config').email,
+        pass: require('../config/connection_config').pass
+    }
+});
+
+
 // send signup email
 function sendSignupEmail(email) {
-    var transporter = Nodemailer.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        auth: {
-            user: require('../config/connection_config').email,
-            pass: require('../config/connection_config').pass
-        }
-    });
 
     var mailOptions = {
         from: 'levaccine69@gmail.com',
@@ -45,7 +48,6 @@ function sendSignupEmail(email) {
         <p>Please Continue to Verify Your Account</p>
         `
     };
-
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -57,15 +59,6 @@ function sendSignupEmail(email) {
 
 // mail service
 function sendmail(email) {
-    // console.log(email)
-    var transporter = Nodemailer.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        auth: {
-            user: require('../config/connection_config').email,
-            pass: require('../config/connection_config').pass
-        }
-    });
 
     var mailOptions = {
         from: 'levaccine69@gmail.com',
