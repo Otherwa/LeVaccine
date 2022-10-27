@@ -22,7 +22,7 @@
         <%- include('./partial/nav'); %>
       </header>
       <div class="home-hero">
-        <div class="home-container03 darkmode-ignore">
+        <div class="home-container03">
           <div class="home-container04">
             <!-- changed -->
             <img alt="image" src="https://media.tenor.com/9Evchz7u_wQAAAAM/professor-oak-nod.gif" class="home-image2"
@@ -436,7 +436,12 @@
       <br>
       <code>Approx location</code>
       <br>
-      <div id="map" style="width: 40vw;height: 42vh;"></div>
+      <div class="con">
+        <iframe style="border-radius:12px"
+          src="https://open.spotify.com/embed/playlist/1qpBQtqRRB6hzsES020ux7?utm_source=generator&theme=0" width="100%"
+          height="380" frameBorder="0" allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
       <br>
       <footer class="home-footer">
         <%- include('./partial/foot'); %>
@@ -458,7 +463,6 @@
   <script src="/js/butter/butter.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script src="/js/index.js"></script>
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrIpicuD8MdJ2NcKL6z4F8UKKsMyF0Vk8">
   </script>
 </body>
 

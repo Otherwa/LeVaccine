@@ -78,4 +78,11 @@ h2 .myFont {
         height: 29vh;
     }
 
+    .id {
+        font-size: 0.55rem !important;
+    }
+}
+
+.id {
+    font-size: 0.9rem;
 }

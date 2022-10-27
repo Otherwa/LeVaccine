@@ -1,7 +1,5 @@
 // connection string
 const { connect } = require('../config/connect');
-// models for docs0
-const usersSchema = require('../models/userschema');
 
 // jwt
 const jwt = require('jsonwebtoken');
@@ -126,7 +124,7 @@ async function auth(req, res, next) {
 
 async function isauth(req, res, next) {
     const cookie = req.cookies.jwt
-    console.log(cookie)
+    console.log(cookie + "undified cookie")
     if (cookie != undefined) {
         await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
             if (err) return res.json({ msg: err.message });
