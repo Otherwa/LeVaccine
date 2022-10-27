@@ -109,12 +109,34 @@ function getLocation() {
     }
 }
 
+let map;
+
+
 // for mobile users
 var lat = 00;
 var lon = 00;
+
+function initMap() {
+    const latlon = { lat: lat, lng: lon }
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: latlon,
+        zoom: 16,
+    });
+
+    const marker = new google.maps.Marker({
+        position: latlon,
+        map: map,
+    });
+
+}
+
+window.initMap = initMap;
+
 function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+
+    initMap();
 }
 
 // if value valid send to mongo subscribe collection
