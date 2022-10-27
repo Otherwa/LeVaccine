@@ -52,3 +52,7 @@ SVG Icons - svgicons.sparkk.fr
   filter: invert(1);
   isolation: isolate;
 }
+
+#map {
+  border-radius: 0.5rem;
+}
