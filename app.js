@@ -109,7 +109,7 @@ app.post('/', async (req, res) => {
 app.get('/education', async (req, res) => {
     await connect();
     // var data = edurls.findOne({});
-    edurls.find({}, { "_id": 0, "url": 1 }, (err, data) => {
+    edurls.find({}, { "_id": 0, "url": 1, "date": 1 }, (err, data) => {
         if (err) {
             res.render('error')
         } else {

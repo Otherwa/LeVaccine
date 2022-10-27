@@ -1,3 +1,4 @@
+
 $('#error').hide();
 $('#subscribed').hide();
 
@@ -15,7 +16,7 @@ const options = {
     right: 'unset', // default: '32px'
     right: '32px', // default: 'unset'
     time: '0.5s', // default: '0.3s'
-    mixColor: '#fff', // default: '#fff'
+    mixColor: '#eee', // default: '#fff'
     backgroundColor: '#ffffff',  // default: '#fff'
     buttonColorDark: '#100f2c',  // default: '#100f2c'
     buttonColorLight: '#fff', // default: '#fff'
@@ -80,6 +81,7 @@ ScrollReveal().reveal($(".home-container13"), { delay: 600, origin: 'top', dista
 ScrollReveal().reveal($(".home-container15"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container17"), { delay: 600, origin: 'right', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-steps"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".con"), { delay: 600, origin: 'top', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 
 
@@ -87,16 +89,8 @@ ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distanc
 
 // smooth animation if any desktop client
 
-// mobile check
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // true for mobile device
-    console.log("mobile device");
-} else {
-    // false for not mobile device
-    console.log("not mobile device");
-    // smooth  in /butter definition
-    butter.init();
-}
+butter.init();
+
 
 
 
@@ -116,27 +110,9 @@ let map;
 var lat = 00;
 var lon = 00;
 
-function initMap() {
-    const latlon = { lat: lat, lng: lon }
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: latlon,
-        zoom: 16,
-    });
-
-    const marker = new google.maps.Marker({
-        position: latlon,
-        map: map,
-    });
-
-}
-
-window.initMap = initMap;
-
 function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-
-    initMap();
 }
 
 // if value valid send to mongo subscribe collection

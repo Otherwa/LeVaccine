@@ -50,9 +50,14 @@ SVG Icons - svgicons.sparkk.fr
 
 .darkmode--activated img {
   filter: invert(1);
+  mix-blend-mode: difference;
   isolation: isolate;
 }
 
 #map {
   border-radius: 0.5rem;
+}
+
+.con {
+  width: 60vw;
 }
