@@ -5,13 +5,27 @@ $(document).ready(() => {
     getLocation();
 })
 
-$(window).on('load', () => {
-    $('.preload').fadeOut(1200);
-})
-
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 });
+
+
+const options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    right: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#ffffff',  // default: '#fff'
+    buttonColorDark: '#100f2c',  // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: false, // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 
 //validates email on subscribtion 
 const validateEmail = (email) => {
@@ -66,6 +80,25 @@ ScrollReveal().reveal($(".home-container13"), { delay: 600, origin: 'top', dista
 ScrollReveal().reveal($(".home-container15"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container17"), { delay: 600, origin: 'right', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-steps"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
+
+
+
+
+// smooth animation if any desktop client
+
+// mobile check
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // true for mobile device
+    console.log("mobile device");
+} else {
+    // false for not mobile device
+    console.log("not mobile device");
+    // smooth  in /butter definition
+    butter.init();
+}
+
+
 
 // location
 function getLocation() {
@@ -114,3 +147,4 @@ $('#emailclick').click(() => {
         $('#error').fadeIn();
     }
 });
+

@@ -23,7 +23,7 @@ const fetch = require('node-fetch');//for fetch api
 const session = require('express-session');
 const bcrypt = require('bcrypt')
 
-// email
+// email config
 var transporter = Nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -57,7 +57,7 @@ function sendSignupEmail(email) {
     });
 }
 
-// mail service
+// mail service for subscription
 function sendmail(email) {
 
     var mailOptions = {

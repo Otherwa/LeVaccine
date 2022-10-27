@@ -1504,7 +1504,7 @@
 
   .home-image2 {
     flex: 1;
-    width: 69%;
+    width: 59%;
     height: var(--dl-size-size-large);
     min-width: var(--dl-size-size-small);
     align-self: center;
@@ -2278,12 +2278,12 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--ppink);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(255, 31, 161, 0.7);
 }
 
 /* selection  */
@@ -2338,7 +2338,6 @@ h2 .myFont {
   transition: 0.4s;
   color: #000000;
   background-color: var(--ppink);
-  ;
   translate: -0.25rem -0.252rem;
 }
 
@@ -2354,19 +2353,6 @@ h2 .myFont {
   box-shadow: 0.5rem 0.5rem black !important;
   transition: 0.4s;
   translate: -0.25rem -0.252rem;
-}
-
-.preload {
-  display: flex;
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(255, 255, 255) !important;
-  position: fixed;
-  z-index: 6;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .container-home {
