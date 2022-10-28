@@ -2374,3 +2374,12 @@ h2 .myFont {
   mix-blend-mode: difference;
   isolation: isolate;
 }
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  width: 0%;
+  height: 5px;
+  background: var(--pblue);
+  z-index: 10000;
+}
