@@ -2360,3 +2360,17 @@ h2 .myFont {
   gap: 2rem;
   flex-direction: column;
 }
+
+/* darkamode */
+.darkmode-layer,
+.darkmode-toggle {
+  z-index: 500;
+}
+
+.darkmode--activated #hero-image,
+.darkmode--activated #hero-image2,
+.darkmode--activated iframe {
+  filter: invert(1) !important;
+  mix-blend-mode: difference;
+  isolation: isolate;
+}

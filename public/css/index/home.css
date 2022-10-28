@@ -40,18 +40,7 @@ SVG Icons - svgicons.sparkk.fr
   stroke-width: 1;
 }
 
-/* darkamode */
-.darkmode-layer,
-.darkmode-toggle {
-  z-index: 500;
-}
 
-.darkmode--activated #hero-image,
-.darkmode--activated #hero-image2 {
-  filter: invert(1) !important;
-  mix-blend-mode: difference;
-  isolation: isolate;
-}
 
 
 #map {

@@ -17,13 +17,23 @@ document.addEventListener('contextmenu', function (e) {
 
 ScrollReveal().reveal($(".container"), config);
 
-// mobile check
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // true for mobile device
-    console.log("mobile device");
-} else {
-    // false for not mobile device
-    console.log("not mobile device");
-    // smooth  in /butter definition
-    butter.init();
+// smooth  in /butter definition
+butter.init();
+
+// darkmode
+const options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    right: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#eeeeee', // default: '#fff'
+    backgroundColor: '#ffffff',  // default: '#fff'
+    buttonColorDark: '#100f2c',  // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: true, // default: true,
+    label: '💡', // default: ''
+    autoMatchOsTheme: false, // default: true
 }
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();

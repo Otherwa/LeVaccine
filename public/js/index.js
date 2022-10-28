@@ -24,7 +24,7 @@ const options = {
     backgroundColor: '#ffffff',  // default: '#fff'
     buttonColorDark: '#100f2c',  // default: '#100f2c'
     buttonColorLight: '#fff', // default: '#fff'
-    saveInCookies: false, // default: true,
+    saveInCookies: true, // default: true,
     label: '💡', // default: ''
     autoMatchOsTheme: false, // default: true
 }
@@ -38,6 +38,7 @@ const validateEmail = (email) => {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
+
 
 ScrollReveal({ reset: true });
 
@@ -87,13 +88,6 @@ ScrollReveal().reveal($(".home-container17"), { delay: 600, origin: 'right', dis
 ScrollReveal().reveal($(".home-steps"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".con"), { delay: 600, origin: 'top', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
-
-
-
-
-
-
-
 
 // location
 function getLocation() {
