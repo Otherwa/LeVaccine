@@ -39,8 +39,8 @@
                                     <%= new Date(data[i].date) %>
                                 </p>
                                 <br>
-                                <iframe class="responsive-iframe" width="560" height="315" src="<%= (data[i].url) %>"
-                                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                <iframe class="responsive-iframe darkmode-ignore" width="560" height="315"
+                                    src="<%= (data[i].url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
                                 picture-in-picture" allowfullscreen></iframe>
                             </div>
 
@@ -81,15 +81,13 @@
         </div>
     </div>
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script src="/js/butter/butter.js"></script>
     <script src="/js/education.js"></script>
-
 </body>
 
 </html>
