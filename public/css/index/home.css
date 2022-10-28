@@ -1,5 +1,3 @@
-/* own scripts */
-
 /* hover underline */
 .on-hover {
   transition: 0.3s;
@@ -48,16 +46,18 @@ SVG Icons - svgicons.sparkk.fr
   z-index: 500;
 }
 
-.darkmode--activated img {
-  filter: invert(1);
+.darkmode--activated #hero-image,
+.darkmode--activated #hero-image2 {
+  filter: invert(1) !important;
   mix-blend-mode: difference;
   isolation: isolate;
 }
+
 
 #map {
   border-radius: 0.5rem;
 }
 
 .con {
-  width: 60vw;
+  width: 70%;
 }

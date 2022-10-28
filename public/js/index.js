@@ -6,6 +6,10 @@ $(document).ready(() => {
     getLocation();
 })
 
+$(window).on("load", function () {
+    butter.init();
+});
+
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 });
@@ -16,12 +20,12 @@ const options = {
     right: 'unset', // default: '32px'
     right: '32px', // default: 'unset'
     time: '0.5s', // default: '0.3s'
-    mixColor: '#eee', // default: '#fff'
+    mixColor: '#eeeeee', // default: '#fff'
     backgroundColor: '#ffffff',  // default: '#fff'
     buttonColorDark: '#100f2c',  // default: '#100f2c'
     buttonColorLight: '#fff', // default: '#fff'
     saveInCookies: false, // default: true,
-    label: '🌓', // default: ''
+    label: '💡', // default: ''
     autoMatchOsTheme: false, // default: true
 }
 
@@ -87,9 +91,6 @@ ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distanc
 
 
 
-// smooth animation if any desktop client
-
-butter.init();
 
 
 
