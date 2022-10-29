@@ -49,9 +49,11 @@ ScrollReveal().reveal($(".container2"), { delay: 600, origin: 'left', distance: 
 ScrollReveal().reveal($(".container3"), { delay: 600, origin: 'right', distance: '25px' }, config1);
 ScrollReveal().reveal($(".container4"), { delay: 600, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".side"), config1);
-ScrollReveal().reveal($(".side h1"), { delay: 600, origin: 'bottom', distance: '35px' }, config1);
+ScrollReveal().reveal($(".content h1"), { delay: 600, origin: 'bottom', distance: '35px' }, config1);
+ScrollReveal().reveal($(".content p"), { delay: 900, origin: 'right', distance: '35px' }, config1);
 ScrollReveal().reveal($(".content"), config1);
 ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($("img"), { delay: 600, origin: 'bottom', distance: '25px' }, config);
 
 //index
 // pages shift
