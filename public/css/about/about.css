@@ -13,7 +13,7 @@
 .container4 {
     padding: 1rem;
     display: flex;
-    height: 100vh;
+    height: 90vh;
     width: 80%;
 }
 
@@ -56,9 +56,10 @@ img {
 
 
 .content h1 {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 3.5rem;
-    font-weight: 100;
+    font-weight: 200;
+    color: rgba(230, 27, 27, 0.811);
 }
 
 
@@ -95,7 +96,7 @@ img {
         flex-direction: column-reverse;
     }
 
-    .container3 {
+    .container4 {
         flex-direction: column-reverse;
     }
 
