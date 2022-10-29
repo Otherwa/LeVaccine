@@ -2367,11 +2367,11 @@ h2 .myFont {
   z-index: 500;
 }
 
-.darkmode--activated #hero-image,
-.darkmode--activated #hero-image2,
+
+.darkmode--activated img,
 .darkmode--activated iframe {
   filter: invert(1) !important;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
   isolation: isolate;
 }
 

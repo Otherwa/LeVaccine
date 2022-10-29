@@ -5,3 +5,86 @@
 .con-header p {
     font-size: 2.1rem;
 }
+
+
+.container1,
+.container2,
+.container3,
+.container4 {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.side {
+    display: flex;
+    width: 50vw;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.2rem;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.side h1 {
+    font-size: 3.5rem;
+    font-weight: 100;
+}
+
+
+.content {
+    font-family: 'dot';
+    display: flex;
+    height: 100%;
+    width: 50vw;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content p {
+    font-size: 1.1rem;
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+
+    .container1,
+    .container2,
+    .container3,
+    .container4 {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container2 {
+        flex-direction: column-reverse;
+    }
+
+    .container3 {
+        flex-direction: column-reverse;
+    }
+
+    .content,
+    .side {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .side h1 {
+        font-size: 2.1rem;
+    }
+}

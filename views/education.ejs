@@ -35,6 +35,7 @@
                 <% var j ; j=Math.floor(Math.random() * (count - 1 + 1)); %>
                     <% var k ; k=Math.floor(Math.random() * (count - 1 + 1)); %>
                         <div class="education-pages">
+                            <br>
                             <div class="container">
                                 <p class="myFont id">
                                     <%= new Date(data[i].date) %>
@@ -44,7 +45,7 @@
                                     src="<%= (data[i].url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
                                 picture-in-picture" allowfullscreen></iframe>
                             </div>
-
+                            <br>
                             <div class="container">
                                 <p class="myFont id">
                                     <%= new Date(data[j].date) %>
@@ -54,6 +55,7 @@
                                     title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
                                 picture-in-picture" allowfullscreen></iframe>
                             </div>
+                            <br>
                             <div>
                                 <p class="myFont id">
                                     <%= new Date(data[k].date) %>
@@ -87,8 +89,9 @@
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="/js/butter/butter.js"></script>
-    <script src="/js/education.js"></script>
+    <script type="text/javascript" src="/js/butter/butter.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/education.js"></script>
 </body>
 
 </html>
