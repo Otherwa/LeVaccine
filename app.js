@@ -12,8 +12,6 @@ const generateApiKey = require('generate-api-key').default;
 
 require('events').EventEmitter.prototype._maxListeners = 900;
 
-// test api key
-// Mz4JvdpVs+fLInlqItU5C_3_C0OZR
 
 // models
 const usersemails = require('./models/useremails'); // models
@@ -23,7 +21,7 @@ const api = require('./models/apis') //model
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
-const auth = require('./routes/accountrouter').auth
+const { isauthvalid } = require('./commonfunctions/commonfunc');
 
 
 // ports
@@ -73,7 +71,7 @@ app.get('/', async (req, res) => {
     // GET
     const data = await sendnews();
     // console.log(data.articles);
-    res.render('index', { data: data.articles })
+    res.render('index', { data: data.articles });
 })
 
 // email Register
@@ -109,10 +107,11 @@ app.post('/', async (req, res) => {
 app.get('/education', async (req, res) => {
     await connect();
     // var data = edurls.findOne({});
-    edurls.find({}, { "_id": 0, "url": 1, "date": 1 }, (err, data) => {
+    edurls.find({}, { "_id": 0, "url": 1, "date": 1, "description": 1 }, (err, data) => {
         if (err) {
             res.render('error')
         } else {
+            // console.log(data)
             edurls.countDocuments({}, (err, usercount) => {
                 // console.log(usercount)
                 res.render('education', { data: data, count: usercount })
@@ -146,7 +145,7 @@ app.get('/about', (req, res) => {
 
 
 // apis
-app.get('/api', auth, (req, res) => {
+app.get('/api', isauthvalid, (req, res) => {
     res.render('apis/api')
 })
 
@@ -171,11 +170,12 @@ app.post('/api', async (req, res) => {
 })
 
 // educztion videos update api
-app.get('/api/edurls/:url&:apikey', async (req, res) => {
+app.get('/api/edurls/:url&:des&:apikey', async (req, res) => {
 
     let youtube = "https://www.youtube.com/embed/"
     let url = youtube + req.params.url
     let apikey = req.params.apikey
+    let description = req.params.des
     let date = new Date();
 
     await connect();
@@ -187,12 +187,13 @@ app.get('/api/edurls/:url&:apikey', async (req, res) => {
         // console.log(req.body)
         const edurl = new edurls({
             url: url,
+            description: description,
             date: date
         })
         // save
         edurl.save(err => {
             if (err) {
-                res.send({ "msg": "Fail", "status": "404", "url": url, "apikey": apikey, "err": err }).status(404)
+                res.send({ "msg": "Fail", "status": "already exsists", "url": url, "apikey": apikey, "err": err }).status(404)
             } else {
                 res.send({ "msg": "Ok", "status": "200", "url": url, "apikey": apikey }).status(404)
             }

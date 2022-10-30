@@ -46,17 +46,77 @@
     margin-left: 15rem;
     padding: 1px 16px;
     height: auto;
+    align-items: start;
+    flex-direction: column;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
 }
 
 .sidebar a {
     display: block;
     color: black;
-    font-size: 1.05rem;
-    padding: 1.2rem;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
 }
 
 .sidebar a:hover:not(.active) {
-    transition: 0.3s;
     background-color: #555;
     color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+
+
+/* graph */
+#graph {
+    width: 35rem;
+}
+
+@media screen and (max-width: 778px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    .container-home {
+        margin-left: 0;
+    }
+
+    #graph {
+        width: 25rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+
+    #graph {
+        width: 15rem;
+    }
 }

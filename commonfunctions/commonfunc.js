@@ -13,7 +13,8 @@ const Nodemailer = require('nodemailer');//mailOptions
 // news fetch
 const fetch = require('node-fetch');//for fetch api
 
-
+// models
+const userSchema = require('../models/userschema');
 
 
 // passport authentication for username and password by passport
@@ -107,14 +108,14 @@ function sendedunews() {
 
 //midleware functions
 //middleware auth function verify and set a web token 
-async function auth(req, res, next) {
+function auth(req, res, next) {
     const cookie = req.cookies.jwt
     console.log(cookie)
     if (cookie != undefined) {
-        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
+        jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
             if (err) return res.json({ msg: err.message });
             req.user = result;
-            console.log(req.user)
+            console.log(req.user + " auth")
             next();
         })
     } else {
@@ -122,14 +123,30 @@ async function auth(req, res, next) {
     }
 }
 
-async function isauth(req, res, next) {
+function isauthvalid(req, res, next) {
     const cookie = req.cookies.jwt
-    console.log(cookie + "undified cookie")
+    console.log(cookie)
     if (cookie != undefined) {
-        await jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
+        jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
             if (err) return res.json({ msg: err.message });
             req.user = result;
-            console.log(req.user)
+            console.log(req.user + " auth")
+            next();
+        })
+    } else {
+        req.flash('user', 'Login to get api key')
+        return res.redirect('/account/user/login');
+    }
+}
+
+function isauth(req, res, next) {
+    const cookie = req.cookies.jwt
+    // console.log(cookie)
+    if (cookie != undefined) {
+        jwt.verify(cookie, require('../config/connection_config').jwt_token, (err, result) => {
+            if (err) return res.json({ msg: err.message });
+            req.user = result;
+            console.log(req.user + "is authentication")
             return res.redirect('/account/user/dash');
         })
     } else {
@@ -137,4 +154,18 @@ async function isauth(req, res, next) {
     }
 }
 
-module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth }
+// get live data on refresh and cookie saved in cookie for each sesion
+async function livedata(req, res, next) {
+    await connect();
+    // add user to req
+    req.user = await userSchema.findOne({ email: req.user.email });
+    // console.log(req.user.email);
+    // console.log("req user");
+    if (req.user == null) {
+        res.clearCookie('jwt'); res.redirect('/account/user/');
+    } else {
+        next();
+    }
+}
+
+module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth, isauthvalid, livedata }
