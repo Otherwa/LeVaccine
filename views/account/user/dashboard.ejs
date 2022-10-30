@@ -14,28 +14,54 @@
 
 <body>
     <div>
+        <span style="display: none">
+            <!-- data bridge -->
+            <!-- table data to show -->
+            <p id="count">
+                <%= count %>
+            </p>
+        </span>
         <%- include('../../partial/user-nav')%>
             <div class="container-home">
                 <br>
                 <br>
                 <br>
                 <div class="con">
-                    <%= data.username%><br>
-                        <%= data.email%><br>
-                            <%= data.password%><br>
-                                <%= data.iat%><br>
-                                    your token: -<%= token %>
-                                        <br>
-                                        <% if(data.verified===true ){ %>
-                                            <p style="color:green">Veified</p>
-                                            <% } else{ %>
-                                                <p style="color:red">Not Veified</p>
-                                                <% } %>
-                                                    <br>
-                                                    <a href="/account/user/logout">Logout</a>
+                    <p>
+                        <%= data.username%>
+                    </p>
+                    <br>
+                    <p>
+                        <%= data.email%>
+                    </p>
+                    <br>
+                    <p>
+                        <!-- <%= data.password%> -->
+                    </p>
+                    <br>
+                    <p>
+                        <%= data.iat%>
+                    </p>
+                    <br>
+                    <p>
+                        <!-- your token: -<%= token %> -->
+                    </p>
+                    <br>
+                    <span>
+                        <% if(data.verified===true ){ %>
+                            <p style="color:green">Veified</p>
+                            <% } else{ %>
+                                <p style="color:red">Not Veified</p>
+                                <% } %>
+                    </span>
+                    <br>
+                    <a href="/account/user/logout">Logout</a>
+                    <br>
+                </div>
+                <div id="graph">
+                    <canvas id="myChart"></canvas>
                 </div>
                 <br>
-                <!-- temp -->
                 <%- include('../../partial/foot') %>
                     <br>
                     <div class="home-separator"></div>
@@ -47,6 +73,7 @@
     </div>
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
         integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
@@ -54,7 +81,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
-    <script src="/js/whichlogin.js"></script>
+    <script src="/js/userdash.js"></script>
 
 </body>
 

@@ -7,10 +7,13 @@ const edurls_schema = new schema({
         required: true,
         type: 'string',
     },
+    description: {
+        type: 'string',
+    },
     date: {
         required: true,
         type: 'string',
-    },
+    }
 }, {
     versionKey: false //here
 })

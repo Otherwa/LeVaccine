@@ -24,6 +24,7 @@ let config2 = {
     distance: '50px'
 }
 
+
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // true for mobile device
     console.log("mobile device");
@@ -33,8 +34,12 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     // smooth  in /butter definition
     $(window).on("load", function () {
         butter.init();
+        $('body').css('overflow', 'auto');
     });
+
+
 }
+
 
 // education
 ScrollReveal().reveal($(".container"), config);
