@@ -18,7 +18,5 @@ Le-Vaccine a Centralized Vaccine Solution for people living in this challenging 
 <img src="https://user-images.githubusercontent.com/67428572/188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png" style="width:29rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/67428572/196998434-8a1b850f-3454-4946-be89-a8fc8e0a5241.png" style="width:29rem;">
 
 
-![7749151dafdd896a722078a70c666b35](https://user-images.githubusercontent.com/67428572/197377084-008b2f76-3d7b-4395-b391-b4078b3f481b.gif)
-
 
 
