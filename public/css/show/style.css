@@ -77,6 +77,8 @@
     flex-direction: row;
   }
 
+
+
   .feature-card2-container {
     flex-direction: column;
   }
@@ -2381,5 +2383,33 @@ h2 .myFont {
   width: 0%;
   height: 5px;
   background: var(--pblue);
-  z-index: 10000;
+  z-index: 100;
+}
+
+
+.preload {
+  position: fixed;
+  display: flex;
+  height: 100vh;
+  background-color: white;
+  width: 99vw;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.preload .screen {
+  width: 5rem;
+  height: 5rem;
+}
+
+@media (max-width: 768px) {
+
+  /* preload */
+  .preload .screen {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
 }

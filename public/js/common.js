@@ -28,13 +28,16 @@ let config2 = {
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // true for mobile device
     console.log("mobile device");
+    $(window).on("load", function () {
+        $('.preload').fadeOut(1500);
+    });
 } else {
     // false for not mobile device
     console.log("not mobile device");
     // smooth  in /butter definition
     $(window).on("load", function () {
         butter.init();
-        $('body').css('overflow', 'auto');
+        $('.preload').fadeOut(1500);
     });
 
 
@@ -57,8 +60,6 @@ ScrollReveal().reveal($(".side"), config1);
 ScrollReveal().reveal($(".content h1"), { delay: 900, origin: 'bottom', distance: '35px' }, config1);
 ScrollReveal().reveal($(".content"), { delay: 800, origin: 'right', distance: '35px' }, config1);
 ScrollReveal().reveal($(".home-footer"), { delay: 700, origin: 'bottom', distance: '25px' }, config);
-ScrollReveal().reveal($("img"), { delay: 700, origin: 'bottom', distance: '25px' }, config);
-
 //index
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config);
