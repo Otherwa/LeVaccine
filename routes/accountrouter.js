@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const { connect } = require('../config/connect');
 const { userSchema } = require('../models/methods/user_meth');
-const { sendSignupEmail, bcrypt, auth, isauth, livedata } = require('../commonfunctions/commonfunc');
+const { auth, isauth, livedata } = require('../commonfunctions/commonfunc');
 
 // implemented usermodel added methods in prototype and create a instanceof user
 var user = new userSchema();
