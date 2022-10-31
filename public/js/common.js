@@ -29,7 +29,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     // true for mobile device
     console.log("mobile device");
     $(window).on("load", function () {
-        $('.preload').fadeOut(1500);
+        $('.preload').fadeOut(1850);
     });
 } else {
     // false for not mobile device
@@ -37,7 +37,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     // smooth  in /butter definition
     $(window).on("load", function () {
         butter.init();
-        $('.preload').fadeOut(1500);
+        $('.preload').fadeOut(1850);
     });
 
 
@@ -57,9 +57,10 @@ ScrollReveal().reveal($(".container2"), { delay: 600, origin: 'left', distance: 
 ScrollReveal().reveal($(".container3"), { delay: 600, origin: 'right', distance: '25px' }, config1);
 ScrollReveal().reveal($(".container4"), { delay: 600, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".side"), config1);
-ScrollReveal().reveal($(".content h1"), { delay: 900, origin: 'bottom', distance: '35px' }, config1);
+ScrollReveal().reveal($(".content h1"), { delay: 850, origin: 'bottom', distance: '35px' }, config1);
 ScrollReveal().reveal($(".content"), { delay: 800, origin: 'right', distance: '35px' }, config1);
 ScrollReveal().reveal($(".home-footer"), { delay: 700, origin: 'bottom', distance: '25px' }, config);
+
 //index
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config);

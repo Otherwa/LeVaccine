@@ -2391,7 +2391,7 @@ h2 .myFont {
   position: fixed;
   display: flex;
   height: 100vh;
-  background-color: white;
+  background-color: #FFFFFF;
   width: 99vw;
   align-items: center;
   justify-content: center;
@@ -2402,14 +2402,15 @@ h2 .myFont {
 
 .preload .screen {
   width: 5rem;
-  height: 5rem;
+  box-shadow: none !important;
+  height: 4rem;
 }
 
 @media (max-width: 768px) {
 
   /* preload */
   .preload .screen {
-    width: 3rem !important;
+    width: 4rem !important;
     height: 3rem !important;
   }
 }
