@@ -2,7 +2,7 @@
 const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
 const { connect } = require('./config/connect');
-const { sendmail, sendnews } = require('./commonfunctions/commonfunc');
+const { sendmail, sendnews, covid } = require('./commonfunctions/commonfunc');
 const compression = require('compression')
 const nocache = require('nocache');
 const flash = require('connect-flash');
@@ -128,8 +128,11 @@ app.get('/contact', (req, res) => {
 })
 
 // blogs
-app.get('/blog', (req, res) => {
-    res.render('blog', { title: "Blog" })
+app.get('/covidcounter', async (req, res) => {
+    var data = await covid();
+    console.log(data.WB.dates["2021-10-30"].delta);
+    data = data.WB.dates["2021-10-30"].delta;
+    res.render('covidcounter', { data: data });
 })
 
 // services
