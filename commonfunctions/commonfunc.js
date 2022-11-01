@@ -77,8 +77,24 @@ function sendmail(email) {
 }
 
 // home page
-function sendnews() {
-    let data = fetch('https://newsapi.org/v2/everything?q=(Vaccines OR Medical)&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6')
+async function sendnews() {
+    let data = fetch('https://newsapi.org/v2/everything?q=disease&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6')
+        .then((response) => response.json())
+        .then(data => {
+            // do some stuff
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+
+    return data;
+}
+
+// covid counter
+// home page
+async function covid() {
+    let data = fetch('https://data.covid19india.org/v4/min/timeseries.min.json')
         .then((response) => response.json())
         .then(data => {
             // do some stuff
@@ -168,4 +184,4 @@ async function livedata(req, res, next) {
     }
 }
 
-module.exports = { sendmail, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth, isauthvalid, livedata }
+module.exports = { sendmail, covid, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth, isauthvalid, livedata }
