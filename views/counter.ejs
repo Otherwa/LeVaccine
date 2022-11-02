@@ -89,7 +89,7 @@
                             </span>
                         </p>
                         <p class="myFont">Time:&nbsp;<span id="time">
-                                <%= data.time %>
+                                <%= new Date(data.time).toUTCString(); %>
                             </span>
                         </p>
                     </div>
