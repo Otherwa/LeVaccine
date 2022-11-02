@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Le-Vaccine</title>
+    <meta property="og:title" content="Le-Vaccine" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet" href="/css/show/style.css" />
+    <link href="/css/covidcounter/covidcounter.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+    <div class="preload">
+        <img class="screen"
+            src="https://31.media.tumblr.com/2e8986a1b1c062623cea1b9edaddcc52/tumblr_mup3qzOPsX1rk0k2jo1_500.gif"
+            alt="loading..">
+    </div>
+    <div id="butter">
+        <div class="home-container">
+
+            <header data-role="Header" class="home-header1">
+                <%- include('./partial/nav'); %>
+            </header>
+            <br>
+            <br>
+            <br>
+            <div class="search">
+                <br>
+                <p>Search for:</p>
+                <select name="" id="scountry">
+                    <option value="--">--</option>
+                    <!-- fetch getting data -->
+                </select>
+                <br>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="contain-stats">
+                <div class="side">
+                    <p id="stat" class="myFont">--</p>
+                    <br>
+                    <p class="myFont">Continent:&nbsp;<span id="continent">
+                            <%= data['continent'] %>
+                        </span>
+                    </p>
+                    <p class="myFont">Country:&nbsp;<span id="country">
+                            <%= data['country'] %>
+                        </span>
+                    </p>
+                    <p class="myFont">Population:&nbsp;<span id="population">
+                            <%= data['population'] %>
+                        </span>
+                    </p>
+
+                    <p style="padding-top: 0.3rem;padding-bottom: 0.3rem;" class="myFont">Cases: -</p>
+                    <div class="in-side">
+                        <p class="myFont">New:&nbsp;<span id="new" style="color: orangered">
+                                <%= data.cases['new'] %>
+                            </span>
+                        </p>
+                        <p class="myFont">Active:&nbsp;<span id="active" style="color: yellowgreen">
+                                <%= data.cases['active'] %>
+                            </span>
+                        </p>
+                        <p class="myFont">Critical:&nbsp;<span id="critical" style="color: red">
+                                <%= data.cases['critical'] %>
+                            </span>
+                        </p>
+                        <p class="myFont">Recover:&nbsp;<span id="recovered" style="color: green">
+                                <%= data.cases['recovered'] %>
+                            </span>
+                        </p>
+                        <p class="myFont">
+                            1_MPop:&nbsp;<span id="1MPop">
+                                <%= data.cases['1M_pop'] %>
+                            </span>
+                        </p>
+                        <p class="myFont"> Total:&nbsp;<span id="total">
+                                <%= data.cases['total'] %>
+                            </span>
+                        </p>
+                        <p class="myFont">Day:&nbsp;<span id="day">
+                                <%= data.day %>
+                            </span>
+                        </p>
+                        <p class="myFont">Time:&nbsp;<span id="time">
+                                <%= data.time %>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="history-data">
+                    <p id="countrytxt" class="myFont">--</p>
+                    <!-- get relevant data -->
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="txt" style="width: 85%;">
+                <br>
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quo minus rem aliquid cum. Ullam
+                cupiditate veniam architecto natus autem vero mollitia labore! Architecto obcaecati reiciendis
+                asperiores aut quos dicta.
+                <br>
+                <cite>
+                    Data is approximately correct.
+                </cite>
+            </div>
+            <br>
+            <br>
+            <div class="home-separator"></div>
+
+            <footer class="home-footer">
+                <%- include('./partial/foot'); %>
+            </footer>
+
+            <br>
+            <div class="home-separator"></div>
+            <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
+                    target="_blank">Otherwa</a>,
+                All Rights Reserved.</span>
+            <br>
+        </div>
+    </div>
+    <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script type="text/javascript" src="/js/butter/butter.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/counter.js"></script>
+</body>
+
+</html>

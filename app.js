@@ -128,11 +128,12 @@ app.get('/contact', (req, res) => {
 })
 
 // blogs
-app.get('/covidcounter', async (req, res) => {
+app.get('/counter', async (req, res) => {
     var data = await covid();
-    console.log(data.WB.dates["2021-10-30"].delta);
-    data = data.WB.dates["2021-10-30"].delta;
-    res.render('covidcounter', { data: data });
+    // console.log(data);
+    // get base india
+    data = data.response;
+    res.render('counter', { data: data[0] });
 })
 
 // services

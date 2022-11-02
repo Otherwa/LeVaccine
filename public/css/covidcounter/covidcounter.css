@@ -1,0 +1,93 @@
+.contain-stats {
+    display: flex;
+    width: 85%;
+    flex-direction: row;
+}
+
+.search {
+    gap: 1.1rem;
+    align-items: center;
+    display: flex;
+    width: 85%;
+    height: 10rem;
+    justify-content: center;
+}
+
+.search p {
+    font-size: 0.9rem;
+}
+
+#scountry {
+    background-color: #eeeeee;
+    height: 2rem;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    width: 80%;
+    border-radius: 0.2rem;
+    font-family: 'dot';
+}
+
+#scountry option {
+    padding: 0.2rem 1rem 0.2rem 1rem;
+}
+
+.in-side {
+    padding: 0.1rem;
+}
+
+.side {
+    width: 40%;
+}
+
+.history-data::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+.history-data::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.history-data::-webkit-scrollbar-thumb {
+    background: var(--ppink);
+}
+
+/* Handle on hover */
+.history-data::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 31, 161, 0.7);
+}
+
+.history-data {
+    width: 60%;
+}
+
+.history-data p {
+    padding: 0.2rem;
+}
+
+.side p {
+    padding: 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .contain-stats {
+        display: flex;
+        gap: 3.5rem;
+        width: 85%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side,
+    .history-data {
+        width: 100%;
+    }
+
+    .search {
+        flex-direction: column;
+    }
+
+    #myChart {
+        position: relative;
+    }
+}
