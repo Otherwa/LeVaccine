@@ -78,7 +78,7 @@ function sendmail(email) {
 
 // home page
 async function sendnews() {
-    let data = fetch('https://newsapi.org/v2/everything?q=disease&pageSize=6&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6')
+    let data = fetch('https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=550660667a8646b08d2de09b578f1aa6')
         .then((response) => response.json())
         .then(data => {
             // do some stuff

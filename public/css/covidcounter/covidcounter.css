@@ -86,8 +86,4 @@
     .search {
         flex-direction: column;
     }
-
-    #myChart {
-        position: relative;
-    }
 }
