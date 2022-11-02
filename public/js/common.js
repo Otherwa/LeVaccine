@@ -43,7 +43,11 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 }
 
-
+// counter
+ScrollReveal().reveal($(".search"), { delay: 600, origin: 'top', distance: '25px' }, config1);
+ScrollReveal().reveal($(".txt"), { delay: 600, origin: 'bottom', distance: '25px' }, config1);
+ScrollReveal().reveal($(".contian-stats"), { delay: 800, origin: 'bottom', distance: '25px' }, config1);
+ScrollReveal().reveal($(".history-data"), { delay: 900, origin: 'right', distance: '25px' }, config1);
 // education
 ScrollReveal().reveal($(".container"), config);
 

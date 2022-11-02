@@ -94,7 +94,16 @@ async function sendnews() {
 // covid counter
 // home page
 async function covid() {
-    let data = fetch('https://data.covid19india.org/v4/min/timeseries.min.json')
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'f54bde0a4bmshd39e1d1110c4cd5p17ab10jsn0b920baf5821',
+            'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+        }
+    };
+
+    let data = fetch('https://covid-193.p.rapidapi.com/statistics?country=india', options)
         .then((response) => response.json())
         .then(data => {
             // do some stuff
