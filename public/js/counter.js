@@ -23,6 +23,16 @@ const myChart = new Chart(
             pointHitRadius: 0,
             boderWidth: 1,
             scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    }
+                }],
                 x: {
                     title: {
                         display: true,
