@@ -58,7 +58,7 @@ $(window).on("load", function () {
     fetch('https://covid-193.p.rapidapi.com/countries', option)
         .then(response => response.json())
         .then(response => {
-            console.log(response)
+            // console.log(response)
             response = response.response
             $.each(response, function (key, value) {
 
@@ -109,7 +109,7 @@ $('#scountry').change(() => {
         })
         .catch((err) => {
             $('#stat').text('status 404').css('color', 'red');
-            console.log(err);
+            // console.log(err);
         });
 
 
@@ -123,7 +123,7 @@ $('#scountry').change(() => {
     };
     const str2 = 'https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19?country=' + country;
     // 
-    console.log(str2)
+    // console.log(str2)
     fetch(str2, options1)
         .then(response => response.json())
         .then(response => {
@@ -134,7 +134,7 @@ $('#scountry').change(() => {
                 dates.pop();
             }
 
-            console.log(response)
+            // console.log(response)
             response = response[0].cases
 
             $.each(response, function (key, value) {
