@@ -414,7 +414,21 @@
 }
 
 .home-text {
+  background: linear-gradient(45deg, #14ff87, rgb(0 255 67), transparent);
   font-size: 3rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: mymove s linear infinite;
+}
+
+@keyframes mymove {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 .home-text01 {
@@ -2330,15 +2344,15 @@ h2 .myFont {
   border-radius: 1.6rem;
   transition: 0.4s;
   width: 9.5rem;
-  color: white;
-  background-color: black;
+  color: rgb(255, 255, 255);
+  background-color: var(--dl-color-gray-black);
   height: 3.5rem;
 }
 
 .curget:hover {
   box-shadow: 0.5rem 0.5rem black !important;
   transition: 0.4s;
-  color: #000000;
+  color: white;
   background-color: var(--ppink);
   translate: -0.25rem -0.252rem;
 }

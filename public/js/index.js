@@ -6,19 +6,6 @@ $(document).ready(() => {
     getLocation();
 })
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // true for mobile device
-    console.log("mobile device");
-} else {
-    // false for not mobile device
-    console.log("not mobile device");
-    // smooth  in /butter definition
-    $(window).on("load", function () {
-        butter.init();
-    });
-}
-
-
 //validates email on subscribtion 
 const validateEmail = (email) => {
     return email.match(
