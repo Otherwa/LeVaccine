@@ -39,8 +39,6 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         butter.init();
         $('.preload').fadeOut(1850);
     });
-
-
 }
 
 // counter

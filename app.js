@@ -133,6 +133,7 @@ app.get('/counter', async (req, res) => {
     // console.log(data);
     // get base india
     data = data.response;
+
     res.render('counter', { data: data[0] });
 })
 
