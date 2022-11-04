@@ -418,7 +418,7 @@
   font-size: 3rem;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: mymove s linear infinite;
+  animation: mymove 6s linear infinite;
 }
 
 @keyframes mymove {
