@@ -36,7 +36,7 @@
 }
 
 .side {
-    padding: 0.5rem;
+    padding: 1rem;
     width: 40%;
     box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%), 13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
     border-radius: 0.5rem;
@@ -65,6 +65,7 @@
     width: 60%;
     box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%), 13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
     border-radius: 0.5rem;
+    padding: 1rem;
 }
 
 #myChart {
