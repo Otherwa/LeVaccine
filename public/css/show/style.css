@@ -2423,16 +2423,16 @@ h2 .myFont {
 }
 
 .preload .screen {
-  width: 5rem;
+  width: 4rem;
   box-shadow: none !important;
-  height: 4rem;
+  height: 3rem;
 }
 
 @media (max-width: 768px) {
 
   /* preload */
   .preload .screen {
-    width: 4rem !important;
-    height: 3rem !important;
+    width: 3rem !important;
+    height: 2rem !important;
   }
 }
