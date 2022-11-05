@@ -1,0 +1,19 @@
+.service-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card {
+    width: 80%;
+}
+
+.home-features {
+    padding-top: 10%;
+}
+
+div ul li {
+    padding: 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

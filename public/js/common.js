@@ -3,7 +3,6 @@ ScrollReveal({ reset: true });
 let config = {
     delay: 375,
     duration: 500,
-    viewFactor: 0.5,
     useDelay: 'always',
     origin: 'bottom',
     distance: '50px'
@@ -41,14 +40,18 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     });
 }
 
+// contact
+ScrollReveal().reveal($(".contact-box"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
+// services
+ScrollReveal().reveal($(".card"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
+
 // counter
 ScrollReveal().reveal($(".search"), { delay: 600, origin: 'top', distance: '25px' }, config1);
 ScrollReveal().reveal($(".txt"), { delay: 600, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".contian-stats"), { delay: 800, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".history-data"), { delay: 900, origin: 'right', distance: '25px' }, config1);
 // education
-ScrollReveal().reveal($(".container"), config);
-
+ScrollReveal().reveal($(".container"), { delay: 800, origin: 'bottom', distance: '25px' }, config);
 //about
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config1);
@@ -68,7 +71,10 @@ ScrollReveal().reveal($(".home-footer"), { delay: 700, origin: 'bottom', distanc
 ScrollReveal().reveal($("#hero-image"), config);
 ScrollReveal().reveal($(".home-header1"), config1);
 ScrollReveal().reveal($(".home-container05"), config2);
-ScrollReveal().reveal($(".home-text"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-text"), { delay: 900, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-btn-group1"), { delay: 500, origin: 'top', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-text02"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
+ScrollReveal().reveal($(".home-text01"), { delay: 500, origin: 'top', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container06"), { delay: 500, origin: 'left', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container08"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-image3"), { delay: 500, origin: 'right', distance: '25px' }, config);
