@@ -2425,7 +2425,7 @@ h2 .myFont {
 .preload .screen {
   width: 4rem;
   box-shadow: none !important;
-  height: 3rem;
+  height: 3.5rem;
 }
 
 @media (max-width: 768px) {
@@ -2433,6 +2433,6 @@ h2 .myFont {
   /* preload */
   .preload .screen {
     width: 3rem !important;
-    height: 2rem !important;
+    height: 2.5rem !important;
   }
 }
