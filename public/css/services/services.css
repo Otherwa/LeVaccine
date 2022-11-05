@@ -17,3 +17,14 @@ div ul li {
     padding: 1rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+@media (max-width: 768px) {
+    .card img {
+        display: none;
+    }
+
+    .card {
+        width: 95%;
+        margin-left: 1rem;
+    }
+}
