@@ -1354,6 +1354,14 @@
 }
 
 @media(max-width: 891px) {
+  .home-text {
+    background: linear-gradient(329deg, #14ff87, #14ff87, #14ff87, rgb(0 255 67), transparent);
+    font-size: 3rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: mymove 6s linear infinite;
+  }
+
   .home-hero {
     padding: var(--dl-space-space-threeunits);
     flex-direction: column;
