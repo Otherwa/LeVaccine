@@ -67,7 +67,7 @@ ScrollReveal().reveal($(".home-footer"), { delay: 700, origin: 'bottom', distanc
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config);
 ScrollReveal().reveal($(".home-header1"), config1);
-ScrollReveal().reveal($(".home-container05"), config2);
+ScrollReveal().reveal($(".home-container05"), config);
 ScrollReveal().reveal($(".home-text"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container06"), { delay: 500, origin: 'left', distance: '25px' }, config);
 ScrollReveal().reveal($(".home-container08"), { delay: 500, origin: 'bottom', distance: '25px' }, config);
