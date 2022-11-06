@@ -40,7 +40,9 @@ fetch(str2, options1)
         myChart.update();
         $('#countrytxt').text("india");
     })
-    .catch(err => $('#countrytxt').text("Not Available"));
+    .catch(err => {
+        $('#countrytxt').text("Not Available")
+    });
 
 
 const datas = {
@@ -203,7 +205,16 @@ $('#scountry').change(() => {
             myChart.update();
             $('#countrytxt').text(country);
         })
-        .catch(err => $('#countrytxt').text("Not Available"));
+        .catch(err => {
+            $('#countrytxt').text("Not Available")
+            while (data.length > 0) {
+                data.pop();
+            }
+            while (dates.length > 0) {
+                dates.pop();
+            }
+            myChart.update();
+        });
 
     // build chart
 });
