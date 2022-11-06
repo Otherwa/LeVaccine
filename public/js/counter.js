@@ -1,7 +1,50 @@
 // chart json
 
-var data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-var dates = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep', 'Oct', 'Nov', 'Dec'];
+var data = [];
+var dates = [];
+
+const options1 = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'f54bde0a4bmshd39e1d1110c4cd5p17ab10jsn0b920baf5821',
+        'X-RapidAPI-Host': 'covid-19-by-api-ninjas.p.rapidapi.com'
+    }
+};
+const str2 = 'https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19?country=india';
+$('#countrytxt').text("Loading...");
+fetch(str2, options1)
+    .then(response => response.json())
+    .then(response => {
+        while (data.length > 0) {
+            data.pop();
+        }
+        while (dates.length > 0) {
+            dates.pop();
+        }
+
+        // console.log(response)
+        response = response[0].cases
+
+        $.each(response, function (key, value) {
+            key = new Date(key).toDateString();
+            key = key.split(' ');
+            key = key[2] + '-' + key[1] + '-' + key[3];
+            // format
+            dates.push(key);
+            data.push(value.new);
+        });
+
+        dates.reverse();
+        data.reverse();
+
+        myChart.update();
+        $('#countrytxt').text("india");
+    })
+    .catch(err => {
+        $('#countrytxt').text("Not Available")
+    });
+
+
 const datas = {
     labels: dates,
     datasets: [{
@@ -162,7 +205,16 @@ $('#scountry').change(() => {
             myChart.update();
             $('#countrytxt').text(country);
         })
-        .catch(err => $('#countrytxt').text("Not Available"));
+        .catch(err => {
+            $('#countrytxt').text("Not Available")
+            while (data.length > 0) {
+                data.pop();
+            }
+            while (dates.length > 0) {
+                dates.pop();
+            }
+            myChart.update();
+        });
 
     // build chart
 });
