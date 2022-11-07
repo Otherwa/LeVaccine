@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const session = require('cookie-session');
 const cookie = require('cookie-parser');
 const generateApiKey = require('generate-api-key').default;
-
+const sitemap = require('./config/connection_config').xml;
 require('events').EventEmitter.prototype._maxListeners = 900;
 
 
@@ -65,6 +65,12 @@ app.use(bodyParser.json())
 app.use('/account', accountRouter)
 
 app.set('etag', false)
+
+app.get('/sitemap.xml', (req, res) => {
+    var xml = sitemap;
+    res.set('Content-Type', 'text/xml');
+    res.send(xml)
+})
 
 // default route
 app.get('/', async (req, res) => {

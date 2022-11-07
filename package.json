@@ -36,6 +36,7 @@
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "xml": "^1.0.1"
   }
 }
