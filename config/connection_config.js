@@ -349,5 +349,82 @@ module.exports = {
     `,
   email: 'levaccine69@gmail.com',
   pass: 'wjfofdrbrqgumdgx',
-  jwt_token: 'Tatakae'
+  jwt_token: 'Tatakae',
+  xml: `
+  <?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://levaccine.herokuapp.com/</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/education</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/counter</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/services</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/about</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/contact</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/blog</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account/user/login</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account/user</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account/producer</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account/provider</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://levaccine.herokuapp.com/account/user/signup</loc>
+  <lastmod>2022-11-07T09:21:11+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+</urlset>
+    `
 }
