@@ -2414,7 +2414,7 @@ h2 .myFont {
   display: flex;
   height: 100vh;
   background-color: #FFFFFF;
-  width: 99vw;
+  width: 100vw;
   align-items: center;
   justify-content: center;
   align-content: center;

@@ -42,7 +42,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 // contact
 ScrollReveal().reveal($(".contact-box"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
-// services
+// services & which login
 ScrollReveal().reveal($(".card"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
 
 // counter
