@@ -44,6 +44,9 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 ScrollReveal().reveal($(".contact-box"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
 // services & which login
 ScrollReveal().reveal($(".card"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
+ScrollReveal().reveal($(".main"), { delay: 600, origin: 'top', distance: '25px' }, config1);
+ScrollReveal().reveal($(".side"), { delay: 800, origin: 'right', distance: '25px' }, config1);
+ScrollReveal().reveal($(".img"), { delay: 1000, origin: 'left', distance: '25px' }, config1);
 
 // counter
 ScrollReveal().reveal($(".search"), { delay: 600, origin: 'top', distance: '25px' }, config1);
