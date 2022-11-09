@@ -19,7 +19,7 @@ jobs:
 
   install-node-dependencies:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:latest
     steps:
       - checkout
       - run:
