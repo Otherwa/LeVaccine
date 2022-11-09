@@ -18,9 +18,20 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
+  install-dependencies:
+    docker:
+      - image: cimg/base:stable
+
+    steps:
+      - checkout
+      - run:
+          name: "Install all dependencies"
+          command: "npm install --save"
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - install-dependencies
