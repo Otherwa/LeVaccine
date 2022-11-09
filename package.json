@@ -7,7 +7,7 @@
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy-test": "cypress open",
-    "cy-test-online":"npx cypress run --record --key ee7a54b4-21c4-4589-9c56-040503d1aa24"
+    "cy-test-online": "npx cypress run --record --key ee7a54b4-21c4-4589-9c56-040503d1aa24"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.3",
     "generate-api-key": "^1.0.2",
+    "jest": "^29.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.2",
