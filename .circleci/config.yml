@@ -1,7 +1,8 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
+orbs:
+  node: circleci/node@x.y
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -18,15 +19,14 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
-  install-dependencies:
+  install-node-dependencies:
     docker:
       - image: cimg/base:stable
-
     steps:
       - checkout
       - run:
-          name: "Install all dependencies"
-          command: "npm install --save"
+          name: "Installing dependencies"
+          command: npm install
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -34,4 +34,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - install-dependencies
+      - install-node-dependencies
