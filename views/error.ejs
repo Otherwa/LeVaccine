@@ -35,7 +35,7 @@
         }
 
         section {
-            background-image: url(https://i.pinimg.com/originals/94/6e/06/946e065ebf6c68dbc30f7a162a04351d.gif);
+            background-image: url(https://64.media.tumblr.com/249606e6ce9061aa021696c11a328a6b/tumblr_p4clpbr0YD1wdgt9zo1_640.gifv);
             height: 100vh;
             background-repeat: no-repeat;
             background-size: cover;
@@ -75,11 +75,26 @@
 <body>
     <section>
         <div class="msg">
-            <p>Fellow Soldier Rest here, the path ahead is a dark one. or <a href="/">Return Home</a></p>
             <br>
-            <p>404 File not Found</p>
+            <p>
+                No Such Route exisit
+                <br>
+                <br>
+                <span id="text"></span>
+            </p>
         </div>
     </section>
 </body>
+<script>
+    var i = 5
+    setInterval(() => {
+        text = 'Redirecting in ' + i + ' Seconds ...';
+        console.log(text);
+        document.getElementById('text').innerHTML = text;
+        i = i - 1;
+    }, 1000)
+
+    setTimeout("location.href = '/';", 4900);
+</script>
 
 </html>

@@ -159,7 +159,7 @@ function isauthvalid(req, res, next) {
             next();
         })
     } else {
-        req.flash('user', 'Login to get api key')
+        req.flash('message', 'Login to get api key')
         return res.redirect('/account/user/login');
     }
 }
