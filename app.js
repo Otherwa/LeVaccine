@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const session = require('cookie-session');
 const cookie = require('cookie-parser');
 const generateApiKey = require('generate-api-key').default;
-const sitemap = require('./config/connection_config').xml;
+const path = require('path');
 require('events').EventEmitter.prototype._maxListeners = 900;
 
 
@@ -66,10 +66,32 @@ app.use('/account', accountRouter)
 
 app.set('etag', false)
 
-app.get('/sitemap.xml', (req, res) => {
-    var xml = sitemap;
-    res.set('Content-Type', 'text/xml');
-    res.send(xml)
+app.get('/sitemap', (req, res, next) => {
+    var fileName = 'sitemap.xml';
+    var options = {
+        root: path.join(__dirname)
+    };
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(err);
+        } else {
+            console.log('Sent:', fileName);
+        }
+    });
+})
+
+app.get('/robots', (req, res, next) => {
+    var fileName = 'robots.txt';
+    var options = {
+        root: path.join(__dirname)
+    };
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            next(err);
+        } else {
+            console.log('Sent:', fileName);
+        }
+    });
 })
 
 // default route
