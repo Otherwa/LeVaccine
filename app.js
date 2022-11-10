@@ -66,7 +66,7 @@ app.use('/account', accountRouter)
 
 app.set('etag', false)
 
-app.get('/sitemap', (req, res, next) => {
+app.get('/sitemap.xml', (req, res, next) => {
     var fileName = 'sitemap.xml';
     var options = {
         root: path.join(__dirname)
@@ -80,7 +80,7 @@ app.get('/sitemap', (req, res, next) => {
     });
 })
 
-app.get('/robots', (req, res, next) => {
+app.get('/robots.txt', (req, res, next) => {
     var fileName = 'robots.txt';
     var options = {
         root: path.join(__dirname)
