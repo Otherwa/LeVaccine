@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "cy-test": "cypress open",
     "cy-test-online": "npx cypress run --record --key ee7a54b4-21c4-4589-9c56-040503d1aa24"
   },
@@ -41,6 +41,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "session": "^0.1.0",
+    "supertest": "^6.3.1",
     "xml": "^1.0.1"
   }
 }
