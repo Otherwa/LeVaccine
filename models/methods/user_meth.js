@@ -22,11 +22,12 @@ userSchema.prototype.login = async (req, res, username, password) => {
                 // console.log(res.cookie);
                 res.redirect('/account/user/dash')
             } else {
-                return res.status(401).json({ msg: "Invalid credencial" })
+                req.flash('message', 'Wrong Password')
+                res.redirect('/account/user/login');
             }
         });
     } else {
-        req.flash('message', 'No user exsist')
+        req.flash('message', 'No such user exsist')
         res.redirect('/account/user/login');
     }
 }

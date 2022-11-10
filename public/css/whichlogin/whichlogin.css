@@ -92,6 +92,10 @@ h2 .myFont {
     justify-content: center;
 }
 
+.height-set {
+    height: 100% !important;
+}
+
 .side {
     display: flex;
     height: 30rem;

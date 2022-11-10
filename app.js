@@ -50,7 +50,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 //no cache session
-app.use(nocache());
+// app.use(nocache());
 
 // compression for fast loads
 app.use(compression())

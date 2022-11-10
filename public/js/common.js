@@ -27,18 +27,18 @@ let config2 = {
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // true for mobile device
     console.log("mobile device");
-    $(window).on("load", function () {
-        $('.preload').fadeOut(1850);
-    });
 } else {
     // false for not mobile device
     console.log("not mobile device");
     // smooth  in /butter definition
     $(window).on("load", function () {
         butter.init();
-        $('.preload').fadeOut(1850);
     });
 }
+// user login
+ScrollReveal().reveal($(".form h1"), { delay: 800, origin: 'right', distance: '25px' }, config1);
+ScrollReveal().reveal($(".form "), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
+ScrollReveal().reveal($(".div"), { delay: 800, origin: 'top', distance: '25px' }, config1);
 
 // contact
 ScrollReveal().reveal($(".contact-box"), { delay: 700, origin: 'bottom', distance: '25px' }, config1);

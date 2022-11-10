@@ -17,28 +17,43 @@
 
 <body>
     <div id="scroll-progress"></div>
-    <div class="preload">
+    <!-- <div class="preload">
         <img class="screen"
             src="https://31.media.tumblr.com/2e8986a1b1c062623cea1b9edaddcc52/tumblr_mup3qzOPsX1rk0k2jo1_500.gif"
             alt="loading..">
-    </div>
+    </div> -->
     <div id="butter">
         <div class="home-container">
             <%- include('../partial/log-res-nav') %>
                 <br>
                 <br>
-                <div class="container-home">
+                <div class="container-home height-set">
                     <br>
                     <h1 class="education-title">User</h1>
                     <br>
                     <br>
-                    <a href="/account/user/login">Login</a>
-                    <a href="/account/user/signup">Sign up</a>
+                    <div class="container ">
+                        <a href="/account/user/login">
+                            <div class="card">
+                                <img src="/imgs/Content/profile-user.png" alt="user">
+                                <p>
+                                    Login
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/account/user/signup">
+                            <div class="card">
+                                <img src="/imgs/Content/geek.png" alt="provider">
+                                <p>
+                                    Signup
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                     <br>
                 </div>
                 <br>
                 <!-- temp -->
-                <div class="home-separator"></div>
                 <footer class="home-footer">
                     <%- include('../partial/foot'); %>
                 </footer>
@@ -62,9 +77,6 @@
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
     <script type="text/javascript" src="/js/user.js"></script>
-
 </body>
-
-</html>
 
 </html>

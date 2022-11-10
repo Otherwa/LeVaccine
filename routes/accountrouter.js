@@ -34,7 +34,7 @@ Router.post('/user/signup', async (req, res) => {
 //auth in common functions
 // account login
 Router.get('/user/login', isauth, (req, res) => {
-    res.render('account/user/login', { err: req.flash('message'), err1: req.flash('user') });
+    res.render('account/user/login', { err: req.flash('message') });
 })
 
 
