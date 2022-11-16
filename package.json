@@ -1,7 +1,7 @@
 {
   "name": "Drug_Lord_v1.3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Smart Vaccine Solution",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
