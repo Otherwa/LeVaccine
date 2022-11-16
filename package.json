@@ -2,7 +2,10 @@
   "name": "Drug_Lord_v1.3",
   "version": "1.0.0",
   "description": "Smart Vaccine Solution",
-  "main": "app.js" ,"type": "module",
+  "main": "app.js",
+  "engine": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "nodemon app.js",
     "test": "jest --watchAll",
