@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Smart Vaccine Solution",
   "main": "app.js",
-  "engine": {
-    "node": "14.x"
-  },
   "scripts": {
     "start": "nodemon app.js",
     "test": "jest --watchAll",
