@@ -5,9 +5,7 @@ async function connect() {
     mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
     const mongo = mongoose.connection;
     mongo.on("error", () => { console.log("error in Conection service"); })
-    mongo.once('open', () => {
-        console.log("Mongoose Connection Connected 200");
-    })
+    mongo.once('open', () => { console.log("Connected service Mongoose"); })
 }
 
 async function dis() {
