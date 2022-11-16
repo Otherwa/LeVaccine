@@ -7,8 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "start-temp": "nodemon app.js",
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "jest --watchAll",
     "cy-test": "cypress open",
     "cy-test-online": "npx cypress run --record --key ee7a54b4-21c4-4589-9c56-040503d1aa24"
