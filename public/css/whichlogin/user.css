@@ -1,5 +1,6 @@
 /* own scripts */
-
+/* sign up */
+/* contains all user syling */
 /* hover underline */
 .on-hover {
     transition: 0.3s;
@@ -173,17 +174,23 @@ input,
     padding: 0 1.2rem;
 }
 
+.placeholder-text .text {
+    transition: 0.2s;
+}
+
 input:focus+.placeholder-text .text {
     outline: none;
     border-color: rgb(26, 135, 179);
-    color: rgb(26, 135, 179);
+    color: rgb(137, 137, 137);
+    font-size: 0.85rem;
+    transform: translate(0, -150%);
 }
 
 .placeholder-text .text {
     background-color: white;
     font-size: 0.9rem;
     color: black;
-    transform: translate(0, -130%);
+    transform: translate(0, -140%);
     border-color: rgb(26, 135, 179);
     color: rgb(0, 0, 0);
 }
@@ -207,8 +214,13 @@ input:focus+.placeholder-text .text {
     width: 96%;
 }
 
-#login {
+#login,
+#signup {
     transition: 0.3s ease-in-out;
+}
+
+#signup:hover {
+    background-color: var(--pblue);
 }
 
 #login:hover {
