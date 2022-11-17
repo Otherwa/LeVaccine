@@ -8,7 +8,7 @@ const { auth, isauth, livedata } = require('../commonfunctions/commonfunc');
 var user = new userSchema();
 
 // index
-Router.get('/', (err, res) => {
+Router.get('/', (req, res) => {
     res.status(200).render('account/whichlogin')
 })
 
@@ -34,7 +34,7 @@ Router.post('/user/signup', async (req, res) => {
 //auth in common functions
 // account login
 Router.get('/user/login', isauth, (req, res) => {
-    res.render('account/user/login', { err: req.flash('message') });
+    res.render('account/user/login', { err: req.flash('message'), err1: req.flash('message1') });
 })
 
 
@@ -90,7 +90,7 @@ Router.get('/user/verify/:email', async (req, res) => {
                 }
             });
         } else {
-            res.json({ msg: "already verified" })
+            res.json({ msg: "Already Verified" })
         }
     }
 });

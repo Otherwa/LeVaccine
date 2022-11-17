@@ -45,7 +45,8 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
 
     const exists = await userSchema.exists({ email: email });
     if (exists) {
-        res.redirect('/account/user/signup');
+        req.flash('message', 'Account Exsist');
+        res.redirect('/account/user/login');
         return;
     } else {
         bcrypt.genSalt(10, function (err, salt) {
@@ -61,6 +62,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
 
                 user.save();
                 sendSignupEmail(email);
+                req.flash('message1', 'Login 🛐');
                 res.redirect('/account/user/login');
             });
         });
