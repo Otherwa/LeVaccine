@@ -71,7 +71,7 @@ function generateOTP() {
 
 // user reset password
 // send signup email
-function user_reset(email, otp) {
+function user_reset(email, username, otp) {
 
     var mailOptions = {
         from: 'levaccine69@gmail.com',
@@ -79,6 +79,7 @@ function user_reset(email, otp) {
         subject: 'Password Reset',
         text: 'OTP',
         html: `
+        <p>`+ username + `</p>
         <br>
         <p>Your OTP is:</p>
         <h1>`+ otp + `</h1>

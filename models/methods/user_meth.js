@@ -69,7 +69,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
     }
 }
 
-userSchema.prototype.reset_otp = async (req, res, email) => {
+userSchema.prototype.reset_otp = async (req, res, email, username) => {
     await connect();
     // console.log(email)
     var key = generateOTP();
@@ -83,7 +83,7 @@ userSchema.prototype.reset_otp = async (req, res, email) => {
         res.send(err);
     });
 
-    user_reset(email, key);
+    user_reset(email, username, key);
 }
 
 module.exports = { userSchema };

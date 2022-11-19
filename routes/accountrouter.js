@@ -53,10 +53,14 @@ Router.get('/user/reset', async (req, res) => {
 Router.post('/user/reset', async (req, res) => {
     // user reset
     var email = req.body.email;
-    console.log(email);
-    user.reset_otp(req, res, email);
+    console.log(email)
+    await connect();
+    var username = await userSchema.findOne({ email: email }, { username: 1 })
+    username = username.username;
+    user.reset_otp(req, res, email, username);
 })
 
+// ajax
 Router.post('/user/reset-password', async (req, res) => {
     // user reset
     await connect();
@@ -73,6 +77,7 @@ Router.post('/user/reset-password', async (req, res) => {
     }
 })
 
+// ajax
 Router.post('/user/reset-password-ok', async (req, res) => {
     // user reset
     await connect();
