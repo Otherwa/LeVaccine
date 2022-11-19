@@ -198,9 +198,9 @@ input:focus+.placeholder-text .text {
 .head {
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     width: 96%;
-    align-items: center;
+    align-items: start;
 }
 
 .head p {
@@ -216,21 +216,25 @@ input:focus+.placeholder-text .text {
 
 #login,
 #signup,
-#reset {
+#reset,
+#verify,
+#password-reset {
     transition: 0.3s ease-in-out;
 }
 
-#signup:hover {
+#signup:hover,
+#verify:hover,
+#password-reset:hover {
     background-color: var(--pblue);
+}
+
+.sub a:hover {
+    color: var(--pblue) !important;
 }
 
 #login:hover,
 #reset:hover {
     background-color: var(--ppink);
-}
-
-.sub a:hover {
-    color: var(--pblue) !important;
 }
 
 @media screen and (max-width: 400px) {

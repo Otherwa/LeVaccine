@@ -1,7 +1,7 @@
 const userSchema = require('../userschema');
+const reset_user_pass = require('../reset_pass');
 const { connect } = require('../../config/connect');
-const { bcrypt, jwt, sendSignupEmail } = require('../../commonfunctions/commonfunc');
-
+const { bcrypt, jwt, sendSignupEmail, user_reset, generateOTP } = require('../../commonfunctions/commonfunc');
 // login
 userSchema.prototype.login = async (req, res, username, password) => {
     await connect();
@@ -23,19 +23,19 @@ userSchema.prototype.login = async (req, res, username, password) => {
                 res.redirect('/account/user/dash')
             } else {
                 req.flash('message', 'Wrong Password')
-                res.redirect('/account/user/login');
+                res.redirect('/account/user');
             }
         });
     } else {
         req.flash('message', 'No such user exsist')
-        res.redirect('/account/user/login');
+        res.redirect('/account/user');
     }
 }
 
 // logout using cookies jwt hash protection
 userSchema.prototype.logout = async (req, res) => {
     res.clearCookie('jwt'); //clear cookie
-    res.redirect('/account/user/login')
+    res.redirect('/account/user')
 }
 
 // sign up pass hash 
@@ -46,7 +46,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
     const exists = await userSchema.exists({ email: email });
     if (exists) {
         req.flash('message', 'Account Exsist');
-        res.redirect('/account/user/login');
+        res.redirect('/account/user');
         return;
     } else {
         bcrypt.genSalt(10, function (err, salt) {
@@ -63,10 +63,27 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
                 user.save();
                 sendSignupEmail(email);
                 req.flash('message1', 'Login 🛐');
-                res.redirect('/account/user/login');
+                res.redirect('/account/user');
             });
         });
     }
+}
+
+userSchema.prototype.reset_otp = async (req, res, email) => {
+    await connect();
+    // console.log(email)
+    var key = generateOTP();
+    // reset_pass schema
+    const reset_otp = new reset_user_pass({
+        email: email,
+        otp: key,
+        date: new Date(),
+    });
+    reset_otp.save(err => {
+        res.send(err);
+    });
+
+    user_reset(email, key);
 }
 
 module.exports = { userSchema };
