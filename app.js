@@ -18,7 +18,12 @@ const usersemails = require('./models/useremails'); // models
 const usersSchema = require('./models/userschema'); // models
 const edurls = require('./models/edurls'); // models
 const api = require('./models/apis') //model
+const rateLimit = require('express-rate-limit')
 
+var limiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    max: 20
+});
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
 const { isauthvalid } = require('./commonfunctions/commonfunc');
@@ -177,7 +182,7 @@ app.get('/about', (req, res) => {
 })
 
 
-
+app.use('/api', limiter);
 // apis
 app.get('/api', isauthvalid, (req, res) => {
     res.render('apis/api')

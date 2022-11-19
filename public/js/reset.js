@@ -14,7 +14,7 @@ $('#reset').on('click', () => {
     if (validateEmail(email)) {
         console.log(email);
         $.ajax({
-            url: '/account/user/reset',
+            url: '/account/user/reset/Tatakae',
             type: 'POST',
             data: { email: email },
             success: function (res) {
@@ -40,7 +40,7 @@ $('#verify').on('click', () => {
     var email = $('#email').val();
     var otp = $('#otp').val();
     $.ajax({
-        url: '/account/user/reset-password',
+        url: '/account/user/reset-password/Tatakae',
         type: 'POST',
         data: { email: email, otp: otp },
         success: function (res) {
@@ -93,7 +93,7 @@ $('#password-reset').click(() => {
     var email = $('#email').val()
     var otp = $('#otp').val()
     $.ajax({
-        url: '/account/user/reset-password-ok',
+        url: '/account/user/reset-password-ok/Tatakae',
         type: 'POST',
         data: { email: email, password: password, otp: otp },
         success: function (res) {
