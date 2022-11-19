@@ -7,12 +7,6 @@ const { auth, livedata, bcrypt } = require('../commonfunctions/commonfunc');
 require('dotenv').config()
 // confidental password
 // for password reset for each ip
-const rateLimit = require('express-rate-limit')
-
-var limiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    max: 10
-});
 
 const reset_otp = require('../models/reset_pass');
 
@@ -59,7 +53,7 @@ Router.get('/user/reset', async (req, res) => {
 })
 
 
-Router.use('/user/reset', limiter)
+
 // reset password otp sent
 Router.post('/user/reset/:key', async (req, res) => {
     // user reset
@@ -77,7 +71,7 @@ Router.post('/user/reset/:key', async (req, res) => {
     }
 })
 
-Router.use('/user/reset-password', limiter)
+
 // ajax
 Router.post('/user/reset-password/:key', async (req, res) => {
     // user reset
@@ -102,7 +96,7 @@ Router.post('/user/reset-password/:key', async (req, res) => {
 })
 
 
-Router.use('/user/reset-password-ok', limiter)
+
 // ajax
 Router.post('/user/reset-password-ok/:key', async (req, res) => {
     // user reset
