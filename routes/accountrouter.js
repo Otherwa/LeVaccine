@@ -64,6 +64,7 @@ Router.use('/user/reset', limiter)
 Router.post('/user/reset/:key', async (req, res) => {
     // user reset
     var key = req.params.key
+    console.log(key)
     if (key === process.env.JWT_TOKEN) {
         var email = req.body.email;
         console.log(email)
@@ -81,6 +82,7 @@ Router.use('/user/reset-password', limiter)
 Router.post('/user/reset-password/:key', async (req, res) => {
     // user reset
     var key = req.params.key
+    console.log(key)
     if (key === process.env.JWT_TOKEN) {
         await connect();
         var email = req.body.email;
