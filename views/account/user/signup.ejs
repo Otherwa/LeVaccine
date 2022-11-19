@@ -16,47 +16,56 @@
 </head>
 
 <body>
-    <div style="padding:0.1rem">
+    <div id="scroll-progress"></div>
+    <div class="preload">
+        <img class="screen" src="https://i.pinimg.com/originals/0c/37/93/0c3793b0eedf868951d660ab88b9063a.gif"
+            alt="loading..">
+    </div>
+    <div id="butter">
         <div class="home-container">
             <%- include('../../partial/log-res-nav') %>
                 <br>
                 <br>
-                <form class="form" action="/account/user/signup" method="POST">
-                    <div class="head">
-                        <h1>Sign-up</h1>
-                        <p class="myFont">
+                <div class="height-set">
+                    <form class="form" action="/account/user/signup" method="POST">
+                        <div class="head">
+                            <h1>Sign-up</h1>
+                            <p class="myFont">
 
-                        </p>
-                    </div>
-                    <div class="input-contain">
-                        <input type="text" name="username" id="username" autocomplete="on">
-                        <label class="placeholder-text" for="username" id="placeholder-fname">
-                            <div class="text">Username</div>
-                        </label>
-                    </div>
+                            </p>
+                        </div>
+                        <div class="input-contain">
+                            <input type="text" name="username" id="username" autocomplete="on">
+                            <label class="placeholder-text" for="username" id="placeholder-fname">
+                                <div class="text">Username</div>
+                            </label>
+                        </div>
 
-                    <div class="input-contain">
-                        <input type="email" name="email" id="email" autocomplete="on">
-                        <label class="placeholder-text" for="email" id="placeholder-fname">
-                            <div class="text">Email</div>
-                        </label>
-                    </div>
+                        <div class="input-contain">
+                            <input type="email" name="email" id="email" autocomplete="on">
+                            <label class="placeholder-text" for="email" id="placeholder-fname">
+                                <div class="text">Email</div>
+                            </label>
+                        </div>
 
-                    <div class="input-contain">
-                        <input type="password" name="password" id="password" autocomplete="on">
-                        <label class="placeholder-text" for="password" id="placeholder-fname">
-                            <div class="text">Passwordl</div>
-                        </label>
-                    </div>
-
-                    <input id="signup" type="submit" value="Sign up">
-                </form>
+                        <div class="input-contain">
+                            <input type="password" name="password" id="password" autocomplete="on">
+                            <label class="placeholder-text" for="password" id="placeholder-fname">
+                                <div class="text">Passwordl</div>
+                            </label>
+                        </div>
+                        <div class="div">
+                            <input id="signup" type="submit" value="Sign up">
+                        </div>
+                        <div class="sub">
+                            <p>Already Have An Account?</p>
+                            <p>
+                                <a href="/account/user">Sign In</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
                 <br>
-                <!-- temp -->
-                <div class="home-separator"></div>
-                <footer class="home-footer">
-                    <%- include('../../partial/foot'); %>
-                </footer>
                 <br>
                 <div class="home-separator"></div>
                 <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
@@ -72,8 +81,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script type="text/javascript" src="/js/butter/butter.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
     <script src="/js/signup.js"></script>
 
 </body>

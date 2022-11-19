@@ -1,6 +1,7 @@
+require('dotenv').config()
+
 module.exports = {
-  con: 'mongodb+srv://Otherwa:vLsLS2jXafe4Nb6n@cluster0.wijcrrf.mongodb.net/Drugs',
-  location: [],
+  con: process.env.DB_CONNECTION,
   site: 'Mongoaltas',
   htmlcontent: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -347,7 +348,7 @@ module.exports = {
     
     </html>
     `,
-  email: 'levaccine69@gmail.com',
-  pass: 'wjfofdrbrqgumdgx',
-  jwt_token: 'Tatakae'
+  email: process.env.EMAIL,
+  pass: process.env.PASSWORD,
+  jwt_token: process.env.JWT_TOKEN
 }

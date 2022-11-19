@@ -2423,9 +2423,9 @@ h2 .myFont {
 }
 
 .preload .screen {
-  width: 4rem;
+  width: 15rem;
   box-shadow: none !important;
-  height: 3.5rem;
+  height: 12rem;
 }
 
 @media (max-width: 768px) {

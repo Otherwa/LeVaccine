@@ -13,7 +13,7 @@
 
     <link href="/css/show/style.css" rel="stylesheet" />
     <link href="/css/whichlogin/whichlogin.css" rel="stylesheet" />
-    <link href="/css/whichlogin/user.css" rel="stylesheet" />
+    <link href="/css/whichlogin/reset.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,47 +24,61 @@
     </div>
     <div id="butter">
         <div class="home-container">
-            <%- include('../partial/log-res-nav') %>
+            <%- include('../../partial/log-res-nav') %>
                 <br>
                 <br>
                 <div class="container height-set">
                     <br>
-                    <h1 class="education-title">User</h1>
+                    <!-- <h1 class="education-title">User</h1> -->
                     <br>
                     <br>
                     <div class="container">
-                        <form class="form" action="/account/user/login" method="POST">
+                        <form class="form">
                             <div class="head">
-                                <h1>Login</h1>
-                                <p class="myFont">
-                                    <%= err %>
-                                        <span class="myFont" style="color: green">
-                                            <%= err1 %>
-                                        </span>
+                                <h1>Reset Password</h1>
+                                <br>
+                                <p class="myFont" id="status" style="color:green">
                                 </p>
                             </div>
-                            <div class="input-contain">
-                                <input type="text" name="username" value="" id="username" autocomplete="off">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Username</div>
+
+                            <div class="input-contain email" id="emailcon">
+                                <input type="email" name="email" id="email" autocomplete="off">
+                                <label class="placeholder-text" for="email" id="placeholder-fname">
+                                    <div class="text">Email</div>
                                 </label>
                             </div>
-                            <div class="input-contain">
-                                <input type="password" name="password" value="" id="password" autocomplete="off">
-                                <label class="placeholder-text" for="password" id="placeholder-fname">
-                                    <div class="text">Password</div>
+                            <div class="input-contain otp" id="otpcon" style="display: none">
+                                <input type="text" name="otp" id="otp" autocomplete="off">
+                                <label class="placeholder-text" for="otp" id="placeholder-fname">
+                                    <div class="text">OTP</div>
+                                </label>
+                            </div>
+                            <div class="input-contain pass1" id="pass1con" style="display: none">
+                                <input type="password" name="pass1" id="pass1" autocomplete="off">
+                                <label class="placeholder-text" for="pass1" id="placeholder-fname">
+                                    <div class="text">New Password</div>
+                                </label>
+                            </div>
+                            <div class="input-contain pass2" id="pass2con" style="display: none">
+                                <input type="password" name="pass2" id="pass2" autocomplete="off">
+                                <label class="placeholder-text" for="pass2" id="placeholder-fname">
+                                    <div class="text">Confirm New Password</div>
                                 </label>
                             </div>
                             <div class="div">
-                                <input type="submit" id="login" value="Login">
+                                <input type="button" id="reset" value="Reset">
+                                <input type="button" id="verify" value="Verify" style="display:none">
+                                <input type="button" id="password-reset" value="Reset Password" style="display:none">
                             </div>
                             <div class="sub">
-                                <p><a href="/account/user/reset">Forgot Password?</a></p>
+                                <p><a href="/account/user">Login In</a></p>
                                 <p>
-                                    <a href="/account/user/signup">Sign up</a>
+                                    <a href="/account/user/signup">Sign Up</a>
                                 </p>
                             </div>
                         </form>
+
+
                     </div>
                     <br>
                 </div>
@@ -87,7 +101,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/user.js"></script>
+    <script type="text/javascript" src="/js/reset.js"></script>
 </body>
 
 </html>

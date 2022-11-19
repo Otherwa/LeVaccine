@@ -56,6 +56,43 @@ function sendSignupEmail(email) {
     });
 }
 
+
+function generateOTP() {
+
+    // Declare a digits variable 
+    // which stores all digits
+    var digits = '0123456789';
+    let OTP = '';
+    for (let i = 0; i < 4; i++) {
+        OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
+}
+
+// user reset password
+// send signup email
+function user_reset(email, username, otp) {
+
+    var mailOptions = {
+        from: 'levaccine69@gmail.com',
+        to: email,
+        subject: 'Password Reset',
+        text: 'OTP',
+        html: `
+        <p>`+ username + `</p>
+        <br>
+        <p>Your OTP is:</p>
+        <h1>`+ otp + `</h1>
+        `
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 // mail service for subscription
 function sendmail(email) {
 
@@ -193,4 +230,4 @@ async function livedata(req, res, next) {
     }
 }
 
-module.exports = { sendmail, covid, session, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth, isauthvalid, livedata }
+module.exports = { sendmail, covid, session, generateOTP, sendnews, sendedunews, sendSignupEmail, jwt, bcrypt, auth, isauth, isauthvalid, livedata, user_reset }
