@@ -27,6 +27,9 @@ var transporter = Nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     port: 2525,
+    tls: {
+        rejectUnauthorized: false
+    },
     auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD
