@@ -2432,7 +2432,7 @@ h2 .myFont {
 
   /* preload */
   .preload .screen {
-    width: 3rem !important;
-    height: 2.5rem !important;
+    width: 10rem !important;
+    height: 8.5rem !important;
   }
 }

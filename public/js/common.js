@@ -62,7 +62,7 @@ ScrollReveal().reveal($(".container"), { delay: 800, origin: 'bottom', distance:
 //about
 // pages shift
 ScrollReveal().reveal($("#hero-image"), config1);
-ScrollReveal().reveal($(".home-header1"), { delay: 990, origin: 'top', distance: '25px' }, config1);
+ScrollReveal().reveal($(".home-header1"), config1);
 ScrollReveal().reveal($(".education-title"), { delay: 600, origin: 'top', distance: '25px' }, config1);
 ScrollReveal().reveal($(".container1"), { delay: 600, origin: 'top', distance: '25px' }, config1);
 ScrollReveal().reveal($(".container2"), { delay: 600, origin: 'left', distance: '25px' }, config1);
