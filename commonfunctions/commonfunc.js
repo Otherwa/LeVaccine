@@ -1,6 +1,6 @@
 // connection string
 const { connect } = require('../config/connect');
-
+require('dotenv').config()
 // jwt
 const jwt = require('jsonwebtoken');
 
@@ -26,9 +26,10 @@ const bcrypt = require('bcrypt')
 var transporter = Nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
+    port: 2525,
     auth: {
-        user: require('../config/connection_config').email,
-        pass: require('../config/connection_config').pass
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
     }
 });
 
