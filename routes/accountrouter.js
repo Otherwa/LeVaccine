@@ -238,4 +238,4 @@ Router.get("*", (req, res) => {
     res.render('error')
 })
 
-module.exports = { Router, auth };
+module.exports = { Router };

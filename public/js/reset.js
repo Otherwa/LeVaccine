@@ -110,7 +110,7 @@ setInterval(() => {
     }
 }, 1000)
 
-
+// after sucessful redirect
 $('#password-reset').click(() => {
     var password = $('#pass2').val()
     var email = $('#email').val()
