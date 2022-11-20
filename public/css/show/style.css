@@ -703,7 +703,7 @@
   border-radius: 0.5rem;
   align-items: flex-start;
   background-color: rgb(228, 28, 28);
-  ;
+  
 
 }
 
@@ -1523,7 +1523,6 @@
     position: relative;
     align-self: flex-start;
     align-items: center;
-    align-items: center;
   }
 
   .home-image2 {
@@ -2256,7 +2255,7 @@ body {
 
 .list {
   width: 100%;
-  margin: 1em 0px 1em 0px;
+  margin: 1em 0px;
   display: block;
   padding: 0px 0px 0px 1.5rem;
   list-style-type: none;
@@ -2330,7 +2329,7 @@ img {
 }
 
 .register {
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   border-style: solid;
   border-radius: 1.5rem;
   border-width: 0.01rem;

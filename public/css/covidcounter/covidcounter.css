@@ -21,14 +21,14 @@
 #scountry {
     background-color: #eeeeee;
     height: 2rem;
-    padding: 0.2rem 1rem 0.2rem 1rem;
+    padding: 0.2rem 1rem;
     width: 80%;
     border-radius: 0.2rem;
     font-family: 'dot';
 }
 
 #scountry option {
-    padding: 0.2rem 1rem 0.2rem 1rem;
+    padding: 0.2rem 1rem;
 }
 
 .in-side {
