@@ -853,8 +853,8 @@ exports.ruleSet = {
                                     authSchemes: [
                                         {
                                             name: "sigv4",
-                                            signingName: "sts",
                                             signingRegion: "us-east-1",
+                                            signingName: "sts",
                                         },
                                     ],
                                 },

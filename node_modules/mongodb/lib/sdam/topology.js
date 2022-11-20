@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServerCapabilities = exports.Topology = void 0;
-const Denque = require("denque");
 const timers_1 = require("timers");
 const util_1 = require("util");
 const bson_1 = require("../bson");
@@ -83,7 +82,7 @@ class Topology extends mongo_types_1.TypedEventEmitter {
         for (const hostAddress of selectedHosts) {
             serverDescriptions.set(hostAddress.toString(), new server_description_1.ServerDescription(hostAddress));
         }
-        this[kWaitQueue] = new Denque();
+        this[kWaitQueue] = new utils_1.List();
         this.s = {
             // the id of this topology
             id: topologyId,

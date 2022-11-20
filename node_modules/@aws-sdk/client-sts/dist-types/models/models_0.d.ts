@@ -78,12 +78,11 @@ export interface AssumeRoleRequest {
      *             Service Namespaces</a> in the Amazon Web Services General Reference.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      *
      *          <p>Passing policies to this operation returns new
@@ -113,12 +112,11 @@ export interface AssumeRoleRequest {
      *          characters.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      */
     Policy?: string;
@@ -160,12 +158,11 @@ export interface AssumeRoleRequest {
      *             and STS Character Limits</a> in the <i>IAM User Guide</i>.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      *
      *          <p>You can pass a session tag with the same key as a tag that is already attached to the
@@ -400,12 +397,11 @@ export interface AssumeRoleWithSAMLRequest {
      *             Service Namespaces</a> in the Amazon Web Services General Reference.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      *
      *          <p>Passing policies to this operation returns new
@@ -435,12 +431,11 @@ export interface AssumeRoleWithSAMLRequest {
      *          characters.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      */
     Policy?: string;
@@ -627,12 +622,11 @@ export interface AssumeRoleWithWebIdentityRequest {
      *             Service Namespaces</a> in the Amazon Web Services General Reference.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      *
      *          <p>Passing policies to this operation returns new
@@ -662,12 +656,11 @@ export interface AssumeRoleWithWebIdentityRequest {
      *          characters.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      */
     Policy?: string;
@@ -861,8 +854,8 @@ export interface GetFederationTokenRequest {
      * <p>An IAM policy in JSON format that you want to use as an inline session policy.</p>
      *          <p>You must pass an inline or managed <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session">session policy</a> to
      *          this operation. You can pass a single JSON policy document to use as an inline session
-     *          policy. You can also specify up to 10 managed policies to use as managed session
-     *          policies.</p>
+     *          policy. You can also specify up to 10 managed policy Amazon Resource Names (ARNs) to use as
+     *          managed session policies.</p>
      *          <p>This parameter is optional. However, if you do not pass any session policies, then the
      *          resulting federated user session has no permissions.</p>
      *          <p>When you pass session policies, the session permissions are the intersection of the
@@ -883,12 +876,11 @@ export interface GetFederationTokenRequest {
      *          characters.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      */
     Policy?: string;
@@ -898,12 +890,11 @@ export interface GetFederationTokenRequest {
      *          is requesting federated access.</p>
      *          <p>You must pass an inline or managed <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session">session policy</a> to
      *          this operation. You can pass a single JSON policy document to use as an inline session
-     *          policy. You can also specify up to 10 managed policies to use as managed session policies.
-     *          The plaintext that you use for both inline and managed session policies can't exceed 2,048
-     *          characters. You can provide up to 10 managed policy ARNs. For more information about ARNs,
-     *          see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
-     *             Resource Names (ARNs) and Amazon Web Services Service Namespaces</a> in the
-     *          Amazon Web Services General Reference.</p>
+     *          policy. You can also specify up to 10 managed policy Amazon Resource Names (ARNs) to use as
+     *          managed session policies. The plaintext that you use for both inline and managed session
+     *          policies can't exceed 2,048 characters. You can provide up to 10 managed policy ARNs. For
+     *          more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and Amazon Web Services
+     *             Service Namespaces</a> in the Amazon Web Services General Reference.</p>
      *          <p>This parameter is optional. However, if you do not pass any session policies, then the
      *          resulting federated user session has no permissions.</p>
      *          <p>When you pass session policies, the session permissions are the intersection of the
@@ -919,12 +910,11 @@ export interface GetFederationTokenRequest {
      *          by the session policies.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      */
     PolicyArns?: PolicyDescriptorType[];
@@ -947,12 +937,11 @@ export interface GetFederationTokenRequest {
      *             and STS Character Limits</a> in the <i>IAM User Guide</i>.</p>
      *
      *          <note>
-     *             <p>An Amazon Web Services conversion compresses the passed session policies and session tags into a
-     *             packed binary format that has a separate limit. Your request can fail for this limit
-     *             even if your plaintext meets the other requirements. The <code>PackedPolicySize</code>
-     *             response element indicates by percentage how close the policies and tags for your
-     *             request are to the upper size limit.
-     *             </p>
+     *             <p>An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs,
+     *             and session tags into a packed binary format that has a separate limit. Your request can
+     *             fail for this limit even if your plaintext meets the other requirements. The
+     *                <code>PackedPolicySize</code> response element indicates by percentage how close the
+     *             policies and tags for your request are to the upper size limit.</p>
      *          </note>
      *
      *          <p>You can pass a session tag with the same key as a tag that is already attached to the

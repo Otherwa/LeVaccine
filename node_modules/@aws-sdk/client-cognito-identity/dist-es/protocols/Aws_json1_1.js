@@ -1539,10 +1539,8 @@ const serializeAws_json1_1IdentityPoolTagsType = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: value,
-        };
+        acc[key] = value;
+        return acc;
     }, {});
 };
 const serializeAws_json1_1IdentityProviders = (input, context) => {
@@ -1550,10 +1548,8 @@ const serializeAws_json1_1IdentityProviders = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: value,
-        };
+        acc[key] = value;
+        return acc;
     }, {});
 };
 const serializeAws_json1_1ListIdentitiesInput = (input, context) => {
@@ -1587,10 +1583,8 @@ const serializeAws_json1_1LoginsMap = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: value,
-        };
+        acc[key] = value;
+        return acc;
     }, {});
 };
 const serializeAws_json1_1LookupDeveloperIdentityInput = (input, context) => {
@@ -1637,10 +1631,8 @@ const serializeAws_json1_1PrincipalTags = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: value,
-        };
+        acc[key] = value;
+        return acc;
     }, {});
 };
 const serializeAws_json1_1RoleMapping = (input, context) => {
@@ -1657,10 +1649,8 @@ const serializeAws_json1_1RoleMappingMap = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: serializeAws_json1_1RoleMapping(value, context),
-        };
+        acc[key] = serializeAws_json1_1RoleMapping(value, context);
+        return acc;
     }, {});
 };
 const serializeAws_json1_1RolesMap = (input, context) => {
@@ -1668,10 +1658,8 @@ const serializeAws_json1_1RolesMap = (input, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: value,
-        };
+        acc[key] = value;
+        return acc;
     }, {});
 };
 const serializeAws_json1_1RulesConfigurationType = (input, context) => {
@@ -1900,10 +1888,8 @@ const deserializeAws_json1_1IdentityPoolTagsType = (output, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: __expectString(value),
-        };
+        acc[key] = __expectString(value);
+        return acc;
     }, {});
 };
 const deserializeAws_json1_1IdentityProviders = (output, context) => {
@@ -1911,10 +1897,8 @@ const deserializeAws_json1_1IdentityProviders = (output, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: __expectString(value),
-        };
+        acc[key] = __expectString(value);
+        return acc;
     }, {});
 };
 const deserializeAws_json1_1InternalErrorException = (output, context) => {
@@ -2020,10 +2004,8 @@ const deserializeAws_json1_1PrincipalTags = (output, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: __expectString(value),
-        };
+        acc[key] = __expectString(value);
+        return acc;
     }, {});
 };
 const deserializeAws_json1_1ResourceConflictException = (output, context) => {
@@ -2050,10 +2032,8 @@ const deserializeAws_json1_1RoleMappingMap = (output, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: deserializeAws_json1_1RoleMapping(value, context),
-        };
+        acc[key] = deserializeAws_json1_1RoleMapping(value, context);
+        return acc;
     }, {});
 };
 const deserializeAws_json1_1RolesMap = (output, context) => {
@@ -2061,10 +2041,8 @@ const deserializeAws_json1_1RolesMap = (output, context) => {
         if (value === null) {
             return acc;
         }
-        return {
-            ...acc,
-            [key]: __expectString(value),
-        };
+        acc[key] = __expectString(value);
+        return acc;
     }, {});
 };
 const deserializeAws_json1_1RulesConfigurationType = (output, context) => {

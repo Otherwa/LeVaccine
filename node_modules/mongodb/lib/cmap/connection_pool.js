@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectionPool = exports.PoolState = void 0;
-const Denque = require("denque");
 const timers_1 = require("timers");
 const constants_1 = require("../constants");
 const error_1 = require("../error");
@@ -75,7 +74,7 @@ class ConnectionPool extends mongo_types_1.TypedEventEmitter {
         this[kPoolState] = exports.PoolState.paused;
         this[kServer] = server;
         this[kLogger] = new logger_1.Logger('ConnectionPool');
-        this[kConnections] = new Denque();
+        this[kConnections] = new utils_1.List();
         this[kPending] = 0;
         this[kCheckedOut] = new Set();
         this[kMinPoolSizeTimer] = undefined;
@@ -84,7 +83,7 @@ class ConnectionPool extends mongo_types_1.TypedEventEmitter {
         this[kConnectionCounter] = (0, utils_1.makeCounter)(1);
         this[kCancellationToken] = new mongo_types_1.CancellationToken();
         this[kCancellationToken].setMaxListeners(Infinity);
-        this[kWaitQueue] = new Denque();
+        this[kWaitQueue] = new utils_1.List();
         this[kMetrics] = new metrics_1.ConnectionPoolMetrics();
         this[kProcessingWaitQueue] = false;
         process.nextTick(() => {
@@ -227,7 +226,7 @@ class ConnectionPool extends mongo_types_1.TypedEventEmitter {
                 // Increment the generation for the service id.
                 this.serviceGenerations.set(sid, generation + 1);
             }
-            this.emit(ConnectionPool.CONNECTION_POOL_CLEARED, new connection_pool_events_1.ConnectionPoolClearedEvent(this, serviceId));
+            this.emit(ConnectionPool.CONNECTION_POOL_CLEARED, new connection_pool_events_1.ConnectionPoolClearedEvent(this, { serviceId }));
             return;
         }
         // handle non load-balanced case
@@ -408,12 +407,7 @@ class ConnectionPool extends mongo_types_1.TypedEventEmitter {
         if (this[kPoolState] !== exports.PoolState.ready || minPoolSize === 0) {
             return;
         }
-        for (let i = 0; i < this[kConnections].length; i++) {
-            const connection = this[kConnections].peekAt(i);
-            if (connection && this.connectionIsPerished(connection)) {
-                this[kConnections].removeOne(i);
-            }
-        }
+        this[kConnections].prune(connection => this.connectionIsPerished(connection));
         if (this.totalConnectionCount < minPoolSize &&
             this.pendingConnectionCount < this.options.maxConnecting) {
             // NOTE: ensureMinPoolSize should not try to get all the pending
@@ -444,7 +438,7 @@ class ConnectionPool extends mongo_types_1.TypedEventEmitter {
         }
         this[kProcessingWaitQueue] = true;
         while (this.waitQueueSize) {
-            const waitQueueMember = this[kWaitQueue].peekFront();
+            const waitQueueMember = this[kWaitQueue].first();
             if (!waitQueueMember) {
                 this[kWaitQueue].shift();
                 continue;

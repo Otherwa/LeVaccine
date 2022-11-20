@@ -582,7 +582,7 @@ class ServerSessionPool {
             throw new error_1.MongoRuntimeError('ServerSessionPool requires a MongoClient');
         }
         this.client = client;
-        this.sessions = [];
+        this.sessions = new utils_1.List();
     }
     /**
      * Acquire a Server Session from the pool.
@@ -626,15 +626,7 @@ class ServerSessionPool {
         if (!sessionTimeoutMinutes) {
             return;
         }
-        while (this.sessions.length) {
-            const pooledSession = this.sessions[this.sessions.length - 1];
-            if (pooledSession.hasTimedOut(sessionTimeoutMinutes)) {
-                this.sessions.pop();
-            }
-            else {
-                break;
-            }
-        }
+        this.sessions.prune(session => session.hasTimedOut(sessionTimeoutMinutes));
         if (!session.hasTimedOut(sessionTimeoutMinutes)) {
             if (session.isDirty) {
                 return;
