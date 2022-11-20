@@ -50,6 +50,7 @@ function sendSignupEmail(email) {
         `
     };
     transporter.sendMail(mailOptions, function (error, info) {
+        console.log("sending.......")
         if (error) {
             console.log(error);
         } else {
