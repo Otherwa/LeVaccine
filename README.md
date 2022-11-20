@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/badge/master)](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/overview/master)
 # Drug_Lord_v1.3
 
 # Stats
