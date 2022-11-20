@@ -3,215 +3,212 @@
 /* contains all user syling */
 /* hover underline */
 .on-hover {
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .on-hover:hover {
-    background-color: var(--dl-color-gray-);
-    transition: 0.3s;
+  background-color: var(--dl-color-gray-);
+  transition: 0.3s;
 }
 
 #error code {
-    color: red;
+  color: red;
 }
 
 #subscribed code {
-    color: green;
+  color: green;
 }
 
 .myFont {
-    font-family: dot !important;
+  font-family: dot !important;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 20rem;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 20rem;
+  align-content: center;
 }
 
 /* user dash */
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
 }
 
 /* overriden */
 .container-home {
-    display: flex;
-    margin-left: 15rem;
-    padding: 1px 16px;
-    height: auto;
-    align-items: start;
-    flex-direction: column;
+  display: flex;
+  margin-left: 15rem;
+  padding: 1px 16px;
+  height: auto;
+  align-items: start;
+  flex-direction: column;
 }
 
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
 }
 
 .sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
 }
 
 .sidebar a.active {
-    background-color: #04AA6D;
-    color: white;
+  background-color: #04aa6d;
+  color: white;
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
+  background-color: #555;
+  color: white;
 }
 
 div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
 }
-
-
 
 /* graph */
 #graph {
-    width: 35rem;
+  width: 35rem;
 }
 
 @media screen and (max-width: 778px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
 
-    .sidebar a {
-        float: left;
-    }
+  .sidebar a {
+    float: left;
+  }
 
-    .container-home {
-        margin-left: 0;
-    }
+  .container-home {
+    margin-left: 0;
+  }
 
-    #graph {
-        width: 25rem;
-    }
-
+  #graph {
+    width: 25rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .sidebar a {
-        text-align: center;
-        float: none;
-    }
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
 
-    #graph {
-        width: 15rem;
-    }
+  #graph {
+    width: 15rem;
+  }
 }
 
 /* login contet */
 .height-set {
-    height: 100vh !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-contain {
-    position: relative;
+  position: relative;
 }
 
 input {
-    height: 3rem;
-    width: 20rem;
-    border: 1px solid black;
-    border-radius: 1rem;
-    font-size: 1rem;
+  height: 3rem;
+  width: 20rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  font-size: 1rem;
 }
 
 .placeholder-text {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 3px solid transparent;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 3px solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
 .placeholder-text {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .text {
-    font-size: 0.9rem;
-    padding: 0 0.5rem;
-    background-color: transparent;
-    color: black;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
 }
 
 input,
 .placeholder-text {
-    padding: 0 1.2rem;
+  padding: 0 1.2rem;
 }
 
 .placeholder-text .text {
-    transition: 0.2s;
+  transition: 0.2s;
 }
 
-input:focus+.placeholder-text .text {
-    outline: none;
-    border-color: rgb(26, 135, 179);
-    color: rgb(137, 137, 137);
-    font-size: 0.85rem;
-    transform: translate(0, -150%);
+input:focus + .placeholder-text .text {
+  outline: none;
+  border-color: rgb(26, 135, 179);
+  color: rgb(137, 137, 137);
+  font-size: 0.85rem;
+  transform: translate(0, -150%);
 }
 
 .placeholder-text .text {
-    background-color: white;
-    font-size: 0.9rem;
-    color: black;
-    transform: translate(0, -140%);
-    border-color: rgb(26, 135, 179);
-    color: rgb(0, 0, 0);
+  background-color: white;
+  font-size: 0.9rem;
+  color: black;
+  transform: translate(0, -140%);
+  border-color: rgb(26, 135, 179);
+  color: rgb(0, 0, 0);
 }
 
 .head {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 96%;
-    align-items: start;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 96%;
+  align-items: start;
 }
 
 .head p {
-    color: red;
+  color: red;
 }
 
 .sub {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 96%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 96%;
 }
 
 #login,
@@ -219,26 +216,26 @@ input:focus+.placeholder-text .text {
 #reset,
 #verify,
 #password-reset {
-    transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 #signup:hover,
 #verify:hover,
 #password-reset:hover {
-    background-color: var(--pblue);
+  background-color: var(--pblue);
 }
 
 .sub a:hover {
-    color: var(--pblue) !important;
+  color: var(--pblue) !important;
 }
 
 #login:hover,
 #reset:hover {
-    background-color: var(--ppink);
+  background-color: var(--ppink);
 }
 
 @media screen and (max-width: 400px) {
-    input {
-        width: 17rem;
-    }
+  input {
+    width: 17rem;
+  }
 }

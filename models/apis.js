@@ -1,18 +1,20 @@
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const schema = mongoose.Schema
 
-const api = new schema({
+const api = new schema(
+  {
     apikey: {
-        required: true,
-        type: 'string',
+      required: true,
+      type: 'string'
     },
     date: {
-        required: true,
-        type: 'string',
-    },
-}, {
-    versionKey: false //here
-})
+      required: true,
+      type: 'string'
+    }
+  },
+  {
+    versionKey: false // here
+  }
+)
 
-module.exports = mongoose.model('apikeys', api);
-
+module.exports = mongoose.model('apikeys', api)
