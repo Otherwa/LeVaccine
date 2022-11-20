@@ -55,29 +55,31 @@ Router.get('/user/reset', async (req, res) => {
 
 
 // reset password otp sent
-Router.post('/user/reset/:key', async (req, res) => {
+Router.post('/user/reset', async (req, res) => {
     // user reset
-    var key = req.params.key
+    var key = req.cookies.Status;
     console.log(key)
-    if (key === process.env.JWT_TOKEN) {
+    if (key === "Reset") {
         var email = req.body.email;
         console.log(email)
         await connect();
         var username = await userSchema.findOne({ email: { $eq: email } }, { username: 1 })
         username = username.username;
         user.reset_otp(req, res, email, username);
+        // send flags
+        res.send("200")
     } else {
-        res.json({ "msg": "Somethings Wrong" });
+        res.send("400")
     }
 })
 
 
 // ajax
-Router.post('/user/reset-password/:key', async (req, res) => {
+Router.post('/user/reset-password', async (req, res) => {
     // user reset
-    var key = req.params.key
+    var key = req.cookies.Status;
     console.log(key)
-    if (key === process.env.JWT_TOKEN) {
+    if (key === "Reset") {
         await connect();
         var email = req.body.email;
         var otp = req.body.otp;
@@ -98,15 +100,16 @@ Router.post('/user/reset-password/:key', async (req, res) => {
 
 
 // ajax
-Router.post('/user/reset-password-ok/:key', async (req, res) => {
+Router.post('/user/reset-password-ok', async (req, res) => {
     // user reset
     await connect();
     var email = req.body.email;
     var password = req.body.password;
     var otp = req.body.otp;
 
-    var key = req.params.key
-    if (key === process.env.JWT_TOKEN) {
+    var key = req.cookies.Status;
+    console.log(key)
+    if (key === "Reset") {
         bcrypt.genSalt(10, (err, salt) => {
             if (err) return next(err);
             bcrypt.hash(password, salt, function (err, hash) {
@@ -122,6 +125,7 @@ Router.post('/user/reset-password-ok/:key', async (req, res) => {
                         var exsist = await reset_otp.deleteOne({ email: { $eq: email }, otp: otp });
                         console.log(exsist);
                         if (exsist) {
+                            res.clearCookie("Status");
                             res.send("200");
                         } else {
                             res.send("404");

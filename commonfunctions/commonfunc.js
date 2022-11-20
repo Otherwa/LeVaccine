@@ -21,8 +21,8 @@ const userSchema = require('../models/userschema');
 
 const session = require('express-session');
 const bcrypt = require('bcrypt')
-console.log(process.env.EMAIL)
-console.log(process.env.PASSWORD)
+
+
 // email config
 var transporter = Nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -184,7 +184,7 @@ function auth(req, res, next) {
             next();
         })
     } else {
-        return res.redirect('/account/user/login');
+        return res.redirect('/account/user');
     }
 }
 
@@ -200,7 +200,7 @@ function isauthvalid(req, res, next) {
         })
     } else {
         req.flash('message', 'Login to get api key')
-        return res.redirect('/account/user/login');
+        return res.redirect('/account/user');
     }
 }
 

@@ -5,27 +5,33 @@ const validateEmail = (email) => {
     );
 };
 
+// set pass to disabled
+$('#pass1').prop("disabled", true);
+$('#pass2').prop("disabled", true);
 
-
-
+// if click and data retieved sucess then disable
 $('#reset').on('click', () => {
     var email = $('#email').val();
     // console.log(email);
     if (validateEmail(email)) {
+        document.cookie = "Status=Reset";
         console.log(email);
         $.ajax({
-            url: '/account/user/reset/Tatakae',
+            url: '/account/user/reset',
             type: 'POST',
             data: { email: email },
             success: function (res) {
                 // console.log(res)
-                $('#status').html("Check Your Mail");
-
-                $('.email').hide();
-                $('.otp').show();
-                $('#reset').hide();
-                $('#verify').show();
-                $('#reset').attr('disabled', 'disabled');
+                if (res == '200') {
+                    $('#status').html("Check Your Mail");
+                    $('.email').hide();
+                    $('.otp').show();
+                    $('#reset').hide();
+                    $('#verify').show();
+                    $('#reset').attr('disabled', 'disabled');
+                } else {
+                    $('#status').html("<span style=\"color:red\">Somethings Wrong</span>");
+                }
             }
         })
     } else {
@@ -40,7 +46,7 @@ $('#verify').on('click', () => {
     var email = $('#email').val();
     var otp = $('#otp').val();
     $.ajax({
-        url: '/account/user/reset-password/Tatakae',
+        url: '/account/user/reset-password',
         type: 'POST',
         data: { email: email, otp: otp },
         success: function (res) {
@@ -52,6 +58,8 @@ $('#verify').on('click', () => {
 
                 $('.pass1').show();
                 $('.pass2').show();
+                $('#pass1').prop("disabled", false);
+                $('#pass2').prop("disabled", false);
                 $('#password-reset').show();
                 show_pass_reset = true;
             } else {
@@ -61,14 +69,31 @@ $('#verify').on('click', () => {
     })
 })
 
+// checks if "" if empty or lenght should be greater than 7
+$("#pass1").on('input', () => {
+    if ($('#pass2').val() != $('#pass1').val() || $('#pass1').val() == '' || $('#pass2').val() == '') {
+        $('#password-reset').prop("disabled", true);
+        if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+            $('#status').html("<span style=\"color:red\">Password Too Short</span>");
+        } else {
+            $('#status').html("<span style=\"color:red\">Password Not Same</span>");
+        }
+    } else {
+        console.log("same")
+        $('#status').html("<span style=\"color:green\">Bread🍞👍 </span>");
+        $('#password-reset').prop("disabled", false);
+    }
+})
 
 $("#pass2").on('input', () => {
-    // your code
     var data = $('#pass2').val();
-    if (data != $('#pass1').val()) {
-        console.log("not same")
+    if (data != $('#pass1').val() || data == '' || $('#pass2').val() == '') {
         $('#password-reset').prop("disabled", true);
-        $('#status').html("<span style=\"color:red\">Password Not Same</span>");
+        if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+            $('#status').html("<span style=\"color:red\">Password Too Short</span>");
+        } else {
+            $('#status').html("<span style=\"color:red\">Password Not Same</span>");
+        }
     } else {
         console.log("same")
         $('#status').html("<span style=\"color:green\">Bread🍞👍 </span>");
@@ -76,11 +101,9 @@ $("#pass2").on('input', () => {
     }
 });
 
+// boolean
 setInterval(() => {
-    // console.log(112)
-    if (show_pass_reset) {
-        $('#password-reset').prop("disabled", false);
-    } else {
+    if (!show_pass_reset) {
         $('#password-reset').prop("disabled", true);
         $('.pass1').hide();
         $('.pass2').hide();
@@ -93,7 +116,7 @@ $('#password-reset').click(() => {
     var email = $('#email').val()
     var otp = $('#otp').val()
     $.ajax({
-        url: '/account/user/reset-password-ok/Tatakae',
+        url: '/account/user/reset-password-ok',
         type: 'POST',
         data: { email: email, password: password, otp: otp },
         success: function (res) {

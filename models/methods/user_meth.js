@@ -79,9 +79,7 @@ userSchema.prototype.reset_otp = async (req, res, email, username) => {
         otp: key,
         date: new Date(),
     });
-    reset_otp.save(err => {
-        res.send(err);
-    });
+    reset_otp.save();
 
     user_reset(email, username, key);
 }
