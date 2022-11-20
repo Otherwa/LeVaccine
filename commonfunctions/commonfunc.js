@@ -49,8 +49,8 @@ function sendSignupEmail(email) {
         <p>Please Continue to Verify Your Account</p>
         `
     };
+    console.log("sending.......")
     transporter.sendMail(mailOptions, function (error, info) {
-        console.log("sending.......")
         if (error) {
             console.log(error);
         } else {
