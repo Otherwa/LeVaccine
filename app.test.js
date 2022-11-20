@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./app')
+const app = require('./index')
 
 describe('GET All Pages', function () {
     it('get page1', async function () {
