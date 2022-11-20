@@ -21,7 +21,8 @@ const userSchema = require('../models/userschema');
 
 const session = require('express-session');
 const bcrypt = require('bcrypt')
-
+console.log(process.env.EMAIL)
+console.log(process.env.PASSWORD)
 // email config
 var transporter = Nodemailer.createTransport({
     host: 'smtp.gmail.com',
