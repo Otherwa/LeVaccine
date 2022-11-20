@@ -24,9 +24,9 @@ const bcrypt = require('bcrypt')
 
 // email config
 var transporter = Nodemailer.createTransport({
-    service: 'gmail',
     host: 'smtp.gmail.com',
-    port: 2525,
+    port: 465,
+    secure: true,
     tls: {
         rejectUnauthorized: false
     },
