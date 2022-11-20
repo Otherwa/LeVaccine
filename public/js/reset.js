@@ -128,8 +128,8 @@ $('#password-reset').click(() => {
                 $('#pass2').val('').prop("disabled", true);
                 $('#password-reset').prop("disabled", true);
                 setTimeout(() => {
-                    window.location.replace('/account/user/')
-                }, 1500)
+                    window.location.replace('/account/user')
+                }, 500)
             } else {
                 $('#status').html("<span style=\"color:red\">Somethings Wrong</span>");
             }
