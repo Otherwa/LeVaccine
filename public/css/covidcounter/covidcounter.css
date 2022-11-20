@@ -1,100 +1,102 @@
 .contain-stats {
-    display: flex;
-    width: 85%;
-    gap: 3.5rem;
-    flex-direction: row;
+  display: flex;
+  width: 85%;
+  gap: 3.5rem;
+  flex-direction: row;
 }
 
 .search {
-    gap: 1.1rem;
-    align-items: center;
-    display: flex;
-    width: 85%;
-    height: 10rem;
-    justify-content: center;
+  gap: 1.1rem;
+  align-items: center;
+  display: flex;
+  width: 85%;
+  height: 10rem;
+  justify-content: center;
 }
 
 .search p {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 #scountry {
-    background-color: #eeeeee;
-    height: 2rem;
-    padding: 0.2rem 1rem;
-    width: 80%;
-    border-radius: 0.2rem;
-    font-family: 'dot';
+  background-color: #eeeeee;
+  height: 2rem;
+  padding: 0.2rem 1rem;
+  width: 80%;
+  border-radius: 0.2rem;
+  font-family: "dot";
 }
 
 #scountry option {
-    padding: 0.2rem 1rem;
+  padding: 0.2rem 1rem;
 }
 
 .in-side {
-    padding: 0.1rem;
+  padding: 0.1rem;
 }
 
 .side {
-    padding: 1rem;
-    width: 40%;
-    box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%), 13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
-    border-radius: 0.5rem;
+  padding: 1rem;
+  width: 40%;
+  box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%),
+    13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
+  border-radius: 0.5rem;
 }
 
 .history-data::-webkit-scrollbar {
-    width: 3px;
+  width: 3px;
 }
 
 /* Track */
 .history-data::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
 .history-data::-webkit-scrollbar-thumb {
-    background: var(--ppink);
+  background: var(--ppink);
 }
 
 /* Handle on hover */
 .history-data::-webkit-scrollbar-thumb:hover {
-    background: rgb(255, 31, 161, 0.7);
+  background: rgb(255, 31, 161, 0.7);
 }
 
 .history-data {
-    width: 60%;
-    box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%), 13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
-    border-radius: 0.5rem;
-    padding: 1rem;
+  width: 60%;
+  box-shadow: 4.7px 6.1px 9.5px rgb(0 0 0 / 1%),
+    13px 16.8px 27.7px rgb(0 0 0 / 2%), 31.4px 40.4px 83.1px rgb(0 0 0 / 3%);
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 
 #myChart {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .history-data p {
-    padding: 0.2rem;
+  padding: 0.2rem;
 }
 
 .side p {
-    padding: 0.2rem;
+  padding: 0.2rem;
 }
 
 @media (max-width: 768px) {
-    .contain-stats {
-        display: flex;
-        gap: 3.5rem;
-        width: 85%;
-        flex-direction: column;
-        align-items: center;
-    }
+  .contain-stats {
+    display: flex;
+    gap: 3.5rem;
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .side,
-    .history-data {
-        width: 100%;
-    }
+  .side,
+  .history-data {
+    width: 100%;
+  }
 
-    .search {
-        flex-direction: column;
-    }
+  .search {
+    flex-direction: column;
+  }
 }
