@@ -12,6 +12,8 @@ $('#pass2').prop("disabled", true);
 // if click and data retieved sucess then disable
 $('#reset').on('click', () => {
     var email = $('#email').val();
+    $('#reset').prop("disabled", true);
+    $('#status').html("<span style=\"color:yellow\">Requesting to the server..</span>");
     // console.log(email);
     if (validateEmail(email)) {
         document.cookie = "Status=Reset";
