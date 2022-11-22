@@ -62,14 +62,18 @@ Router.post('/user/reset', async (req, res) => {
     const email = req.body.email
     console.log(email)
     await connect()
-    let username = await userSchema.findOne(
-      { email: { $eq: email } },
-      { username: 1 }
-    )
-    username = username.username
-    user.reset_otp(req, res, email, username)
-    // send flags
-    res.send('200')
+    // checks if account exisits or not
+    userSchema.findOne({ email: { $eq: email } }, { username: 1 }, (err, data) => {
+      if (err) res.json(err)
+
+      if (data != null) {
+        let username = data.username
+        user.reset_otp(req, res, email, username)
+        res.send('200')
+      } else {
+        res.send('300')
+      }
+    })
   } else {
     res.send('400')
   }
@@ -86,7 +90,7 @@ Router.post('/user/reset-password', async (req, res) => {
     const otp = req.body.otp
     // console.log(otp);
     // console.log(email);
-    const exsist = await reset_otp.exists({ email: { $eq: email }, otp })
+    const exsist = await reset_otp.exists({ email: { $eq: email }, otp: { $eq: otp } });
     console.log(exsist)
     if (exsist) {
       res.send('200')
@@ -116,21 +120,26 @@ Router.post('/user/reset-password-ok', async (req, res) => {
 
         const filter = { email: { $eq: email } }
         const update = { $set: { password: hash } }
-        userSchema.findOneAndUpdate(filter, update, async (err, result) => {
+        userSchema.findOneAndUpdate(filter, update, async (err, data) => {
           if (err) {
             res.json('404')
           } else {
+
             const exsist = await reset_otp.deleteOne({
               email: { $eq: email },
-              otp
+              otp: { $eq: otp }
             })
+
+            console.log(data);
             console.log(exsist)
+
             if (exsist) {
               res.clearCookie('Status')
               res.send('200')
             } else {
               res.send('404')
             }
+
           }
         })
       })

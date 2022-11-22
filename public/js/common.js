@@ -100,7 +100,7 @@ ScrollReveal().reveal($(".home-footer"), { delay: 600, origin: 'bottom', distanc
 const options = {
     bottom: '64px', // default: '32px'
     right: 'unset', // default: '32px'
-    right: '32px', // default: 'unset'
+    right: '52px', // default: 'unset'
     time: '0.5s', // default: '0.3s'
     mixColor: '#eeeeee', // default: '#fff'
     backgroundColor: '#ffffff',  // default: '#fff'
