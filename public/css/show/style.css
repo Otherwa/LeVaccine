@@ -703,7 +703,7 @@
   border-radius: 0.5rem;
   align-items: flex-start;
   background-color: rgb(228, 28, 28);
-  
+
 
 }
 
@@ -2396,6 +2396,10 @@ h2 .myFont {
   filter: invert(1) !important;
   /* mix-blend-mode: difference; */
   isolation: isolate;
+}
+
+.darkmode--activated .preload {
+  background-color: black;
 }
 
 #scroll-progress {
