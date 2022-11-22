@@ -23,26 +23,42 @@ $('#reset').on('click', () => {
       type: 'POST',
       data: { email: email },
       success: function (res) {
-        // console.log(res)
+        console.log(res)
+        // 6 seconds reset
+        setTimeout(() => {
+          $('#reset').prop('disabled', false)
+        }, 6000);
+
+        $('#reset').prop('disabled', true)
+
         if (res == '200') {
-          $('#status').html("Check Your Mail");
+          $('#status').html("Check Your Mail 🗿");
           $('.email').hide();
           $('.otp').show();
           $('#reset').hide();
           $('#verify').show();
-          $('#reset').attr('disabled', 'disabled');
-        } else {
+
+        }
+        if (res == '300') {
+          $('#status').html("<span style=\"color:red\">Are you Sure Your Account Exsist 🤨 ?</span>");
+        }
+        if (res == '400') {
           $('#status').html("<span style=\"color:red\">Somethings Wrong</span>");
         }
+
       }
     })
   } else {
     $('#status').html("<span style=\"color:red\">Somethings Wrong</span>");
+    setTimeout(() => {
+      $('#reset').prop('disabled', false)
+    }, 6000);
+
   }
 });
 
 let show_pass_reset = false
-$('#password-reset').attr('disabled', 'disabled')
+$('#password-reset').prop('disabled', true)
 // passchange if otp user matches
 $('#verify').on('click', () => {
   const email = $('#email').val()
@@ -86,7 +102,7 @@ $('#pass1').on('input', () => {
     }
   } else {
     console.log('same')
-    $('#status').html('<span style="color:green">Bread🍞👍 </span>')
+    $('#status').html('<span style="color:green">Bread🍞👍</span>')
     $('#password-reset').prop('disabled', false)
   }
 })
@@ -102,7 +118,7 @@ $('#pass2').on('input', () => {
     }
   } else {
     console.log('same')
-    $('#status').html('<span style="color:green">Bread🍞👍 </span>')
+    $('#status').html('<span style="color:green">Bread🍞👍</span>')
     $('#password-reset').prop('disabled', false)
   }
 })
