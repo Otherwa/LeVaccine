@@ -6,3 +6,7 @@ $(window).scroll(function () {
         jQuery('#ideate').animate({ right: '550px !important' });
     }
 })
+
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('https://prod.spline.design/7nwrTT1yrOeOgahM/scene.splinecode');
