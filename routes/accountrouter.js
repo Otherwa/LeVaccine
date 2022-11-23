@@ -161,7 +161,6 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
 
   await connect()
   const count = await userSchema.count()
-
   const cookie = req.cookies.jwt
   // get req user
   console.log(req.user)

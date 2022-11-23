@@ -33,7 +33,7 @@ const transporter = Nodemailer.createTransport({
 })
 
 // send signup email
-function sendSignupEmail (email) {
+function sendSignupEmail(email) {
   const mailOptions = {
     from: 'levaccine69@gmail.com',
     to: email,
@@ -58,7 +58,7 @@ function sendSignupEmail (email) {
   })
 }
 
-function generateOTP () {
+function generateOTP() {
   // Declare a digits variable
   // which stores all digits
   const digits = '0123456789'
@@ -71,7 +71,7 @@ function generateOTP () {
 
 // user reset password
 // send signup email
-function user_reset (email, username, otp) {
+function user_reset(email, username, otp) {
   const mailOptions = {
     from: 'levaccine69@gmail.com',
     to: email,
@@ -99,7 +99,7 @@ function user_reset (email, username, otp) {
   })
 }
 // mail service for subscription
-function sendmail (email) {
+function sendmail(email) {
   const mailOptions = {
     from: 'levaccine69@gmail.com',
     to: email,
@@ -118,7 +118,7 @@ function sendmail (email) {
 }
 
 // home page
-async function sendnews () {
+async function sendnews() {
   const data = fetch(
     'https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=550660667a8646b08d2de09b578f1aa6'
   )
@@ -136,7 +136,7 @@ async function sendnews () {
 
 // covid counter
 // home page
-async function covid () {
+async function covid() {
   const options = {
     method: 'GET',
     headers: {
@@ -162,7 +162,7 @@ async function covid () {
 }
 
 // news education
-function sendedunews () {
+function sendedunews() {
   const data = fetch(
     'https://newsapi.org/v2/everything?q=medical&pageSize=3&sortBy=publishedAt&language=en&apiKey=550660667a8646b08d2de09b578f1aa6'
   )
@@ -180,7 +180,7 @@ function sendedunews () {
 
 // midleware functions
 // middleware auth function verify and set a web token
-function auth (req, res, next) {
+async function auth(req, res, next) {
   const cookie = req.cookies.jwt
   console.log(cookie)
   if (cookie != undefined) {
@@ -199,7 +199,7 @@ function auth (req, res, next) {
   }
 }
 
-function isauthvalid (req, res, next) {
+function isauthvalid(req, res, next) {
   const cookie = req.cookies.jwt
   console.log(cookie)
   if (cookie != undefined) {
@@ -219,7 +219,7 @@ function isauthvalid (req, res, next) {
   }
 }
 
-function isauth (req, res, next) {
+function isauth(req, res, next) {
   const cookie = req.cookies.jwt
   // console.log(cookie)
   if (cookie != undefined) {
@@ -239,7 +239,7 @@ function isauth (req, res, next) {
 }
 
 // get live data on refresh and cookie saved in cookie for each sesion
-async function livedata (req, res, next) {
+async function livedata(req, res, next) {
   await connect()
   // add user to req
   req.user = await userSchema.findOne({ email: req.user.email })

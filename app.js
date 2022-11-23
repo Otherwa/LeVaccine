@@ -55,7 +55,7 @@ app.set('view engine', 'ejs')
 //css js etc flies
 app.use(express.static('public'))
 
-//no cache session cookie issue
+//no cache session cookie issue more loade time 
 app.use(nocache());
 
 // compression for fast loads
