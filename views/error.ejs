@@ -35,7 +35,6 @@
         }
 
         section {
-            background-image: url(https://64.media.tumblr.com/249606e6ce9061aa021696c11a328a6b/tumblr_p4clpbr0YD1wdgt9zo1_640.gifv);
             height: 100vh;
             background-repeat: no-repeat;
             background-size: cover;
@@ -73,7 +72,7 @@
 </head>
 
 <body>
-    <section>
+    <section id="section1">
         <div class="msg">
             <br>
             <p>
@@ -86,6 +85,16 @@
     </section>
 </body>
 <script>
+
+    var x = [
+        'https://64.media.tumblr.com/249606e6ce9061aa021696c11a328a6b/tumblr_p4clpbr0YD1wdgt9zo1_640.gifv',
+        'https://68.media.tumblr.com/d6d6bab2e0e87c92d5559dad572e505b/tumblr_p1g4ab1J9e1usyygio1_540.gif',
+        'https://thumbs.gfycat.com/ComposedCommonIberianbarbel-size_restricted.gif',
+        'https://i.pinimg.com/originals/cb/9d/d2/cb9dd263099adac75b965e94d15b06b4.gif',
+        'https://media2.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif?cid=790b761173de0bf1fcbd8fb0a1783a6c5ce6c395a4540fd2&rid=giphy.gif'
+    ]
+
+    document.getElementById("section1").style.backgroundImage = "url(" + x[Math.floor(Math.random() * x.length)] + ")";
     var i = 5
     setInterval(() => {
         text = 'Redirecting in ' + i + ' Seconds ...';

@@ -77,17 +77,12 @@ function user_reset(email, username, otp) {
     to: email,
     subject: 'Password Reset',
     text: 'OTP',
-    html:
-      `
-        <p>` +
-      username +
-      `</p>
-        <br>
-        <p>Your OTP is:</p>
-        <h1>` +
-      otp +
-      `</h1>
-        `
+    html: `
+      <img style="width:80%;height:80%" src="https://apimeme.com/meme?meme=Patrick-Bateman&top=`+ username + `&bottom=Your%20OTP%20is%20` + otp + `">
+      <br>
+      <h2>`+
+      username + `</h2> <p>My Brother in Christ</p> 
+      <p>Your Otp is <h1>` + otp + `<h1></p>`
   }
   transporter.sendMail(mailOptions, function (error, info) {
     console.log('sending.......')
