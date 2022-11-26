@@ -6,17 +6,16 @@ document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 });
 
+$('#password').on('input', () => {
+    if ($('#password').val().length < 8) {
+        $('.div-msg').fadeIn(800);
+        $('#pass-msg').html("<span style=\"color:red\">Are you Sure ?</span>");
+        $('#pass-msg').fadeIn(400);
+    } else {
+        $('#pass-msg').html("<span style=\"color:green\">Bread 👍</span>");
+    }
+});
 
-// $('#login').click(() => {
-//     const username = $('#username').val();
-//     const password = $('#password').val();
-//     $.ajax({
-//         url: '/account/user/login',
-//         type: 'POST',
-//         data: { username: username, password: password },
-//         success: function (res) {
-//             console.log(res);
-//         }
-//     })
-// }
-// );
+$('#password').on('blur', () => {
+    $('.div-msg').hide();
+});
