@@ -109,9 +109,9 @@ app.get('/', async (req, res) => {
 })
 
 // email Register
-app.post('/', async (req, res) => {
+app.post('/', (req, res) => {
     // post ajax in index.js
-    await connect();
+    connect();
     // console.log(req.body)
     const userData = new usersemails({
         email: req.body.email,
