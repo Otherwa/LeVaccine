@@ -1,7 +1,6 @@
 ###
 
-POST https://crazy-pinafore-deer.cyclic.app/api/emails  HTTP/1.1
-
+POST https://crazy-pinafore-deer.cyclic.app/api/emails  
 content-type: application/json
 
 {
