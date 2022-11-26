@@ -3,7 +3,7 @@ import { FromIniInit } from "@aws-sdk/credential-provider-ini";
 import { FromProcessInit } from "@aws-sdk/credential-provider-process";
 import { FromSSOInit } from "@aws-sdk/credential-provider-sso";
 import { FromTokenFileInit } from "@aws-sdk/credential-provider-web-identity";
-import { Credentials, MemoizedProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentity, MemoizedProvider } from "@aws-sdk/types";
 export declare type DefaultProviderInit = FromIniInit &
   RemoteProviderInit &
   FromProcessInit &
@@ -11,4 +11,4 @@ export declare type DefaultProviderInit = FromIniInit &
   FromTokenFileInit;
 export declare const defaultProvider: (
   init?: DefaultProviderInit
-) => MemoizedProvider<Credentials>;
+) => MemoizedProvider<AwsCredentialIdentity>;

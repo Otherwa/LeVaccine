@@ -1,6 +1,6 @@
 import { SSOClient } from "@aws-sdk/client-sso";
 import { SourceProfileInit } from "@aws-sdk/shared-ini-file-loader";
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 export interface SsoCredentialsParameters {
   ssoStartUrl: string;
   ssoSession?: string;
@@ -13,4 +13,4 @@ export interface FromSSOInit extends SourceProfileInit {
 }
 export declare const fromSSO: (
   init?: FromSSOInit & Partial<SsoCredentialsParameters>
-) => CredentialProvider;
+) => AwsCredentialIdentityProvider;

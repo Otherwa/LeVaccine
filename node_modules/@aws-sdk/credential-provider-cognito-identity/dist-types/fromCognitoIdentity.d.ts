@@ -1,6 +1,6 @@
-import { Credentials, Provider } from "@aws-sdk/types";
+import { AwsCredentialIdentity, Provider } from "@aws-sdk/types";
 import { CognitoProviderParameters } from "./CognitoProviderParameters";
-export interface CognitoIdentityCredentials extends Credentials {
+export interface CognitoIdentityCredentials extends AwsCredentialIdentity {
     /**
      * The Cognito ID returned by the last call to AWS.CognitoIdentity.getOpenIdToken().
      */

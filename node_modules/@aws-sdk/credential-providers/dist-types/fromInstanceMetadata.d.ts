@@ -1,5 +1,5 @@
 import { RemoteProviderConfig as _RemoteProviderInit } from "@aws-sdk/credential-provider-imds";
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 /**
  * Creates a credential provider function that reads from the EC2 instance metadata service.
  *
@@ -19,4 +19,4 @@ import { CredentialProvider } from "@aws-sdk/types";
  * });
  * ```
  */
-export declare const fromInstanceMetadata: (init?: _RemoteProviderInit | undefined) => CredentialProvider;
+export declare const fromInstanceMetadata: (init?: _RemoteProviderInit | undefined) => AwsCredentialIdentityProvider;

@@ -1,5 +1,5 @@
 import {
-  Credentials,
+  AwsCredentialIdentity,
   EventSigner,
   EventSigningArguments,
   FormattedEvent,
@@ -16,7 +16,7 @@ import {
 export interface SignatureV4Init {
   service: string;
   region: string | Provider<string>;
-  credentials: Credentials | Provider<Credentials>;
+  credentials: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
   sha256?: HashConstructor;
   uriEscapePath?: boolean;
   applyChecksum?: boolean;

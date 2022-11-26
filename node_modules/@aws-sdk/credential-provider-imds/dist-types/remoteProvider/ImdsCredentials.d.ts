@@ -1,4 +1,4 @@
-import { Credentials } from "@aws-sdk/types";
+import { AwsCredentialIdentity } from "@aws-sdk/types";
 export interface ImdsCredentials {
     AccessKeyId: string;
     SecretAccessKey: string;
@@ -6,4 +6,4 @@ export interface ImdsCredentials {
     Expiration: string;
 }
 export declare const isImdsCredentials: (arg: any) => arg is ImdsCredentials;
-export declare const fromImdsCredentials: (creds: ImdsCredentials) => Credentials;
+export declare const fromImdsCredentials: (creds: ImdsCredentials) => AwsCredentialIdentity;

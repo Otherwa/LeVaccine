@@ -1,4 +1,4 @@
-import { Credentials, Profile } from "@aws-sdk/types";
+import { AwsCredentialIdentity, Profile } from "@aws-sdk/types";
 import { FromIniInit } from "./fromIni";
 export interface WebIdentityProfile extends Profile {
     web_identity_token_file: string;
@@ -6,4 +6,4 @@ export interface WebIdentityProfile extends Profile {
     role_session_name?: string;
 }
 export declare const isWebIdentityProfile: (arg: any) => arg is WebIdentityProfile;
-export declare const resolveWebIdentityCredentials: (profile: WebIdentityProfile, options: FromIniInit) => Promise<Credentials>;
+export declare const resolveWebIdentityCredentials: (profile: WebIdentityProfile, options: FromIniInit) => Promise<AwsCredentialIdentity>;

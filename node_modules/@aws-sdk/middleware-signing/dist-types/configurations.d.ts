@@ -1,10 +1,10 @@
 import { SignatureV4CryptoInit, SignatureV4Init } from "@aws-sdk/signature-v4";
-import { AuthScheme, Credentials, HashConstructor, Logger, MemoizedProvider, Provider, RegionInfoProvider, RequestSigner } from "@aws-sdk/types";
+import { AuthScheme, AwsCredentialIdentity, HashConstructor, Logger, MemoizedProvider, Provider, RegionInfoProvider, RequestSigner } from "@aws-sdk/types";
 export interface AwsAuthInputConfig {
     /**
      * The credentials used to sign requests.
      */
-    credentials?: Credentials | Provider<Credentials>;
+    credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
     /**
      * The signer to use when signing requests.
      */
@@ -33,7 +33,7 @@ export interface SigV4AuthInputConfig {
     /**
      * The credentials used to sign requests.
      */
-    credentials?: Credentials | Provider<Credentials>;
+    credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
     /**
      * The signer to use when signing requests.
      */
@@ -48,7 +48,7 @@ export interface SigV4AuthInputConfig {
     systemClockOffset?: number;
 }
 interface PreviouslyResolved {
-    credentialDefaultProvider: (input: any) => MemoizedProvider<Credentials>;
+    credentialDefaultProvider: (input: any) => MemoizedProvider<AwsCredentialIdentity>;
     region: string | Provider<string>;
     regionInfoProvider?: RegionInfoProvider;
     signingName?: string;
@@ -59,7 +59,7 @@ interface PreviouslyResolved {
     useDualstackEndpoint: Provider<boolean>;
 }
 interface SigV4PreviouslyResolved {
-    credentialDefaultProvider: (input: any) => MemoizedProvider<Credentials>;
+    credentialDefaultProvider: (input: any) => MemoizedProvider<AwsCredentialIdentity>;
     region: string | Provider<string>;
     signingName: string;
     sha256: HashConstructor;
@@ -71,7 +71,7 @@ export interface AwsAuthResolvedConfig {
      * This provider MAY memoize the loaded credentials for certain period.
      * See {@link MemoizedProvider} for more information.
      */
-    credentials: MemoizedProvider<Credentials>;
+    credentials: MemoizedProvider<AwsCredentialIdentity>;
     /**
      * Resolved value for input config {@link AwsAuthInputConfig.signer}
      */

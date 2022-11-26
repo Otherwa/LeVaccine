@@ -1,4 +1,4 @@
-import { Credentials } from "@aws-sdk/types";
+import { AwsCredentialIdentity } from "@aws-sdk/types";
 import { FromSSOInit, SsoCredentialsParameters } from "./fromSSO";
 export declare const resolveSSOCredentials: ({
   ssoStartUrl,
@@ -8,4 +8,4 @@ export declare const resolveSSOCredentials: ({
   ssoRoleName,
   ssoClient,
   profile,
-}: FromSSOInit & SsoCredentialsParameters) => Promise<Credentials>;
+}: FromSSOInit & SsoCredentialsParameters) => Promise<AwsCredentialIdentity>;

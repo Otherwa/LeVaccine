@@ -1,5 +1,9 @@
 import { AssumeRoleCommandInput, STSClientConfig } from "@aws-sdk/client-sts";
-import { CredentialProvider, Credentials, Pluggable } from "@aws-sdk/types";
+import {
+  AwsCredentialIdentity,
+  AwsCredentialIdentityProvider,
+  Pluggable,
+} from "@aws-sdk/types";
 export interface FromTemporaryCredentialsOptions {
   params: Pick<
     AssumeRoleCommandInput,
@@ -7,11 +11,11 @@ export interface FromTemporaryCredentialsOptions {
   > & {
     RoleSessionName?: string;
   };
-  masterCredentials?: Credentials | CredentialProvider;
+  masterCredentials?: AwsCredentialIdentity | AwsCredentialIdentityProvider;
   clientConfig?: STSClientConfig;
   clientPlugins?: Pluggable<any, any>[];
   mfaCodeProvider?: (mfaSerial: string) => Promise<string>;
 }
 export declare const fromTemporaryCredentials: (
   options: FromTemporaryCredentialsOptions
-) => CredentialProvider;
+) => AwsCredentialIdentityProvider;

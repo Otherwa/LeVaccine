@@ -1,4 +1,4 @@
-import { Credentials, EventSigner, EventSigningArguments, FormattedEvent, HashConstructor, HttpRequest, Provider, RequestPresigner, RequestPresigningArguments, RequestSigner, RequestSigningArguments, SigningArguments, StringSigner } from "@aws-sdk/types";
+import { AwsCredentialIdentity, EventSigner, EventSigningArguments, FormattedEvent, HashConstructor, HttpRequest, Provider, RequestPresigner, RequestPresigningArguments, RequestSigner, RequestSigningArguments, SigningArguments, StringSigner } from "@aws-sdk/types";
 export interface SignatureV4Init {
     /**
      * The service signing name.
@@ -13,7 +13,7 @@ export interface SignatureV4Init {
      * The credentials with which the request should be signed or a function
      * that returns a promise that will be resolved with credentials.
      */
-    credentials: Credentials | Provider<Credentials>;
+    credentials: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
     /**
      * A constructor function for a hash object that will calculate SHA-256 HMAC
      * checksums.

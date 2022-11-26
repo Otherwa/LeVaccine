@@ -55,8 +55,10 @@ export declare const getRuntimeConfig: (
   tls?: boolean | undefined;
   retryStrategy?: import("@aws-sdk/types").RetryStrategy | undefined;
   credentials?:
-    | import("@aws-sdk/types").Credentials
-    | import("@aws-sdk/types").Provider<import("@aws-sdk/types").Credentials>
+    | import("@aws-sdk/types").AwsCredentialIdentity
+    | import("@aws-sdk/types").Provider<
+        import("@aws-sdk/types").AwsCredentialIdentity
+      >
     | undefined;
   signer?:
     | import("@aws-sdk/types").RequestSigner

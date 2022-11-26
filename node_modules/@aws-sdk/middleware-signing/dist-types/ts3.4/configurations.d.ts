@@ -1,7 +1,7 @@
 import { SignatureV4CryptoInit, SignatureV4Init } from "@aws-sdk/signature-v4";
 import {
   AuthScheme,
-  Credentials,
+  AwsCredentialIdentity,
   HashConstructor,
   Logger,
   MemoizedProvider,
@@ -10,7 +10,7 @@ import {
   RequestSigner,
 } from "@aws-sdk/types";
 export interface AwsAuthInputConfig {
-  credentials?: Credentials | Provider<Credentials>;
+  credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
   signer?:
     | RequestSigner
     | ((authScheme?: AuthScheme) => Promise<RequestSigner>);
@@ -22,7 +22,7 @@ export interface AwsAuthInputConfig {
   ) => RequestSigner;
 }
 export interface SigV4AuthInputConfig {
-  credentials?: Credentials | Provider<Credentials>;
+  credentials?: AwsCredentialIdentity | Provider<AwsCredentialIdentity>;
   signer?:
     | RequestSigner
     | ((authScheme?: AuthScheme) => Promise<RequestSigner>);
@@ -30,7 +30,9 @@ export interface SigV4AuthInputConfig {
   systemClockOffset?: number;
 }
 interface PreviouslyResolved {
-  credentialDefaultProvider: (input: any) => MemoizedProvider<Credentials>;
+  credentialDefaultProvider: (
+    input: any
+  ) => MemoizedProvider<AwsCredentialIdentity>;
   region: string | Provider<string>;
   regionInfoProvider?: RegionInfoProvider;
   signingName?: string;
@@ -41,14 +43,16 @@ interface PreviouslyResolved {
   useDualstackEndpoint: Provider<boolean>;
 }
 interface SigV4PreviouslyResolved {
-  credentialDefaultProvider: (input: any) => MemoizedProvider<Credentials>;
+  credentialDefaultProvider: (
+    input: any
+  ) => MemoizedProvider<AwsCredentialIdentity>;
   region: string | Provider<string>;
   signingName: string;
   sha256: HashConstructor;
   logger?: Logger;
 }
 export interface AwsAuthResolvedConfig {
-  credentials: MemoizedProvider<Credentials>;
+  credentials: MemoizedProvider<AwsCredentialIdentity>;
   signer: (authScheme?: AuthScheme) => Promise<RequestSigner>;
   signingEscapePath: boolean;
   systemClockOffset: number;
