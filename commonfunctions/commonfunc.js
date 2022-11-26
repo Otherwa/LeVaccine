@@ -35,7 +35,7 @@ const transporter = Nodemailer.createTransport({
 // send signup email
 function sendSignupEmail(email) {
   const mailOptions = {
-    from: 'levaccine69@gmail.com',
+    from: process.env.EMAIL,
     to: email,
     subject: 'Thanks For Registering',
     text: 'Thanks For Registering',
@@ -73,7 +73,7 @@ function generateOTP() {
 // send signup email
 function user_reset(email, username, otp) {
   const mailOptions = {
-    from: 'levaccine69@gmail.com',
+    from: process.env.EMAIL,
     to: email,
     subject: 'Password Reset',
     text: 'OTP',
@@ -96,7 +96,7 @@ function user_reset(email, username, otp) {
 // mail service for subscription
 function sendmail(email) {
   const mailOptions = {
-    from: 'levaccine69@gmail.com',
+    from: process.env.EMAIL,
     to: email,
     subject: 'Thanks For Subscribing to us',
     text: 'Thanks For Subscribing to us',

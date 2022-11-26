@@ -48,7 +48,7 @@ Router.post('/user/login', async (req, res) => {
 })
 
 // reset password
-Router.get('/user/reset', async (req, res) => {
+Router.get('/user/reset', (req, res) => {
   // user reset
   res.render('account/user/user-reset')
 })
