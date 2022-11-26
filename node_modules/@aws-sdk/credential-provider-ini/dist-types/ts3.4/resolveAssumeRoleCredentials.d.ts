@@ -13,4 +13,4 @@ export declare const resolveAssumeRoleCredentials: (
   profiles: ParsedIniData,
   options: FromIniInit,
   visitedProfiles?: Record<string, true>
-) => Promise<import("@aws-sdk/types").Credentials>;
+) => Promise<import("@aws-sdk/types").AwsCredentialIdentity>;

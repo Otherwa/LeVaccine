@@ -1,4 +1,4 @@
-import { Credentials, HashConstructor } from "@aws-sdk/types";
+import { AwsCredentialIdentity, HashConstructor } from "@aws-sdk/types";
 export declare const createScope: (
   shortDate: string,
   region: string,
@@ -6,7 +6,7 @@ export declare const createScope: (
 ) => string;
 export declare const getSigningKey: (
   sha256Constructor: HashConstructor,
-  credentials: Credentials,
+  credentials: AwsCredentialIdentity,
   shortDate: string,
   region: string,
   service: string

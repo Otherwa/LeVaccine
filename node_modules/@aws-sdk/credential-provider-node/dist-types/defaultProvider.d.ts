@@ -3,7 +3,7 @@ import { FromIniInit } from "@aws-sdk/credential-provider-ini";
 import { FromProcessInit } from "@aws-sdk/credential-provider-process";
 import { FromSSOInit } from "@aws-sdk/credential-provider-sso";
 import { FromTokenFileInit } from "@aws-sdk/credential-provider-web-identity";
-import { Credentials, MemoizedProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentity, MemoizedProvider } from "@aws-sdk/types";
 export declare type DefaultProviderInit = FromIniInit & RemoteProviderInit & FromProcessInit & FromSSOInit & FromTokenFileInit;
 /**
  * Creates a credential provider that will attempt to find credentials from the
@@ -39,4 +39,4 @@ export declare type DefaultProviderInit = FromIniInit & RemoteProviderInit & Fro
  * @see {@link fromContainerMetadata}   The function used to source credentials from the
  *                              ECS Container Metadata Service
  */
-export declare const defaultProvider: (init?: DefaultProviderInit) => MemoizedProvider<Credentials>;
+export declare const defaultProvider: (init?: DefaultProviderInit) => MemoizedProvider<AwsCredentialIdentity>;

@@ -1,4 +1,4 @@
-import { Credentials, Profile } from "@aws-sdk/types";
+import { AwsCredentialIdentity, Profile } from "@aws-sdk/types";
 export interface StaticCredsProfile extends Profile {
   aws_access_key_id: string;
   aws_secret_access_key: string;
@@ -9,4 +9,4 @@ export declare const isStaticCredsProfile: (
 ) => arg is StaticCredsProfile;
 export declare const resolveStaticCredentials: (
   profile: StaticCredsProfile
-) => Promise<Credentials>;
+) => Promise<AwsCredentialIdentity>;

@@ -1,4 +1,4 @@
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 import { FromWebTokenInit } from "./fromWebToken";
 export interface FromTokenFileInit extends Partial<Omit<FromWebTokenInit, "webIdentityToken">> {
     /**
@@ -9,4 +9,4 @@ export interface FromTokenFileInit extends Partial<Omit<FromWebTokenInit, "webId
 /**
  * Represents OIDC credentials from a file on disk.
  */
-export declare const fromTokenFile: (init?: FromTokenFileInit) => CredentialProvider;
+export declare const fromTokenFile: (init?: FromTokenFileInit) => AwsCredentialIdentityProvider;

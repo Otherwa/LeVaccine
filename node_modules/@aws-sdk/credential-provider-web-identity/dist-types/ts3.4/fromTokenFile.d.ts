@@ -1,4 +1,4 @@
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 import { FromWebTokenInit } from "./fromWebToken";
 export interface FromTokenFileInit
   extends Partial<
@@ -8,4 +8,4 @@ export interface FromTokenFileInit
 }
 export declare const fromTokenFile: (
   init?: FromTokenFileInit
-) => CredentialProvider;
+) => AwsCredentialIdentityProvider;

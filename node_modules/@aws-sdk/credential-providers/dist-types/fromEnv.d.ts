@@ -1,4 +1,4 @@
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 /**
  * Create a credential provider that reads credentials from the following environment variables:
  *
@@ -23,4 +23,4 @@ import { CredentialProvider } from "@aws-sdk/types";
  * });
  * ```
  */
-export declare const fromEnv: () => CredentialProvider;
+export declare const fromEnv: () => AwsCredentialIdentityProvider;

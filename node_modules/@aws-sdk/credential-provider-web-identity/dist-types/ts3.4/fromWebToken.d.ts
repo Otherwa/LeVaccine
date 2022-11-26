@@ -1,4 +1,7 @@
-import { CredentialProvider, Credentials } from "@aws-sdk/types";
+import {
+  AwsCredentialIdentity,
+  AwsCredentialIdentityProvider,
+} from "@aws-sdk/types";
 export interface AssumeRoleWithWebIdentityParams {
   RoleArn: string;
   RoleSessionName: string;
@@ -24,9 +27,9 @@ export interface FromWebTokenInit
   roleSessionName?: string;
   roleAssumerWithWebIdentity?: (
     params: AssumeRoleWithWebIdentityParams
-  ) => Promise<Credentials>;
+  ) => Promise<AwsCredentialIdentity>;
 }
 export declare const fromWebToken: (
   init: FromWebTokenInit
-) => CredentialProvider;
+) => AwsCredentialIdentityProvider;
 export {};

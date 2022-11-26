@@ -1,8 +1,8 @@
-import { Token, TokenProvider } from "@aws-sdk/types";
+import { TokenIdentity, TokenIdentityProvider } from "@aws-sdk/types";
 export interface FromStaticInit {
-    token?: Token;
+    token?: TokenIdentity;
 }
 /**
  * Creates a token provider that will read from static token.
  */
-export declare const fromStatic: ({ token }: FromStaticInit) => TokenProvider;
+export declare const fromStatic: ({ token }: FromStaticInit) => TokenIdentityProvider;

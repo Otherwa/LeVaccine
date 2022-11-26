@@ -1,4 +1,4 @@
-import { CredentialProvider, Credentials } from "@aws-sdk/types";
+import { AwsCredentialIdentity, AwsCredentialIdentityProvider } from "@aws-sdk/types";
 export interface AssumeRoleWithWebIdentityParams {
     /**
      * <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
@@ -120,7 +120,7 @@ export interface FromWebTokenInit extends Omit<LowerCaseKey<AssumeRoleWithWebIde
      *
      * @param params input parameter of sts:AssumeRoleWithWebIdentity API.
      */
-    roleAssumerWithWebIdentity?: (params: AssumeRoleWithWebIdentityParams) => Promise<Credentials>;
+    roleAssumerWithWebIdentity?: (params: AssumeRoleWithWebIdentityParams) => Promise<AwsCredentialIdentity>;
 }
-export declare const fromWebToken: (init: FromWebTokenInit) => CredentialProvider;
+export declare const fromWebToken: (init: FromWebTokenInit) => AwsCredentialIdentityProvider;
 export {};

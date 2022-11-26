@@ -1,4 +1,4 @@
-import { CredentialProvider } from "@aws-sdk/types";
+import { AwsCredentialIdentityProvider } from "@aws-sdk/types";
 /**
  * Resolve the `credential_source` entry from the profile, and return the
  * credential providers respectively. No memoization is needed for the
@@ -6,4 +6,4 @@ import { CredentialProvider } from "@aws-sdk/types";
  * fromIni() provider. The source credential needs to be refreshed every time
  * fromIni() is called.
  */
-export declare const resolveCredentialSource: (credentialSource: string, profileName: string) => CredentialProvider;
+export declare const resolveCredentialSource: (credentialSource: string, profileName: string) => AwsCredentialIdentityProvider;

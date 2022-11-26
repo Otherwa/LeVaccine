@@ -3,15 +3,15 @@ import {
   AwsAuthResolvedConfig,
 } from "@aws-sdk/middleware-signing";
 import {
+  AwsCredentialIdentity,
   Client,
-  Credentials,
   HashConstructor,
   Provider,
   RegionInfoProvider,
 } from "@aws-sdk/types";
 export interface StsAuthInputConfig extends AwsAuthInputConfig {}
 interface PreviouslyResolved {
-  credentialDefaultProvider: (input: any) => Provider<Credentials>;
+  credentialDefaultProvider: (input: any) => Provider<AwsCredentialIdentity>;
   region: string | Provider<string>;
   regionInfoProvider?: RegionInfoProvider;
   signingName?: string;

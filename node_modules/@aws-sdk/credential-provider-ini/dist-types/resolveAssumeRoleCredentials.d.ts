@@ -29,4 +29,4 @@ export interface AssumeRoleParams {
     TokenCode?: string;
 }
 export declare const isAssumeRoleProfile: (arg: any) => boolean;
-export declare const resolveAssumeRoleCredentials: (profileName: string, profiles: ParsedIniData, options: FromIniInit, visitedProfiles?: Record<string, true>) => Promise<import("@aws-sdk/types").Credentials>;
+export declare const resolveAssumeRoleCredentials: (profileName: string, profiles: ParsedIniData, options: FromIniInit, visitedProfiles?: Record<string, true>) => Promise<import("@aws-sdk/types").AwsCredentialIdentity>;

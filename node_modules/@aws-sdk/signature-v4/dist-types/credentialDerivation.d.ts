@@ -1,4 +1,4 @@
-import { Credentials, HashConstructor } from "@aws-sdk/types";
+import { AwsCredentialIdentity, HashConstructor } from "@aws-sdk/types";
 /**
  * Create a string describing the scope of credentials used to sign a request.
  *
@@ -19,7 +19,7 @@ export declare const createScope: (shortDate: string, region: string, service: s
  * @param service           The service to which the signed request is being
  *                          sent.
  */
-export declare const getSigningKey: (sha256Constructor: HashConstructor, credentials: Credentials, shortDate: string, region: string, service: string) => Promise<Uint8Array>;
+export declare const getSigningKey: (sha256Constructor: HashConstructor, credentials: AwsCredentialIdentity, shortDate: string, region: string, service: string) => Promise<Uint8Array>;
 /**
  * @internal
  */
