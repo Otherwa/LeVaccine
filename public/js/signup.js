@@ -7,7 +7,7 @@ document.addEventListener('contextmenu', function (e) {
 });
 
 $('#username').on('input', () => {
-    if ($('#password').val() != '' || $('#password').val().length > 5) {
+    if ($('#username').val() != '') {
         $('#signup').prop('disabled', false);
     } else {
         $('#signup').prop('disabled', true);
@@ -15,7 +15,7 @@ $('#username').on('input', () => {
 });
 
 $('#email').on('input', () => {
-    if ($('#email').val() != '' || $('#email').val().length > 5) {
+    if ($('#email').val() != '') {
         $('#signup').prop('disabled', false);
     } else {
         $('#signup').prop('disabled', true);
