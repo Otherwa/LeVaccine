@@ -2,6 +2,18 @@
 /* sign up */
 /* contains all user syling */
 /* hover underline */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat+Alternates&display=swap');
+
+
+.header1 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 5.1rem;
+    color: var(--ppink);
+    position: relative;
+    right: 29%;
+    top: 3rem;
+}
+
 .on-hover {
     transition: 0.3s;
 }
@@ -123,23 +135,40 @@ div.content {
     #graph {
         width: 15rem;
     }
+
+    .header1 {
+        font-size: 3.1rem;
+        right: 0%;
+    }
+
+    .form {
+        width: 18rem;
+    }
+}
+
+#foot {
+    max-width: 9rem;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    top: 4rem;
 }
 
 /* login contet */
 .height-set {
     height: 100vh !important;
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.div-msg {
-    display: none;
-    width: 96%;
-}
 
-#pass-msg {
+#pass-msg,
+#username-msg,
+#email-msg {
+    width: 96%;
     display: none;
     position: relative;
     color: red;

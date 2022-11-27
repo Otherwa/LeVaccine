@@ -25,35 +25,34 @@
         <div class="home-container">
             <%- include('../../partial/log-res-nav') %>
                 <br>
+                <h1 class="header1">User</h1>
                 <br>
                 <div class="height-set">
                     <form class="form" action="/account/user/signup" method="POST">
                         <div class="head">
-                            <h1>Sign-up User</h1>
+                            <h1>Sign-up</h1>
                             <p class="myFont">
-
                             </p>
                         </div>
+                        <p id="username-msg"></p>
                         <div class="input-contain">
                             <input type="text" name="username" id="username" autocomplete="on">
                             <label class="placeholder-text" for="username" id="placeholder-fname">
                                 <div class="text">Username</div>
                             </label>
                         </div>
-
+                        <p id="email-msg"></p>
                         <div class="input-contain">
                             <input type="email" name="email" id="email" autocomplete="on">
                             <label class="placeholder-text" for="email" id="placeholder-fname">
                                 <div class="text">Email</div>
                             </label>
                         </div>
-                        <div class="div-msg">
-                            <p id="pass-msg"></p>
-                        </div>
+                        <p id="pass-msg"></p>
                         <div class="input-contain">
                             <input type="password" name="password" id="password" autocomplete="on">
                             <label class="placeholder-text" for="password" id="placeholder-fname">
-                                <div class="text">Passwordl</div>
+                                <div class="text">Password</div>
                             </label>
                         </div>
                         <div class="div">

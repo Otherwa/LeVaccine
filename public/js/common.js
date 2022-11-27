@@ -41,6 +41,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 // user login
 ScrollReveal().reveal($(".form h1"), { delay: 800, origin: 'right', distance: '25px' }, config1);
+ScrollReveal().reveal($(".header1"), { delay: 900, origin: 'top', distance: '25px' }, config1);
 ScrollReveal().reveal($(".form "), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".div"), { delay: 800, origin: 'top', distance: '25px' }, config1);
 

@@ -15,7 +15,3 @@ $('#password').on('input', () => {
         $('#pass-msg').html("<span style=\"color:green\">Bread 👍</span>");
     }
 });
-
-$('#password').on('blur', () => {
-    $('.div-msg').hide();
-});
