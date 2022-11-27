@@ -68,10 +68,16 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
           password: hash
         })
 
-        user.save()
-        sendSignupEmail(email)
-        req.flash('message1', 'Login 🛐')
-        res.redirect('/account/user')
+        user.save((err, result) => {
+          if (err) {
+            console.log(err)
+          } else {
+            // console.log(result)
+            sendSignupEmail(email)
+            req.flash('message1', 'Login 🛐')
+            res.redirect('/account/user')
+          }
+        })
       })
     })
   }

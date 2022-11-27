@@ -230,6 +230,7 @@ Router.get('/user/verify/:email', async (req, res) => {
     }
   }
 })
+
 // producer
 Router.get('/producer', (req, res) => {
   res.render('account/producer')
@@ -237,7 +238,17 @@ Router.get('/producer', (req, res) => {
 
 // provider
 Router.get('/provider', (req, res) => {
-  res.render('account/provider')
+  res.render('account/provider', {
+    err: req.flash('message'),
+    err1: req.flash('message1')
+  })
+})
+
+
+// provider sign up
+// account creation
+Router.get('/provider/signup', (req, res) => {
+  res.status(200).render('account/provider/signup')
 })
 
 // error custom
