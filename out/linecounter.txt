@@ -1,0 +1,273 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-12-03 19:10:09
+count workspace : c:\Users\athar\OneDrive\Desktop\Dev\Drug_Lord_v1.3
+total files : 245
+total code lines : 22978
+total comment lines : 4180
+total blank lines : 1211
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |           .ejs|           1849|              3|            127|    8.0|
+   |           .xml|             71|              1|              4|   0.31|
+   |            .js|           2099|            283|            355|    9.1|
+   |           .txt|             26|              1|              0|   0.11|
+   |            .md|             61|             14|             30|   0.27|
+   |           .svg|             16|              0|              0|  0.070|
+   |           .css|           3150|             54|            651|     14|
+   |          .json|          11560|              0|              1|     50|
+   |               |              6|              1|              0|  0.026|
+   |          .toml|             10|              0|              3|  0.044|
+   |           .yml|             60|              1|              8|   0.26|
+   |           .pdf|           4070|           3822|             32|     18|
+   -------------------------------------------------------------------------
+.deepsource.toml, code is 10, comment is 0, blank is 3.
+.env, code is 4, comment is 1, blank is 0.
+.github\workflows\codeql.yml, code is 46, comment is 1, blank is 6.
+.github\workflows\greetings.yml, code is 14, comment is 0, blank is 2.
+.gitignore, code is 2, comment is 0, blank is 0.
+app.js, code is 184, comment is 51, blank is 45.
+app.test.js, code is 24, comment is 0, blank is 4.
+commonfunctions\commonfunc.js, code is 231, comment is 31, blank is 29.
+config\connect.js, code is 13, comment is 0, blank is 3.
+config\connection_config.js, code is 289, comment is 0, blank is 65.
+cypress.config.js, code is 8, comment is 1, blank is 1.
+cypress\e2e\spec.cy.js, code is 7, comment is 1, blank is 0.
+cypress\fixtures\example.json, code is 5, comment is 0, blank is 0.
+cypress\support\commands.js, code is 0, comment is 25, blank is 0.
+cypress\support\e2e.js, code is 1, comment is 17, blank is 2.
+cypress\videos\spec.cy.js.mp4, it is a binary file.
+doc\A004_DRUG_LORDV.1.10.pdf, it is a binary file.
+doc\A004_DRUG_LORDV.1.10_compressed.pdf, it is a binary file.
+doc\Drugsv1.10.docx, it is a binary file.
+doc\Drugsv1.10.pdf, code is 3989, comment is 2915, blank is 31.
+doc\index.docx, it is a binary file.
+doc\index.pdf, code is 81, comment is 907, blank is 1.
+doc\Sequencediagram.docx, it is a binary file.
+doc\Vaccine Management System.pptx, it is a binary file.
+docimgs\10.jpeg, it is a binary file.
+docimgs\11.jpeg, it is a binary file.
+docimgs\188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png, it is a binary file.
+docimgs\1jpeg.jpeg, it is a binary file.
+docimgs\2.jpeg, it is a binary file.
+docimgs\2d8.jpg, it is a binary file.
+docimgs\3.jpeg, it is a binary file.
+docimgs\4.jpeg, it is a binary file.
+docimgs\5.jpeg, it is a binary file.
+docimgs\6.jpeg, it is a binary file.
+docimgs\7.jpeg, it is a binary file.
+docimgs\8.jpeg, it is a binary file.
+docimgs\9.jpeg, it is a binary file.
+docimgs\a5MeAzG_700b.jpg, it is a binary file.
+docimgs\activity.png, it is a binary file.
+docimgs\Allura - Exploring on Laptop.png, it is a binary file.
+docimgs\Arch.png, it is a binary file.
+docimgs\chart1.png, it is a binary file.
+docimgs\chart2.png, it is a binary file.
+docimgs\chart3.png, it is a binary file.
+docimgs\class.png, it is a binary file.
+docimgs\class_notations.png, it is a binary file.
+docimgs\Cool Kids - Feedback.png, it is a binary file.
+docimgs\DFD0.png, it is a binary file.
+docimgs\DFD1.png, it is a binary file.
+docimgs\DFD2.png, it is a binary file.
+docimgs\dfinfo.png, it is a binary file.
+docimgs\DRUG LORD v1.10\add vaccine.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Book appointment.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Book order.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Book orders.png, it is a binary file.
+docimgs\DRUG LORD v1.10\change appointment.png, it is a binary file.
+docimgs\DRUG LORD v1.10\checkout.png, it is a binary file.
+docimgs\DRUG LORD v1.10\delete appointment.png, it is a binary file.
+docimgs\DRUG LORD v1.10\delete orders.png, it is a binary file.
+docimgs\DRUG LORD v1.10\delete vaccine.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 10.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 11.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 12.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 13.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 7.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 8.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Group 9.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Login.png, it is a binary file.
+docimgs\DRUG LORD v1.10\order status.png, it is a binary file.
+docimgs\DRUG LORD v1.10\original.jpg, it is a binary file.
+docimgs\DRUG LORD v1.10\Process orders.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Register.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Set appointments.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Update Details.png, it is a binary file.
+docimgs\DRUG LORD v1.10\update vaccine.png, it is a binary file.
+docimgs\DRUG LORD v1.10\Vaccine Stocks.png, it is a binary file.
+docimgs\Gantt Chart.png, it is a binary file.
+docimgs\Lifesavers - Bust.png, it is a binary file.
+docimgs\Lifesavers - Family.png, it is a binary file.
+docimgs\Lifesavers - Online.png, it is a binary file.
+docimgs\Lifesavers - Videocall (1).png, it is a binary file.
+docimgs\Lifesavers - Videocall.png, it is a binary file.
+docimgs\Lifesavers - Waiting.png, it is a binary file.
+docimgs\Notation.jpg, it is a binary file.
+docimgs\question1.png, it is a binary file.
+docimgs\question2.png, it is a binary file.
+docimgs\question3.png, it is a binary file.
+docimgs\response.png, it is a binary file.
+docimgs\Screenshot 2022-10-20 212446.png, it is a binary file.
+docimgs\sequence noataitons.png, it is a binary file.
+docimgs\squence symbolpng.png, it is a binary file.
+docimgs\stateactivity.png, it is a binary file.
+docimgs\statesymbol.png, it is a binary file.
+docimgs\UML2.png, it is a binary file.
+docimgs\Usecase.png, it is a binary file.
+LEARN.md, code is 2, comment is 1, blank is 0.
+LICENSE.md, code is 23, comment is 0, blank is 6.
+models\apis.js, code is 15, comment is 1, blank is 3.
+models\edurls.js, code is 19, comment is 1, blank is 3.
+models\methods\provider_meth.js, code is 86, comment is 13, blank is 9.
+models\methods\user_meth.js, code is 86, comment is 13, blank is 9.
+models\providerschema.js, code is 28, comment is 2, blank is 3.
+models\reset_pass.js, code is 18, comment is 1, blank is 3.
+models\useremails.js, code is 17, comment is 1, blank is 3.
+models\userschema.js, code is 24, comment is 2, blank is 3.
+package-lock.json, code is 11507, comment is 0, blank is 1.
+package.json, code is 48, comment is 0, blank is 0.
+public\css\about\about.css, code is 97, comment is 0, blank is 22.
+public\css\api\api.css, code is 6, comment is 0, blank is 0.
+public\css\contact\contact.css, code is 0, comment is 0, blank is 0.
+public\css\covidcounter\covidcounter.css, code is 80, comment is 3, blank is 17.
+public\css\education\education.css, code is 65, comment is 4, blank is 19.
+public\css\index\home.css, code is 35, comment is 4, blank is 13.
+public\css\services\services.css, code is 25, comment is 0, blank is 5.
+public\css\show\DOTMATRI.TTF, it is a binary file.
+public\css\show\style.css, code is 2033, comment is 11, blank is 397.
+public\css\whichlogin\provider.css, code is 228, comment is 8, blank is 51.
+public\css\whichlogin\reset.css, code is 196, comment is 8, blank is 40.
+public\css\whichlogin\user.css, code is 228, comment is 8, blank is 49.
+public\css\whichlogin\whichlogin.css, code is 157, comment is 8, blank is 38.
+public\imgs\Content\7749151dafdd896a722078a70c666b35.gif, it is a binary file.
+public\imgs\Content\7K8I.gif, it is a binary file.
+public\imgs\Content\98265888efe0ae9fa4764f7fa7c2e761.gif, it is a binary file.
+public\imgs\Content\account.gif, it is a binary file.
+public\imgs\Content\blob-scene-haikei.png, it is a binary file.
+public\imgs\Content\empty.png, it is a binary file.
+public\imgs\Content\geek.png, it is a binary file.
+public\imgs\Content\GIF.gif, it is a binary file.
+public\imgs\Content\group.png, it is a binary file.
+public\imgs\Content\image_processing20190908-29978-ui9u8t.gif, it is a binary file.
+public\imgs\Content\isometric-warehouse.gif, it is a binary file.
+public\imgs\Content\layered-waves-haikei.svg, code is 1, comment is 0, blank is 0.
+public\imgs\Content\ProfessorOak.webp, it is a binary file.
+public\imgs\Content\profile-user.png, it is a binary file.
+public\imgs\PNG\affection.png, it is a binary file.
+public\imgs\PNG\Alzeimer.png, it is a binary file.
+public\imgs\PNG\Amnesia.png, it is a binary file.
+public\imgs\PNG\Anorexia.png, it is a binary file.
+public\imgs\PNG\Autism.png, it is a binary file.
+public\imgs\PNG\Axiety.png, it is a binary file.
+public\imgs\PNG\Bipolar.png, it is a binary file.
+public\imgs\PNG\Book.png, it is a binary file.
+public\imgs\PNG\Brain Head.png, it is a binary file.
+public\imgs\PNG\Brain.png, it is a binary file.
+public\imgs\PNG\Cannabis.png, it is a binary file.
+public\imgs\PNG\Chronic fatigue.png, it is a binary file.
+public\imgs\PNG\Clinic.png, it is a binary file.
+public\imgs\PNG\Consultation Session.png, it is a binary file.
+public\imgs\PNG\Counseling.png, it is a binary file.
+public\imgs\PNG\Creativity.png, it is a binary file.
+public\imgs\PNG\Crying.png, it is a binary file.
+public\imgs\PNG\Depression.png, it is a binary file.
+public\imgs\PNG\Drugs Addict.png, it is a binary file.
+public\imgs\PNG\Emotion.png, it is a binary file.
+public\imgs\PNG\Emotional meter.png, it is a binary file.
+public\imgs\PNG\Female Psycolog.png, it is a binary file.
+public\imgs\PNG\Healthy.png, it is a binary file.
+public\imgs\PNG\Hug.png, it is a binary file.
+public\imgs\PNG\Hypersex.png, it is a binary file.
+public\imgs\PNG\Insecure.png, it is a binary file.
+public\imgs\PNG\Insomnia.png, it is a binary file.
+public\imgs\PNG\Intrusive thought.png, it is a binary file.
+public\imgs\PNG\Male Psycolog.png, it is a binary file.
+public\imgs\PNG\Medicine.png, it is a binary file.
+public\imgs\PNG\Meditation activity.png, it is a binary file.
+public\imgs\PNG\Mental breakdown.png, it is a binary file.
+public\imgs\PNG\Mental health care.png, it is a binary file.
+public\imgs\PNG\Mental Health.png, it is a binary file.
+public\imgs\PNG\Mood.png, it is a binary file.
+public\imgs\PNG\Music Healing.png, it is a binary file.
+public\imgs\PNG\Negative Thinking.png, it is a binary file.
+public\imgs\PNG\Observation.png, it is a binary file.
+public\imgs\PNG\Phobia.png, it is a binary file.
+public\imgs\PNG\Positive thinking.png, it is a binary file.
+public\imgs\PNG\Problem Solving.png, it is a binary file.
+public\imgs\PNG\Psycologist.png, it is a binary file.
+public\imgs\PNG\Psycology.png, it is a binary file.
+public\imgs\PNG\Relax.png, it is a binary file.
+public\imgs\PNG\Selfcare.png, it is a binary file.
+public\imgs\PNG\Sleep.png, it is a binary file.
+public\imgs\PNG\Stress.png, it is a binary file.
+public\imgs\PNG\Support System.png, it is a binary file.
+public\imgs\PNG\Theraphy.png, it is a binary file.
+public\imgs\PNG\Yin yang.png, it is a binary file.
+public\imgs\profile-icons-pack-hand-drawn-style.zip, it is a binary file.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (1).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (10).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (11).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (12).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (13).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (14).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (15).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (2).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (3).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (4).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (5).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (6).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (7).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (8).svg, code is 1, comment is 0, blank is 0.
+public\imgs\SVG\DrawKit Vector Illustrations COVID-19 & Vaccinations (9).svg, code is 1, comment is 0, blank is 0.
+public\js\about.js, code is 11, comment is 0, blank is 1.
+public\js\api.js, code is 22, comment is 5, blank is 3.
+public\js\butter\butter.js, code is 95, comment is 2, blank is 21.
+public\js\common.js, code is 102, comment is 25, blank is 13.
+public\js\contact.js, code is 0, comment is 0, blank is 0.
+public\js\counter.js, code is 178, comment is 20, blank is 30.
+public\js\education.js, code is 0, comment is 0, blank is 4.
+public\js\index.js, code is 8, comment is 1, blank is 3.
+public\js\login.js, code is 12, comment is 0, blank is 1.
+public\js\provider.js, code is 3, comment is 0, blank is 0.
+public\js\reset.js, code is 128, comment is 8, blank is 12.
+public\js\reset1.js, code is 128, comment is 8, blank is 12.
+public\js\services.js, code is 0, comment is 0, blank is 0.
+public\js\signup.js, code is 35, comment is 2, blank is 9.
+public\js\user.js, code is 3, comment is 0, blank is 0.
+public\js\userdash.js, code is 22, comment is 1, blank is 6.
+public\js\whichlogin.js, code is 0, comment is 0, blank is 0.
+README.md, code is 21, comment is 13, blank is 18.
+robots.txt, code is 26, comment is 1, blank is 0.
+routes\accountrouter.js, code is 302, comment is 51, blank is 55.
+SECURITY.md, code is 15, comment is 0, blank is 6.
+sitemap.xml, code is 71, comment is 1, blank is 4.
+views\about.ejs, code is 127, comment is 0, blank is 4.
+views\account\producer.ejs, code is 55, comment is 0, blank is 6.
+views\account\provider.ejs, code is 88, comment is 0, blank is 4.
+views\account\provider\dashboard.ejs, code is 86, comment is 0, blank is 5.
+views\account\provider\provider-reset.ejs, code is 101, comment is 0, blank is 7.
+views\account\provider\signup.ejs, code is 88, comment is 0, blank is 6.
+views\account\user.ejs, code is 91, comment is 0, blank is 4.
+views\account\user\dashboard.ejs, code is 86, comment is 0, blank is 5.
+views\account\user\signup.ejs, code is 88, comment is 0, blank is 6.
+views\account\user\user-reset.ejs, code is 100, comment is 0, blank is 7.
+views\account\whichlogin.ejs, code is 84, comment is 0, blank is 7.
+views\apis\api.ejs, code is 57, comment is 1, blank is 6.
+views\contact.ejs, code is 57, comment is 0, blank is 7.
+views\counter.ejs, code is 142, comment is 0, blank is 7.
+views\education.ejs, code is 112, comment is 0, blank is 3.
+views\error.ejs, code is 91, comment is 2, blank is 16.
+views\index.ejs, code is 126, comment is 0, blank is 12.
+views\partial\foot.ejs, code is 23, comment is 0, blank is 0.
+views\partial\log-res-nav.ejs, code is 38, comment is 0, blank is 2.
+views\partial\nav.ejs, code is 58, comment is 0, blank is 2.
+views\partial\provider-nav.ejs, code is 7, comment is 0, blank is 0.
+views\partial\user-nav.ejs, code is 6, comment is 0, blank is 0.
+views\services.ejs, code is 138, comment is 0, blank is 11.
+===============================================================================
