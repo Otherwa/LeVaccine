@@ -28,6 +28,10 @@ userSchema.prototype.login = async (req, res, username, password) => {
           expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2 hrs login
           httpOnly: true
         })
+        res.cookie('type', "User", {
+          expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2 hrs login
+          httpOnly: true
+        })
         // console.log(res.cookie);
         res.redirect('/account/user/dash')
       } else {

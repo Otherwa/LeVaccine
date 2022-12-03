@@ -126,6 +126,14 @@ div.content {
 
 }
 
+@media screen and (max-width: 578px) {
+
+    .header1 {
+        font-size: 3.1rem;
+        right: 0%;
+    }
+}
+
 @media screen and (max-width: 400px) {
     .sidebar a {
         text-align: center;
@@ -134,11 +142,6 @@ div.content {
 
     #graph {
         width: 15rem;
-    }
-
-    .header1 {
-        font-size: 3.1rem;
-        right: 0%;
     }
 
     .form {

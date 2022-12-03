@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // indexes username and email
 
 const schema = mongoose.Schema;
-const userSchema = new schema({
+const providerschema = new schema({
     username: {
         type: String,
         required: true
@@ -20,9 +20,13 @@ const userSchema = new schema({
     verified: {
         type: Boolean,
         default: false
+    },
+    authentication: {
+        type: Boolean,
+        default: false
     }
 }, {
     versionKey: false //here
 })
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('provider', providerschema)
