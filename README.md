@@ -16,7 +16,7 @@
 [![Top contributors](https://images.repography.com/25186133/Otherwa/Drug_Lord_v1.10/top-contributors/c19ba0ac2e63f676e5ae33dbe2c7f11b_table.svg)](https://github.com/Otherwa/Drug_Lord_v1.10/graphs/contributors)
 
 # Stats
-
+```
 count time : 2022-12-03 19:10:09
 count workspace : c:\Users\athar\OneDrive\Desktop\Dev\Drug_Lord_v1.3
 total files : 245
@@ -41,6 +41,7 @@ total blank lines : 1211
    |           .pdf|           4070|           3822|             32|     18|
    -------------------------------------------------------------------------
 
+```
 
 Le-Vaccine a Centralized Vaccine Solution for people living in this challenging geographical and political area. Different regions are grouped based on a similarity in climatic and geographical conditions. There are the northern provinces of Malaysia that have relatively cooler weather. These include Johor, Terengganu, Kelantan, Perlis and Kedah
 
