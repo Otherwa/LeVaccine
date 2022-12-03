@@ -15,6 +15,7 @@ const fetch = require('node-fetch') // for fetch api
 
 // models
 const userSchema = require('../models/userschema')
+const providerSchema = require('../models/providerschema')
 
 // passport authentication for username and password by passport
 
@@ -32,7 +33,33 @@ const transporter = Nodemailer.createTransport({
   }
 })
 
-// send signup email
+// send signup email for provider
+function sendSignupEmail1(email) {
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Thanks For Registering',
+    text: 'Thanks For Registering',
+    html:
+      `
+        <a href="https://drug-lord.onrender.com/account/provider/verify/` +
+      email +
+      '">' +
+      `Verify</a>
+        <br>
+        <p>Please Continue to Verify Your Account</p>
+        `
+  }
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
+
+// send signup email for user
 function sendSignupEmail(email) {
   var mailOptions = {
     from: process.env.EMAIL,
@@ -94,6 +121,32 @@ function user_reset(email, username, otp) {
     }
   })
 }
+
+// provider reset
+function provider_reset(email, username, otp) {
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Password Reset',
+    text: 'OTP',
+    html: `
+      <img style="width:80%;height:80%" src="https://apimeme.com/meme?meme=Patrick-Bateman&top=`+ username + `&bottom=Your%20OTP%20is%20` + otp + `">
+      <br>
+      <h2>`+
+      username + `</h2> <p>My Brother in Christ</p> 
+      <p>Your Otp is <h1>` + otp + `<h1></p>`
+  }
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    console.log('sending.......')
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
+
 // mail service for subscription
 function sendmail(email) {
   var mailOptions = {
@@ -178,16 +231,21 @@ function sendedunews() {
 // middleware auth function verify and set a web token
 async function auth(req, res, next) {
   const cookie = req.cookies.jwt
+  const type = req.cookies.type
   console.log(cookie)
   if (cookie != undefined) {
     jwt.verify(
       cookie,
       require('../config/connection_config').jwt_token,
       (err, result) => {
-        if (err) return res.json({ msg: err.message })
-        req.user = result
-        console.log(req.user + ' auth')
-        next()
+        if (type == "User") {
+          if (err) return res.json({ msg: err.message })
+          req.user = result
+          console.log(req.user + ' auth')
+          next()
+        } else {
+          return res.redirect('/account')
+        }
       }
     )
   } else {
@@ -215,24 +273,7 @@ function isauthvalid(req, res, next) {
   }
 }
 
-function isauth(req, res, next) {
-  const cookie = req.cookies.jwt
-  // console.log(cookie)
-  if (cookie != undefined) {
-    jwt.verify(
-      cookie,
-      require('../config/connection_config').jwt_token,
-      (err, result) => {
-        if (err) return res.json({ msg: err.message })
-        req.user = result
-        console.log(req.user + 'is authentication')
-        return res.redirect('/account/user/dash')
-      }
-    )
-  } else {
-    next()
-  }
-}
+
 
 // get live data on refresh and cookie saved in cookie for each sesion
 async function livedata(req, res, next) {
@@ -243,7 +284,47 @@ async function livedata(req, res, next) {
   // console.log("req user");
   if (req.user == null) {
     res.clearCookie('jwt')
-    res.redirect('/account/user/')
+    res.redirect('/account/user')
+  } else {
+    next()
+  }
+}
+
+async function pauth(req, res, next) {
+  const cookie = req.cookies.jwt
+  const type = req.cookies.type
+  console.log(cookie)
+  if (cookie != undefined) {
+    jwt.verify(
+      cookie,
+      require('../config/connection_config').jwt_token,
+      (err, result) => {
+        if (type == "Provider") {
+          if (err) return res.json({ msg: err.message })
+          req.user = result
+          console.log(req.user + ' auth')
+          next()
+        }
+        else {
+          return res.redirect('/account')
+        }
+      }
+    )
+  } else {
+    return res.redirect('/account/provider')
+  }
+}
+
+// get live data on refresh and cookie saved in cookie for each sesion
+async function livepdata(req, res, next) {
+  await connect()
+  // add user to req
+  req.user = await providerSchema.findOne({ email: req.user.email })
+  // console.log(req.user.email);
+  // console.log("req user");
+  if (req.user == null) {
+    res.clearCookie('jwt')
+    res.redirect('/account/provider')
   } else {
     next()
   }
@@ -257,11 +338,14 @@ module.exports = {
   sendnews,
   sendedunews,
   sendSignupEmail,
+  sendSignupEmail1,
   jwt,
   bcrypt,
   auth,
-  isauth,
   isauthvalid,
   livedata,
-  user_reset
+  pauth,
+  livepdata,
+  user_reset,
+  provider_reset
 }

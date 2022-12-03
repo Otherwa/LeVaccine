@@ -35,7 +35,7 @@ const port = process.env.PORT || 8080;
 // start init
 const app = express();
 
-console.log("Started......")
+
 // session
 app.use(session({
     secret: require('./config/connection_config').pass,
@@ -266,6 +266,8 @@ app.get("*", (req, res) => {
     res.render('error')
 })
 
-app.listen(port);
+app.listen(port, () => {
+    console.log("Started on port " + port)
+});
 
 module.exports = app
