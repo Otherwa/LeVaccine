@@ -15,6 +15,31 @@
 ## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Top contributors
 [![Top contributors](https://images.repography.com/25186133/Otherwa/Drug_Lord_v1.10/top-contributors/c19ba0ac2e63f676e5ae33dbe2c7f11b_table.svg)](https://github.com/Otherwa/Drug_Lord_v1.10/graphs/contributors)
 
+# Stats
+
+count time : 2022-12-03 19:10:09
+count workspace : c:\Users\athar\OneDrive\Desktop\Dev\Drug_Lord_v1.3
+total files : 245
+total code lines : 22978
+total comment lines : 4180
+total blank lines : 1211
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |           .ejs|           1849|              3|            127|    8.0|
+   |           .xml|             71|              1|              4|   0.31|
+   |            .js|           2099|            283|            355|    9.1|
+   |           .txt|             26|              1|              0|   0.11|
+   |            .md|             61|             14|             30|   0.27|
+   |           .svg|             16|              0|              0|  0.070|
+   |           .css|           3150|             54|            651|     14|
+   |          .json|          11560|              0|              1|     50|
+   |               |              6|              1|              0|  0.026|
+   |          .toml|             10|              0|              3|  0.044|
+   |           .yml|             60|              1|              8|   0.26|
+   |           .pdf|           4070|           3822|             32|     18|
+   -------------------------------------------------------------------------
 
 
 Le-Vaccine a Centralized Vaccine Solution for people living in this challenging geographical and political area. Different regions are grouped based on a similarity in climatic and geographical conditions. There are the northern provinces of Malaysia that have relatively cooler weather. These include Johor, Terengganu, Kelantan, Perlis and Kedah
