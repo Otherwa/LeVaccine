@@ -174,6 +174,8 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
 })
 
 // all users actions preformable
+
+// book appointmets
 Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
   await connect()
