@@ -173,6 +173,20 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
   })
 })
 
+// all users actions preformable
+Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
+
+  await connect()
+  const count = await userSchema.count()
+  const cookie = req.cookies.jwt
+
+  res.render('account/user/bookslot', {
+    data: req.user,
+    token: cookie,
+    count
+  });
+})
+
 Router.get('/user/logout', async (req, res) => {
   user.logout(req, res)
 })
