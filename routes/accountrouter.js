@@ -173,6 +173,22 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
   })
 })
 
+// all users actions preformable
+
+// book appointmets
+Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
+
+  await connect()
+  const count = await userSchema.count()
+  const cookie = req.cookies.jwt
+
+  res.render('account/user/bookappo', {
+    data: req.user,
+    token: cookie,
+    count
+  });
+})
+
 Router.get('/user/logout', async (req, res) => {
   user.logout(req, res)
 })
@@ -360,6 +376,32 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
     count
   })
 })
+
+Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
+  // token set or
+
+  await connect()
+  const count = await providerSchema.count()
+  const cookie = req.cookies.jwt
+  // get req user
+  console.log(req.user)
+  res.render('account/provider/setappo', {
+    data: req.user,
+    token: cookie,
+    count
+  })
+})
+
+Router.post('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
+  // token set or
+
+  await connect()
+  const count = await providerSchema.count()
+  const cookie = req.cookies.jwt
+  // get req user
+  console.log(req.user)
+})
+
 
 Router.get('/provider/logout', async (req, res) => {
   provider.logout(req, res)

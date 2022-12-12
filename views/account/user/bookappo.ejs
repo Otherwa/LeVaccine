@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard</title>
+    <title>Book Appointments</title>
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
@@ -24,12 +24,17 @@
                 <%= count %>
             </p>
         </span>
-        <%- include('../../partial/provider-nav')%>
+        <%- include('../../partial/user-nav')%>
             <div class="container-home">
                 <br>
                 <br>
                 <br>
                 <div class="con">
+                    <cite>
+                        Book-Appointments
+                    </cite>
+                    <br>
+                    <br>
                     <p>
                         <%= data.username%>
                     </p>
@@ -57,10 +62,6 @@
                                 <p style="color:red">Not Veified</p>
                                 <% } %>
                     </span>
-                    <br>
-                </div>
-                <div id="graph">
-                    <canvas id="myChart"></canvas>
                 </div>
                 <br>
                 <%- include('../../partial/foot') %>
