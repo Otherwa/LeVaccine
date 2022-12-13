@@ -3,7 +3,7 @@
 const map = new maplibregl.Map({
     container: 'map',
     style: 'https://maps.geoapify.com/v1/styles/osm-carto/style.json?apiKey=0e4ffb970b8f4957bd7450e8df3b2a49', // stylesheet location
-    center: [-74.5, 40], // starting position [lng, lat]
+    center: [74.5, 19], // starting position [lng, lat]
     zoom: 3 // starting zoom
 });
 
@@ -51,10 +51,15 @@ geolocate.on('geolocate', function (data) {
                 console.log(result);
                 $('#address').val(
                     result.features[0].properties.address_line1 + "," +
-                    result.features[0].properties.address_line2 + ","
-                    + result.features[0].properties.city + ","
-                    + result.features[0].properties.state + ","
-                    + result.features[0].properties.postcode
+                    result.features[0].properties.address_line2)
+                $('#city').val(
+                    result.features[0].properties.city
+                )
+                $('#postcode').val(
+                    result.features[0].properties.postcode
+                )
+                $('#state').val(
+                    result.features[0].properties.state
                 )
             })
             .catch(error => console.log('error', error));

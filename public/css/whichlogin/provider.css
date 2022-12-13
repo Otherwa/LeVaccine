@@ -120,6 +120,15 @@ div.content {
         position: relative;
     }
 
+    .form-con {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .items {
+        width: 100% !important;
+    }
+
     .sidebar a {
         float: left;
     }
@@ -133,6 +142,8 @@ div.content {
     }
 
 }
+
+
 
 @media screen and (max-width: 400px) {
     .sidebar a {
@@ -284,4 +295,13 @@ input:focus+.placeholder-text .text {
     input {
         width: 17rem;
     }
+}
+
+/* provider set appo */
+.form-con {
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
 }

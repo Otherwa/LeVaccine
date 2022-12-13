@@ -1,6 +1,8 @@
 const providerSchema = require('../providerschema')
 const reset_user_pass = require('../reset_pass')
+const appoSchema = require('../apposchema')
 const { connect } = require('../../config/connect')
+
 const {
     bcrypt,
     jwt,
@@ -100,6 +102,43 @@ providerSchema.prototype.reset_otp = async (req, res, email, username) => {
     reset_otp.save()
 
     provider_reset(email, username, key)
+}
+
+// set appontments
+providerSchema.prototype.setappo = async (req, res, check, byid, addr, city, state, postcode, vaccine, time, date) => {
+
+    console.log(check);
+    console.log(byid);
+    console.log(date);
+    if (check == 'true') {
+        await connect()
+        const appo = new appoSchema({
+            byappo: byid,
+            address: addr,
+            city: city,
+            state: state,
+            postcode: postcode,
+            details: {
+                time: time,
+                vaccine: vaccine,
+                date: date
+            },
+        })
+        appo.save((err, result) => {
+            if (err) {
+                console.log(err)
+                req.flash('messagesetappo', 'Fill up the Required Fields N****')
+                res.redirect('/account/provider/dash/setappo')
+            } else {
+                // console.log(result)
+                req.flash('messagesetappo', 'Appontment 200 🛐')
+                res.redirect('/account/provider/dash/setappo')
+            }
+        })
+    } else {
+        req.flash('messagesetappo', 'Get Authorized')
+        res.redirect('/account/provider/dash/setappo')
+    }
 }
 
 module.exports = { providerSchema }
