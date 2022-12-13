@@ -110,6 +110,7 @@ providerSchema.prototype.setappo = async (req, res, check, byid, addr, city, sta
     console.log(check);
     console.log(byid);
     console.log(date);
+    // check if the user is authenticated or not
     if (check == 'true') {
         await connect()
         const appo = new appoSchema({
@@ -124,6 +125,7 @@ providerSchema.prototype.setappo = async (req, res, check, byid, addr, city, sta
                 date: date
             },
         })
+        // check if any require filed is not filled  2 measure
         appo.save((err, result) => {
             if (err) {
                 console.log(err)

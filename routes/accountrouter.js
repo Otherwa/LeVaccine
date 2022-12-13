@@ -381,7 +381,6 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
 
 Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
-
   await connect()
   const count = await providerSchema.count()
   const cookie = req.cookies.jwt
@@ -407,7 +406,6 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
 
 Router.post('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
-
   // console.log(req.body)
   const check = req.body.authentication
   const byid = req.user._id
