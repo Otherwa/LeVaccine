@@ -20,36 +20,85 @@
         <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <div class="height-set" style="height:auto !important">
-                    <form class="form" action="/account/provider/setappo" method="POST">
-                        <!-- <p>
+                    <br>
+                    <div id='map' style='width: 69vw; height: 350px;border-radius: 0.5rem;'></div>
+                    <div class="form-con">
+                        <div class="items">
+                            <form class="form items" action="/account/provider/dash/setappo" method="POST">
+                                <!-- <p>
                             <%= data %>
                         </p> -->
-                        <!-- bridge -->
-                        <br>
-                        <div id='map' style='width: 69vw; height: 350px;border-radius: 0.5rem;'></div>
-                        <input type="hidden" name="authentication" value="<%= data.authentication %>">
-                        <div class="head">
-                            <h1>Set your Appointment</h1>
-                            <p class="myFont">
-                            </p>
-                        </div>
-                        <div class="input-contain">
-                            <input type="text" name="address" id="address" autocomplete="on">
-                            <label class="placeholder-text" for="username" id="placeholder-fname">
-                                <div class="text">Address</div>
-                            </label>
-                        </div>
+                                <!-- bridge -->
+                                <br>
+                                <span class="myFont">
+                                    <%= msg %>
+                                </span>
+                                <input type="hidden" name="authentication" value="<%= data.authentication %>">
+                                <div class="head">
+                                    <h1>Set your Appointment</h1>
+                                    <p class="myFont">
+                                    </p>
+                                </div>
 
-                        <div class="input-contain">
-                            <input type="text" name="forvaccine" id="forvaccine" autocomplete="on">
-                            <label class="placeholder-text" for="username" id="placeholder-fname">
-                                <div class="text">For Vaccine</div>
-                            </label>
+                                <div class="input-contain">
+                                    <input type="text" name="address" id="address" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Address</div>
+                                    </label>
+                                </div>
+
+                                <div class="input-contain">
+                                    <input type="text" name="city" id="city" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">City</div>
+                                    </label>
+                                </div>
+
+                                <div class="input-contain">
+                                    <input type="text" name="state" id="state" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">State</div>
+                                    </label>
+                                </div>
+
+                                <div class="input-contain">
+                                    <input type="text" name="postcode" id="postcode" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">PostCode</div>
+                                    </label>
+                                </div>
+
+                                <div class="input-contain">
+                                    <input type="text" name="forvaccine" id="forvaccine" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">For Vaccine</div>
+                                    </label>
+                                </div>
+                                <div class="input-contain">
+                                    <input type="time" name="time" id="time" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Time</div>
+                                    </label>
+                                </div>
+                                <div class="input-contain">
+                                    <input type="date" name="date" id="date" autocomplete="on">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Date</div>
+                                    </label>
+                                </div>
+                                <div class="div">
+                                    <input id="signup" type="submit" value="Set Appointment">
+                                </div>
+                            </form>
                         </div>
-                        <div class="div">
-                            <input id="signup" type="submit" value="Set Appointment">
+                        <div class="items" style="padding-top: 3rem;width: 42%;">
+                            <% for(var i=0; i<appos.length; i++) {%>
+                                <span>
+                                    <%= appos[i] %>
+                                </span>
+                                <% } %>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <br>
                 <br>

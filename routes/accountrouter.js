@@ -9,7 +9,9 @@ require('dotenv').config()
 // confidental password
 // for password reset for each ip
 
+// for other collections
 const reset_otp = require('../models/reset_pass')
+const appolist = require('../models/apposchema')
 
 const user = new userSchema()
 const provider = new providerSchema()
@@ -383,23 +385,41 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   await connect()
   const count = await providerSchema.count()
   const cookie = req.cookies.jwt
-  // get req user
-  console.log(req.user)
-  res.render('account/provider/setappo', {
-    data: req.user,
-    token: cookie,
-    count
+  console.log(req.user._id)
+  var id = req.user._id
+  id = id.toString()
+  console.log(id)
+  appolist.find({ byappo: id }, function (err, result) {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log(req.user)
+      res.render('account/provider/setappo', {
+        data: req.user,
+        token: cookie,
+        count,
+        appos: result,
+        msg: req.flash('messagesetappo')
+      })
+    }
   })
 })
 
 Router.post('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
 
-  await connect()
-  const count = await providerSchema.count()
-  const cookie = req.cookies.jwt
-  // get req user
-  console.log(req.user)
+  // console.log(req.body)
+  const check = req.body.authentication
+  const byid = req.user._id
+  const addr = req.body.address
+  const city = req.body.city
+  const state = req.body.state
+  const postcode = req.body.postcode
+  const vaccine = req.body.forvaccine
+  const time = req.body.time
+  const date = req.body.date
+
+  provider.setappo(req, res, check, byid, addr, city, state, postcode, vaccine, time, date)
 })
 
 
