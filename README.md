@@ -1,4 +1,5 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/badge/master)](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/overview/master)
+[![Greetings](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/greetings.yml/badge.svg)](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/greetings.yml)
 # Drug_Lord_v1.3
 
 # Stats
