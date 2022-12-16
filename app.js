@@ -53,7 +53,7 @@ app.use(cookie());
 app.set('view engine', 'ejs')
 
 //css js etc flies
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 
 //no cache session cookie issue more loade time 
 app.use(nocache());

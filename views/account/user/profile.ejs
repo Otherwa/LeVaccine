@@ -25,10 +25,35 @@
                     <cite>Profile</cite>
                     <br>
                     <br>
-                    <p>
+                    <!-- <p>
                         <!-- <%= data%> -->
-                    </p>
+                    <!-- </p> -->
                     <br>
+                    <span>
+                        <span>
+                            <%var profile='' ; var adhar='' ; var age='' ; var address='' ; var phone='' ; var city='' ;
+                                var postcode='' ;var region='' ;var gender='' ; %>
+                                <% if(data.detail) { %>
+                                    <% adhar=data.detail.adhar %>
+                                        <% profile=data.detail.photo %>
+                                            <% age=data.detail.age %>
+                                                <% address=data.detail.address %>
+                                                    <% phone=data.detail.phone %>
+                                                        <% city=data.detail.city %>
+                                                            <% region=data.detail.region %>
+                                                                <% gender=data.detail.gender %>
+                                                                    <% postcode=data.detail.postcode %>
+                                                                        <% } %>
+                        </span>
+                        <span>
+                            <% var fname='' ,lname="" ; %>
+                                <% if(data.name) { %>
+                                    <% fname=data.name.firstname %>
+                                        <% lname=data.name.lastname %>
+                                            <% } %>
+                        </span>
+                    </span>
+                    <!-- data bridge -->
                     <span>
                         <% if(data.verified===true ){ %>
                             <p style="color:green">Veified</p>
@@ -36,7 +61,6 @@
                                 <p style="color:red">Not Veified</p>
                                 <% } %>
                     </span>
-                    <br>
                 </div>
                 <div class="profileupdate">
                     <div class="con">
@@ -46,36 +70,39 @@
                     </div>
 
                     <form class="form items" style="width:auto !important;" action="/account/user/dash/profile"
-                        method="POST">
+                        method="POST" enctype="multipart/form-data">
                         <div class="head" style="flex-direction: column;align-items: flex-start;">
                             <h1>Update Or Set Profile</h1>
                             <br>
                             <p class="myFont" style="color:green">
                                 <%= msg %>
                             </p>
+                            <br>
+                            <br>
+                            <p class="myFont" style="color:black">Profile Photo (Please User .jpg files)</p>
                         </div>
 
-                        <p class="myFont">Profile Photo</p>
-                        <div class="first_fields profilepic" style="flex-direction: column !important;">
+                        <div class=" first_fields profilepic" style="flex-direction: column;">
                             <div class="input-contain" style="width: 20rem;">
-                                <img src="" alt=" Profile Photo">
+                                <img src="/uploads/user/<%= profile%>"
+                                    style="width: 7rem;height: auto;border-radius: 4rem;" alt=" Profile Photo">
                             </div>
                             <div class="input-contain">
                                 <input type="file" style="border: none;" name="profilepic" id="profilepic"
-                                    autocomplete="on">
+                                    accept="image/jpg">
                             </div>
                         </div>
 
                         <div class="first_fields">
                             <div class="input-contain">
-                                <input type="text" name="fname" id="fname" autocomplete="on">
+                                <input type="text" name="fname" id="fname" autocomplete="on" value="<%= fname %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">First Name</div>
                                 </label>
                             </div>
 
                             <div class="input-contain">
-                                <input type="text" name="lname" id="lname" autocomplete="on">
+                                <input type="text" name="lname" id="lname" autocomplete="on" value="<%= lname %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Last Name</div>
                                 </label>
@@ -84,14 +111,14 @@
 
                         <div class="first_fields">
                             <div class="input-contain">
-                                <input type="text" name="adhar" id="adhar" autocomplete="on">
+                                <input type="text" name="adhar" id="adhar" autocomplete="on" value="<%= adhar %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Adhar No.</div>
                                 </label>
                             </div>
 
                             <div class="input-contain">
-                                <input type="number" name="age" id="age" autocomplete="on">
+                                <input type="number" name="age" id="age" autocomplete="on" value="<%= age %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Age</div>
                                 </label>
@@ -100,14 +127,14 @@
 
                         <div class="first_fields">
                             <div class="input-contain">
-                                <input type="text" name="address" id="address" autocomplete="on">
+                                <input type="text" name="address" id="address" autocomplete="on" value="<%= address %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Address</div>
                                 </label>
                             </div>
 
                             <div class="input-contain">
-                                <input type="text" name="phone" id="phone" autocomplete="on">
+                                <input type="text" name="phone" id="phone" autocomplete="on" value="<%= phone %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Phone No</div>
                                 </label>
@@ -116,33 +143,39 @@
 
                         <div class="first_fields">
                             <div class="input-contain">
-                                <input type="text" name="city" id="city" autocomplete="on">
+                                <input type="text" name="city" id="city" autocomplete="on" value="<%= city %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">City</div>
                                 </label>
                             </div>
 
                             <div class="input-contain">
-                                <input type="text" name="region" id="region" autocomplete="on">
+                                <input type="text" name="region" id="region" autocomplete="on" value="<%= region %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Region</div>
                                 </label>
                             </div>
                         </div>
                         <div class="first_fields">
+
                             <div class="input-contain">
-                                <select type="select" name="gender" id="gender">
+                                <input type="text" name="postcode" id="postcode" autocomplete="on"
+                                    value="<%= postcode %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">PostCode</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" autocomplete="on" class="gender" value="<%= gender %>" disabled>
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Gender</div>
+                                </label>
+                                <select type="select" name="gender" id="gender" class="gender">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
                                 </select>
-                            </div>
-
-                            <div class="input-contain">
-                                <input type="text" name="postcode" id="postcode" autocomplete="on">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">PostCode</div>
-                                </label>
                             </div>
                         </div>
 

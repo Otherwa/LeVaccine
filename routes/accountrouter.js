@@ -1,13 +1,18 @@
 const express = require('express')
 const Router = express.Router()
+const userRouter = require('./userrouter').Router
 const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
-const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+const { pauth, livepdata, uploadu, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+const fs = require('fs')
 // implemented usermodel added methods in prototype and create a instanceof user
 require('dotenv').config()
 // confidental password
 // for password reset for each ip
+
+// user Router
+Router.use('/user', userRouter)
 
 // for other collections
 const reset_otp = require('../models/reset_pass')
@@ -34,129 +39,11 @@ Router.get('/user/signup', (req, res) => {
   res.status(200).render('account/user/signup')
 })
 
-// if creation successfull
-Router.post('/user/signup', async (req, res) => {
-  const username = req.body.username
-  const email = req.body.email
-  const password = req.body.password
-  await user.signup(req, res, username, email, password)
-})
-
-// if login is successful
-Router.post('/user/login', async (req, res) => {
-  // user login
-  const username = req.body.username
-  const password = req.body.password
-  // to check if login exisit
-  user.login(req, res, username, password)
-})
 
 // reset password
 Router.get('/user/reset', (req, res) => {
   // user reset
   res.render('account/user/user-reset')
-})
-
-// reset password otp sent
-Router.post('/user/reset', async (req, res) => {
-  // user reset
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    const email = req.body.email
-    console.log(email)
-    await connect()
-    // checks if account exisits or not
-    userSchema.findOne({ email: { $eq: email } }, { username: 1 }, (err, data) => {
-      if (err) res.json(err)
-
-      if (data != null) {
-        let username = data.username
-        user.reset_otp(req, res, email, username)
-        res.send('200')
-      } else {
-        res.send('300')
-      }
-    })
-  } else {
-    res.send('400')
-  }
-})
-
-// ajax
-Router.post('/user/reset-password', async (req, res) => {
-  // user reset
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    await connect()
-    const email = req.body.email
-    const otp = req.body.otp
-    // console.log(otp);
-    // console.log(email);
-    const exsist = await reset_otp.exists({ email: { $eq: email }, otp: { $eq: otp } });
-    console.log(exsist)
-    if (exsist) {
-      res.send('200')
-    } else {
-      res.send('404')
-    }
-  } else {
-    res.json({ msg: 'Somethings Wrong' })
-  }
-})
-
-// ajax
-Router.post('/user/reset-password-ok', async (req, res) => {
-  // user reset
-  await connect()
-  const email = req.body.email
-  const password = req.body.password
-  const otp = req.body.otp
-
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    bcrypt.genSalt(10, (err, salt) => {
-      if (err) return next(err)
-      bcrypt.hash(password, salt, function (err, hash) {
-        if (err) return next(err)
-
-        const filter = { email: { $eq: email } }
-        const update = { $set: { password: hash } }
-        userSchema.findOneAndUpdate(filter, update, async (err, data) => {
-          if (err) {
-            res.json('404')
-          } else {
-
-            const exsist = await reset_otp.deleteOne({
-              email: { $eq: email },
-              otp: { $eq: otp }
-            })
-
-            console.log(data);
-            console.log(exsist)
-
-            if (exsist) {
-              res.clearCookie('Status')
-              res.send('200')
-            } else {
-              res.send('404')
-            }
-
-          }
-        })
-      })
-    })
-  }
-})
-
-Router.post('/user/reset', async (req, res) => {
-  // user reset
-  const email = req.body.email
-  console.log(email)
-  user.reset_otp(req, res, email)
-  res.send(200)
 })
 
 // all middleware functions in common
@@ -205,15 +92,7 @@ Router.get('/user/dash/profile', auth, livedata, async (req, res) => {
   });
 })
 
-Router.post('/user/dash/profile', auth, livedata, async (req, res) => {
-
-  await connect()
-  const count = await userSchema.count()
-  const cookie = req.cookies.jwt
-  // console.log(req.body)
-  user.profile(req, res, req.user.email, req.body.profilepic, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.gender, req.body.postcode)
-})
-
+// user logout
 Router.get('/user/logout', async (req, res) => {
   user.logout(req, res)
 })
@@ -245,6 +124,8 @@ Router.get('/user/verify/:email', async (req, res) => {
     }
   }
 })
+
+// ------------------------------------------------------------------
 
 // provider
 Router.get('/provider', (req, res) => {

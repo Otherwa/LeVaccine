@@ -4,6 +4,9 @@ require('dotenv').config()
 // jwt
 const jwt = require('jsonwebtoken')
 
+// mutler
+const multer = require('multer')
+
 // nodemailer
 const htmlcontent = require('../config/connection_config').htmlcontent
 const htmlcontent1 = require('../config/connection_config').htmlcontent1
@@ -21,6 +24,22 @@ const providerSchema = require('../models/providerschema')
 
 const session = require('express-session')
 const bcrypt = require('bcrypt')
+
+
+// image mutler
+// mutler
+
+// save image of user
+const storageu = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/user')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    cb(null, file.fieldname + '-' + uniqueSuffix + ".jpg")
+  }
+})
+const uploadu = multer({ storage: storageu }).single('profilepic')
 
 // email config
 const transporter = Nodemailer.createTransport({
@@ -232,7 +251,7 @@ function sendedunews() {
 async function auth(req, res, next) {
   const cookie = req.cookies.jwt
   const type = req.cookies.type
-  console.log(cookie)
+  // console.log(cookie)
   if (cookie != undefined) {
     jwt.verify(
       cookie,
@@ -347,5 +366,6 @@ module.exports = {
   pauth,
   livepdata,
   user_reset,
-  provider_reset
+  provider_reset,
+  uploadu
 }

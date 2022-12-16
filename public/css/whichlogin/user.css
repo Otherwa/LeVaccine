@@ -126,10 +126,7 @@ div.content {
         position: relative;
     }
 
-    .profileupdate {
-        flex-direction: column;
-        align-items: center;
-    }
+
 
     #map,
     .con {
@@ -153,6 +150,11 @@ div.content {
 @media screen and (max-width: 1025px) {
     .profilepic {
         right: 0;
+    }
+
+    .profileupdate {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -302,8 +304,8 @@ input:focus+.placeholder-text .text {
     flex-wrap: wrap;
 }
 
-#gender {
-    width: 20rem;
+.gender {
+    width: 10rem;
     border-width: medium;
     padding: 0.7rem;
     border-radius: 0.9rem;

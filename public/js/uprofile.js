@@ -14,7 +14,6 @@ const geolocate = new maplibregl.GeolocateControl({
     trackUserLocation: true
 });
 
-
 var flag = 0;
 var marker = null;
 // when a geolocate event occurs.
