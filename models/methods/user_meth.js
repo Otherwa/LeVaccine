@@ -9,6 +9,7 @@ const {
   generateOTP
 } = require('../../commonfunctions/commonfunc')
 // login
+
 userSchema.prototype.login = async (req, res, username, password) => {
   await connect()
 
@@ -69,7 +70,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
         const user = new userSchema({
           username,
           email,
-          password: hash
+          password: hash,
         })
 
         user.save((err, result) => {
@@ -102,4 +103,70 @@ userSchema.prototype.reset_otp = async (req, res, email, username) => {
   user_reset(email, username, key)
 }
 
+
+// update profile
+
+// sign up pass hash
+userSchema.prototype.profile = async (req, res, whichuser, profile, fname, lname, adhar, age, addr, gender, phone, city, region, post) => {
+  await connect()
+  console.log(whichuser)
+  console.log(post)
+
+  // if adhar uploaded
+  if (adhar != null) {
+    userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
+      if (err) { console.log(err) }
+    })
+  }
+
+  // check if image uploaded or not 2 measure
+  if (profile == undefined) {
+    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+      $set: {
+        'name.firstname': fname,
+        'name.lastname': lname,
+        'detail.adhar': adhar,
+        'detail.age': age,
+        'detail.address': addr,
+        'detail.gender': gender,
+        'detail.phone': phone,
+        'detail.city': city,
+        'detail.region': region,
+        'detail.postcode': post
+      }
+    }, (err, result) => {
+      console.log(err)
+      if (err) {
+        console.log(err)
+      } else {
+        req.flash('success', 'profile updated 👍')
+        res.redirect('/account/user/dash/profile')
+      }
+    })
+  } else {
+    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+      $set: {
+        'name.firstname': fname,
+        'name.lastname': lname,
+        'detail.photo': profile,
+        'detail.adhar': adhar,
+        'detail.age': age,
+        'detail.address': addr,
+        'detail.gender': gender,
+        'detail.phone': phone,
+        'detail.city': city,
+        'detail.region': region,
+        'detail.postcode': post
+      }
+    }, (err, result) => {
+      console.log(err)
+      if (err) {
+        console.log(err)
+      } else {
+        req.flash('success', 'profile updated 👍')
+        res.redirect('/account/user/dash/profile')
+      }
+    })
+  }
+}
 module.exports = { userSchema }

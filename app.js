@@ -53,7 +53,7 @@ app.use(cookie());
 app.set('view engine', 'ejs')
 
 //css js etc flies
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 
 //no cache session cookie issue more loade time 
 app.use(nocache());
@@ -250,7 +250,7 @@ app.get('/api/peoples&:api', async (req, res) => {
     // gets an object contain
     // console.log(exsist)
     if (exsist != null) {
-        usersSchema.find({}, { "_id": 0, "username": 1 }, (err, data) => {
+        usersSchema.find({}, { "_id": 0 }, (err, data) => {
             console.log(data)
             res.send(data)
         })

@@ -1,8 +1,66 @@
 const mongoose = require('mongoose');
+const schema = mongoose.Schema;
 
 // indexes username and email
+const name = new schema({
+    firstname: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    lastname: {
+        type: String,
+        default: ' ',
+        required: true
+    }
+})
 
-const schema = mongoose.Schema;
+const details = new schema({
+    adhar: {
+        type: String,
+        default: ' ',
+        required: true
+    }, photo: {
+        type: Buffer,
+        contentType: String,
+    },
+    age: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    address: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    phone: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    city: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    gender: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    region: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+    postcode: {
+        type: String,
+        default: ' ',
+        required: true
+    },
+})
+
 const userSchema = new schema({
     username: {
         type: String,
@@ -17,7 +75,19 @@ const userSchema = new schema({
         type: String,
         required: true
     },
+    name: {
+        type: name,
+        // required: true
+    },
+    detail: {
+        type: details,
+        // required: true
+    },
     verified: {
+        type: Boolean,
+        default: false
+    },
+    personstatus: {
         type: Boolean,
         default: false
     }

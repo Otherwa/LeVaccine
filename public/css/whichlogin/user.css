@@ -35,6 +35,11 @@
     font-family: dot !important;
 }
 
+.profilepic {
+    position: relative;
+    right: 11rem;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -42,6 +47,15 @@
     gap: 2rem;
     width: 20rem;
     align-content: center;
+}
+
+.profileupdate {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
 }
 
 /* user dash */
@@ -112,6 +126,13 @@ div.content {
         position: relative;
     }
 
+
+
+    #map,
+    .con {
+        width: 100% !important;
+    }
+
     .sidebar a {
         float: left;
     }
@@ -126,7 +147,22 @@ div.content {
 
 }
 
+@media screen and (max-width: 1025px) {
+    .profilepic {
+        right: 0;
+    }
+
+    .profileupdate {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @media screen and (max-width: 578px) {
+
+    .profilepic {
+        right: 0;
+    }
 
     .header1 {
         font-size: 3.1rem;
@@ -259,12 +295,30 @@ input:focus+.placeholder-text .text {
     width: 96%;
 }
 
+.first_fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2rem;
+    width: auto;
+    flex-wrap: wrap;
+}
+
+.gender {
+    width: 10rem;
+    border-width: medium;
+    padding: 0.7rem;
+    border-radius: 0.9rem;
+}
+
 #login,
 #signup,
-#reset {
+#reset,
+#profileset {
     transition: 0.3s ease-in-out;
 }
 
+#profileset:hover,
 #signup:hover {
     background-color: var(--pblue);
 }

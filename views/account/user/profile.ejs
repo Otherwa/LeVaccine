@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <meta property="og:title" content="Le-Vaccine" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        data-tag="font" />
+    <link type="image/png" sizes="16x16" rel="icon"
+        href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
+
+    <link rel="stylesheet" href="/css/show/style.css" />
+    <link href="/css/whichlogin/user.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+    <%- include('../../partial/user-nav')%>
+        <div id="butter">
+            <div class="container-home">
+                <br>
+                <div class="container">
+                    <cite>Profile</cite>
+                    <br>
+                    <br>
+                    <!-- <p>
+                        <!-- <%= data%> -->
+                    <!-- </p> -->
+                    <br>
+                    <span>
+                        <span>
+                            <%var profile='' ; var adhar='' ; var age='' ; var address='' ; var phone='' ; var city='' ;
+                                var postcode='' ;var region='' ;var gender='' ; %>
+                                <% if(data.detail) { %>
+                                    <% adhar=data.detail.adhar %>
+                                        <% profile=data.detail.photo %>
+                                            <% age=data.detail.age %>
+                                                <% address=data.detail.address %>
+                                                    <% phone=data.detail.phone %>
+                                                        <% city=data.detail.city %>
+                                                            <% region=data.detail.region %>
+                                                                <% gender=data.detail.gender %>
+                                                                    <% postcode=data.detail.postcode %>
+                                                                        <% } %>
+                        </span>
+                        <span>
+                            <% var fname='' ,lname="" ; %>
+                                <% if(data.name) { %>
+                                    <% fname=data.name.firstname %>
+                                        <% lname=data.name.lastname %>
+                                            <% } %>
+                        </span>
+                    </span>
+                    <!-- data bridge -->
+                    <span>
+                        <% if(data.verified===true ){ %>
+                            <p style="color:green">Veified</p>
+                            <% } else{ %>
+                                <p style="color:red">Not Veified</p>
+                                <% } %>
+                    </span>
+                </div>
+                <div class="profileupdate">
+                    <div class="con">
+                        <p class="myFont" id="loc">Set Your Location</p>
+                        <br>
+                        <div id='map' style='width: 26rem; height: 350px;border-radius: 0.5rem;'></div>
+                    </div>
+
+                    <form class="form items" style="width:auto !important;" action="/account/user/dash/profile"
+                        method="POST" enctype="multipart/form-data">
+                        <div class="head" style="flex-direction: column;align-items: flex-start;">
+                            <h1>Update Or Set Profile</h1>
+                            <br>
+                            <p class="myFont" style="color:green">
+                                <%= msg %>
+                            </p>
+                            <br>
+                            <br>
+                            <p class="myFont" style="color:black">Profile Photo (Please User .jpg files)</p>
+                        </div>
+
+                        <div class=" first_fields profilepic" style="flex-direction: column;">
+                            <div class="input-contain" style="width: 20rem;">
+                                <img src="/uploads/user/<%= profile%>"
+                                    style="width: 7rem;height: auto;border-radius: 4rem;" alt=" Profile Photo">
+                            </div>
+                            <div class="input-contain">
+                                <input type="file" style="border: none;" name="profilepic" id="profilepic"
+                                    accept="image/jpg">
+                            </div>
+                        </div>
+
+                        <div class="first_fields">
+                            <div class="input-contain">
+                                <input type="text" name="fname" id="fname" autocomplete="on" value="<%= fname %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">First Name</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" name="lname" id="lname" autocomplete="on" value="<%= lname %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Last Name</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="first_fields">
+                            <div class="input-contain">
+                                <input type="text" name="adhar" id="adhar" autocomplete="on" value="<%= adhar %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Adhar No.</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="number" name="age" id="age" autocomplete="on" value="<%= age %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Age</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="first_fields">
+                            <div class="input-contain">
+                                <input type="text" name="address" id="address" autocomplete="on" value="<%= address %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Address</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" name="phone" id="phone" autocomplete="on" value="<%= phone %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Phone No</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="first_fields">
+                            <div class="input-contain">
+                                <input type="text" name="city" id="city" autocomplete="on" value="<%= city %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">City</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" name="region" id="region" autocomplete="on" value="<%= region %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Region</div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="first_fields">
+
+                            <div class="input-contain">
+                                <input type="text" name="postcode" id="postcode" autocomplete="on"
+                                    value="<%= postcode %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">PostCode</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" autocomplete="on" class="gender" value="<%= gender %>" disabled>
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">Gender</div>
+                                </label>
+                                <select type="select" name="gender" id="gender" class="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="div" style="width: 100%;">
+                            <input id="profileset" type="submit" style="width: 100%;" value="Profile Set/Update">
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <div class="home-separator"></div>
+                <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
+                        target="_blank">Otherwa</a>,
+                    All Rights Reserved.</span>
+                <br>
+            </div>
+        </div>
+        <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
+        <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+        <!-- map libre -->
+        <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+            integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+        <script src="/js/uprofile.js"></script>
+
+</body>
+
+</html>
