@@ -15,7 +15,7 @@ const data = {
     }]
 };
 
-const config = {
+const config12 = {
     type: 'bar',
     data: data,
     options: {}
@@ -25,5 +25,5 @@ const config = {
 // build chart
 const myChart = new Chart(
     document.getElementById('myChart'),
-    config
+    config12
 );

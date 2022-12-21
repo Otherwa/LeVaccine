@@ -96,12 +96,17 @@
     text-decoration: none;
 }
 
+.info p {
+    font-size: 1.15rem;
+}
+
 .sidebar a.active {
     background-color: #04AA6D;
     color: white;
 }
 
 .sidebar a:hover:not(.active) {
+    transition: 0.5s;
     background-color: #555;
     color: white;
 }

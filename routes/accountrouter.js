@@ -106,7 +106,7 @@ Router.get('/user/verify/:email', async (req, res) => {
   const exsist = await userSchema.findOne({ email })
 
   if (exsist === null) {
-    res.json({ msg: 'no user' })
+    res.redirect('/')
   } else {
     if (exsist.verified === false) {
       const filter = { email }
@@ -116,11 +116,11 @@ Router.get('/user/verify/:email', async (req, res) => {
         if (err) {
           res.json(err)
         } else {
-          res.json({ msg: 'verifed redirecting any minute', res: result })
+          res.render('account/verify')
         }
       })
     } else {
-      res.json({ msg: 'Already Verified' })
+      res.redirect('/')
     }
   }
 })
@@ -321,7 +321,7 @@ Router.post('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   const time = req.body.time
   const date = req.body.date
 
-  provider.setappo(req, res, check, byid, addr, city, state, postcode, vaccine, time, date)
+  provider.setappo(req, res, req.body.lat, req.body.lon, check, byid, addr, city, state, postcode, vaccine, time, date)
 })
 
 

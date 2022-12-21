@@ -105,7 +105,7 @@ providerSchema.prototype.reset_otp = async (req, res, email, username) => {
 }
 
 // set appontments
-providerSchema.prototype.setappo = async (req, res, check, byid, addr, city, state, postcode, vaccine, time, date) => {
+providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr, city, state, postcode, vaccine, time, date) => {
 
     console.log(check);
     console.log(byid);
@@ -122,7 +122,8 @@ providerSchema.prototype.setappo = async (req, res, check, byid, addr, city, sta
             details: {
                 time: time,
                 vaccine: vaccine,
-                date: date
+                date: date,
+                position: [lat, lon]
             },
         })
         // check if any require filed is not filled  2 measure

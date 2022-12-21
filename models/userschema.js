@@ -13,6 +13,8 @@ const name = new schema({
         default: ' ',
         required: true
     }
+}, {
+    versionKey: false //here
 })
 
 const details = new schema({
@@ -20,9 +22,10 @@ const details = new schema({
         type: String,
         default: ' ',
         required: true
-    }, photo: {
-        type: Buffer,
-        contentType: String,
+    },
+    position: {
+        type: [Number],
+        default: [0, 0]
     },
     age: {
         type: String,
@@ -59,6 +62,8 @@ const details = new schema({
         default: ' ',
         required: true
     },
+}, {
+    versionKey: false //here
 })
 
 const userSchema = new schema({
@@ -71,10 +76,6 @@ const userSchema = new schema({
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     name: {
         type: name,
         // required: true
@@ -82,6 +83,10 @@ const userSchema = new schema({
     detail: {
         type: details,
         // required: true
+    },
+    password: {
+        type: String,
+        required: true
     },
     verified: {
         type: Boolean,

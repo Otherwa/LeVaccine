@@ -30,59 +30,78 @@
                 <br>
                 <br>
                 <div class="con">
-                    <p>
-                        <%= data.username%>
-                    </p>
-                    <br>
-                    <p>
-                        <%= data.email%>
-                    </p>
-                    <br>
-                    <p>
-                        <!-- <%= data.password%> -->
-                    </p>
-                    <br>
-                    <p>
-                        <%= data.iat%>
-                    </p>
-                    <br>
-                    <p>
-                        <!-- your token: -<%= token %> -->
-                    </p>
-                    <br>
-                    <span>
-                        <% if(data.verified===true ){ %>
-                            <p style="color:green">Veified</p>
-                            <% } else{ %>
-                                <p style="color:red">Not Veified</p>
-                                <% } %>
-                    </span>
-                    <br>
+                    <div class="info">
+
+                        <p>Profile :- </p>
+                        <br>
+                        <p>
+                            <%= data.username%>
+                        </p>
+                        <br>
+                        <p>
+                            <% if(data.detail) { %>
+                                <%= data.name.firstname + ' ' + data.name.lastname%>
+                                    <% } %>
+                        </p>
+                        <br>
+                        <p>
+                            <% if(data.detail) { %>
+                                <%= data.detail.address%>
+                                    <% } %>
+                        </p>
+                        <br>
+                        <p>
+                            <% if(data.detail) { %>
+                                PostCode :
+                                <%= data.detail.postcode%>
+                                    <% } %>
+                        </p>
+                        <br>
+                        <p>
+                            <% if(data.detail) { %>
+                                City :
+                                <%= data.detail.city%>
+                                    <% } %>
+                        </p>
+                        <br>
+                        <span>
+
+                            <% if(data.verified===true ){ %>
+                                <p>Status : <span style="color:green">
+                                        Veified
+                                    </span>
+                                </p>
+                                <% } else{ %>
+                                    <p style="color:red">Status : <span style="color:red">
+                                            Not Veified
+                                        </span></p>
+                                    <% } %>
+                        </span>
+                        <br>
+                    </div>
                 </div>
                 <div id="graph">
                     <canvas id="myChart"></canvas>
                 </div>
                 <br>
-                <%- include('../../partial/foot') %>
-                    <br>
-                    <div class="home-separator"></div>
-                    <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
-                            target="_blank">Otherwa</a>,
-                        All Rights Reserved.</span>
-                    <br>
+                <div class="home-separator"></div>
+                <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
+                        target="_blank">Otherwa</a>,
+                    All Rights Reserved.</span>
+                <br>
             </div>
     </div>
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
         integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script src="/js/userdash.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
 
 </body>
 

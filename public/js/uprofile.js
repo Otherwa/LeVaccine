@@ -24,6 +24,9 @@ geolocate.on('geolocate', function (data) {
     var lng = data.coords.longitude;
     var lat = data.coords.latitude;
 
+    $('#lat').val(lat)
+    $('#lon').val(lng)
+
     // only one marker as per
     if (flag == 0) {
         marker = new maplibregl.Marker({
@@ -40,6 +43,9 @@ geolocate.on('geolocate', function (data) {
         var requestOptions = {
             method: 'GET',
         };
+
+        $('#lat').val(lngLat.lat)
+        $('#lon').val(lngLat.lng)
 
         fetch("https://api.geoapify.com/v1/geocode/reverse?lat=" + lngLat.lat + "&lon=" + lngLat.lng + "&apiKey=0e4ffb970b8f4957bd7450e8df3b2a49", requestOptions)
             .then(response => response.json())
