@@ -36,7 +36,7 @@ Router.get('/user', (req, res) => {
 
 // account creation
 Router.get('/user/signup', (req, res) => {
-  res.status(200).render('account/user/signup')
+  res.status(200).render('account/user/signup', { msg: req.flash('message1') })
 })
 
 

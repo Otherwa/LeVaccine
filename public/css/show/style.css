@@ -2392,7 +2392,8 @@ h2 .myFont {
 
 
 .darkmode--activated img,
-.darkmode--activated iframe {
+.darkmode--activated iframe,
+.darkmode--activated #map {
   filter: invert(1) !important;
   /* mix-blend-mode: difference; */
   isolation: isolate;

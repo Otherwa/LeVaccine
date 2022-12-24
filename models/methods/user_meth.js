@@ -54,37 +54,44 @@ userSchema.prototype.logout = async (req, res) => {
 
 // sign up pass hash
 userSchema.prototype.signup = async (req, res, username, email, password) => {
-  await connect()
-  console.log(email + 'email: ' + username)
+  if (username.length > 0 && email.length > 0 && password.length > 0) {
 
-  const exists = await userSchema.exists({ email })
-  if (exists) {
-    req.flash('message', 'Account Exsist')
-    res.redirect('/account/user')
-  } else {
-    bcrypt.genSalt(10, function (err, salt) {
-      if (err) return next(err)
-      bcrypt.hash(password, salt, function (err, hash) {
+
+    await connect()
+    console.log(email + 'email: ' + username)
+
+    const exists = await userSchema.exists({ email })
+    if (exists) {
+      req.flash('message', 'Account Exsist')
+      res.redirect('/account/user')
+    } else {
+      bcrypt.genSalt(10, function (err, salt) {
         if (err) return next(err)
+        bcrypt.hash(password, salt, function (err, hash) {
+          if (err) return next(err)
 
-        const user = new userSchema({
-          username,
-          email,
-          password: hash,
-        })
+          const user = new userSchema({
+            username,
+            email,
+            password: hash,
+          })
 
-        user.save((err, result) => {
-          if (err) {
-            console.log(err)
-          } else {
-            // console.log(result)
-            sendSignupEmail(email)
-            req.flash('message1', 'Login 🛐')
-            res.redirect('/account/user')
-          }
+          user.save((err, result) => {
+            if (err) {
+              console.log(err)
+            } else {
+              // console.log(result)
+              sendSignupEmail(email)
+              req.flash('message1', 'Login 🛐')
+              res.redirect('/account/user')
+            }
+          })
         })
       })
-    })
+    }
+  } else {
+    req.flash('message1', 'Not Valid Dude')
+    res.redirect('/account/user/signup')
   }
 }
 
