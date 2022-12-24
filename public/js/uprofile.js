@@ -24,6 +24,7 @@ geolocate.on('geolocate', function (data) {
     var lng = data.coords.longitude;
     var lat = data.coords.latitude;
 
+
     $('#lat').val(lat)
     $('#lon').val(lng)
 

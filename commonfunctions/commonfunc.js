@@ -4,7 +4,6 @@ require('dotenv').config()
 // jwt
 const jwt = require('jsonwebtoken')
 
-
 // nodemailer
 const htmlcontent = require('../config/connection_config').htmlcontent
 
@@ -21,6 +20,7 @@ const providerSchema = require('../models/providerschema')
 
 const session = require('express-session')
 const bcrypt = require('bcrypt')
+
 
 
 // email config

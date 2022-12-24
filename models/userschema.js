@@ -13,6 +13,7 @@ const name = new schema({
         default: ' ',
         required: true
     }
+
 }, {
     versionKey: false //here
 })
@@ -22,6 +23,7 @@ const details = new schema({
         type: String,
         default: ' ',
         required: true
+
     },
     position: {
         type: [Number],

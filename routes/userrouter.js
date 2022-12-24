@@ -134,10 +134,12 @@ Router.post('/reset', async (req, res) => {
     res.send(200)
 })
 
+
 Router.post('/dash/profile', auth, livedata, async (req, res) => {
     console.log(req.body)
     const cookie = req.cookies.jwt
     user.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
+
 })
 
 module.exports = { Router }
