@@ -44,8 +44,10 @@ geolocate.on('geolocate', function (data) {
             method: 'GET',
         };
 
+
         $('#lat').val(lngLat.lat)
         $('#lon').val(lngLat.lng)
+
 
         fetch("https://api.geoapify.com/v1/geocode/reverse?lat=" + lngLat.lat + "&lon=" + lngLat.lng + "&apiKey=0e4ffb970b8f4957bd7450e8df3b2a49", requestOptions)
             .then(response => response.json())

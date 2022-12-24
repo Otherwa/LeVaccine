@@ -88,6 +88,14 @@ const userSchema = new schema({
         type: String,
         required: true
     },
+    name: {
+        type: name,
+        // required: true
+    },
+    detail: {
+        type: details,
+        // required: true
+    },
     verified: {
         type: Boolean,
         default: false

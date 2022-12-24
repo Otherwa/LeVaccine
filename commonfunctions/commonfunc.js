@@ -348,5 +348,6 @@ module.exports = {
   pauth,
   livepdata,
   user_reset,
-  provider_reset
+  provider_reset,
+  uploadu
 }

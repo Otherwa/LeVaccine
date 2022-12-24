@@ -76,6 +76,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
             password: hash,
           })
 
+
           user.save((err, result) => {
             if (err) {
               console.log(err)
