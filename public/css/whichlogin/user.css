@@ -75,7 +75,7 @@
     margin-left: 15rem;
     padding: 1px 16px;
     height: auto;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -96,12 +96,31 @@
     text-decoration: none;
 }
 
+.data {
+    display: flex;
+    gap: 1rem;
+}
+
+.info {
+    width: 50%;
+}
+
+.appo {
+    width: 50%;
+}
+
+.info p {
+    font-size: 0.95rem;
+}
+
+
 .sidebar a.active {
     background-color: #04AA6D;
     color: white;
 }
 
 .sidebar a:hover:not(.active) {
+    transition: 0.5s;
     background-color: #555;
     color: white;
 }
@@ -126,6 +145,10 @@ div.content {
         position: relative;
     }
 
+
+    .data {
+        flex-direction: column-reverse;
+    }
 
 
     #map,
@@ -220,7 +243,7 @@ div.content {
 }
 
 input {
-    height: 3rem;
+    height: 2.7rem;
     width: 20rem;
     border: 1px solid black;
     border-radius: 1rem;

@@ -2,8 +2,9 @@ const express = require('express')
 const Router = express.Router()
 const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
-const { uploadu, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
-const fs = require('fs')
+
+const { auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+
 // implemented usermodel added methods in prototype and create a instanceof user
 require('dotenv').config()
 // confidental password
@@ -133,30 +134,12 @@ Router.post('/reset', async (req, res) => {
     res.send(200)
 })
 
-Router.post('/dash/profile', uploadu, auth, livedata, async (req, res) => {
-    await connect()
-    const count = await userSchema.count()
+
+Router.post('/dash/profile', auth, livedata, async (req, res) => {
+    console.log(req.body)
     const cookie = req.cookies.jwt
-    // console.log(req.file.filename)
-    var photo;
-    // check if image uploaded 1st measure
-    if (req.file) {
-        photo = req.file.filename
-        // delte previous file working dont touch
-        if (req.user.detail.photo) {
-            var previous_photo = req.user.detail.photo
-            console.log(previous_photo.toString())
-            fs.unlink('./public/uploads/user/' + previous_photo, (err) => {
-                if (err) { console.log(err) }
-                else {
-                    console.log("deleted");
-                }
-            })
-        }
-    } else {
-        photo = req.body.profilepic
-    }
-    user.profile(req, res, req.user.email, photo, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
+    user.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
+
 })
 
 module.exports = { Router }

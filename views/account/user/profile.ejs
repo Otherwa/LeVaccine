@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard</title>
+
+    <title>Profile</title>
+
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
@@ -21,14 +23,9 @@
         <div id="butter">
             <div class="container-home">
                 <br>
-                <div class="container">
-                    <cite>Profile</cite>
-                    <br>
-                    <br>
-                    <!-- <p>
-                        <!-- <%= data%> -->
-                    <!-- </p> -->
-                    <br>
+
+                <span class="container">
+
                     <span>
                         <span>
                             <%var profile='' ; var adhar='' ; var age='' ; var address='' ; var phone='' ; var city='' ;
@@ -53,15 +50,9 @@
                                             <% } %>
                         </span>
                     </span>
-                    <!-- data bridge -->
-                    <span>
-                        <% if(data.verified===true ){ %>
-                            <p style="color:green">Veified</p>
-                            <% } else{ %>
-                                <p style="color:red">Not Veified</p>
-                                <% } %>
-                    </span>
-                </div>
+
+                </span>
+
                 <div class="profileupdate">
                     <div class="con">
                         <p class="myFont" id="loc">Set Your Location</p>
@@ -70,7 +61,11 @@
                     </div>
 
                     <form class="form items" style="width:auto !important;" action="/account/user/dash/profile"
-                        method="POST" enctype="multipart/form-data">
+
+                        method="POST">
+                        <input type="hidden" name="lat" id="lat">
+                        <input type="hidden" name="lon" id="lon">
+
                         <div class="head" style="flex-direction: column;align-items: flex-start;">
                             <h1>Update Or Set Profile</h1>
                             <br>
@@ -78,19 +73,7 @@
                                 <%= msg %>
                             </p>
                             <br>
-                            <br>
-                            <p class="myFont" style="color:black">Profile Photo (Please User .jpg files)</p>
-                        </div>
 
-                        <div class=" first_fields profilepic" style="flex-direction: column;">
-                            <div class="input-contain" style="width: 20rem;">
-                                <img src="/uploads/user/<%= profile%>"
-                                    style="width: 7rem;height: auto;border-radius: 4rem;" alt=" Profile Photo">
-                            </div>
-                            <div class="input-contain">
-                                <input type="file" style="border: none;" name="profilepic" id="profilepic"
-                                    accept="image/jpg">
-                            </div>
                         </div>
 
                         <div class="first_fields">

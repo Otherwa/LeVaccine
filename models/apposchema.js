@@ -18,6 +18,10 @@ const appodetails = new schema({
         type: String,
         required: true
     },
+    position: {
+        type: [Number],
+        default: [0, 0]
+    },
 })
 
 const setapposchema = new schema({

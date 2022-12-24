@@ -88,6 +88,7 @@
 }
 
 .sidebar a:hover:not(.active) {
+    transition: 0.5s;
     background-color: #555;
     color: white;
 }
