@@ -349,5 +349,4 @@ module.exports = {
   livepdata,
   user_reset,
   provider_reset,
-  uploadu
 }
