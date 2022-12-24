@@ -145,9 +145,11 @@ div.content {
         position: relative;
     }
 
+
     .data {
         flex-direction: column-reverse;
     }
+
 
     #map,
     .con {

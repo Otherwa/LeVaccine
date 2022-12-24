@@ -76,6 +76,7 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
             password: hash,
           })
 
+
           user.save((err, result) => {
             if (err) {
               console.log(err)
@@ -114,12 +115,14 @@ userSchema.prototype.reset_otp = async (req, res, email, username) => {
 // update profile
 
 // sign up pass hash
+
 userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lname, adhar, age, addr, gender, phone, city, region, post) => {
   await connect()
   console.log(whichuser)
   console.log(post)
   var lat = parseFloat(lat)
   var lon = parseFloat(lon)
+
   // if adhar uploaded
   if (adhar != null) {
     userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
@@ -128,6 +131,7 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
   }
 
   // check if image uploaded or not 2 measure
+
   userSchema.findOneAndUpdate({ 'email': whichuser }, {
     $set: {
       'name.firstname': fname,
@@ -152,6 +156,6 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
       res.redirect('/account/user/dash/profile')
     }
   })
-
+ 
 }
 module.exports = { userSchema }
