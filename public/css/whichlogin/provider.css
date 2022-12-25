@@ -35,6 +35,11 @@
     font-family: dot !important;
 }
 
+.profilepic {
+    position: relative;
+    right: 11rem;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -42,6 +47,15 @@
     gap: 2rem;
     width: 20rem;
     align-content: center;
+}
+
+.profileupdate {
+    display: flex;
+    gap: 2rem;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
 }
 
 /* user dash */
@@ -61,7 +75,7 @@
     margin-left: 15rem;
     padding: 1px 16px;
     height: auto;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -82,6 +96,24 @@
     text-decoration: none;
 }
 
+.data {
+    display: flex;
+    gap: 1rem;
+}
+
+.info {
+    width: 50%;
+}
+
+.appo {
+    width: 50%;
+}
+
+.info p {
+    font-size: 0.95rem;
+}
+
+
 .sidebar a.active {
     background-color: #04AA6D;
     color: white;
@@ -100,18 +132,9 @@ div.content {
 }
 
 
-
 /* graph */
 #graph {
     width: 35rem;
-}
-
-@media screen and (max-width: 578px) {
-
-    .header1 {
-        font-size: 3.1rem;
-        right: 0%;
-    }
 }
 
 @media screen and (max-width: 778px) {
@@ -121,12 +144,14 @@ div.content {
         position: relative;
     }
 
-    .form-con {
-        flex-direction: column !important;
-        align-items: center !important;
+
+    .data {
+        flex-direction: column-reverse;
     }
 
-    .items {
+
+    #map,
+    .con {
         width: 100% !important;
     }
 
@@ -144,7 +169,32 @@ div.content {
 
 }
 
+@media screen and (max-width: 1025px) {
+    .profilepic {
+        right: 0;
+    }
 
+    .profileupdate {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #appos {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 578px) {
+
+    .profilepic {
+        right: 0;
+    }
+
+    .header1 {
+        font-size: 3.1rem;
+        right: 0%;
+    }
+}
 
 @media screen and (max-width: 400px) {
     .sidebar a {
@@ -155,8 +205,6 @@ div.content {
     #graph {
         width: 15rem;
     }
-
-
 
     .form {
         width: 18rem;
@@ -198,7 +246,7 @@ div.content {
 }
 
 input {
-    height: 3rem;
+    height: 2.7rem;
     width: 20rem;
     border: 1px solid black;
     border-radius: 1rem;
@@ -273,12 +321,30 @@ input:focus+.placeholder-text .text {
     width: 96%;
 }
 
+.first_fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2rem;
+    width: auto;
+    flex-wrap: wrap;
+}
+
+.gender {
+    width: 10rem;
+    border-width: medium;
+    padding: 0.7rem;
+    border-radius: 0.9rem;
+}
+
 #login,
 #signup,
-#reset {
+#reset,
+#profileset {
     transition: 0.3s ease-in-out;
 }
 
+#profileset:hover,
 #signup:hover {
     background-color: var(--pblue);
 }
@@ -298,11 +364,14 @@ input:focus+.placeholder-text .text {
     }
 }
 
-/* provider set appo */
 .form-con {
-    flex-direction: row;
-    justify-content: space-around;
     display: flex;
-    gap: 2.5rem;
+    justify-content: space-around;
     flex-wrap: wrap;
+}
+
+#appos div {
+    background-color: #04AA6D;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
 }
