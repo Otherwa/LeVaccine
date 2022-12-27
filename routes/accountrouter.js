@@ -4,13 +4,18 @@ const userRouter = require('./userrouter').Router
 const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
-const { pauth, livepdata, uploadu, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
-const fs = require('fs')
+const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+const rateLimit = require('express-rate-limit')
+
+var limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 50
+});
 // implemented usermodel added methods in prototype and create a instanceof user
 require('dotenv').config()
 // confidental password
 // for password reset for each ip
-
+Router.use(limiter)
 // user Router
 Router.use('/user', userRouter)
 
