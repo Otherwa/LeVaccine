@@ -283,6 +283,21 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
   })
 })
 
+Router.get('/provider/dash/profile', pauth, livepdata, async (req, res) => {
+  // token set or
+
+  await connect()
+  const count = await providerSchema.count()
+  const cookie = req.cookies.jwt
+  // get req user
+  console.log(req.user)
+  res.render('account/provider/profile', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('success')
+  })
+})
+
 Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
