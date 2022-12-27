@@ -22,8 +22,9 @@ const rateLimit = require('express-rate-limit')
 
 var limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
-    max: 20
+    max: 50
 });
+
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
 const { isauthvalid } = require('./commonfunctions/commonfunc');
@@ -69,6 +70,9 @@ app.use(bodyParser.json())
 
 //account routes
 app.use('/account', accountRouter)
+
+// rate limiting
+app.use(limiter);
 
 app.set('etag', false)
 
@@ -182,7 +186,7 @@ app.get('/about', (req, res) => {
 })
 
 
-app.use('/api', limiter);
+
 // apis
 app.get('/api', isauthvalid, (req, res) => {
     res.render('apis/api')

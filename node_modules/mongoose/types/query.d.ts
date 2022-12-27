@@ -616,7 +616,7 @@ declare module 'mongoose' {
     then: Promise<ResultType>['then'];
 
     /** Converts this query to a customized, reusable query constructor with all arguments and options retained. */
-    toConstructor(): typeof Query<ResultType, DocType, THelpers, RawDocType>;
+    toConstructor<RetType = typeof Query>(): RetType;
 
     /** Declare and/or execute this query as an update() operation. */
     update(filter?: FilterQuery<DocType>, update?: UpdateQuery<DocType> | UpdateWithAggregationPipeline, options?: QueryOptions<DocType> | null, callback?: Callback<UpdateWriteOpResult>): QueryWithHelpers<UpdateWriteOpResult, DocType, THelpers, RawDocType>;
@@ -650,7 +650,7 @@ declare module 'mongoose' {
     within(val?: any): this;
 
     /**
-     * If [`w > 1`](/docs/api.html#query_Query-w), the maximum amount of time to
+     * If [`w > 1`](/docs/api/query.html#query_Query-w), the maximum amount of time to
      * wait for this write to propagate through the replica set before this
      * operation fails. The default is `0`, which means no timeout.
      */
