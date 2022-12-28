@@ -7,6 +7,7 @@ const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
 const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
+const appo = require('../models/apposchema')
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -76,20 +77,33 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
 Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
   await connect()
-  const count = await userSchema.count()
   const cookie = req.cookies.jwt
 
-  res.render('account/user/bookappo', {
-    data: req.user,
-    token: cookie,
-    count
-  });
+  appo.find({ 'postcode': req.user.detail.postcode }, (err, result) => {
+    if (err) console.log(err)
+    console.log(result)
+
+    const pos = result.map(position);
+    // console.log(pos)
+    function position(item) {
+      return (item.details.position);
+    }
+
+    res.render('account/user/bookappo', {
+      data: req.user,
+      token: cookie,
+      appos: result,
+      appos_: pos
+    });
+  })
+
+
+
 })
 
 // update profile
 Router.get('/user/dash/profile', auth, livedata, async (req, res) => {
   await connect()
-  const count = await userSchema.count()
   const cookie = req.cookies.jwt
   // console.log(req.user)
   res.render('account/user/profile', {
