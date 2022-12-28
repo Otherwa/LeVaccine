@@ -1,13 +1,14 @@
 const express = require('express')
 const Router = express.Router()
 const userRouter = require('./userrouter').Router
+const providerRouter = require('./providerrouter').Router
 const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
 const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
 
-var limiter = rateLimit({
+const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 50
 });
@@ -17,10 +18,12 @@ require('dotenv').config()
 // for password reset for each ip
 Router.use(limiter)
 // user Router
-Router.use('/user', userRouter)
 
-// for other collections
-const reset_otp = require('../models/reset_pass')
+// routes
+Router.use('/user', userRouter)
+Router.use('/provider', providerRouter)
+
+
 const appolist = require('../models/apposchema')
 
 const user = new userSchema()
@@ -85,7 +88,6 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
 // update profile
 Router.get('/user/dash/profile', auth, livedata, async (req, res) => {
-
   await connect()
   const count = await userSchema.count()
   const cookie = req.cookies.jwt
@@ -132,6 +134,8 @@ Router.get('/user/verify/:email', async (req, res) => {
 
 // ------------------------------------------------------------------
 
+
+
 // provider
 Router.get('/provider', (req, res) => {
   res.render('account/provider', {
@@ -143,26 +147,13 @@ Router.get('/provider', (req, res) => {
 // provider sign up
 // account creation
 Router.get('/provider/signup', (req, res) => {
-  res.status(200).render('account/provider/signup')
+  res.status(200).render('account/provider/signup',
+    {
+      msg: req.flash('message1')
+    }
+  )
 })
 
-
-// if creation successfull
-Router.post('/provider/signup', async (req, res) => {
-  const username = req.body.username
-  const email = req.body.email
-  const password = req.body.password
-  await provider.signup(req, res, username, email, password)
-})
-
-// if login is successful
-Router.post('/provider/login', async (req, res) => {
-  // user login
-  const username = req.body.username
-  const password = req.body.password
-  // to check if login exisit
-  provider.login(req, res, username, password)
-})
 
 // reset password
 Router.get('/provider/reset', (req, res) => {
@@ -171,106 +162,7 @@ Router.get('/provider/reset', (req, res) => {
 })
 
 // reset password otp sent
-Router.post('/provider/reset', async (req, res) => {
-  // user reset
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    const email = req.body.email
-    console.log(email)
-    await connect()
-    // checks if account exisits or not
-    providerSchema.findOne({ email: { $eq: email } }, { username: 1 }, (err, data) => {
-      if (err) res.json(err)
 
-      if (data != null) {
-        let username = data.username
-        provider.reset_otp(req, res, email, username)
-        res.send('200')
-      } else {
-        res.send('300')
-      }
-    })
-  } else {
-    res.send('400')
-  }
-})
-
-// ajax
-Router.post('/provider/reset-password', async (req, res) => {
-  // user reset
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    await connect()
-    const email = req.body.email
-    const otp = req.body.otp
-    // console.log(otp);
-    // console.log(email);
-    const exsist = await reset_otp.exists({ email: { $eq: email }, otp: { $eq: otp } });
-    console.log(exsist)
-    if (exsist) {
-      res.send('200')
-    } else {
-      res.send('404')
-    }
-  } else {
-    res.json({ msg: 'Somethings Wrong' })
-  }
-})
-
-// ajax
-Router.post('/provider/reset-password-ok', async (req, res) => {
-  // user reset
-  await connect()
-  const email = req.body.email
-  const password = req.body.password
-  const otp = req.body.otp
-
-  const key = req.cookies.Status
-  console.log(key)
-  if (key === 'Reset') {
-    bcrypt.genSalt(10, (err, salt) => {
-      if (err) return next(err)
-      bcrypt.hash(password, salt, function (err, hash) {
-        if (err) return next(err)
-
-        const filter = { email: { $eq: email } }
-        const update = { $set: { password: hash } }
-        providerSchema.findOneAndUpdate(filter, update, async (err, data) => {
-          if (err) {
-            res.json('404')
-          } else {
-
-            const exsist = await reset_otp.deleteOne({
-              email: { $eq: email },
-              otp: { $eq: otp }
-            })
-
-            console.log(data);
-            console.log(exsist)
-
-            if (exsist) {
-              res.clearCookie('Status')
-              res.send('200')
-            } else {
-              res.send('404')
-            }
-
-          }
-        })
-      })
-    })
-  }
-})
-
-Router.post('/provider/reset', async (req, res) => {
-  // user reset
-  const email = req.body.email
-  console.log(email)
-  provider.reset_otp(req, res, email)
-  res.send(200)
-})
 
 // all middleware functions in common
 Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
@@ -320,28 +212,11 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
       res.render('account/provider/setappo', {
         data: req.user,
         token: cookie,
-        count,
         appos: result,
         msg: req.flash('messagesetappo')
       })
     }
   })
-})
-
-Router.post('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
-  // token set or
-  // console.log(req.body)
-  const check = req.body.authentication
-  const byid = req.user._id
-  const addr = req.body.address
-  const city = req.body.city
-  const state = req.body.state
-  const postcode = req.body.postcode
-  const vaccine = req.body.forvaccine
-  const time = req.body.time
-  const date = req.body.date
-
-  provider.setappo(req, res, req.body.lat, req.body.lon, check, byid, addr, city, state, postcode, vaccine, time, date)
 })
 
 
@@ -376,6 +251,7 @@ Router.get('/provider/verify/:email', async (req, res) => {
     }
   }
 })
+
 
 
 // producer

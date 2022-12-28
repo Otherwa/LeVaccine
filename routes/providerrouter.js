@@ -1,11 +1,9 @@
 const express = require('express')
 const Router = express.Router()
 const { connect } = require('../config/connect')
-const { userSchema } = require('../models/methods/user_meth')
+const { providerSchema } = require('../models/methods/provider_meth')
+const { pauth, livepdata, bcrypt } = require('../commonfunctions/commonfunc')
 
-const { auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
-
-// implemented usermodel added methods in prototype and create a instanceof user
 require('dotenv').config()
 // confidental password
 // for password reset for each ip
@@ -13,14 +11,14 @@ require('dotenv').config()
 // for other collections
 const reset_otp = require('../models/reset_pass')
 
-const user = new userSchema()
+const provider = new providerSchema()
 
 // if creation successfull
 Router.post('/signup', async (req, res) => {
     const username = req.body.username
     const email = req.body.email
     const password = req.body.password
-    await user.signup(req, res, username, email, password)
+    await provider.signup(req, res, username, email, password)
 })
 
 // if login is successful
@@ -29,10 +27,9 @@ Router.post('/login', async (req, res) => {
     const username = req.body.username
     const password = req.body.password
     // to check if login exisit
-    user.login(req, res, username, password)
+    provider.login(req, res, username, password)
 })
 
-// reset password otp sent
 Router.post('/reset', async (req, res) => {
     // user reset
     const key = req.cookies.Status
@@ -42,12 +39,12 @@ Router.post('/reset', async (req, res) => {
         console.log(email)
         await connect()
         // checks if account exisits or not
-        userSchema.findOne({ email: { $eq: email } }, { username: 1 }, (err, data) => {
+        providerSchema.findOne({ email: { $eq: email } }, { username: 1 }, (err, data) => {
             if (err) res.json(err)
 
             if (data != null) {
                 let username = data.username
-                user.reset_otp(req, res, email, username)
+                provider.reset_otp(req, res, email, username)
                 res.send('200')
             } else {
                 res.send('300')
@@ -99,7 +96,7 @@ Router.post('/reset-password-ok', async (req, res) => {
 
                 const filter = { email: { $eq: email } }
                 const update = { $set: { password: hash } }
-                userSchema.findOneAndUpdate(filter, update, async (err, data) => {
+                providerSchema.findOneAndUpdate(filter, update, async (err, data) => {
                     if (err) {
                         res.json('404')
                     } else {
@@ -130,15 +127,32 @@ Router.post('/reset', async (req, res) => {
     // user reset
     const email = req.body.email
     console.log(email)
-    user.reset_otp(req, res, email)
+    provider.reset_otp(req, res, email)
     res.send(200)
 })
 
 
-Router.post('/dash/profile', auth, livedata, async (req, res) => {
+Router.post('/dash/setappo', pauth, livepdata, async (req, res) => {
+    // token set or
+    console.log(req.body.authentication)
+    const check = req.user.auth
+    const byid = req.user._id
+    const addr = req.body.address
+    const city = req.body.city
+    const state = req.body.state
+    const postcode = req.body.postcode
+    const vaccine = req.body.forvaccine
+    const time = req.body.time
+    const date = req.body.date
+
+    provider.setappo(req, res, req.body.lat, req.body.lon, check, byid, addr, city, state, postcode, vaccine, time, date)
+})
+
+Router.post('/dash/profile', pauth, livepdata, async (req, res) => {
     console.log(req.body)
-    user.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
+    provider.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode, req.body.ngo, req.body.ngoaddress)
 
 })
+
 
 module.exports = { Router }

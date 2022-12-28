@@ -10,6 +10,8 @@ const session = require('cookie-session');
 const cookie = require('cookie-parser');
 const generateApiKey = require('generate-api-key').default;
 const path = require('path');
+const appo = require('./models/apposchema')
+
 require('events').EventEmitter.prototype._maxListeners = 900;
 
 
@@ -169,10 +171,19 @@ app.get('/contact', (req, res) => {
 app.get('/counter', async (req, res) => {
     var data = await covid();
     // console.log(data);
-    // get base india
-    data = data.response;
+    await connect();
+    appo.find({}, { 'details.position': 1, '_id': 0 }, (err, result) => {
+        const pos = result.map(position);
+        // console.log(pos)
+        function position(item) {
+            return (item.details.position);
+        }
 
-    res.render('counter', { data: data[0] });
+        data = data.response;
+        res.render('counter', { data: data[0], appo: pos });
+    })
+    // get base india
+
 })
 
 // services
