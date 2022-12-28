@@ -20,7 +20,7 @@
 <body>
     <div id="scroll-progress"></div>
     <div id="butter">
-        <%- include('../../partial/user-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
 
@@ -28,7 +28,7 @@
                     <span>
                         <span>
                             <%var profile='' ; var adhar='' ; var age='' ; var address='' ; var phone='' ; var city='' ;
-                                var postcode='' ;var region='' ;var gender='' ; %>
+                                var postcode='' ;var region='' ;var gender='' ;var ngo='' ;var ngoaddress='' ; %>
                                 <% if(data.detail) { %>
                                     <% adhar=data.detail.adhar %>
                                         <% profile=data.detail.photo %>
@@ -39,7 +39,9 @@
                                                             <% region=data.detail.region %>
                                                                 <% gender=data.detail.gender %>
                                                                     <% postcode=data.detail.postcode %>
-                                                                        <% } %>
+                                                                        <% ngo=data.detail.ngo %>
+                                                                            <% ngoaddress=data.detail.ngoaddress %>
+                                                                                <% } %>
                         </span>
                         <span>
                             <% var fname='' ,lname="" ; %>
@@ -54,12 +56,12 @@
 
                 <div class="profileupdate">
                     <div class="con">
-                        <p class="myFont" id="loc">Set Your Location</p>
+                        <p class="myFont" id="loc">Set Your NGO's Location</p>
                         <br>
                         <div id='map' style='width: 26rem; height: 350px;border-radius: 0.5rem;'></div>
                     </div>
 
-                    <form class="form items" style="width:auto !important;" action="/account/user/dash/profile"
+                    <form class="form items" style="width:auto !important;" action="/account/provider/dash/profile"
                         method="POST">
                         <input type="hidden" name="lat" id="lat">
                         <input type="hidden" name="lon" id="lon">
@@ -157,6 +159,22 @@
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="first_fields">
+                            <div class="input-contain">
+                                <input type="text" name="ngo" id="ngo" autocomplete="on" value="<%= ngo %>">
+                                <label class="placeholder-text" for="ngo" id="placeholder-fname">
+                                    <div class="text">NGO Name</div>
+                                </label>
+                            </div>
+
+                            <div class="input-contain">
+                                <input type="text" name="ngoaddress" id="ngoaddress" autocomplete="on"
+                                    value="<%= ngoaddress %>">
+                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    <div class="text">NGO Address</div>
+                                </label>
                             </div>
                         </div>
 

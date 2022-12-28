@@ -33,8 +33,8 @@
   --dl-space-space-fourunits: 64px;
   --dl-space-space-threeunits: 48px;
   --dl-space-space-oneandhalfunits: 24px;
-  --pblue: rgb(31, 132, 255);
-  --ppink: rgb(255, 31, 161);
+  --pblue: #1f84ff;
+  --ppink: #ff1fa1;
 }
 
 /* generated script */

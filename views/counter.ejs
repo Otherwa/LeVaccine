@@ -27,6 +27,16 @@
                 <%- include('./partial/nav'); %>
             </header>
             <br>
+            <span style="display: none;">
+                <input type="hidden" id="appos" value="<%= appo %>">
+            </span>
+            <br>
+            <br>
+            <div class="con">
+                <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Done Till now)</p>
+                <br>
+                <div id='map' style='width: 72vw; height: 440px;border-radius: 0.5rem;'></div>
+            </div>
             <br>
             <br>
             <div class="search">
@@ -132,6 +142,9 @@
             <br>
         </div>
     </div>
+    <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+    <!-- map libre -->
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
