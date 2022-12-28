@@ -22,6 +22,12 @@ const appodetails = new schema({
         type: [Number],
         default: [0, 0]
     },
+    slots: {
+        type: String,
+        required: true
+    }
+}, {
+    versionKey: false //here
 })
 
 const setapposchema = new schema({

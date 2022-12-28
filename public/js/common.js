@@ -39,6 +39,10 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         butter.init();
     });
 }
+
+//book appo
+ScrollReveal().reveal($(".appos"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
+
 // user dash
 ScrollReveal().reveal($(".info"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($("#appos"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);

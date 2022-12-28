@@ -145,7 +145,7 @@ Router.post('/dash/setappo', pauth, livepdata, async (req, res) => {
     const time = req.body.time
     const date = req.body.date
 
-    provider.setappo(req, res, req.body.lat, req.body.lon, check, byid, addr, city, state, postcode, vaccine, time, date)
+    provider.setappo(req, res, req.body.lat, req.body.lon, check, byid, addr, city, state, postcode, vaccine, req.body.slots, time, date)
 })
 
 Router.post('/dash/profile', pauth, livepdata, async (req, res) => {

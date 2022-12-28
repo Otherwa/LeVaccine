@@ -381,3 +381,20 @@ input:focus+.placeholder-text .text {
     padding: 0.8rem;
     border-radius: 0.5rem;
 }
+
+#appos::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#appos {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.appos {
+    padding: 1rem;
+    width: 90%;
+}

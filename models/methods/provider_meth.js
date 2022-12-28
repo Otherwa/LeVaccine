@@ -107,7 +107,7 @@ providerSchema.prototype.reset_otp = async (req, res, email, username) => {
 }
 
 // set appontments
-providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr, city, state, postcode, vaccine, time, date) => {
+providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr, city, state, postcode, vaccine, slots, time, date) => {
 
     console.log(check);
     console.log(byid);
@@ -125,14 +125,15 @@ providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr,
                 time: time,
                 vaccine: vaccine,
                 date: date,
-                position: [lat, lon]
+                position: [lat, lon],
+                slots: slots
             },
         })
         // check if any require filed is not filled  2 measure
         appo.save((err, result) => {
             if (err) {
                 console.log(err)
-                req.flash('messagesetappo', 'Fill up the Required Fields N****')
+                req.flash('messagesetappo', 'Fill up the Required Fields')
                 res.redirect('/account/provider/dash/setappo')
             } else {
                 // console.log(result)

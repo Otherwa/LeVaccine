@@ -87,6 +87,12 @@
                                         </label>
                                     </div>
                                     <div class="input-contain">
+                                        <input type="number" name="slots" id="slots" autocomplete="on">
+                                        <label class="placeholder-text" for="slots" id="placeholder-fname">
+                                            <div class="text">Slots</div>
+                                        </label>
+                                    </div>
+                                    <div class="input-contain">
                                         <input type="time" name="time" id="time" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">Time</div>
@@ -104,7 +110,10 @@
                                 </form>
                             </div>
                             <div class="items" id="appos"
-                                style="margin-top: 5rem;width: 50%;overflow-y: scroll;height:auto">
+                                style="margin-top: 5rem;width: 50%;overflow-y: scroll;height:47rem">
+                                <span class="myFont">Your Appointments</span>
+                                <br>
+                                <br>
                                 <% for(var i=0; i<appos.length; i++) {%>
                                     <div>
                                         <%= appos[i] %>
