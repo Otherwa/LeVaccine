@@ -1,6 +1,6 @@
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
-const { con } = require('../config/connection_config');
+
 
 const schema = mongoose.Schema;
 
@@ -23,7 +23,7 @@ const appodetails = new schema({
         default: [0, 0]
     },
     slots: {
-        type: String,
+        type: Number,
         required: true
     }
 }, {

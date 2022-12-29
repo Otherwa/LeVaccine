@@ -141,4 +141,13 @@ Router.post('/dash/profile', auth, livedata, async (req, res) => {
 
 })
 
+
+Router.post('/dash/bookappo/:id', auth, livedata, async (req, res) => {
+    console.log("heer")
+    const id = req.params.id
+    console.log(id.toString())
+    console.log(req.user._id.toString())
+    user.bookappo(req, res, id, req.user._id)
+})
+
 module.exports = { Router }
