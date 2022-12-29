@@ -1,5 +1,7 @@
 const userSchema = require('../userschema')
 const reset_user_pass = require('../reset_pass')
+const appolist = require('../appolistschema')
+const appos = require('../apposchema')
 const { connect } = require('../../config/connect')
 const {
   bcrypt,
@@ -120,9 +122,10 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
   await connect()
   console.log(whichuser)
   console.log(post)
-  var lat = parseFloat(lat)
-  var lon = parseFloat(lon)
-
+  var lat = 0
+  var lon = 0
+  lat = parseFloat(lat)
+  lon = parseFloat(lon)
   // if adhar uploaded
   if (adhar != null) {
     userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
@@ -156,6 +159,31 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
       res.redirect('/account/user/dash/profile')
     }
   })
- 
+}
+
+
+userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
+  await connect()
+
+  appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, result) => {
+    if (err) console.log(err)
+
+    console.log(result)
+
+    const appo = new appolist({
+      appoid: appoid,
+      userid: userid,
+      date: new Date()
+    })
+
+    appo.save((err, result) => {
+      if (err) console.error(err)
+
+      console.log(result)
+      req.flash('msg', "Appointment Booked")
+      res.redirect('/account/user/dash/bookappo/' + appoid);
+    })
+
+  })
 }
 module.exports = { userSchema }

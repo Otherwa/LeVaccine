@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Book Appointments</title>
+    <title>Appointment</title>
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
@@ -18,7 +18,7 @@
 <body>
     <div id="scroll-progress"></div>
     <div class="bridge" style="display: none">
-        <input type="hidden" id="appos" name="appos" value="<%= appos_ %>">
+        <input type="hidden" id="appo_pos" name="appo_pos" value="<%= appo_pos %>">
     </div>
     <div id="butter">
         <%- include('../../partial/user-nav')%>
@@ -31,41 +31,40 @@
                 </div>
                 <br>
                 <div class="appos">
-                    <h3>Note :</h3><br>
-                    <h2>Appontments are based on you Nearest Location</h2>
+                    <p>Appontment</p>
+                    <br>
+                    <p class="myFont" style="font-size:1rem;color: green;">
+                        <%= msg %>
+                    </p>
+                    <br>
+                    <p class="myFont" style="font-size:1rem;color: rgb(186, 193, 69);">
+                        <%= check %>
+                    </p>
                     <br>
                     <br>
-                    <div class="listofappo">
-                        <br>
-                        <% if(appos.length>0) {%>
-                            <% for(var i=0; i<appos.length; i++) {%>
-                                <div>
-                                    <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                        <%= appos[i]._id %>
-                                    </a>
+                    <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
+                        <div>
+                            <%= appo.address %>
+                                <br>
+                                <%= appo.city %>
                                     <br>
-                                    <%= appos[i].address %>
+                                    <%= appo.state %>
                                         <br>
-                                        <%= appos[i].city %>
+                                        <%= appo.postcode %>
                                             <br>
-                                            <%= appos[i].state %>
+                                            <%= appo.details.time %>
                                                 <br>
-                                                <%= appos[i].postcode %>
+                                                <%= appo.details.vaccine %>
                                                     <br>
-                                                    <%= appos[i].details.time %>
+                                                    <%= appo.details.date%>
                                                         <br>
-                                                        <%= appos[i].details.vaccine %>
+                                                        <%= appo.details.slots%>
                                                             <br>
-                                                            <%= appos[i].details.date%>
-                                                                <br>
-                                                                <%= appos[i].details.slots%>
-                                                                    <br>
-                                </div><br><br>
-                                <% } %>
-                                    <% }else{%>
-                                        <p>No Appontmens Nearby</p>
-                                        <% }%>
-                    </div>
+                        </div>
+                        <% if(!check) {%>
+                            <input type="submit" value="book">
+                            <% }%>
+                    </form>
                 </div>
                 <br>
                 <br>
@@ -90,7 +89,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/bookappo.js"></script>
+    <script type="text/javascript" src="/js/appo.js"></script>
 
 
 

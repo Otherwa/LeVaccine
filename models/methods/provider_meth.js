@@ -151,8 +151,10 @@ providerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
     await connect()
     console.log(whichuser)
     console.log(post)
-    var lat = parseFloat(lat)
-    var lon = parseFloat(lon)
+    var lat = 0
+    var lon = 0
+    lat = parseFloat(lat)
+    lon = parseFloat(lon)
 
     // if adhar uploaded
     if (adhar != null) {

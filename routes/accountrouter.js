@@ -8,6 +8,7 @@ const { providerSchema } = require('../models/methods/provider_meth')
 const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
+const appolists = require('../models/appolistschema')
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -93,12 +94,41 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
       data: req.user,
       token: cookie,
       appos: result,
-      appos_: pos
+      appos_: pos,
     });
   })
+})
 
+// book a appointment
+Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.params.id.toString()
+  appo.findById(id, (err, result) => {
 
+    if (err) {
+      console.log(err)
+      res.redirect('user/dash/bookappo')
+    }
+    // check if user already selected the appointment or not
+    appolists.findOne({ 'userid': req.user._id.toString(), 'appoid': id }, (err, results) => {
+      if (err) {
+        console.log(err)
+      }
 
+      console.log(results)
+
+      res.render('account/user/appo', {
+        data: req.user,
+        token: cookie,
+        appo: result,
+        appo_pos: result.details.position,
+        msg: req.flash('msg'),
+        check: results
+      })
+    })
+
+  })
 })
 
 // update profile
