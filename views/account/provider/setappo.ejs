@@ -139,12 +139,32 @@
                             <div class="items" id="appos"
                                 style="margin-top: 5rem;width: 50%;overflow-y: scroll;height:47rem">
                                 <span class="myFont">Your Appointments</span>
-                                <br>
-                                <br>
                                 <% for(var i=0; i<appos.length; i++) {%>
-                                    <div>
-                                        <%= appos[i] %>
-                                    </div><br><br>
+                                    <a href="#">
+                                        <div>
+                                            <%= appos[i].address %>
+                                                <br>
+                                                <%= appos[i].city %>
+                                                    <br>
+                                                    <%= appos[i].state %>
+                                                        <br>
+                                                        <%= appos[i].postcode %>
+                                                            <br>
+                                                            <%= appos[i].details.time %>
+                                                                <br>
+                                                                <%= appos[i].details.vaccine %>
+                                                                    <br>
+                                                                    <%= appos[i].details.date%>
+                                                                        <br>
+                                                                        <%= appos[i].details.slots%>
+                                                                            <br>
+                                                                            <%if(appos[i].status){%>
+                                                                                <p>Completed</p>
+                                                                                <%}else{%>
+                                                                                    <p>On-going</p>
+                                                                                    <%}%>
+                                        </div>
+                                    </a>
                                     <% } %>
                             </div>
                         </div>

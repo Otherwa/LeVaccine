@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Book Appointments</title>
+    <title>Appointment</title>
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- MS, fb & Whatsapp -->
@@ -39,16 +39,16 @@
         href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
 
     <link rel="stylesheet" href="/css/show/style.css" />
-    <link href="/css/whichlogin/user.css" rel="stylesheet" />
+    <link href="/css/whichlogin/provider.css" rel="stylesheet" />
 </head>
 
 <body>
     <div id="scroll-progress"></div>
     <div class="bridge" style="display: none">
-        <input type="hidden" id="appos" name="appos" value="<%= appos_ %>">
+        <input type="hidden" id="appo_pos" name="appo_pos" value="<%= appo_pos %>">
     </div>
     <div id="butter">
-        <%- include('../../partial/user-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
                 <div class="con">
@@ -58,49 +58,35 @@
                 </div>
                 <br>
                 <div class="appos">
-                    <h3>Note :</h3><br>
-                    <h2>Appontments are based on you Nearest Location</h2>
+                    <p>Appontment</p>
                     <br>
                     <br>
-                    <div class="listofappo">
-                        <br>
-                        <!-- appo are available -->
-                        <% if(appos.length>0) {%>
-                            <% for(var i=0; i<appos.length; i++) {%>
-                                <!-- appo slots left -->
-                                <!-- appo are available -->
-
-                                <% if(appos[i].details.slots>0) {%>
-                                    <% if(appos[i].status !=true) {%>
-                                        <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                            <div>
-                                                <%= appos[i]._id %>
+                    <br>
+                    <div>
+                        <%= appo.address %>
+                            <br>
+                            <%= appo.city %>
+                                <br>
+                                <%= appo.state %>
+                                    <br>
+                                    <%= appo.postcode %>
+                                        <br>
+                                        <%= appo.details.time %>
+                                            <br>
+                                            <%= appo.details.vaccine %>
+                                                <br>
+                                                <%= appo.details.date%>
                                                     <br>
-                                                    <%= appos[i].address %>
+                                                    <%= appo.details.slots%>
                                                         <br>
-                                                        <%= appos[i].city %>
-                                                            <br>
-                                                            <%= appos[i].state %>
-                                                                <br>
-                                                                <%= appos[i].postcode %>
-                                                                    <br>
-                                                                    <%= appos[i].details.time %>
-                                                                        <br>
-                                                                        <%= appos[i].details.vaccine %>
-                                                                            <br>
-                                                                            <%= appos[i].details.date%>
-                                                                                <br>
-                                                                                <%= appos[i].details.slots%>
-                                                                                    <br>
-                                            </div>
-                                        </a>
-                                        <% } %>
-                                            <% } %>
-                                                <% } %>
-                                                    <% }else{%>
-                                                        <p>No Appontmens Nearby</p>
-                                                        <% }%>
+                                                        <%if(appo.status){%>
+                                                            <p>Completed</p>
+                                                            <%}else{%>
+                                                                <p>On-going</p>
+                                                                <%}%>
                     </div>
+                    <br>
+                    <br>
                 </div>
                 <br>
                 <br>
@@ -125,7 +111,10 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/bookappo.js"></script>
+    <script type="text/javascript" src="/js/appo.js"></script>
+
+
+
 </body>
 
 </html>
