@@ -167,6 +167,30 @@ function sendmail(email) {
   })
 }
 
+// book appo mail
+// mail service for subscription
+function user_bookappo(email, username, result) {
+
+
+
+  console.log(result.address)
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Appointment Booked',
+    text: 'Your Appointment was booked',
+    html: result.address
+  }
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
+
 // home page
 async function sendnews() {
   const data = fetch(
@@ -348,6 +372,7 @@ module.exports = {
   pauth,
   livepdata,
   user_reset,
-  provider_reset
+  provider_reset,
+  user_bookappo
 }
 

@@ -55,6 +55,10 @@ const setapposchema = new schema({
     details: {
         type: appodetails,
         required: true
+    },
+    status: {
+        type: Boolean,
+        default: false
     }
 }, {
     versionKey: false //here

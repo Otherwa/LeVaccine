@@ -37,6 +37,10 @@
   --ppink: #ff1fa1;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* generated script */
 
 .feature-card2-feature-card {

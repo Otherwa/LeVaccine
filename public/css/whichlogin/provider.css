@@ -382,11 +382,13 @@ input:focus+.placeholder-text .text {
     border-radius: 0.5rem;
 }
 
+.listofappo::-webkit-scrollbar,
 #appos::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
+.listofappo::-webkit-scrollbar,
 #appos {
     -ms-overflow-style: none;
     /* IE and Edge */
@@ -397,4 +399,27 @@ input:focus+.placeholder-text .text {
 .appos {
     padding: 1rem;
     width: 90%;
+}
+
+#appos {
+    overflow: scroll;
+    height: 45rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.listofappo {
+    overflow: scroll;
+    height: 45rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+
+.listofappo div {
+    background-color: #04AA6D;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
 }

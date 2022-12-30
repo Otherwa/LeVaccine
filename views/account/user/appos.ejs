@@ -52,54 +52,43 @@
             <div class="container-home">
                 <br>
                 <div class="con">
-                    <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
+                    <p class="myFont" id="loc" style="font-size:1.01rem">(Appoinments Location)</p>
                     <br>
                     <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
                 </div>
                 <br>
                 <div class="appos">
-                    <h3>Note :</h3><br>
-                    <h2>Appontments are based on you Nearest Location</h2>
+                    <h2>Your Appoinments</h2>
                     <br>
                     <br>
                     <div class="listofappo">
                         <br>
-                        <!-- appo are available -->
                         <% if(appos.length>0) {%>
                             <% for(var i=0; i<appos.length; i++) {%>
-                                <!-- appo slots left -->
-                                <!-- appo are available -->
-
-                                <% if(appos[i].details.slots>0) {%>
-                                    <% if(appos[i].status !=true) {%>
-                                        <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                            <div>
-                                                <%= appos[i]._id %>
+                                <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
+                                    <div>
+                                        <%= appos[i]._id %>
+                                            <br>
+                                            <%= appos[i].address %>
+                                                <br>
+                                                <%= appos[i].city %>
                                                     <br>
-                                                    <%= appos[i].address %>
+                                                    <%= appos[i].state %>
                                                         <br>
-                                                        <%= appos[i].city %>
+                                                        <%= appos[i].postcode %>
                                                             <br>
-                                                            <%= appos[i].state %>
+                                                            <%= appos[i].details.time %>
                                                                 <br>
-                                                                <%= appos[i].postcode %>
+                                                                <%= appos[i].details.vaccine %>
                                                                     <br>
-                                                                    <%= appos[i].details.time %>
+                                                                    <%= appos[i].details.date%>
                                                                         <br>
-                                                                        <%= appos[i].details.vaccine %>
-                                                                            <br>
-                                                                            <%= appos[i].details.date%>
-                                                                                <br>
-                                                                                <%= appos[i].details.slots%>
-                                                                                    <br>
-                                            </div>
-                                        </a>
-                                        <% } %>
-                                            <% } %>
-                                                <% } %>
-                                                    <% }else{%>
-                                                        <p>No Appontmens Nearby</p>
-                                                        <% }%>
+                                    </div>
+                                </a>
+                                <% } %>
+                                    <% }else{%>
+                                        <p>No Appontments Booked</p>
+                                        <% }%>
                     </div>
                 </div>
                 <br>
@@ -125,7 +114,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/bookappo.js"></script>
+    <script type="text/javascript" src="/js/appos.js"></script>
 </body>
 
 </html>

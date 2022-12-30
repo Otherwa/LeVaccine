@@ -26,8 +26,6 @@ Router.use('/user', userRouter)
 Router.use('/provider', providerRouter)
 
 
-const appolist = require('../models/apposchema')
-
 const user = new userSchema()
 const provider = new providerSchema()
 
@@ -129,6 +127,55 @@ Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
     })
 
   })
+})
+
+Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+
+
+  // check if user already selected the appointment or not
+  appolists.find({ 'userid': req.user._id.toString() }, { 'appoid': 1, '_id': 0 }, (err, results) => {
+    if (err) {
+      console.log(err)
+    }
+
+    console.log(results)
+
+    const userappoints = results.map(pos);
+    // console.log(pos)
+    function pos(item) {
+      return (item.appoid.toString());
+    }
+
+    console.log(userappoints)
+
+    appo.find({ '_id': { $in: userappoints } }, (err, result) => {
+
+      if (err) { console.log(err) }
+
+
+      const pos = result.map(position);
+      // console.log(pos)
+      function position(item) {
+        return (item.details.position);
+      }
+
+      console.log(result)
+      console.log(pos)
+
+      res.render('account/user/appos', {
+        data: req.user,
+        token: cookie,
+        appos: result,
+        appos_: pos,
+        msg: req.flash('msg'),
+        check: results
+      })
+    })
+
+  })
+
 })
 
 // update profile
@@ -248,7 +295,7 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   var id = req.user._id
   id = id.toString()
   console.log(id)
-  appolist.find({ byappo: id }, function (err, result) {
+  appo.find({ byappo: id }, function (err, result) {
     if (err) {
       console.error(err)
     } else {
@@ -263,6 +310,62 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   })
 })
 
+Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
+  // token set or
+  await connect()
+  const count = await providerSchema.count()
+  const cookie = req.cookies.jwt
+  console.log(req.user._id)
+  var id = req.user._id
+  id = id.toString()
+
+
+
+  appo.find({ byappo: id }, function (err, result) {
+    if (err) {
+      console.error(err)
+    } else {
+
+      const pos = result.map(position);
+      // console.log(pos)
+      function position(item) {
+        return (item.details.position);
+      }
+
+
+      console.log(req.user)
+      res.render('account/provider/appos', {
+        data: req.user,
+        token: cookie,
+        appos_: pos,
+        appos: result,
+      })
+    }
+  })
+})
+
+Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
+  // token set or
+  await connect()
+  const id = req.params.id
+  const cookie = req.cookies.jwt
+  console.log(req.user._id)
+
+  appo.findById(id, function (err, result) {
+    if (err) {
+      console.error(err)
+    } else {
+
+      console.log(result)
+      res.render('account/provider/appo', {
+        data: req.user,
+        token: cookie,
+        appo_pos: result.details.position,
+        appo: result,
+      })
+    }
+  })
+})
 
 Router.get('/provider/logout', async (req, res) => {
   provider.logout(req, res)

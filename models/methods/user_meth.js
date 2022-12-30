@@ -8,7 +8,8 @@ const {
   jwt,
   sendSignupEmail,
   user_reset,
-  generateOTP
+  generateOTP,
+  user_bookappo
 } = require('../../commonfunctions/commonfunc')
 // login
 
@@ -165,10 +166,10 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
 userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
   await connect()
 
-  appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, result) => {
+  appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
     if (err) console.log(err)
 
-    console.log(result)
+    console.log(results)
 
     const appo = new appolist({
       appoid: appoid,
@@ -182,6 +183,7 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
       console.log(result)
       req.flash('msg', "Appointment Booked")
       res.redirect('/account/user/dash/bookappo/' + appoid);
+      user_bookappo(req.user.email, req.user.username, results)
     })
 
   })
