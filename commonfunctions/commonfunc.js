@@ -15,6 +15,7 @@ const fetch = require('node-fetch') // for fetch api
 // models
 const userSchema = require('../models/userschema')
 const providerSchema = require('../models/providerschema')
+const producerSchema = require('../models/producerschema')
 
 // passport authentication for username and password by passport
 
@@ -44,6 +45,32 @@ function sendSignupEmail1(email) {
     html:
       `
         <a href="https://drug-lord.onrender.com/account/provider/verify/` +
+      email +
+      '">' +
+      `Verify</a>
+        <br>
+        <p>Please Continue to Verify Your Account</p>
+        `
+  }
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
+
+// send signup email for provider
+function sendSignupEmail2(email) {
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Thanks For Registering',
+    text: 'Thanks For Registering',
+    html:
+      `
+        <a href="https://drug-lord.onrender.com/account/producer/verify/` +
       email +
       '">' +
       `Verify</a>
@@ -125,6 +152,31 @@ function user_reset(email, username, otp) {
 
 // provider reset
 function provider_reset(email, username, otp) {
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Password Reset',
+    text: 'OTP',
+    html: `
+      <img style="width:80%;height:80%" src="https://apimeme.com/meme?meme=Patrick-Bateman&top=`+ username + `&bottom=Your%20OTP%20is%20` + otp + `">
+      <br>
+      <h2>`+
+      username + `</h2> <p>My Brother in Christ</p> 
+      <p>Your Otp is <h1>` + otp + `<h1></p>`
+  }
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    console.log('sending.......')
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
+
+// producer_reset
+function producer_reset(email, username, otp) {
   var mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -355,6 +407,86 @@ async function livepdata(req, res, next) {
   }
 }
 
+async function pauth(req, res, next) {
+  const cookie = req.cookies.jwt
+  const type = req.cookies.type
+  console.log(cookie)
+  if (cookie != undefined) {
+    jwt.verify(
+      cookie,
+      require('../config/connection_config').jwt_token,
+      (err, result) => {
+        if (type == "Provider") {
+          if (err) return res.json({ msg: err.message })
+          req.user = result
+          console.log(req.user + ' auth')
+          next()
+        }
+        else {
+          return res.redirect('/account')
+        }
+      }
+    )
+  } else {
+    return res.redirect('/account/provider')
+  }
+}
+
+// get live data on refresh and cookie saved in cookie for each sesion
+async function livepdata(req, res, next) {
+  await connect()
+  // add user to req
+  req.user = await providerSchema.findOne({ email: req.user.email })
+  // console.log(req.user.email);
+  // console.log("req user");
+  if (req.user == null) {
+    res.clearCookie('jwt')
+    res.redirect('/account/provider')
+  } else {
+    next()
+  }
+}
+async function proauth(req, res, next) {
+  const cookie = req.cookies.jwt
+  const type = req.cookies.type
+  console.log(cookie)
+  if (cookie != undefined) {
+    jwt.verify(
+      cookie,
+      require('../config/connection_config').jwt_token,
+      (err, result) => {
+        if (type == "Producer") {
+          if (err) return res.json({ msg: err.message })
+          req.user = result
+          console.log(req.user + ' auth')
+          next()
+        }
+        else {
+          return res.redirect('/account')
+        }
+      }
+    )
+  } else {
+    return res.redirect('/account/provider')
+  }
+}
+
+// get live data on refresh and cookie saved in cookie for each sesion
+async function liveprodata(req, res, next) {
+  await connect()
+  // add user to req
+  req.user = await producerSchema.findOne({ email: req.user.email })
+  // console.log(req.user.email);
+  // console.log("req user");
+  if (req.user == null) {
+    res.clearCookie('jwt')
+    res.redirect('/account/producer')
+  } else {
+    next()
+  }
+}
+
+
 module.exports = {
   sendmail,
   covid,
@@ -364,6 +496,7 @@ module.exports = {
   sendedunews,
   sendSignupEmail,
   sendSignupEmail1,
+  sendSignupEmail2,
   jwt,
   bcrypt,
   auth,
@@ -371,8 +504,11 @@ module.exports = {
   livedata,
   pauth,
   livepdata,
+  proauth,
+  liveprodata,
   user_reset,
   provider_reset,
+  producer_reset,
   user_bookappo
 }
 

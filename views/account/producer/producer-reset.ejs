@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Producer-Login</title>
+    <title>Producer Reset</title>
     <meta property="og:title" content="Le-Vaccine" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- MS, fb & Whatsapp -->
 
     <!-- MS Tile - for Microsoft apps-->
@@ -31,7 +32,6 @@
 
     <!-- Website to visit when clicked in fb or WhatsApp-->
     <meta property="og:url" content="https://drug-lord.onrender.com/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         data-tag="font" />
@@ -40,7 +40,7 @@
 
     <link href="/css/show/style.css" rel="stylesheet" />
     <link href="/css/whichlogin/whichlogin.css" rel="stylesheet" />
-    <link href="/css/whichlogin/provider.css" rel="stylesheet" />
+    <link href="/css/whichlogin/reset.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -51,7 +51,7 @@
     </div>
     <div id="butter">
         <div class="home-container">
-            <%- include('../partial/log-res-nav') %>
+            <%- include('../../partial/log-res-nav') %>
                 <br>
                 <br>
                 <div class="container height-set">
@@ -60,39 +60,52 @@
                     <br>
                     <br>
                     <div class="container">
-                        <form class="form" action="/account/producer/login" method="POST">
+                        <form class="form">
                             <div class="head">
-                                <h1>Login</h1>
-                                <p class="myFont">
-                                    <%= err %>
-                                        <span class="myFont" style="color: green">
-                                            <%= err1 %>
-                                        </span>
+                                <h1>Reset</h1>
+                                <br>
+                                <p class="myFont" id="status" style="color:green">
                                 </p>
                             </div>
-                            <div class="input-contain">
-                                <input type="text" name="username" value="" id="username" autocomplete="off">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Username</div>
+
+                            <div class="input-contain email" id="emailcon">
+                                <input type="email" name="email" id="email" autocomplete="off">
+                                <label class="placeholder-text" for="email" id="placeholder-fname">
+                                    <div class="text">Email</div>
                                 </label>
                             </div>
-                            <p id="pass-msg"></p>
-                            <div class="input-contain">
-                                <input type="password" name="password" value="" id="password" autocomplete="off">
-                                <label class="placeholder-text" for="password" id="placeholder-fname">
-                                    <div class="text">Password</div>
+                            <div class="input-contain otp" id="otpcon" style="display: none">
+                                <input type="text" name="otp" id="otp" autocomplete="off">
+                                <label class="placeholder-text" for="otp" id="placeholder-fname">
+                                    <div class="text">OTP</div>
+                                </label>
+                            </div>
+                            <div class="input-contain pass1" id="pass1con" style="display: none">
+                                <input type="password" name="pass1" id="pass1" autocomplete="off">
+                                <label class="placeholder-text" for="pass1" id="placeholder-fname">
+                                    <div class="text">New Password</div>
+                                </label>
+                            </div>
+                            <div class="input-contain pass2" id="pass2con" style="display: none">
+                                <input type="password" name="pass2" id="pass2" autocomplete="off">
+                                <label class="placeholder-text" for="pass2" id="placeholder-fname">
+                                    <div class="text">Confirm New Password</div>
                                 </label>
                             </div>
                             <div class="div">
-                                <input type="submit" id="login" value="Login">
+                                <input type="button" id="reset" value="Reset">
+                                <input type="button" id="verify" value="Verify" style="display:none">
+                                <input type="button" id="password-reset" value="Reset Password" style="display:none">
                             </div>
                             <div class="sub">
-                                <p><a href="/account/producer/reset">Forgot Password?</a></p>
+                                <p><a href="/account/user">Login In</a></p>
                                 <p>
-                                    <a href="/account/producer/signup">Sign up</a>
+                                    <a href="/account/user/signup">Sign Up</a>
                                 </p>
                             </div>
                         </form>
+
+
                     </div>
                     <br>
                 </div>
@@ -106,6 +119,8 @@
     </div>
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -113,7 +128,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="/js/reset2.js"></script>
 </body>
 
 </html>
