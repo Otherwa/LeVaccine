@@ -123,10 +123,8 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
   await connect()
   console.log(whichuser)
   console.log(post)
-  var lat = 0
-  var lon = 0
-  lat = parseFloat(lat)
-  lon = parseFloat(lon)
+  var lat = parseFloat(lat)
+  var lon = parseFloat(lon)
   // if adhar uploaded
   if (adhar != null) {
     userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {

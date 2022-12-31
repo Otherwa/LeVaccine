@@ -2,10 +2,12 @@ const express = require('express')
 const Router = express.Router()
 const userRouter = require('./userrouter').Router
 const providerRouter = require('./providerrouter').Router
+const producerRouter = require('./producerrouter').Router
 const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
-const { pauth, livepdata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+const { producerSchema } = require('../models/methods/producer_meth')
+const { pauth, livepdata, proauth, liveprodata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
 const appolists = require('../models/appolistschema')
@@ -24,10 +26,12 @@ Router.use(limiter)
 // routes
 Router.use('/user', userRouter)
 Router.use('/provider', providerRouter)
+Router.use('/producer', producerRouter)
 
 
 const user = new userSchema()
 const provider = new providerSchema()
+const producer = new producerSchema()
 
 // index
 Router.get('/', (req, res) => {
@@ -195,7 +199,7 @@ Router.get('/user/logout', async (req, res) => {
   user.logout(req, res)
 })
 
-// reset otp user
+//  verify
 Router.get('/user/verify/:email', async (req, res) => {
   const email = req.params.email
   await connect()
@@ -399,11 +403,90 @@ Router.get('/provider/verify/:email', async (req, res) => {
   }
 })
 
-
+// ------------------------------------------------------------------
 
 // producer
 Router.get('/producer', (req, res) => {
-  res.render('account/producer')
+  res.status(200).render('account/producer', {
+    err: req.flash('message'),
+    err1: req.flash('message1')
+  })
+})
+
+// account creation
+Router.get('/producer/signup', (req, res) => {
+  res.status(200).render('account/producer/signup', { msg: req.flash('message1') })
+})
+
+// reset password
+Router.get('/producer/reset', (req, res) => {
+  // user reset
+  res.render('account/producer/producer-reset')
+})
+
+// all middleware functions in common
+Router.get('/producer/dash', proauth, liveprodata, async (req, res) => {
+  // token set or
+
+  await connect()
+  const count = await providerSchema.count()
+  const cookie = req.cookies.jwt
+  // get req user
+  console.log(req.user)
+  res.render('account/producer/dashboard', {
+    data: req.user,
+    token: cookie,
+    count
+  })
+})
+
+
+
+//  verify
+Router.get('/producer/verify/:email', async (req, res) => {
+  const email = req.params.email
+  await connect()
+  console.log(email)
+
+  const exsist = await producerSchema.findOne({ email })
+
+  if (exsist === null) {
+    res.redirect('/')
+  } else {
+    if (exsist.verified === false) {
+      const filter = { email }
+      const update = { $set: { verified: true } }
+
+      producerSchema.findOneAndUpdate(filter, update, (err, result) => {
+        if (err) {
+          res.json(err)
+        } else {
+          res.render('account/verify')
+        }
+      })
+    } else {
+      res.redirect('/')
+    }
+  }
+})
+
+// get profile
+
+// update profile
+Router.get('/producer/dash/profile', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  // console.log(req.user)
+  res.render('account/producer/profile', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('success')
+  });
+})
+
+
+Router.get('/producer/logout', async (req, res) => {
+  producer.logout(req, res)
 })
 
 
