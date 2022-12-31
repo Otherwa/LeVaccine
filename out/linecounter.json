@@ -1687,6 +1687,1872 @@
                     "filename": "views\\services.ejs"
                 }
             ]
+        },
+        {
+            "version": "0.2.7",
+            "counttime": "2022-12-31 10:14:36",
+            "filesum": 275,
+            "codesum": 27459,
+            "commentsum": 4430,
+            "blanksum": 1929,
+            "statistics": {
+                ".ejs": {
+                    "code": 4015,
+                    "comment": 4,
+                    "blank": 464
+                },
+                ".js": {
+                    "code": 3949,
+                    "comment": 517,
+                    "blank": 680
+                },
+                ".md": {
+                    "code": 94,
+                    "comment": 23,
+                    "blank": 34
+                },
+                ".xml": {
+                    "code": 71,
+                    "comment": 1,
+                    "blank": 4
+                },
+                ".svg": {
+                    "code": 16,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".txt": {
+                    "code": 26,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".css": {
+                    "code": 3378,
+                    "comment": 60,
+                    "blank": 702
+                },
+                ".json": {
+                    "code": 11764,
+                    "comment": 0,
+                    "blank": 2
+                },
+                ".pdf": {
+                    "code": 4070,
+                    "comment": 3822,
+                    "blank": 32
+                },
+                "": {
+                    "code": 6,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".yml": {
+                    "code": 60,
+                    "comment": 1,
+                    "blank": 8
+                },
+                ".toml": {
+                    "code": 10,
+                    "comment": 0,
+                    "blank": 3
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 3,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": ".deepsource.toml"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 1,
+                    "filename": ".env"
+                },
+                {
+                    "blank": 6,
+                    "code": 46,
+                    "comment": 1,
+                    "filename": ".github\\workflows\\codeql.yml"
+                },
+                {
+                    "blank": 2,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": ".github\\workflows\\greetings.yml"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 50,
+                    "code": 192,
+                    "comment": 53,
+                    "filename": "app.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "app.test.js"
+                },
+                {
+                    "blank": 45,
+                    "code": 373,
+                    "comment": 47,
+                    "filename": "commonfunctions\\commonfunc.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "config\\connect.js"
+                },
+                {
+                    "blank": 65,
+                    "code": 289,
+                    "comment": 0,
+                    "filename": "config\\connection_config.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "cypress.config.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "cypress\\e2e\\spec.cy.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "cypress\\fixtures\\example.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 25,
+                    "filename": "cypress\\support\\commands.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 1,
+                    "comment": 17,
+                    "filename": "cypress\\support\\e2e.js"
+                },
+                {
+                    "filename": "cypress\\videos\\spec.cy.js.mp4",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "doc\\A004_DRUG_LORDV.1.10.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "doc\\A004_DRUG_LORDV.1.10_compressed.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "doc\\Drugsv1.10.docx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 31,
+                    "code": 3989,
+                    "comment": 2915,
+                    "filename": "doc\\Drugsv1.10.pdf"
+                },
+                {
+                    "filename": "doc\\index.docx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 81,
+                    "comment": 907,
+                    "filename": "doc\\index.pdf"
+                },
+                {
+                    "filename": "doc\\Sequencediagram.docx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "doc\\Vaccine Management System.pptx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\10.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\11.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\188705083-15eeb51c-ab57-4628-9281-671a1cc1bb0a.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\1jpeg.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\2.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\2d8.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\3.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\4.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\5.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\6.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\7.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\8.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\9.jpeg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\a5MeAzG_700b.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\activity.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Allura - Exploring on Laptop.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Arch.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\chart1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\chart2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\chart3.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\class.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\class_notations.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Cool Kids - Feedback.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DFD0.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DFD1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DFD2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\dfinfo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\add vaccine.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Book appointment.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Book order.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Book orders.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\change appointment.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\checkout.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\delete appointment.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\delete orders.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\delete vaccine.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 10.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 11.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 12.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 13.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 7.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 8.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Group 9.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Login.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\order status.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\original.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Process orders.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Register.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Set appointments.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Update Details.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\update vaccine.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\DRUG LORD v1.10\\Vaccine Stocks.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Gantt Chart.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Bust.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Family.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Online.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Videocall (1).png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Videocall.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Lifesavers - Waiting.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Notation.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\question1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\question2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\question3.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\response.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Screenshot 2022-10-20 212446.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\sequence noataitons.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\squence symbolpng.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\stateactivity.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\statesymbol.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\UML2.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "docimgs\\Usecase.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 1,
+                    "filename": "LEARN.md"
+                },
+                {
+                    "blank": 6,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "LICENSE.md"
+                },
+                {
+                    "blank": 3,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "models\\apis.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "models\\appolistschema.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 61,
+                    "comment": 2,
+                    "filename": "models\\apposchema.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 1,
+                    "filename": "models\\edurls.js"
+                },
+                {
+                    "blank": 19,
+                    "code": 130,
+                    "comment": 17,
+                    "filename": "models\\methods\\producer_meth.js"
+                },
+                {
+                    "blank": 16,
+                    "code": 162,
+                    "comment": 19,
+                    "filename": "models\\methods\\provider_meth.js"
+                },
+                {
+                    "blank": 26,
+                    "code": 149,
+                    "comment": 17,
+                    "filename": "models\\methods\\user_meth.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 116,
+                    "comment": 9,
+                    "filename": "models\\producerschema.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 116,
+                    "comment": 9,
+                    "filename": "models\\providerschema.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "models\\reset_pass.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "models\\useremails.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 102,
+                    "comment": 8,
+                    "filename": "models\\userschema.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 11709,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 50,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 22,
+                    "code": 97,
+                    "comment": 0,
+                    "filename": "public\\css\\about\\about.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "public\\css\\api\\api.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "public\\css\\contact\\contact.css"
+                },
+                {
+                    "blank": 17,
+                    "code": 80,
+                    "comment": 3,
+                    "filename": "public\\css\\covidcounter\\covidcounter.css"
+                },
+                {
+                    "blank": 19,
+                    "code": 65,
+                    "comment": 4,
+                    "filename": "public\\css\\education\\education.css"
+                },
+                {
+                    "blank": 13,
+                    "code": 35,
+                    "comment": 4,
+                    "filename": "public\\css\\index\\home.css"
+                },
+                {
+                    "blank": 5,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "public\\css\\services\\services.css"
+                },
+                {
+                    "filename": "public\\css\\show\\DOTMATRI.TTF",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 401,
+                    "code": 2054,
+                    "comment": 11,
+                    "filename": "public\\css\\show\\style.css"
+                },
+                {
+                    "blank": 75,
+                    "code": 339,
+                    "comment": 11,
+                    "filename": "public\\css\\whichlogin\\provider.css"
+                },
+                {
+                    "blank": 40,
+                    "code": 196,
+                    "comment": 8,
+                    "filename": "public\\css\\whichlogin\\reset.css"
+                },
+                {
+                    "blank": 72,
+                    "code": 324,
+                    "comment": 11,
+                    "filename": "public\\css\\whichlogin\\user.css"
+                },
+                {
+                    "blank": 38,
+                    "code": 157,
+                    "comment": 8,
+                    "filename": "public\\css\\whichlogin\\whichlogin.css"
+                },
+                {
+                    "filename": "public\\imgs\\Content\\7749151dafdd896a722078a70c666b35.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\7K8I.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\98265888efe0ae9fa4764f7fa7c2e761.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\account.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\blob-scene-haikei.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\defaultprofile.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\empty.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\geek.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\GIF.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\group.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\image_processing20190908-29978-ui9u8t.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\isometric-warehouse.gif",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\Content\\layered-waves-haikei.svg"
+                },
+                {
+                    "filename": "public\\imgs\\Content\\ProfessorOak.webp",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\Content\\profile-user.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\affection.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Alzeimer.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Amnesia.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Anorexia.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Autism.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Axiety.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Bipolar.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Book.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Brain Head.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Brain.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Cannabis.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Chronic fatigue.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Clinic.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Consultation Session.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Counseling.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Creativity.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Crying.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Depression.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Drugs Addict.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Emotion.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Emotional meter.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Female Psycolog.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Healthy.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Hug.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Hypersex.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Insecure.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Insomnia.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Intrusive thought.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Male Psycolog.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Medicine.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Meditation activity.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Mental breakdown.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Mental health care.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Mental Health.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Mood.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Music Healing.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Negative Thinking.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Observation.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Phobia.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Positive thinking.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Problem Solving.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Psycologist.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Psycology.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Relax.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Selfcare.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Sleep.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Stress.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Support System.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Theraphy.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\PNG\\Yin yang.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "public\\imgs\\profile-icons-pack-hand-drawn-style.zip",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (1).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (10).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (11).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (12).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (13).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (14).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (15).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (2).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (3).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (4).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (5).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (6).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (7).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (8).svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\imgs\\SVG\\DrawKit Vector Illustrations COVID-19 & Vaccinations (9).svg"
+                },
+                {
+                    "blank": 1,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "public\\js\\about.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 22,
+                    "comment": 5,
+                    "filename": "public\\js\\api.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 43,
+                    "comment": 9,
+                    "filename": "public\\js\\appo.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 45,
+                    "comment": 9,
+                    "filename": "public\\js\\appos.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 45,
+                    "comment": 9,
+                    "filename": "public\\js\\bookappo.js"
+                },
+                {
+                    "blank": 21,
+                    "code": 95,
+                    "comment": 2,
+                    "filename": "public\\js\\butter\\butter.js"
+                },
+                {
+                    "blank": 18,
+                    "code": 121,
+                    "comment": 29,
+                    "filename": "public\\js\\common.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "public\\js\\contact.js"
+                },
+                {
+                    "blank": 39,
+                    "code": 223,
+                    "comment": 29,
+                    "filename": "public\\js\\counter.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "public\\js\\education.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "public\\js\\index.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "public\\js\\login.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "public\\js\\provider.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 45,
+                    "comment": 9,
+                    "filename": "public\\js\\providerdash.js"
+                },
+                {
+                    "blank": 24,
+                    "code": 106,
+                    "comment": 15,
+                    "filename": "public\\js\\proviprofile.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 128,
+                    "comment": 8,
+                    "filename": "public\\js\\reset.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 128,
+                    "comment": 8,
+                    "filename": "public\\js\\reset1.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 128,
+                    "comment": 8,
+                    "filename": "public\\js\\reset2.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "public\\js\\services.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 60,
+                    "comment": 13,
+                    "filename": "public\\js\\setappo.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 35,
+                    "comment": 2,
+                    "filename": "public\\js\\signup.js"
+                },
+                {
+                    "blank": 23,
+                    "code": 106,
+                    "comment": 14,
+                    "filename": "public\\js\\uprofile.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "public\\js\\user.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 45,
+                    "comment": 9,
+                    "filename": "public\\js\\userdash.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "public\\js\\whichlogin.js"
+                },
+                {
+                    "blank": 22,
+                    "code": 54,
+                    "comment": 22,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 0,
+                    "code": 26,
+                    "comment": 1,
+                    "filename": "robots.txt"
+                },
+                {
+                    "blank": 90,
+                    "code": 353,
+                    "comment": 56,
+                    "filename": "routes\\accountrouter.js"
+                },
+                {
+                    "blank": 20,
+                    "code": 105,
+                    "comment": 17,
+                    "filename": "routes\\producerrouter.js"
+                },
+                {
+                    "blank": 23,
+                    "code": 118,
+                    "comment": 17,
+                    "filename": "routes\\providerrouter.js"
+                },
+                {
+                    "blank": 23,
+                    "code": 112,
+                    "comment": 18,
+                    "filename": "routes\\userrouter.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "SECURITY.md"
+                },
+                {
+                    "blank": 4,
+                    "code": 71,
+                    "comment": 1,
+                    "filename": "sitemap.xml"
+                },
+                {
+                    "blank": 11,
+                    "code": 147,
+                    "comment": 0,
+                    "filename": "views\\about.ejs"
+                },
+                {
+                    "blank": 11,
+                    "code": 108,
+                    "comment": 0,
+                    "filename": "views\\account\\producer.ejs"
+                },
+                {
+                    "blank": 15,
+                    "code": 141,
+                    "comment": 0,
+                    "filename": "views\\account\\producer\\dashboard.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 120,
+                    "comment": 0,
+                    "filename": "views\\account\\producer\\producer-reset.ejs"
+                },
+                {
+                    "blank": 30,
+                    "code": 194,
+                    "comment": 0,
+                    "filename": "views\\account\\producer\\profile.ejs"
+                },
+                {
+                    "blank": 13,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "views\\account\\producer\\signup.ejs"
+                },
+                {
+                    "blank": 11,
+                    "code": 108,
+                    "comment": 0,
+                    "filename": "views\\account\\provider.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 106,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\appo.ejs"
+                },
+                {
+                    "blank": 11,
+                    "code": 114,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\appos.ejs"
+                },
+                {
+                    "blank": 15,
+                    "code": 141,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\dashboard.ejs"
+                },
+                {
+                    "blank": 17,
+                    "code": 88,
+                    "comment": 1,
+                    "filename": "views\\account\\provider\\profile.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 121,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\provider-reset.ejs"
+                },
+                {
+                    "blank": 19,
+                    "code": 181,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\setappo.ejs"
+                },
+                {
+                    "blank": 13,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "views\\account\\provider\\signup.ejs"
+                },
+                {
+                    "blank": 11,
+                    "code": 111,
+                    "comment": 0,
+                    "filename": "views\\account\\user.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 113,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\appo.ejs"
+                },
+                {
+                    "blank": 11,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\appos.ejs"
+                },
+                {
+                    "blank": 12,
+                    "code": 119,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\bookappo.ejs"
+                },
+                {
+                    "blank": 15,
+                    "code": 141,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\dashboard.ejs"
+                },
+                {
+                    "blank": 30,
+                    "code": 194,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\profile.ejs"
+                },
+                {
+                    "blank": 13,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\signup.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 120,
+                    "comment": 0,
+                    "filename": "views\\account\\user\\user-reset.ejs"
+                },
+                {
+                    "blank": 13,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "views\\account\\verify.ejs"
+                },
+                {
+                    "blank": 15,
+                    "code": 140,
+                    "comment": 0,
+                    "filename": "views\\account\\whichlogin.ejs"
+                },
+                {
+                    "blank": 6,
+                    "code": 57,
+                    "comment": 1,
+                    "filename": "views\\apis\\api.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "views\\contact.ejs"
+                },
+                {
+                    "blank": 14,
+                    "code": 175,
+                    "comment": 0,
+                    "filename": "views\\counter.ejs"
+                },
+                {
+                    "blank": 10,
+                    "code": 132,
+                    "comment": 0,
+                    "filename": "views\\education.ejs"
+                },
+                {
+                    "blank": 23,
+                    "code": 111,
+                    "comment": 2,
+                    "filename": "views\\error.ejs"
+                },
+                {
+                    "blank": 19,
+                    "code": 146,
+                    "comment": 0,
+                    "filename": "views\\index.ejs"
+                },
+                {
+                    "blank": 0,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "views\\partial\\foot.ejs"
+                },
+                {
+                    "blank": 2,
+                    "code": 42,
+                    "comment": 0,
+                    "filename": "views\\partial\\log-res-nav.ejs"
+                },
+                {
+                    "blank": 2,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "views\\partial\\nav.ejs"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "views\\partial\\producer-nav.ejs"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "views\\partial\\provider-nav.ejs"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "views\\partial\\user-nav.ejs"
+                },
+                {
+                    "blank": 18,
+                    "code": 158,
+                    "comment": 0,
+                    "filename": "views\\services.ejs"
+                }
+            ]
         }
     ]
 }
