@@ -57,7 +57,7 @@
                 <div class="container-home">
                     <div class="height-set" style="height:auto !important">
                         <br>
-                        <div id='map' style='width: 69vw; height: 350px;border-radius: 0.5rem;'></div>
+                        <div id='map' style='width: 95%; height: 350px;border-radius: 0.5rem;'></div>
                         <div class="form-con">
                             <div class="items">
                                 <form class="form items" action="/account/provider/dash/setappo" method="POST">
@@ -136,32 +136,31 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="items" id="appos"
-                                style="margin-top: 5rem;width: 50%;overflow-y: scroll;height:47rem">
+                            <div class="items" id="appos" style="margin-top: 5rem;overflow-y: scroll;height:47rem">
                                 <span class="myFont">Your Appointments</span>
                                 <% for(var i=0; i<appos.length; i++) {%>
                                     <a href="#">
-                                        <div>
-                                            <%= appos[i].address %>
+                                        <div id="seeappo">
+                                            Address : <%= appos[i].address %>
                                                 <br>
-                                                <%= appos[i].city %>
+                                                City : <%= appos[i].city %>
                                                     <br>
-                                                    <%= appos[i].state %>
+                                                    State : <%= appos[i].state %>
                                                         <br>
-                                                        <%= appos[i].postcode %>
+                                                        Postal : <%= appos[i].postcode %>
                                                             <br>
-                                                            <%= appos[i].details.time %>
+                                                            Time : <%= appos[i].details.time %>
                                                                 <br>
-                                                                <%= appos[i].details.vaccine %>
+                                                                Vaccine : <%= appos[i].details.vaccine %>
                                                                     <br>
-                                                                    <%= appos[i].details.date%>
+                                                                    Date : <%= appos[i].details.date%>
                                                                         <br>
-                                                                        <%= appos[i].details.slots%>
+                                                                        Slots :<%= appos[i].details.slots%>
                                                                             <br>
                                                                             <%if(appos[i].status){%>
-                                                                                <p>Completed</p>
+                                                                                <p>Satus : Completed</p>
                                                                                 <%}else{%>
-                                                                                    <p>On-going</p>
+                                                                                    <p>Status : On-going</p>
                                                                                     <%}%>
                                         </div>
                                     </a>

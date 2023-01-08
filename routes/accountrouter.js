@@ -7,7 +7,7 @@ const { connect } = require('../config/connect')
 const { userSchema } = require('../models/methods/user_meth')
 const { providerSchema } = require('../models/methods/provider_meth')
 const { producerSchema } = require('../models/methods/producer_meth')
-const { pauth, livepdata, proauth, liveprodata, auth, livedata, bcrypt } = require('../commonfunctions/commonfunc')
+const { pauth, livepdata, proauth, liveprodata, auth, livedata, bcrypt, sendnews } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
 const appolists = require('../models/appolistschema')
@@ -65,12 +65,14 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
   await connect()
   const count = await userSchema.count()
   const cookie = req.cookies.jwt
+  const datas = await sendnews();
   // get req user
   console.log(req.user)
   res.render('account/user/dashboard', {
     data: req.user,
     token: cookie,
-    count
+    count: count,
+    datas: datas.articles
   })
 })
 
@@ -266,12 +268,14 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
   await connect()
   const count = await providerSchema.count()
   const cookie = req.cookies.jwt
+  const datas = await sendnews();
   // get req user
   console.log(req.user)
   res.render('account/provider/dashboard', {
     data: req.user,
     token: cookie,
-    count
+    count,
+    datas: datas.articles
   })
 })
 

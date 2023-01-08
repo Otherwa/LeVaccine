@@ -143,15 +143,15 @@ const shareData = {
     url: 'https://drug-lord.onrender.com/'
 }
 
-const btn = document.getElementById('share');
-const resultPara = document.querySelector('.result');
+// const btn = document.getElementById('share');
+// const resultPara = document.querySelector('.result');
 
-// Share must be triggered by "user activation"
-btn.addEventListener('click', async () => {
-    try {
-        await navigator.share(shareData);
-        resultPara.textContent = 'MDN shared successfully';
-    } catch (err) {
-        resultPara.textContent = `Error: ${err}`;
-    }
-});
+// // // Share must be triggered by "user activation"
+// // btn.addEventListener('click', async () => {
+// //     try {
+// //         await navigator.share(shareData);
+// //         resultPara.textContent = 'MDN shared successfully';
+// //     } catch (err) {
+// //         resultPara.textContent = `Error: ${err}`;
+// //     }
+// // });

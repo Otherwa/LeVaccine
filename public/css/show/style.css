@@ -43,6 +43,10 @@
   font-size: 3.3em;
 }
 
+/* #map {
+  width: 100% !important;
+} */
+
 .ml6 .text-wrapper {
   position: relative;
   display: inline-block;

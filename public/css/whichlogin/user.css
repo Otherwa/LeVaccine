@@ -98,15 +98,19 @@
 
 .data {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 .info {
-    width: 50%;
+    background-color: #f3f3f3;
+    border-radius: 0.5rem;
+    padding: 1rem;
 }
 
-.appo {
-    width: 50%;
+.news {
+    background-color: #ff1fa1;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
 }
 
 .info p {
@@ -199,10 +203,6 @@ div.content {
 }
 
 @media screen and (max-width: 400px) {
-    .sidebar a {
-        text-align: center;
-        float: none;
-    }
 
     #graph {
         width: 15rem;
@@ -370,6 +370,7 @@ input:focus+.placeholder-text .text {
     background-color: #04AA6D;
     padding: 0.8rem;
     border-radius: 0.5rem;
+    width: 100%;
 }
 
 .listofappo::-webkit-scrollbar,
@@ -393,7 +394,7 @@ input:focus+.placeholder-text .text {
 
 .listofappo {
     overflow: scroll;
-    height: 45rem;
+    height: 50rem;
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -404,4 +405,17 @@ input:focus+.placeholder-text .text {
     background-color: #04AA6D;
     padding: 0.8rem;
     border-radius: 0.5rem;
+}
+
+#seeappo {
+    background-color: #ffe900d1;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    line-height: 1.6rem;
+}
+
+.listofappo div h5 {
+    font-size: 0.96rem;
+    margin-top: 0.5rem;
+    font-weight: normal;
 }
