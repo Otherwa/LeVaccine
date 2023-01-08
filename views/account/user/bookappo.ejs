@@ -70,36 +70,40 @@
                                 <!-- appo slots left -->
                                 <!-- appo are available -->
 
-                                <% if(appos[i].details.slots>0) {%>
-                                    <% if(appos[i].status !=true) {%>
-                                        <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                            <div>
-                                                <%= appos[i]._id %>
-                                                    <br>
-                                                    <%= appos[i].address %>
-                                                        <br>
-                                                        <%= appos[i].city %>
-                                                            <br>
-                                                            <%= appos[i].state %>
-                                                                <br>
-                                                                <%= appos[i].postcode %>
-                                                                    <br>
-                                                                    <%= appos[i].details.time %>
-                                                                        <br>
-                                                                        <%= appos[i].details.vaccine %>
-                                                                            <br>
-                                                                            <%= appos[i].details.date%>
-                                                                                <br>
-                                                                                <%= appos[i].details.slots%>
-                                                                                    <br>
-                                            </div>
-                                        </a>
+                                <% if(appos[i].status !=true) {%>
+                                    <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
+                                        <div>
+                                            <h4>
+                                                Address : <%= appos[i].address %>
+                                            </h4>
+                                            <h5>
+                                                City : <%= appos[i].city %>
+                                            </h5>
+                                            <h5>
+                                                State : <%= appos[i].state %>
+                                            </h5>
+                                            <h5>
+                                                Postal : <%= appos[i].postcode %>
+                                            </h5>
+                                            <h5>
+                                                Time : <%= appos[i].details.time %>
+                                            </h5>
+                                            <h5>
+                                                Vaccine : <%= appos[i].details.vaccine %>
+                                            </h5>
+                                            <h5>
+                                                Date : <%= appos[i].details.date%>
+                                            </h5>
+                                            <h5>
+                                                Slots : <%= appos[i].details.slots%>
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <% } %>
                                         <% } %>
-                                            <% } %>
-                                                <% } %>
-                                                    <% }else{%>
-                                                        <p>No Appontmens Nearby</p>
-                                                        <% }%>
+                                            <% }else{%>
+                                                <p>No Appontmens Nearby</p>
+                                                <% }%>
                     </div>
                 </div>
                 <br>

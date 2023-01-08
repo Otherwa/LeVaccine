@@ -58,14 +58,14 @@
                     <br>
                     <div class="con">
                         <div class="map">
-                            <div id='map' style='width: 69vw; height: 350px;border-radius: 0.5rem;'></div>
+                            <div id='map' style='width: 99%; height: 350px;border-radius: 0.5rem;'></div>
                         </div>
                         <br>
                         <br>
                         <div class="data">
                             <div class="info">
 
-                                <p>Profile :- </p>
+                                <h3>Profile :- </h3>
                                 <br>
                                 <p>
                                     <%= data.username%>
@@ -112,13 +112,36 @@
                                 </span>
                                 <br>
                             </div>
-                            <div class="appo">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            <div class="news appo">
+                                <h3>News:</h3>
+                                <br>
+                                <div>
+                                    <p class="home-text24 head">
+                                        <%= datas[0].title %>
+                                            <cite>
+                                                <%= datas[0].author %>
+                                            </cite>
+                                    </p>
                                     <br>
-                                    Praesentium quo nesciunt
-                                    quidem perferendis vitae laboru;
-                                </p>
+                                    <span class="home-text25">
+                                        <span>
+                                            <p>
+                                                <%= datas[0].source.name %>
+                                            </p>
+                                            <span>
+                                                <%= datas[0].description %>
+                                            </span>
+                                            <span>
+                                                <%= datas[0].publishedAt %>
+                                            </span>
+                                            <span>
+                                                <br>
+                                                <a style="color:yellow" href="<%= datas[0].url %>" target="_blank"> More
+                                                    ...</a>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

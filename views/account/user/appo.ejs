@@ -58,41 +58,43 @@
                 </div>
                 <br>
                 <div class="appos">
-                    <p>Appontment</p>
+                    <h1>Appointment</h1>
                     <br>
                     <p class="myFont" style="font-size:1rem;color: green;">
                         <%= msg %>
                     </p>
                     <br>
-                    <p class="myFont" style="font-size:1rem;color: rgb(186, 193, 69);">
+                    <!-- <p class="myFont" style="font-size:1rem;color: rgb(186, 193, 69);">
                         <%= check %>
-                    </p>
+                    </p> -->
                     <br>
                     <br>
                     <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
-                        <div>
-                            <%= appo.address %>
+                        <div id="seeappo">
+                            Address : <%= appo.address %>
                                 <br>
-                                <%= appo.city %>
+                                City : <%= appo.city %>
                                     <br>
-                                    <%= appo.state %>
+                                    State : <%= appo.state %>
                                         <br>
-                                        <%= appo.postcode %>
+                                        Postal : <%= appo.postcode %>
                                             <br>
-                                            <%= appo.details.time %>
+                                            Time : <%= appo.details.time %>
                                                 <br>
-                                                <%= appo.details.vaccine %>
+                                                Vaccine : <%= appo.details.vaccine %>
                                                     <br>
-                                                    <%= appo.details.date%>
+                                                    Date : <%= appo.details.date%>
                                                         <br>
-                                                        <%= appo.details.slots%>
+                                                        Slots : <%= appo.details.slots%>
                                                             <br>
                         </div>
                         <br>
                         <br>
                         <% if(!check) {%>
-                            <input type="submit" id="signup" value="Book Appointment">
-                            <% }%>
+                            <% if(appo.details.slots<=0) {%>
+                                <% }else{%>
+                                    <input type="submit" id="signup" value="Book Appointment">
+                                    <% }}%>
                     </form>
                 </div>
                 <br>

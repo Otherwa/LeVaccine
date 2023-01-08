@@ -54,7 +54,7 @@
                 <div class="con">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
                     <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
+                    <div id='map' style='width:95%;height: 310px;border-radius: 0.5rem;'></div>
                 </div>
                 <br>
                 <div class="appos">
@@ -62,27 +62,27 @@
                     <br>
                     <br>
                     <br>
-                    <div>
-                        <%= appo.address %>
+                    <div id="seeappo">
+                        Address : <%= appo.address %>
                             <br>
-                            <%= appo.city %>
+                            City : <%= appo.city %>
                                 <br>
-                                <%= appo.state %>
+                                State : <%= appo.state %>
                                     <br>
-                                    <%= appo.postcode %>
+                                    Postal : <%= appo.postcode %>
                                         <br>
-                                        <%= appo.details.time %>
+                                        Time : <%= appo.details.time %>
                                             <br>
-                                            <%= appo.details.vaccine %>
+                                            Vaccine : <%= appo.details.vaccine %>
                                                 <br>
-                                                <%= appo.details.date%>
+                                                Date : <%= appo.details.date%>
                                                     <br>
-                                                    <%= appo.details.slots%>
+                                                    Slots : <%= appo.details.slots%>
                                                         <br>
                                                         <%if(appo.status){%>
-                                                            <p>Completed</p>
+                                                            <p>Status : Completed</p>
                                                             <%}else{%>
-                                                                <p>On-going</p>
+                                                                <p>Status : On-going</p>
                                                                 <%}%>
                     </div>
                     <br>

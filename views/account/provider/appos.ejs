@@ -51,10 +51,10 @@
         <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
-                <div class="con">
+                <div class="con" style="width:65rem">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appoinments Location)</p>
                     <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
+                    <div id='map' style='width: 65rem; height: 310px;border-radius: 0.5rem;'></div>
                 </div>
                 <br>
                 <div class="appos">
@@ -67,27 +67,33 @@
                             <% for(var i=0; i<appos.length; i++) {%>
                                 <a href="/account/provider/dash/appos/<%= appos[i]._id %>">
                                     <div>
-                                        <%= appos[i]._id %>
-                                            <br>
-                                            <%= appos[i].address %>
-                                                <br>
-                                                <%= appos[i].city %>
-                                                    <br>
-                                                    <%= appos[i].state %>
-                                                        <br>
-                                                        <%= appos[i].postcode %>
-                                                            <br>
-                                                            <%= appos[i].details.time %>
-                                                                <br>
-                                                                <%= appos[i].details.vaccine %>
-                                                                    <br>
-                                                                    <%= appos[i].details.date%>
-                                                                        <br>
-                                                                        <%if(appos[i].status){%>
-                                                                            <p>Completed</p>
-                                                                            <%}else{%>
-                                                                                <p>On-going</p>
-                                                                                <%}%>
+                                        <h4>
+                                            Address : <%= appos[i].address %>
+                                        </h4>
+                                        <h5>
+                                            City : <%= appos[i].city %>
+                                        </h5>
+                                        <h5>
+                                            State : <%= appos[i].state %>
+                                        </h5>
+                                        <h5>
+                                            Postcode : <%= appos[i].postcode %>
+                                        </h5>
+                                        <h5>
+                                            Time : <%= appos[i].details.time %>
+                                        </h5>
+                                        <h5>
+                                            Vaccine : <%= appos[i].details.vaccine %>
+                                        </h5>
+                                        <h5>
+                                            Date : <%= appos[i].details.date%>
+                                        </h5>
+
+                                        <%if(appos[i].status){%>
+                                            <h5>Status : Completed</h5>
+                                            <%}else{%>
+                                                <h5>Status :On-going</h5>
+                                                <%}%>
                                     </div>
                                 </a>
                                 <% } %>
