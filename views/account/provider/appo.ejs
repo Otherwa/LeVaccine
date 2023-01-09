@@ -54,7 +54,7 @@
                 <div class="con">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
                     <br>
-                    <div id='map' style='width:95%;height: 310px;border-radius: 0.5rem;'></div>
+                    <div id='map' style='width:67vw;height: 310px;border-radius: 0.5rem;'></div>
                 </div>
                 <br>
                 <div class="appos">
@@ -86,6 +86,27 @@
                                                                 <%}%>
                     </div>
                     <br>
+                    <h2>Peoples Booked</h2>
+                    <br>
+                    <div class="peoples listofappo">
+                        <% for(var i=0; i<peoples.length; i++) {%>
+                            <div style="background-color:antiquewhite;padding: 1rem;;">
+                                <p>
+                                    Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
+                                </p>
+                                <p>
+                                    Age : <%= peoples[i].detail.age %>
+                                </p>
+                                <p>
+                                    Adhar : <%= peoples[i].detail.adhar %>
+                                </p>
+                                <p>
+                                    Phone : <%= peoples[i].detail.phone %>
+                                </p>
+                            </div>
+                            <% }%>
+                                <br>
+                    </div>
                     <br>
                 </div>
                 <br>
