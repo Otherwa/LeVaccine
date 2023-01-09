@@ -359,17 +359,43 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
   const cookie = req.cookies.jwt
   console.log(req.user._id)
 
-  appo.findById(id, function (err, result) {
+  appolists.find({ 'appoid': id }, { '_id': 0, 'userid': 1 }, (err, peoples_result) => {
     if (err) {
       console.error(err)
     } else {
 
-      console.log(result)
-      res.render('account/provider/appo', {
-        data: req.user,
-        token: cookie,
-        appo_pos: result.details.position,
-        appo: result,
+      const peoples = peoples_result.map(ids)
+
+      function ids(item) {
+        return (item.userid.toString());
+      }
+
+      console.log(peoples)
+
+
+      appo.findById(id, function (err, result) {
+        if (err) {
+          console.error(err)
+        } else {
+          console.log(result)
+
+          userSchema.find({ '_id': { $in: peoples } }, (err, results) => {
+
+            if (err) {
+              console.error(err)
+            } else {
+              console.log(results)
+
+              res.render('account/provider/appo', {
+                data: req.user,
+                token: cookie,
+                appo_pos: result.details.position,
+                appo: result,
+                peoples: results
+              })
+            }
+          })
+        }
       })
     }
   })
