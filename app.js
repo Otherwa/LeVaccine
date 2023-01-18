@@ -10,6 +10,7 @@ const session = require('cookie-session');
 const cookie = require('cookie-parser');
 const generateApiKey = require('generate-api-key').default;
 const path = require('path');
+// const csrf = require('csurf');
 const appo = require('./models/apposchema')
 
 require('events').EventEmitter.prototype._maxListeners = 900;
@@ -30,6 +31,9 @@ var limiter = rateLimit({
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
 const { isauthvalid } = require('./commonfunctions/commonfunc');
+const { providerSchema } = require('./models/methods/provider_meth');
+const { producerSchema } = require('./models/methods/producer_meth');
+const apposchema = require('./models/apposchema');
 
 
 // ports
@@ -52,8 +56,11 @@ app.use(flash())
 
 app.use(cookie());
 
+// app.use(csrf({ cookie: true }));
+
 //render for htmls
 app.set('view engine', 'ejs')
+app.set('json spaces', 2)
 
 //css js etc flies
 app.use(express.static(__dirname + '/public'))
@@ -265,9 +272,17 @@ app.get('/api/peoples&:api', async (req, res) => {
     // gets an object contain
     // console.log(exsist)
     if (exsist != null) {
-        usersSchema.find({}, { "_id": 0 }, (err, data) => {
-            console.log(data)
-            res.send(data)
+        usersSchema.find().count((err, user) => {
+            if (err) console.log(err)
+            console.log(user)
+            providerSchema.find().count((err, provider) => {
+                if (err) console.log(err)
+                console.log(provider)
+                producerSchema.find().count((err, producer) => {
+                    console.log(producer)
+                    res.json({ users: user, provider: provider, producer: producer })
+                })
+            })
         })
     } else {
         res.json({ msg: 'err' })
@@ -275,6 +290,21 @@ app.get('/api/peoples&:api', async (req, res) => {
     // await dis();
 })
 
+app.get('/api/appos&:api', async (req, res) => {
+    await connect();
+    const apikey = req.params.api;
+    const exsist = await api.findOne({ apikey: apikey }).lean()
+    // gets an object contain
+    // console.log(exsist)
+    if (exsist != null) {
+        apposchema.find({}, (err, docs) => {
+            res.json(docs)
+        })
+    } else {
+        res.json({ msg: 'err' })
+    }
+    // await dis();
+})
 
 //error custom
 app.get("*", (req, res) => {

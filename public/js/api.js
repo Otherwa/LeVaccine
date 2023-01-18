@@ -11,7 +11,7 @@ function myFunction() {
 }
 
 // if value valid send to mongo subscribe collection
-$('#api_gen').click(() => {
+$('#signup').click(() => {
     console.log('nice');
     $.ajax({
         url: '/api',
@@ -22,7 +22,7 @@ $('#api_gen').click(() => {
                 $('#api').val('Somethings wrong')
             } else {
                 $('#api').val(res.apikey)
-                $('#api_gen').prop('disabled', true);
+                $('#signup').prop('disabled', true);
             }
         }
     })
