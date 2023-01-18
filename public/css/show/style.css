@@ -2440,6 +2440,10 @@ h2 .myFont {
   z-index: 100;
 }
 
+.preload .canvas {
+  width: 100vw;
+  height: 100vh;
+}
 
 .preload {
   position: fixed;
@@ -2463,8 +2467,8 @@ h2 .myFont {
 @media (max-width: 768px) {
 
   /* preload */
-  .preload .screen {
-    width: 10rem !important;
-    height: 8.5rem !important;
+  .preload .canvas {
+    width: 100vw;
+    height: 100vh;
   }
 }

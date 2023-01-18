@@ -164,26 +164,38 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
 userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
   await connect()
 
-  appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+  appos.findById(appoid, (err, doc) => {
     if (err) console.log(err)
 
-    console.log(results)
 
-    const appo = new appolist({
-      appoid: appoid,
-      userid: userid,
-      date: new Date()
-    })
+    if (doc.details.slots > 0) {
+      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+        if (err) console.log(err)
 
-    appo.save((err, result) => {
-      if (err) console.error(err)
+        console.log(results)
 
-      console.log(result)
-      req.flash('msg', "Appointment Booked")
+        const appo = new appolist({
+          appoid: appoid,
+          userid: userid,
+          date: new Date()
+        })
+
+        appo.save((err, result) => {
+          if (err) console.error(err)
+
+          console.log(result)
+          req.flash('msg', "Appointment Booked")
+          res.redirect('/account/user/dash/bookappo/' + appoid);
+          user_bookappo(req.user.email, req.user.username, results)
+        })
+
+      })
+    } else {
+      req.flash('err', "Appointment Was Not Booked")
       res.redirect('/account/user/dash/bookappo/' + appoid);
-      user_bookappo(req.user.email, req.user.username, results)
-    })
-
+    }
   })
+
+
 }
 module.exports = { userSchema }
