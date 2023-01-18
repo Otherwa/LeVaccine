@@ -128,6 +128,7 @@ Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
         appo: result,
         appo_pos: result.details.position,
         msg: req.flash('msg'),
+        err: req.flash('err'),
         check: results
       })
     })
