@@ -13,9 +13,20 @@ function myFunction() {
 // if value valid send to mongo subscribe collection
 $('#signup').click(() => {
     console.log('nice');
+
+    var token = $('#csrf').val()
+    // $.ajaxSetup({
+    //     beforeSend: function (xhr) {
+    //         xhr.setRequestHeader('Csrf-Token', token);
+    //     }
+    // });
+
     $.ajax({
         url: '/api',
         type: 'POST',
+        data: {
+            '_csrf': token
+        },
         success: function (res) {
             console.log(res)
             if (res.generated == "404") {

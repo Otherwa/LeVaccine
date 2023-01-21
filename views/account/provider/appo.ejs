@@ -58,7 +58,7 @@
                 </div>
                 <br>
                 <div class="appos">
-                    <p>Appontment</p>
+                    <h1>Appointment</h1>
                     <br>
                     <br>
                     <br>
@@ -86,11 +86,14 @@
                                                                 <%}%>
                     </div>
                     <br>
+                    <br>
                     <h2>Peoples Booked</h2>
+                    <br>
                     <br>
                     <div class="peoples listofappo">
                         <% for(var i=0; i<peoples.length; i++) {%>
-                            <div style="background-color:antiquewhite;padding: 1rem;;">
+                            <div
+                                style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
                                 <p>
                                     Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
                                 </p>

@@ -42,20 +42,21 @@ Router.get('/', (req, res) => {
 Router.get('/user', (req, res) => {
   res.status(200).render('account/user', {
     err: req.flash('message'),
-    err1: req.flash('message1')
+    err1: req.flash('message1'),
+    csrf_token: req.csrfToken()
   })
 })
 
 // account creation
 Router.get('/user/signup', (req, res) => {
-  res.status(200).render('account/user/signup', { msg: req.flash('message1') })
+  res.status(200).render('account/user/signup', { msg: req.flash('message1'), csrf_token: req.csrfToken() })
 })
 
 
 // reset password
 Router.get('/user/reset', (req, res) => {
   // user reset
-  res.render('account/user/user-reset')
+  res.render('account/user/user-reset', { csrf_token: req.csrfToken() })
 })
 
 // all middleware functions in common
@@ -72,7 +73,8 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
     data: req.user,
     token: cookie,
     count: count,
-    datas: datas.articles
+    datas: datas.articles,
+    csrf_token: req.csrfToken()
   })
 })
 
@@ -99,6 +101,7 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
       token: cookie,
       appos: result,
       appos_: pos,
+      csrf_token: req.csrfToken()
     });
   })
 })
@@ -129,7 +132,8 @@ Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
         appo_pos: result.details.position,
         msg: req.flash('msg'),
         err: req.flash('err'),
-        check: results
+        check: results,
+        csrf_token: req.csrfToken()
       })
     })
 
@@ -177,7 +181,8 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
         appos: result,
         appos_: pos,
         msg: req.flash('msg'),
-        check: results
+        check: results,
+        csrf_token: req.csrfToken()
       })
     })
 
@@ -193,7 +198,8 @@ Router.get('/user/dash/profile', auth, livedata, async (req, res) => {
   res.render('account/user/profile', {
     data: req.user,
     token: cookie,
-    msg: req.flash('success')
+    msg: req.flash('success'),
+    csrf_token: req.csrfToken()
   });
 })
 
@@ -238,7 +244,8 @@ Router.get('/user/verify/:email', async (req, res) => {
 Router.get('/provider', (req, res) => {
   res.render('account/provider', {
     err: req.flash('message'),
-    err1: req.flash('message1')
+    err1: req.flash('message1'),
+    csrf_token: req.csrfToken()
   })
 })
 
@@ -313,7 +320,8 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
         data: req.user,
         token: cookie,
         appos: result,
-        msg: req.flash('messagesetappo')
+        msg: req.flash('messagesetappo'),
+        csrf_token: req.csrfToken()
       })
     }
   })
@@ -322,7 +330,6 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
 Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
-  const count = await providerSchema.count()
   const cookie = req.cookies.jwt
   console.log(req.user._id)
   var id = req.user._id
@@ -348,6 +355,7 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
         token: cookie,
         appos_: pos,
         appos: result,
+        csrf_token: req.csrfToken()
       })
     }
   })

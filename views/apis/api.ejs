@@ -31,6 +31,7 @@
 
                 <p>Generate your API token</p>
                 <div style="display: flex;gap: 1rem;flex-wrap: wrap;">
+                    <input type="hidden" id="csrf" name="_csrf" value="<%=csrf_token%>" />
                     <input type="text" name="api" id="api" placeholder="Generate" style="border-width: 1px;">
                     <input type="button" onclick="myFunction()" value="Copy text">
                 </div>

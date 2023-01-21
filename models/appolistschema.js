@@ -12,6 +12,10 @@ const appolist = new schema({
         type: ObjectId,
         required: true
     },
+    status: {
+        type: Boolean,
+        default: false,
+    },
     date: {
         type: String,
         required: true

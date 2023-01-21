@@ -26,6 +26,7 @@ Router.post('/signup', async (req, res) => {
 // if login is successful
 Router.post('/login', async (req, res) => {
     // user login
+    console.log(req.body)
     const username = req.body.username
     const password = req.body.password
     // to check if login exisit

@@ -36,7 +36,6 @@ const setapposchema = new schema({
         required: true
     },
     address: {
-        unique: true,
         type: String,
         required: true
     },

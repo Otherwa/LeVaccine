@@ -39,7 +39,7 @@
         href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
 
     <link rel="stylesheet" href="/css/show/style.css" />
-    <link href="/css/whichlogin/user.css" rel="stylesheet" />
+    <link href="/css/whichlogin/provider.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -48,67 +48,32 @@
         <input type="hidden" id="appo_pos" name="appo_pos" value="<%= appo_pos %>">
     </div>
     <div id="butter">
-        <%- include('../../partial/user-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
-                <div class="con">
-                    <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
-                    <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
-                </div>
-                <br>
                 <div class="appos">
-                    <h1>Appointment</h1>
+
+                    <h2>Detail</h2>
                     <br>
-                    <p class="myFont" style="font-size:1rem;color: green;">
-                        <%= msg %>
-                    </p>
-                    <p class="myFont" style="font-size:1rem;color: rgb(128, 0, 0);">
-                        <%= err %>
-                    </p>
-                    <br>
-                    <!-- <p class="myFont" style="font-size:1rem;color: rgb(186, 193, 69);">
-                        <%= check %>
-                    </p> -->
-                    <br>
-                    <br>
-                    <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
-                        <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
-                        <div id="seeappo">
-                            <h4>
-                                Address : <%= appo.address %>
-                            </h4>
-                            City : <%= appo.city %>
-                                <br>
-                                State : <%= appo.state %>
-                                    <br>
-                                    Postal : <%= appo.postcode %>
-                                        <br>
-                                        <h4>
-                                            Time : <%= appo.details.time %>
-                                        </h4>
-                                        <h4>
-                                            Vaccine : <%= appo.details.vaccine %>
-                                        </h4>
-                                        <h4>
-                                            Date : <%= appo.details.date%>
-                                        </h4>
-                                        <h3>
-                                            Slots Avalable : <%= appo.details.slots%> &nbsp;
-                                                <cite class="myFont" style="font-size:0.9rem">
-                                                    (Few Minutes Ago..)
-                                                </cite>
-                                        </h3>
-                                        <br>
+                    <div class="peoples listofappo">
+                        <div
+                            style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
+                            <p>
+                                Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
+                            </p>
+                            <p>
+                                Age : <%= peoples[i].detail.age %>
+                            </p>
+                            <p>
+                                Adhar : <%= peoples[i].detail.adhar %>
+                            </p>
+                            <p>
+                                Phone : <%= peoples[i].detail.phone %>
+                            </p>
                         </div>
                         <br>
-                        <br>
-                        <% if(!check) {%>
-                            <% if(appo.details.slots<=0) {%>
-                                <% }else{%>
-                                    <input type="submit" id="signup" value="Book Appointment" style="width: 100%;">
-                                    <% }}%>
-                    </form>
+                    </div>
+                    <br>
                 </div>
                 <br>
                 <br>

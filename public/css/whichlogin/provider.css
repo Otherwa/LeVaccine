@@ -373,7 +373,7 @@ input:focus+.placeholder-text .text {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 7rem;
 }
 
 .form-con .item {
