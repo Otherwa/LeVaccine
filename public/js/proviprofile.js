@@ -16,64 +16,61 @@ const geolocate = new maplibregl.GeolocateControl({
 });
 
 var flag = 0;
-var marker = null;
 // when a geolocate event occurs.
 geolocate.on('geolocate', function (data) {
     // console.log('A geolocate event has occurred.')
     // get option
-    // console.log(data);
-    var lng = data.coords.longitude;
-    var lat = data.coords.latitude;
-
-
-    $('#lat').val(lat)
-    $('#lon').val(lng)
-
+    console.log(data);
+    lng = data.coords.longitude;
+    lat = data.coords.latitude;
     // only one marker as per
-    if (flag == 0) {
-        marker = new maplibregl.Marker({
-            draggable: true,
-            anchor: 'center'
-        }).setLngLat([lng, lat]).addTo(map);
-    }
-    flag = 0 + 1;
-
-    function onDragEnd() {
-        var lngLat = marker.getLngLat();
-        console.log(lngLat);
-
-        var requestOptions = {
-            method: 'GET',
-        };
-
-
-        $('#lat').val(lngLat.lat)
-        $('#lon').val(lngLat.lng)
-
-
-        fetch("https://api.geoapify.com/v1/geocode/reverse?lat=" + lngLat.lat + "&lon=" + lngLat.lng + "&apiKey=0e4ffb970b8f4957bd7450e8df3b2a49", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                $('#ngoaddress').val(
-                    result.features[0].properties.address_line1 + "," +
-                    result.features[0].properties.address_line2)
-                $('#city').val(
-                    result.features[0].properties.city
-                )
-                $('#postcode').val(
-                    result.features[0].properties.postcode
-                )
-                $('#state').val(
-                    result.features[0].properties.state
-                )
-                $('#loc').html('Bread 👍')
-            })
-            .catch(error => console.log('error', error));
-    }
-
-    marker.on('dragend', onDragEnd);
+    console.log(lng)
+    console.log(lat)
+    marker.setLngLat([lng, lat]).addTo(map);
 });
+
+let marker = new maplibregl.Marker({
+    draggable: true,
+    anchor: 'center'
+})
+
+function onDragEnd() {
+    var lngLat = marker.getLngLat();
+    console.log(lngLat);
+
+    var requestOptions = {
+        method: 'GET',
+    };
+
+    $('#lat').val(lngLat.lat)
+    $('#lon').val(lngLat.lng)
+
+    fetch("https://api.geoapify.com/v1/geocode/reverse?lat=" + lngLat.lat + "&lon=" + lngLat.lng + "&apiKey=0e4ffb970b8f4957bd7450e8df3b2a49", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            $('#address').val(
+                result.features[0].properties.address_line1 + "," +
+                result.features[0].properties.address_line2)
+            $('#city').val(
+                result.features[0].properties.city
+            )
+            $('#postcode').val(
+                result.features[0].properties.postcode
+            )
+            $('#state').val(
+                result.features[0].properties.state
+            )
+        })
+        .catch(error => console.log('error', error));
+}
+
+function onDragStart() {
+    console.log("Drag Started.....")
+}
+
+marker.on('dragend', onDragEnd);
+marker.on('dragstart', onDragStart);
 
 // controls
 var nav = new maplibregl.NavigationControl();

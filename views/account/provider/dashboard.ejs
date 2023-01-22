@@ -56,109 +56,112 @@
             <%- include('../../partial/provider-nav')%>
                 <div class="container-home">
                     <br>
+                    <div class="heading">
+                        <h1>Dashboard</h1>
+                    </div>
                     <div class="con">
+                        <p class="myFont">(Your own Map)</p>
+                        <br>
                         <div class="map">
-                            <div id='map' style='height: 350px;border-radius: 0.5rem;'></div>
+                            <div id="map" style='width: 75rem; height: 350px;border-radius: 0.5rem;'></div>
                         </div>
-                        <br>
-                        <br>
-                        <div class="data">
-                            <div class="info">
+                    </div>
+                    <div class="data">
+                        <div class="info" style="width:100%">
+                            <h3>Profile :- </h3>
+                            <br>
+                            <p>
+                                <%= data.username%>
+                            </p>
+                            <br>
+                            <p>
+                                <% if(data.detail) { %>
+                                    <%= data.name.firstname + ' ' + data.name.lastname%>
+                                        <% } %>
+                            </p>
+                            <br>
+                            <p>
+                                <% if(data.detail) { %>
+                                    <%= data.detail.address%>
+                                        <br>
+                                        <%= data.detail.ngoaddress%>
+                                            <% } %>
+                            </p>
+                            <br>
+                            <p>
+                                <% if(data.detail) { %>
+                                    PostCode :
+                                    <%= data.detail.postcode%>
+                                        <% } %>
+                            </p>
+                            <br>
+                            <p>
+                                <% if(data.detail) { %>
+                                    City :
+                                    <%= data.detail.city%>
+                                        <% } %>
+                            </p>
+                            <br>
+                            <span>
 
-                                <h3>Profile :- </h3>
-                                <br>
-                                <p>
-                                    <%= data.username%>
-                                </p>
-                                <br>
-                                <p>
-                                    <% if(data.detail) { %>
-                                        <%= data.name.firstname + ' ' + data.name.lastname%>
-                                            <% } %>
-                                </p>
-                                <br>
-                                <p>
-                                    <% if(data.detail) { %>
-                                        <%= data.detail.address%>
-                                            <br>
-                                            <%= data.detail.ngoaddress%>
-                                                <% } %>
-                                </p>
-                                <br>
-                                <p>
-                                    <% if(data.detail) { %>
-                                        PostCode :
-                                        <%= data.detail.postcode%>
-                                            <% } %>
-                                </p>
-                                <br>
-                                <p>
-                                    <% if(data.detail) { %>
-                                        City :
-                                        <%= data.detail.city%>
-                                            <% } %>
-                                </p>
-                                <br>
-                                <span>
-
-                                    <% if(data.verified===true ){ %>
-                                        <p>Status : <span style="color:green">
-                                                Veified
-                                            </span>
-                                        </p>
-                                        <% } else{ %>
-                                            <p style="color:red">Status : <span style="color:red">
-                                                    Not Veified
-                                                </span></p>
-                                            <% } %>
-                                </span>
-                                <br>
-                            </div>
-                            <div class="news appo">
-                                <h3>News:</h3>
-                                <br>
-                                <div>
-                                    <p class="home-text24 head">
-                                        <%= datas[0].title %>
-                                            <cite>
-                                                <%= datas[0].author %>
-                                            </cite>
+                                <% if(data.verified===true ){ %>
+                                    <p>Status : <span style="color:green">
+                                            Veified
+                                        </span>
                                     </p>
-                                    <br>
-                                    <span class="home-text25">
+                                    <% } else{ %>
+                                        <p style="color:red">Status : <span style="color:red">
+                                                Not Veified
+                                            </span></p>
+                                        <% } %>
+                            </span>
+                            <br>
+                        </div>
+                        <div class="news appo">
+                            <h3>News:</h3>
+                            <br>
+                            <div>
+                                <p class="home-text24 head">
+                                    <%= datas[0].title %>
+                                        <cite>
+                                            <%= datas[0].author %>
+                                        </cite>
+                                </p>
+                                <br>
+                                <span class="home-text25">
+                                    <span>
+                                        <p>
+                                            <%= datas[0].source.name %>
+                                        </p>
                                         <span>
-                                            <p>
-                                                <%= datas[0].source.name %>
-                                            </p>
-                                            <span>
-                                                <%= datas[0].description %>
-                                            </span>
-                                            <span>
-                                                <%= datas[0].publishedAt %>
-                                            </span>
-                                            <span>
-                                                <br>
-                                                <a style="color:yellow" href="<%= datas[0].url %>" target="_blank"> More
-                                                    ...</a>
-                                            </span>
+                                            <%= datas[0].description %>
+                                        </span>
+                                        <span>
+                                            <%= datas[0].publishedAt %>
+                                        </span>
+                                        <span>
+                                            <br>
+                                            <a style="color:yellow" href="<%= datas[0].url %>" target="_blank"> More
+                                                ...</a>
                                         </span>
                                     </span>
-                                </div>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <!-- <div id="graph">
+                </div>
+                <!-- <div id="graph">
                     <canvas id="myChart"></canvas>
                 </div> -->
 
-                    <br>
-                    <div class="home-separator"></div>
-                    <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
-                            target="_blank">Otherwa</a>,
-                        All Rights Reserved.</span>
-                    <br>
-                </div>
+                <br>
+                <div class="home-separator"></div>
+                <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
+                        target="_blank">Otherwa</a>,
+                    All Rights Reserved.</span>
+                <br>
         </div>
+    </div>
     </div>
     <!-- map libre -->
     <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>

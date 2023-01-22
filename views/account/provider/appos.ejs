@@ -51,7 +51,7 @@
         <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
-                <div class="con" style="width:65rem">
+                <div class="con">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appoinments Location)</p>
                     <br>
                     <div id='map' style='width: 65rem; height: 310px;border-radius: 0.5rem;'></div>
@@ -66,33 +66,32 @@
                         <% if(appos.length>0) {%>
                             <% for(var i=0; i<appos.length; i++) {%>
                                 <a href="/account/provider/dash/appos/<%= appos[i]._id %>">
-                                    <div>
+                                    <div class="myFont" style="line-height: 1.4rem;">
                                         <h4>
                                             Address : <%= appos[i].address %>
                                         </h4>
-                                        <h5>
+                                        <p>
                                             City : <%= appos[i].city %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             State : <%= appos[i].state %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Postcode : <%= appos[i].postcode %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Time : <%= appos[i].details.time %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Vaccine : <%= appos[i].details.vaccine %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Date : <%= appos[i].details.date%>
-                                        </h5>
-
+                                        </p>
                                         <%if(appos[i].status){%>
-                                            <h5>Status : Completed</h5>
+                                            <p>Status : Completed</p>
                                             <%}else{%>
-                                                <h5>Status :On-going</h5>
+                                                <p>Status :On-going</p>
                                                 <%}%>
                                     </div>
                                 </a>

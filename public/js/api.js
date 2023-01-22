@@ -38,3 +38,7 @@ $('#signup').click(() => {
         }
     })
 });
+
+$('#back').click(() => {
+    window.history.back()
+})

@@ -254,7 +254,8 @@ Router.get('/provider', (req, res) => {
 Router.get('/provider/signup', (req, res) => {
   res.status(200).render('account/provider/signup',
     {
-      msg: req.flash('message1')
+      msg: req.flash('message1'),
+      csrf_token: req.csrfToken()
     }
   )
 })
@@ -270,6 +271,7 @@ Router.get('/provider/reset', (req, res) => {
 
 
 // all middleware functions in common
+// dashboard
 Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
   // token set or
 
@@ -283,10 +285,13 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
     data: req.user,
     token: cookie,
     count,
-    datas: datas.articles
+    datas: datas.articles,
+    csrf_token: req.csrfToken()
   })
 })
 
+
+// profle set/update
 Router.get('/provider/dash/profile', pauth, livepdata, async (req, res) => {
   // token set or
 
@@ -298,10 +303,12 @@ Router.get('/provider/dash/profile', pauth, livepdata, async (req, res) => {
   res.render('account/provider/profile', {
     data: req.user,
     token: cookie,
-    msg: req.flash('success')
+    msg: req.flash('success'),
+    csrf_token: req.csrfToken()
   })
 })
 
+// set appointment
 Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
@@ -327,6 +334,8 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   })
 })
 
+
+// appointment list
 Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
@@ -361,6 +370,8 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
   })
 })
 
+
+// each appointment in appointemnt list details
 Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
@@ -368,7 +379,7 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
   const cookie = req.cookies.jwt
   console.log(req.user._id)
 
-  appolists.find({ 'appoid': id }, { '_id': 0, 'userid': 1 }, (err, peoples_result) => {
+  appolists.find({ 'appoid': id }, { '_id': 0 }, (err, peoples_result) => {
     if (err) {
       console.error(err)
     } else {
@@ -394,13 +405,15 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
               console.error(err)
             } else {
               console.log(results)
+              console.log(peoples_result)
 
               res.render('account/provider/appo', {
                 data: req.user,
                 token: cookie,
                 appo_pos: result.details.position,
                 appo: result,
-                peoples: results
+                peoples: results,
+                peoples_result: peoples_result
               })
             }
           })

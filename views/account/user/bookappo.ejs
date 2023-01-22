@@ -59,7 +59,7 @@
                 <br>
                 <div class="appos">
                     <h3>Note :</h3><br>
-                    <h2>Appontments are based on you Nearest Location</h2>
+                    <h2>Appointments are based on you Nearest Location 🤖</h2>
                     <br>
                     <br>
                     <div class="listofappo">
@@ -72,31 +72,34 @@
 
                                 <% if(appos[i].status !=true) {%>
                                     <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                        <div>
+                                        <div class="myFont">
                                             <h4>
                                                 Address : <%= appos[i].address %>
                                             </h4>
-                                            <h5>
+                                            <p>
                                                 City : <%= appos[i].city %>
-                                            </h5>
-                                            <h5>
+                                            </p>
+                                            <p>
                                                 State : <%= appos[i].state %>
-                                            </h5>
-                                            <h5>
+                                            </p>
+                                            <p>
                                                 Postal : <%= appos[i].postcode %>
-                                            </h5>
-                                            <h5>
+                                            </p>
+                                            <p>
                                                 Time : <%= appos[i].details.time %>
-                                            </h5>
-                                            <h5>
+                                            </p>
+                                            <p>
                                                 Vaccine : <%= appos[i].details.vaccine %>
-                                            </h5>
-                                            <h5>
+                                            </p>
+                                            <p>
                                                 Date : <%= appos[i].details.date%>
-                                            </h5>
-                                            <h5>
-                                                Slots : <%= appos[i].details.slots%>
-                                            </h5>
+                                            </p>
+                                            <h4>
+                                                Slots Avalable : <%= appos[i].details.slots%>
+                                                    <span>
+                                                        (Few Minutes Ago..)
+                                                    </span>
+                                            </h4>
                                         </div>
                                     </a>
                                     <% } %>

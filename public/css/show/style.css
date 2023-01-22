@@ -2474,6 +2474,12 @@ h2 .myFont {
   z-index: 1000;
 }
 
+.heading {
+  text-align: left;
+  width: 100%;
+  font-size: 1.35rem;
+}
+
 .preload .screen {
   width: 15rem;
   box-shadow: none !important;
@@ -2486,5 +2492,9 @@ h2 .myFont {
   .preload .canvas {
     width: 100vw;
     height: 100vh;
+  }
+
+  .heading {
+    font-size: 0.9rem;
   }
 }

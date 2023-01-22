@@ -66,28 +66,34 @@
                         <% if(appos.length>0) {%>
                             <% for(var i=0; i<appos.length; i++) {%>
                                 <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                    <div>
+                                    <div id="seeappo" class="myFont">
                                         <h4>
                                             Address : <%= appos[i].address %>
                                         </h4>
-                                        <h5>
+                                        <p>
                                             City : <%= appos[i].city %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             State : <%= appos[i].state %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Postal : <%= appos[i].postcode %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Time : <%= appos[i].details.time %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Vaccine : <%= appos[i].details.vaccine %>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p>
                                             Date : <%= appos[i].details.date%>
-                                        </h5>
+                                        </p>
+                                        <h4>
+                                            Slots Avalable : <%= appos[i].details.slots%>
+                                                <span>
+                                                    (Few Minutes Ago..)
+                                                </span>
+                                        </h4>
                                     </div>
                                 </a>
                                 <% } %>

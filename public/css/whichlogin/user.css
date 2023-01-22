@@ -404,6 +404,7 @@ input:focus+.placeholder-text .text {
 .listofappo div {
     background-color: #04AA6D;
     padding: 0.8rem;
+    line-height: 1.3rem;
     border-radius: 0.5rem;
 }
 
