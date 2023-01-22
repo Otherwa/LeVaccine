@@ -141,28 +141,36 @@
                                 <span class="myFont">Your Appointments</span>
                                 <% for(var i=0; i<appos.length; i++) {%>
                                     <a href="#">
-                                        <div id="seeappo">
-                                            Address : <%= appos[i].address %>
-                                                <br>
+                                        <div id="seeappo" class="myFont" style="line-height: 1.5rem;">
+                                            <h4>
+                                                Address : <%= appos[i].address %>
+                                            </h4>
+                                            <p>
                                                 City : <%= appos[i].city %>
-                                                    <br>
-                                                    State : <%= appos[i].state %>
-                                                        <br>
-                                                        Postal : <%= appos[i].postcode %>
-                                                            <br>
-                                                            Time : <%= appos[i].details.time %>
-                                                                <br>
-                                                                Vaccine : <%= appos[i].details.vaccine %>
-                                                                    <br>
-                                                                    Date : <%= appos[i].details.date%>
-                                                                        <br>
-                                                                        Slots :<%= appos[i].details.slots%>
-                                                                            <br>
-                                                                            <%if(appos[i].status){%>
-                                                                                <p>Satus : Completed</p>
-                                                                                <%}else{%>
-                                                                                    <p>Status : On-going</p>
-                                                                                    <%}%>
+                                            </p>
+                                            <p>
+                                                State : <%= appos[i].state %>
+                                            </p>
+                                            <p>
+                                                Postal : <%= appos[i].postcode %>
+                                            </p>
+                                            <p>
+                                                Time : <%= appos[i].details.time %>
+                                            </p>
+                                            <p>
+                                                Vaccine : <%= appos[i].details.vaccine %>
+                                            </p>
+                                            <p>
+                                                Date : <%= appos[i].details.date%>
+                                            </p>
+                                            <p>
+                                                Slots : <%= appos[i].details.slots%>
+                                            </p>
+                                            <%if(appos[i].status){%>
+                                                <p>Satus : Completed</p>
+                                                <%}else{%>
+                                                    <p>Status : On-going</p>
+                                                    <%}%>
                                         </div>
                                     </a>
                                     <% } %>

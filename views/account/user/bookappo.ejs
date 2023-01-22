@@ -95,10 +95,14 @@
                                                 Date : <%= appos[i].details.date%>
                                             </p>
                                             <h4>
-                                                Slots Avalable : <%= appos[i].details.slots%>
-                                                    <span>
-                                                        (Few Minutes Ago..)
-                                                    </span>
+                                                <% if(appos[i].details.slots<=0) {%>
+                                                    No Slots Available
+                                                    <% } else {%>
+                                                        Slots Avalable : <%= appos[i].details.slots%>
+                                                            <span>
+                                                                (Few Minutes Ago..)
+                                                            </span>
+                                                            <% } %>
                                             </h4>
                                         </div>
                                     </a>

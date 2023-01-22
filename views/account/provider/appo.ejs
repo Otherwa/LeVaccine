@@ -100,24 +100,26 @@
                     <br>
                     <div class="peoples listofappo">
                         <% for(var i=0; i<peoples.length; i++) {%>
-                            <div
-                                style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
-                                <p>
-                                    Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
-                                </p>
-                                <p>
-                                    Age : <%= peoples[i].detail.age %>
-                                </p>
-                                <p>
-                                    Status : <%= peoples_result[i].status %>
-                                </p>
-                                <p>
-                                    Adhar : <%= peoples[i].detail.adhar %>
-                                </p>
-                                <p>
-                                    Phone : <%= peoples[i].detail.phone %>
-                                </p>
-                            </div>
+                            <a href="/account/provider/dash/appos/<%= appo._id %>/<%= peoples[i]._id %>">
+                                <div
+                                    style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
+                                    <p>
+                                        Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
+                                    </p>
+                                    <p>
+                                        Age : <%= peoples[i].detail.age %>
+                                    </p>
+                                    <p>
+                                        Status : <%= peoples_result[i].status %>
+                                    </p>
+                                    <p>
+                                        Adhar : <%= peoples[i].detail.adhar %>
+                                    </p>
+                                    <p>
+                                        Phone : <%= peoples[i].detail.phone %>
+                                    </p>
+                                </div>
+                            </a>
                             <% }%>
                                 <br>
                     </div>

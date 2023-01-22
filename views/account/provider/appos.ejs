@@ -66,7 +66,7 @@
                         <% if(appos.length>0) {%>
                             <% for(var i=0; i<appos.length; i++) {%>
                                 <a href="/account/provider/dash/appos/<%= appos[i]._id %>">
-                                    <div class="myFont" style="line-height: 1.4rem;">
+                                    <div class="myFont" style="line-height: 1.5rem;">
                                         <h4>
                                             Address : <%= appos[i].address %>
                                         </h4>
@@ -88,10 +88,13 @@
                                         <p>
                                             Date : <%= appos[i].details.date%>
                                         </p>
+                                        <p>
+                                            Slots : <%= appos[i].details.slots%>
+                                        </p>
                                         <%if(appos[i].status){%>
-                                            <p>Status : Completed</p>
+                                            <p>Status : Stopped</p>
                                             <%}else{%>
-                                                <p>Status :On-going</p>
+                                                <p>Status : On-going</p>
                                                 <%}%>
                                     </div>
                                 </a>
