@@ -27,11 +27,11 @@ providerSchema.prototype.login = async (req, res, username, password) => {
                     require('../../config/connection_config').jwt_token
                 )
                 res.cookie('jwt', token, {
-                    expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2 hrs login
+                    expires: new Date(Date.now() + 3 * 60 * 60 * 1000), // 2 hrs login
                     httpOnly: true
                 })
                 res.cookie('type', "Provider", {
-                    expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // 2 hrs login
+                    expires: new Date(Date.now() + 3 * 60 * 60 * 1000), // 2 hrs login
                     httpOnly: true
                 })
                 // console.log(res.cookie);

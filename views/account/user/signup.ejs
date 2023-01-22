@@ -56,6 +56,7 @@
                 <br>
                 <div class="height-set">
                     <form class="form" action="/account/user/signup" method="POST">
+                        <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
                         <div class="head">
                             <h1>Sign-up</h1>
                             <p class="myFont">

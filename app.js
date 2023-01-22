@@ -1,4 +1,3 @@
-
 const express = require('express'); // basic libs
 const bodyParser = require('body-parser'); // render
 const { connect } = require('./config/connect');
@@ -10,7 +9,8 @@ const session = require('cookie-session');
 const cookie = require('cookie-parser');
 const generateApiKey = require('generate-api-key').default;
 const path = require('path');
-// const csrf = require('csurf');
+const csrf = require('csurf');
+const cookieParser = require("cookie-parser")
 const appo = require('./models/apposchema')
 
 require('events').EventEmitter.prototype._maxListeners = 900;
@@ -56,7 +56,7 @@ app.use(flash())
 
 app.use(cookie());
 
-// app.use(csrf({ cookie: true }));
+
 
 //render for htmls
 app.set('view engine', 'ejs')
@@ -64,6 +64,8 @@ app.set('json spaces', 2)
 
 //css js etc flies
 app.use(express.static(__dirname + '/public'))
+
+
 
 //no cache session cookie issue more loade time 
 app.use(nocache());
@@ -73,6 +75,8 @@ app.use(compression())
 
 //idk parseres
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser('Tatakae'));
+app.use(csrf({ cookie: true }));
 
 // parse application/json
 app.use(bodyParser.json())
@@ -207,7 +211,7 @@ app.get('/about', (req, res) => {
 
 // apis
 app.get('/api', isauthvalid, (req, res) => {
-    res.render('apis/api')
+    res.render('apis/api', { csrf_token: req.csrfToken() })
 })
 
 // api key genration

@@ -58,44 +58,58 @@
                 </div>
                 <br>
                 <div class="appos">
-                    <p>Appontment</p>
+                    <h1>Appointment</h1>
                     <br>
                     <br>
                     <br>
-                    <div id="seeappo">
-                        Address : <%= appo.address %>
-                            <br>
+                    <div id="seeappo" class="myFont" style="line-height:1.3rem">
+                        <p>
+                            Address : <%= appo.address %>
+                        </p>
+                        <p>
                             City : <%= appo.city %>
-                                <br>
-                                State : <%= appo.state %>
-                                    <br>
-                                    Postal : <%= appo.postcode %>
-                                        <br>
-                                        Time : <%= appo.details.time %>
-                                            <br>
-                                            Vaccine : <%= appo.details.vaccine %>
-                                                <br>
-                                                Date : <%= appo.details.date%>
-                                                    <br>
-                                                    Slots : <%= appo.details.slots%>
-                                                        <br>
-                                                        <%if(appo.status){%>
-                                                            <p>Status : Completed</p>
-                                                            <%}else{%>
-                                                                <p>Status : On-going</p>
-                                                                <%}%>
+                        </p>
+                        <p>
+                            State : <%= appo.state %>
+                        </p>
+                        <p>
+                            Postal : <%= appo.postcode %>
+                        </p>
+                        <p>
+                            Time : <%= appo.details.time %>
+                        </p>
+                        <p>
+                            Vaccine : <%= appo.details.vaccine %>
+                        </p>
+                        <p>
+                            Date : <%= appo.details.date%>
+                        </p>
+                        <p>
+                            Slots : <%= appo.details.slots%>
+                        </p>
+                        <%if(appo.status){%>
+                            <p>Status : Completed</p>
+                            <%}else{%>
+                                <p>Status : On-going</p>
+                                <%}%>
                     </div>
+                    <br>
                     <br>
                     <h2>Peoples Booked</h2>
                     <br>
+                    <br>
                     <div class="peoples listofappo">
                         <% for(var i=0; i<peoples.length; i++) {%>
-                            <div style="background-color:antiquewhite;padding: 1rem;;">
+                            <div
+                                style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
                                 <p>
                                     Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
                                 </p>
                                 <p>
                                     Age : <%= peoples[i].detail.age %>
+                                </p>
+                                <p>
+                                    Status : <%= peoples_result[i].status %>
                                 </p>
                                 <p>
                                     Adhar : <%= peoples[i].detail.adhar %>

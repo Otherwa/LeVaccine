@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Book Appointments</title>
+    <title>Appointment</title>
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- MS, fb & Whatsapp -->
@@ -39,75 +39,41 @@
         href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
 
     <link rel="stylesheet" href="/css/show/style.css" />
-    <link href="/css/whichlogin/user.css" rel="stylesheet" />
+    <link href="/css/whichlogin/provider.css" rel="stylesheet" />
 </head>
 
 <body>
     <div id="scroll-progress"></div>
     <div class="bridge" style="display: none">
-        <input type="hidden" id="appos" name="appos" value="<%= appos_ %>">
+        <input type="hidden" id="appo_pos" name="appo_pos" value="<%= appo_pos %>">
     </div>
     <div id="butter">
-        <%- include('../../partial/user-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <br>
-                <div class="con">
-                    <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
-                    <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
-                </div>
-                <br>
                 <div class="appos">
-                    <h3>Note :</h3><br>
-                    <h2>Appointments are based on you Nearest Location 🤖</h2>
-                    <br>
-                    <br>
-                    <div class="listofappo">
-                        <br>
-                        <!-- appo are available -->
-                        <% if(appos.length>0) {%>
-                            <% for(var i=0; i<appos.length; i++) {%>
-                                <!-- appo slots left -->
-                                <!-- appo are available -->
 
-                                <% if(appos[i].status !=true) {%>
-                                    <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                        <div class="myFont">
-                                            <h4>
-                                                Address : <%= appos[i].address %>
-                                            </h4>
-                                            <p>
-                                                City : <%= appos[i].city %>
-                                            </p>
-                                            <p>
-                                                State : <%= appos[i].state %>
-                                            </p>
-                                            <p>
-                                                Postal : <%= appos[i].postcode %>
-                                            </p>
-                                            <p>
-                                                Time : <%= appos[i].details.time %>
-                                            </p>
-                                            <p>
-                                                Vaccine : <%= appos[i].details.vaccine %>
-                                            </p>
-                                            <p>
-                                                Date : <%= appos[i].details.date%>
-                                            </p>
-                                            <h4>
-                                                Slots Avalable : <%= appos[i].details.slots%>
-                                                    <span>
-                                                        (Few Minutes Ago..)
-                                                    </span>
-                                            </h4>
-                                        </div>
-                                    </a>
-                                    <% } %>
-                                        <% } %>
-                                            <% }else{%>
-                                                <p>No Appontmens Nearby</p>
-                                                <% }%>
+                    <h2>Detail</h2>
+                    <br>
+                    <div class="peoples listofappo">
+                        <div
+                            style="background-color: antiquewhite;padding: 1rem;line-height: 1.4rem;font-family: 'dot';">
+                            <p>
+                                Name : <%= peoples[i].name.firstname + " " + peoples[i].name.lastname %>
+                            </p>
+                            <p>
+                                Age : <%= peoples[i].detail.age %>
+                            </p>
+                            <p>
+                                Adhar : <%= peoples[i].detail.adhar %>
+                            </p>
+                            <p>
+                                Phone : <%= peoples[i].detail.phone %>
+                            </p>
+                        </div>
+                        <br>
                     </div>
+                    <br>
                 </div>
                 <br>
                 <br>
@@ -132,7 +98,10 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/bookappo.js"></script>
+    <script type="text/javascript" src="/js/appo.js"></script>
+
+
+
 </body>
 
 </html>

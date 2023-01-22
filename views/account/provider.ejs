@@ -61,6 +61,7 @@
                     <br>
                     <div class="container">
                         <form class="form" action="/account/provider/login" method="POST">
+                            <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
                             <div class="head">
                                 <h1>Login</h1>
                                 <p class="myFont">

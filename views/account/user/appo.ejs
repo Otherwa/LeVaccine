@@ -73,37 +73,41 @@
                     <br>
                     <br>
                     <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
-                        <div id="seeappo">
+                        <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
+                        <div id="seeappo" class="myFont">
                             <h4>
                                 Address : <%= appo.address %>
                             </h4>
-                            City : <%= appo.city %>
-                                <br>
+                            <p>
+                                City : <%= appo.city %>
+                            </p>
+                            <p>
                                 State : <%= appo.state %>
-                                    <br>
-                                    Postal : <%= appo.postcode %>
-                                        <br>
-                                        <h4>
-                                            Time : <%= appo.details.time %>
-                                        </h4>
-                                        <h4>
-                                            Vaccine : <%= appo.details.vaccine %>
-                                        </h4>
-                                        <h4>
-                                            Date : <%= appo.details.date%>
-                                        </h4>
-                                        <h3>
-                                            Slots Avalable : <%= appo.details.slots%> &nbsp;
-                                                <cite class="myFont" style="font-size:0.9rem">
-                                                    (Few Minutes Ago..)
-                                                </cite>
-                                        </h3>
-                                        <br>
+                            </p>
+                            <p>
+                                Postal : <%= appo.postcode %>
+                            </p>
+                            <p>
+                                Time : <%= appo.details.time %>
+                            </p>
+                            <p>
+                                Vaccine : <%= appo.details.vaccine %>
+                            </p>
+                            <p>
+                                Date : <%= appo.details.date%>
+                            </p>
+                            <h4>
+                                Slots Avalable : <%= appo.details.slots%>
+                                    <span>
+                                        (Few Minutes Ago..)
+                                    </span>
+                            </h4>
                         </div>
                         <br>
                         <br>
                         <% if(!check) {%>
                             <% if(appo.details.slots<=0) {%>
+                                <p style="color:red;font-family:'dot'">No Slots Remaining</p>
                                 <% }else{%>
                                     <input type="submit" id="signup" value="Book Appointment" style="width: 100%;">
                                     <% }}%>

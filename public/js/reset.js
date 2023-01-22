@@ -21,7 +21,7 @@ $('#reset').on('click', () => {
     $.ajax({
       url: '/account/user/reset',
       type: 'POST',
-      data: { email: email },
+      data: { email: email, _csrf: $('#_csrf').val() },
       success: function (res) {
         console.log(res)
         // 6 seconds reset
@@ -66,7 +66,7 @@ $('#verify').on('click', () => {
   $.ajax({
     url: '/account/user/reset-password',
     type: 'POST',
-    data: { email, otp },
+    data: { email, otp, _csrf: $('#_csrf').val() },
     success: function (res) {
       // console.log(res)
       if (res == '200') {
@@ -140,7 +140,7 @@ $('#password-reset').click(() => {
   $.ajax({
     url: '/account/user/reset-password-ok',
     type: 'POST',
-    data: { email, password, otp },
+    data: { email, password, otp, _csrf: $('#_csrf').val() },
     success: function (res) {
       console.log(res)
       if (res == '200') {
