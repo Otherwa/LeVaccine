@@ -423,6 +423,50 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
   })
 })
 
+// change vaccinated or not tag
+// each appointment in appointemnt list details
+Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req, res) => {
+  // token set or
+  await connect()
+  const id = req.params.appoid
+  const uid = req.params.userid
+  const cookie = req.cookies.jwt
+  console.log(req.user._id)
+
+  // get appointemnt
+  appo.findById(id, function (err, result) {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log(result)
+      // find from appointement list
+      appolists.findOne({ 'appoid': id }, { '_id': 0 }, (err, peoples_result) => {
+        if (err) {
+          console.error(err)
+        }
+        else {
+          // find user deatils
+          userSchema.findOne({ '_id': uid }, (err, results) => {
+            if (err) {
+              console.error(err)
+            } else {
+              console.log(results)
+              res.render('account/provider/appopersondetails', {
+                data: req.user,
+                token: cookie,
+                appo: result,
+                peoples: results,
+                peoples_res: peoples_result,
+              })
+            }
+          })
+        }
+      })
+    }
+  })
+})
+
+
 Router.get('/provider/logout', async (req, res) => {
   provider.logout(req, res)
 })

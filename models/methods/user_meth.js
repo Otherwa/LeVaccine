@@ -2,6 +2,7 @@ const userSchema = require('../userschema')
 const reset_user_pass = require('../reset_pass')
 const appolist = require('../appolistschema')
 const appos = require('../apposchema')
+const { execSync } = require('child_process');
 const { connect } = require('../../config/connect')
 const {
   bcrypt,
@@ -162,14 +163,27 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
 
 
 userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
+  // sleep
   await connect()
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+  run();
+
+  async function run() {
+    await delay(1000);
+    console.log('This printed after about 1 second');
+  }
+  // sleep 1
 
   appos.findById(appoid, (err, doc) => {
     if (err) console.log(err)
 
 
     if (doc.details.slots > 0) {
-      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, { writeConcern: { w: 'majority', j: true, wtimeout: 5000 } }, (err, results) => {
         if (err) console.log(err)
 
         console.log(results)
