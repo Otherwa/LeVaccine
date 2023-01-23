@@ -413,7 +413,9 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
                 appo_pos: result.details.position,
                 appo: result,
                 peoples: results,
-                peoples_result: peoples_result
+                peoples_result: peoples_result,
+                csrf_token: req.csrfToken(),
+                appo_id: id
               })
             }
           })

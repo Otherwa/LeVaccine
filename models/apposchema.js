@@ -24,7 +24,9 @@ const appodetails = new schema({
     },
     slots: {
         type: Number,
-        required: true
+        required: true,
+        min: 1,
+        max: 100
     }
 }, {
     versionKey: false //here
@@ -63,4 +65,4 @@ const setapposchema = new schema({
     versionKey: false //here
 })
 
-module.exports = mongoose.model('appontments', setapposchema)
+module.exports = mongoose.model('appointments', setapposchema)

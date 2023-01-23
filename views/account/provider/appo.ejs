@@ -61,6 +61,11 @@
                     <h1>Appointment</h1>
                     <br>
                     <br>
+                    <!-- csrf token -->
+                    <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
+                    <input type="hidden" name="appo_id" id="appo_id" value="<%=appo_id%>" />
+                    <input type="button" name="stop_appo" id="stop_appo" style="width:100%" value="Stop Appointment">
+                    <br>
                     <br>
                     <div id="seeappo" class="myFont" style="line-height:1.3rem">
                         <p>
@@ -88,9 +93,9 @@
                             Slots : <%= appo.details.slots%>
                         </p>
                         <%if(appo.status){%>
-                            <p>Status : Completed</p>
+                            <p>Status : <span style="color:green">Completed</span></p>
                             <%}else{%>
-                                <p>Status : On-going</p>
+                                <p>Status : <span id="flag" style="color:rgb(227, 78, 217)">On-going</span></p>
                                 <%}%>
                     </div>
                     <br>
