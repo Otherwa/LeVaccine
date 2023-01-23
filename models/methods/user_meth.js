@@ -166,43 +166,57 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
   // sleep
   await connect()
 
-  appos.findById(appoid).then((doc) => {
-    // awaiting resposne
 
-    let timeInMs = Math.random() * (3000);
-    console.log('timeInMs => ', timeInMs);
+  async function awaitUpdate() {
+    try {
+      // const doc = await MyModel.findOne({
+      //   firstName: 'franklin',
+      //   lastName: 'roosevelt'
+      // });
 
-    setTimeout(test, timeInMs);
+      // doc.middleName = 'delano';
 
-    async function test() {
-      console.log('called')
-      if (doc.details.slots > 0 && Boolean(doc.status) == false) {
-        appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
-          if (err) console.log(err)
+      // console.log(await doc.save());
 
-          console.log(results)
+      appos.findById(appoid).then((doc) => {
+        // awaiting resposne
+        if (doc.details.slots > 0 && Boolean(doc.status) == false) {
+          appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+            if (err) console.log(err)
 
-          const appo = new appolist({
-            appoid: appoid,
-            userid: userid,
-            date: new Date()
+            console.log(results)
+
+            const appo = new appolist({
+              appoid: appoid,
+              userid: userid,
+              date: new Date()
+            })
+
+            appo.save((err, result) => {
+              if (err) console.error(err)
+
+              console.log(result)
+              req.flash('msg', "Appointment Booked")
+              res.redirect('/account/user/dash/bookappo/' + appoid);
+              user_bookappo(req.user.email, req.user.username, results)
+              return results
+            })
           })
+        } else {
+          req.flash('err', "Appointment Was Not Booked")
+          res.redirect('/account/user/dash/bookappo/' + appoid);
+          return results
+        }
+      })
 
-          appo.save((err, result) => {
-            if (err) console.error(err)
-
-            console.log(result)
-            req.flash('msg', "Appointment Booked")
-            res.redirect('/account/user/dash/bookappo/' + appoid);
-            user_bookappo(req.user.email, req.user.username, results)
-          })
-        })
-      } else {
-        req.flash('err', "Appointment Was Not Booked")
-        res.redirect('/account/user/dash/bookappo/' + appoid);
-      }
     }
-  })
+    catch (err) {
+      handleError(err);
+    }
+  }
+
+  let appoupdate = await awaitUpdate()
+  console.log(appoupdate + " asdas")
 
 }
 
