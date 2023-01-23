@@ -58,3 +58,28 @@ map.addControl(geolocate);
 map.on('load', function () {
     geolocate.trigger();
 });
+
+// ajax stop appointments
+$("#stop_appo").bind('click', () => {
+    console.log("click")
+
+    let token = $("#_csrf").val();
+    let appo_id = $("#appo_id").val();
+    console.log("csrf token: " + token)
+
+    $.ajax({
+        url: '/account/provider/dash/appos/' + appo_id,
+        type: 'POST',
+        data: {
+            '_csrf': token,
+            'appo_id': appo_id
+        },
+        success: function (res) {
+            console.log("success")
+            $("#flag").html("Completed").css('color', 'green')
+        }
+    })
+
+    $("#stop_appo").prop('disabled', true)
+})
+

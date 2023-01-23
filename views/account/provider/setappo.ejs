@@ -62,10 +62,6 @@
                             <div class="items">
                                 <form class="form items" action="/account/provider/dash/setappo" method="POST">
                                     <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
-                                    <!-- <p>
-                            <%= data %>
-                        </p> -->
-                                    <!-- bridge -->
                                     <br>
                                     <input type="hidden" name="lat" id="lat" value="0">
                                     <input type="hidden" name="lon" id="lon" value="0">
@@ -74,8 +70,9 @@
                                     </span>
                                     <input type="hidden" name="authentication" value="<%= data.authentication %>">
 
-                                    <div class="head">
+                                    <div class="head" style="flex-direction: column;gap:0.6rem">
                                         <h1>Set your Appointment</h1>
+                                        <code>(Note : Appointmets can only be set 1 day Proir)</code>
                                         <p class="myFont">
                                         </p>
                                     </div>
@@ -137,11 +134,12 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="items" id="appos" style="margin-top: 5rem;overflow-y: scroll;height:47rem">
+                            <div class="items" id="appos"
+                                style="margin-top: 5rem;overflow-y: scroll;height:47rem;width: 50%;">
                                 <span class="myFont">Your Appointments</span>
                                 <% for(var i=0; i<appos.length; i++) {%>
-                                    <a href="#">
-                                        <div id="seeappo" class="myFont" style="line-height: 1.5rem;">
+                                    <a href="/account/provider/dash/appos/<%= appos[i]._id %>">
+                                        <div id="seeappo" class="myFont" style="line-height: 1.5rem;width: auto;">
                                             <h4>
                                                 Address : <%= appos[i].address %>
                                             </h4>
@@ -179,7 +177,7 @@
                     </div>
                     <br>
                     <br>
-                    <div class="home-separator"></div>
+                    <div class=" home-separator"></div>
                     <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
                             target="_blank">Otherwa</a>,
                         All Rights Reserved.</span>

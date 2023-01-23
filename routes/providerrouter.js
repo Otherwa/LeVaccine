@@ -155,5 +155,14 @@ Router.post('/dash/profile', pauth, livepdata, async (req, res) => {
 
 })
 
+// stop appointments
+Router.post('/dash/appos/:id', pauth, livepdata, async (req, res) => {
+    console.log(req.body)
+    let appointmet_id = req.params.id
+
+    //stop appointemts
+    provider.stopappo(req, res, appointmet_id)
+
+})
 
 module.exports = { Router }

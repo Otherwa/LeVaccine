@@ -166,50 +166,56 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
   // sleep
   await connect()
 
-  function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
+  function set_appointment(time) {
 
-  run();
+    // retrun a  async promise wait till appointment decrement by 1
+    return new Promise(resolve => {
 
-  async function run() {
-    await delay(1000);
-    console.log('This printed after about 1 second');
-  }
-  // sleep 1
-
-  appos.findById(appoid, (err, doc) => {
-    if (err) console.log(err)
-
-
-    if (doc.details.slots > 0) {
-      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, { writeConcern: { w: 'majority', j: true, wtimeout: 5000 } }, (err, results) => {
+      appos.findById(appoid, (err, doc) => {
         if (err) console.log(err)
 
-        console.log(results)
+        // check if appointments is accepting and slots are available
+        if (doc.details.slots > 0 && Boolean(doc.status) == false) {
+          appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+            if (err) console.log(err)
 
-        const appo = new appolist({
-          appoid: appoid,
-          userid: userid,
-          date: new Date()
-        })
+            console.log(results)
 
-        appo.save((err, result) => {
-          if (err) console.error(err)
+            const appo = new appolist({
+              appoid: appoid,
+              userid: userid,
+              date: new Date()
+            })
 
-          console.log(result)
-          req.flash('msg', "Appointment Booked")
+            appo.save((err, result) => {
+              if (err) console.error(err)
+
+              console.log(result)
+              req.flash('msg', "Appointment Booked")
+              res.redirect('/account/user/dash/bookappo/' + appoid);
+              user_bookappo(req.user.email, req.user.username, results)
+            })
+
+          })
+        } else {
+          req.flash('err', "Appointment Was Not Booked")
           res.redirect('/account/user/dash/bookappo/' + appoid);
-          user_bookappo(req.user.email, req.user.username, results)
-        })
-
+        }
       })
-    } else {
-      req.flash('err', "Appointment Was Not Booked")
-      res.redirect('/account/user/dash/bookappo/' + appoid);
-    }
-  })
+
+      // timeout of 2500
+      setTimeout(resolve, time)
+    });
+  }
 
 
+  async function bookappointment() {
+    await set_appointment(2500);
+    console.log('Check if any read write required and updated');
+    // 5 second buffer
+  }
+  // sleep 1
+  //Promise function 
+  bookappointment();
 }
 module.exports = { userSchema }

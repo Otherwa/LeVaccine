@@ -345,8 +345,13 @@ input:focus+.placeholder-text .text {
 #login,
 #signup,
 #reset,
-#profileset {
+#profileset,
+#stop_appo {
     transition: 0.3s ease-in-out;
+}
+
+#stop_appo:hover {
+    background-color: rgb(226, 18, 18);
 }
 
 #profileset:hover,
@@ -373,7 +378,7 @@ input:focus+.placeholder-text .text {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 7rem;
+    gap: 1.5rem;
 }
 
 .form-con .item {

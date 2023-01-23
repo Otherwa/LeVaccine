@@ -115,32 +115,40 @@ providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr,
     // check if the user is authenticated or not
     if (check == true) {
         await connect()
-        const appo = new appoSchema({
-            byappo: byid,
-            address: addr,
-            city: city,
-            state: state,
-            postcode: postcode,
-            details: {
-                time: time,
-                vaccine: vaccine,
-                date: date,
-                position: [lat, lon],
-                slots: slots
-            },
-        })
-        // check if any require filed is not filled  2 measure
-        appo.save((err, result) => {
-            if (err) {
-                console.log(err)
-                req.flash('messagesetappo', 'Fill up the Required Fields')
-                res.redirect('/account/provider/dash/setappo')
-            } else {
-                // console.log(result)
-                req.flash('messagesetappo', 'Appontment 200 🛐')
-                res.redirect('/account/provider/dash/setappo')
-            }
-        })
+        // check date
+        if (new Date(date) >= new Date()) {
+            const appo = new appoSchema({
+                byappo: byid,
+                address: addr,
+                city: city,
+                state: state,
+                postcode: postcode,
+                details: {
+                    time: time,
+                    vaccine: vaccine,
+                    date: date,
+                    position: [lat, lon],
+                    slots: slots
+                },
+                status: false
+            })
+
+            // check if any require filed is not filled  2 measure
+            appo.save((err, result) => {
+                if (err) {
+                    console.log(err)
+                    req.flash('messagesetappo', 'Fill up the Required Fields 👾')
+                    res.redirect('/account/provider/dash/setappo')
+                } else {
+                    // console.log(result)
+                    req.flash('messagesetappo', 'Appontment Set Sucessfully 🛐')
+                    res.redirect('/account/provider/dash/setappo')
+                }
+            })
+        } else {
+            req.flash('messagesetappo', 'Fill the Fields Properly')
+            res.redirect('/account/provider/dash/setappo')
+        }
     } else {
         req.flash('messagesetappo', 'Get Authorized')
         res.redirect('/account/provider/dash/setappo')
@@ -189,6 +197,20 @@ providerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
         }
     })
 
+}
+
+
+// stop appointemts
+providerSchema.prototype.stopappo = async (req, res, id) => {
+    appoSchema.findByIdAndUpdate(id, { status: true }, () => {
+        res.json({ stopped: "done" })
+    })
+}
+
+
+// stop appointemts
+providerSchema.prototype.personvaccination = async (req, res, id) => {
+    // 
 }
 
 module.exports = { providerSchema }

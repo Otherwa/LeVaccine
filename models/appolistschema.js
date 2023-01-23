@@ -18,10 +18,10 @@ const appolist = new schema({
     },
     date: {
         type: String,
-        required: true
+        required: true,
     }
 }, {
     versionKey: false //here
 })
 
-module.exports = mongoose.model('appontmentslist', appolist)
+module.exports = mongoose.model('appointmentslist', appolist)
