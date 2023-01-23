@@ -30,7 +30,7 @@ var limiter = rateLimit({
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
-const { isauthvalid } = require('./commonfunctions/commonfunc');
+const { isauthvalid, auth } = require('./commonfunctions/commonfunc');
 const { providerSchema } = require('./models/methods/provider_meth');
 const { producerSchema } = require('./models/methods/producer_meth');
 const apposchema = require('./models/apposchema');
@@ -42,6 +42,10 @@ const port = process.env.PORT || 8080;
 // start init
 const app = express();
 
+const statusMonitor = require('express-status-monitor')();
+app.use(statusMonitor);
+
+app.get('/status', statusMonitor.pageRoute)
 
 // session
 app.use(session({

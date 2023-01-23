@@ -168,33 +168,42 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
 
   appos.findById(appoid).then((doc) => {
     // awaiting resposne
-    if (doc.details.slots > 0 && Boolean(doc.status) == false) {
-      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
-        if (err) console.log(err)
 
-        console.log(results)
+    let timeInMs = Math.random() * (3000);
+    console.log('timeInMs => ', timeInMs);
 
-        const appo = new appolist({
-          appoid: appoid,
-          userid: userid,
-          date: new Date()
+    setTimeout(test, timeInMs);
+
+    async function test() {
+      console.log('called')
+      if (doc.details.slots > 0 && Boolean(doc.status) == false) {
+        appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
+          if (err) console.log(err)
+
+          console.log(results)
+
+          const appo = new appolist({
+            appoid: appoid,
+            userid: userid,
+            date: new Date()
+          })
+
+          appo.save((err, result) => {
+            if (err) console.error(err)
+
+            console.log(result)
+            req.flash('msg', "Appointment Booked")
+            res.redirect('/account/user/dash/bookappo/' + appoid);
+            user_bookappo(req.user.email, req.user.username, results)
+          })
         })
-
-        appo.save((err, result) => {
-          if (err) console.error(err)
-
-          console.log(result)
-          req.flash('msg', "Appointment Booked")
-          res.redirect('/account/user/dash/bookappo/' + appoid);
-          user_bookappo(req.user.email, req.user.username, results)
-        })
-      })
-    } else {
-      req.flash('err', "Appointment Was Not Booked")
-      res.redirect('/account/user/dash/bookappo/' + appoid);
+      } else {
+        req.flash('err', "Appointment Was Not Booked")
+        res.redirect('/account/user/dash/bookappo/' + appoid);
+      }
     }
   })
 
-
 }
+
 module.exports = { userSchema }
