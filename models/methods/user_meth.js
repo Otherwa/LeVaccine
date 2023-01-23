@@ -205,7 +205,6 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
         } else {
           req.flash('err', "Appointment Was Not Booked")
           res.redirect('/account/user/dash/bookappo/' + appoid);
-          return results
         }
       })
 
