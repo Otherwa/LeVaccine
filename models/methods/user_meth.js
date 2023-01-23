@@ -195,22 +195,20 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
               res.redirect('/account/user/dash/bookappo/' + appoid);
               user_bookappo(req.user.email, req.user.username, results)
             })
-
+            // timeout of 2500
+            setTimeout(resolve, time)
           })
         } else {
           req.flash('err', "Appointment Was Not Booked")
           res.redirect('/account/user/dash/bookappo/' + appoid);
         }
       })
-
-      // timeout of 2500
-      setTimeout(resolve, time)
     });
   }
 
 
   async function bookappointment() {
-    await set_appointment(2500);
+    await set_appointment(5000);
     console.log('Check if any read write required and updated');
     // 5 second buffer
   }
