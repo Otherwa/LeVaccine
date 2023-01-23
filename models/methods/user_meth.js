@@ -166,54 +166,35 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
   // sleep
   await connect()
 
-  function set_appointment(time) {
-
-    // retrun a  async promise wait till appointment decrement by 1
-    return new Promise(resolve => {
-
-      appos.findById(appoid, (err, doc) => {
+  appos.findById(appoid).then((doc) => {
+    // awaiting resposne
+    if (doc.details.slots > 0 && Boolean(doc.status) == false) {
+      appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
         if (err) console.log(err)
 
-        // timeout of 2500
-        setTimeout(resolve, time)
-        // check if appointments is accepting and slots are available
-        if (doc.details.slots > 0 && Boolean(doc.status) == false) {
-          appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
-            if (err) console.log(err)
+        console.log(results)
 
-            console.log(results)
+        const appo = new appolist({
+          appoid: appoid,
+          userid: userid,
+          date: new Date()
+        })
 
-            const appo = new appolist({
-              appoid: appoid,
-              userid: userid,
-              date: new Date()
-            })
+        appo.save((err, result) => {
+          if (err) console.error(err)
 
-            appo.save((err, result) => {
-              if (err) console.error(err)
-
-              console.log(result)
-              req.flash('msg', "Appointment Booked")
-              res.redirect('/account/user/dash/bookappo/' + appoid);
-              user_bookappo(req.user.email, req.user.username, results)
-            })
-          })
-        } else {
-          req.flash('err', "Appointment Was Not Booked")
+          console.log(result)
+          req.flash('msg', "Appointment Booked")
           res.redirect('/account/user/dash/bookappo/' + appoid);
-        }
+          user_bookappo(req.user.email, req.user.username, results)
+        })
       })
-    });
-  }
+    } else {
+      req.flash('err', "Appointment Was Not Booked")
+      res.redirect('/account/user/dash/bookappo/' + appoid);
+    }
+  })
 
 
-  async function bookappointment() {
-    await set_appointment(5000);
-    console.log('Check if any read write required and updated');
-    // 5 second buffer
-  }
-  // sleep 1
-  //Promise function 
-  bookappointment();
 }
 module.exports = { userSchema }
