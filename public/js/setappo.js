@@ -19,10 +19,6 @@ const geolocate = new maplibregl.GeolocateControl({
 });
 
 
-var flag = 0;
-// when a geolocate event occurs.
-
-
 var lng;
 var lat;
 let flag = 0
