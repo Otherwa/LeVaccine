@@ -25,7 +25,7 @@ var flag = 0;
 
 var lng;
 var lat;
-
+let flag = 0
 geolocate.on('geolocate', function (data) {
     // console.log('A geolocate event has occurred.')
     // get option
@@ -35,7 +35,10 @@ geolocate.on('geolocate', function (data) {
     // only one marker as per
     console.log(lng)
     console.log(lat)
-    marker.setLngLat([lng, lat]).addTo(map);
+    if (flag == 0) {
+        marker.setLngLat([lng, lat]).addTo(map);
+        flag = 1;
+    }
 });
 
 let marker = new maplibregl.Marker({
