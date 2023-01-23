@@ -174,6 +174,8 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
       appos.findById(appoid, (err, doc) => {
         if (err) console.log(err)
 
+        // timeout of 2500
+        setTimeout(resolve, time)
         // check if appointments is accepting and slots are available
         if (doc.details.slots > 0 && Boolean(doc.status) == false) {
           appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
@@ -195,8 +197,6 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
               res.redirect('/account/user/dash/bookappo/' + appoid);
               user_bookappo(req.user.email, req.user.username, results)
             })
-            // timeout of 2500
-            setTimeout(resolve, time)
           })
         } else {
           req.flash('err', "Appointment Was Not Booked")
