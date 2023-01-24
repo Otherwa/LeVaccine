@@ -39,7 +39,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         butter.init();
     });
 }
-
+// openapi
+// ScrollReveal().reveal($(".inres"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 // api
 ScrollReveal().reveal($(".api-con"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 //book appo
