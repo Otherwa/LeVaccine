@@ -60,6 +60,8 @@ h2 .myFont {
     height: 100vh;
 }
 
+
+
 .main {
     display: flex;
     flex-direction: row;

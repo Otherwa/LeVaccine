@@ -169,34 +169,60 @@ providerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
     }
 
     // check if image uploaded or not 2 measure
-
-    providerSchema.findOneAndUpdate({ 'email': whichuser }, {
-        $set: {
-            'name.firstname': fname,
-            'name.lastname': lname,
-            'detail.adhar': adhar,
-            'detail.position': [lat, lon],
-            'detail.age': age,
-            'detail.address': addr,
-            'detail.gender': gender,
-            'detail.phone': phone,
-            'detail.city': city,
-            'detail.region': region,
-            'detail.postcode': post,
-            'detail.ngo': ngo,
-            'detail.ngoaddress': ngoaddress,
-        }
-    }, (err, result) => {
-        console.log(err)
-        if (err) {
+    if (lat != 0 && lon != 0) {
+        providerSchema.findOneAndUpdate({ 'email': whichuser }, {
+            $set: {
+                'name.firstname': fname,
+                'name.lastname': lname,
+                'detail.adhar': adhar,
+                'detail.position': [lat, lon],
+                'detail.age': age,
+                'detail.address': addr,
+                'detail.gender': gender,
+                'detail.phone': phone,
+                'detail.city': city,
+                'detail.region': region,
+                'detail.postcode': post,
+                'detail.ngo': ngo,
+                'detail.ngoaddress': ngoaddress,
+            }
+        }, (err, result) => {
             console.log(err)
-        } else {
-            console.log(result)
-            req.flash('success', 'profile updated 👍')
-            res.redirect('/account/provider/dash/profile')
-        }
-    })
-
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(result)
+                req.flash('success', 'profile updated 👍')
+                res.redirect('/account/provider/dash/profile')
+            }
+        })
+    } else {
+        providerSchema.findOneAndUpdate({ 'email': whichuser }, {
+            $set: {
+                'name.firstname': fname,
+                'name.lastname': lname,
+                'detail.adhar': adhar,
+                'detail.age': age,
+                'detail.address': addr,
+                'detail.gender': gender,
+                'detail.phone': phone,
+                'detail.city': city,
+                'detail.region': region,
+                'detail.postcode': post,
+                'detail.ngo': ngo,
+                'detail.ngoaddress': ngoaddress,
+            }
+        }, (err, result) => {
+            console.log(err)
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(result)
+                req.flash('success', 'profile updated 👍')
+                res.redirect('/account/provider/dash/profile')
+            }
+        })
+    }
 }
 
 

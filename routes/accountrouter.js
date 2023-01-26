@@ -11,6 +11,8 @@ const { pauth, livepdata, proauth, liveprodata, auth, livedata, bcrypt, sendnews
 const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
 const appolists = require('../models/appolistschema')
+const moment = require('moment');
+
 
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -85,8 +87,11 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
   await connect()
   const cookie = req.cookies.jwt
+  console.log(moment(new Date()).format('YYYY-MM-DD'))
+  console.log(moment(new Date()).format('hh:mm A'))
 
-  appo.find({ 'postcode': req.user.detail.postcode }, (err, result) => {
+
+  appo.find({ 'status': false, $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'details.time': { $gte: moment(new Date()).format('hh:mm A') } }] }, (err, result) => {
     if (err) console.log(err)
     console.log(result)
 

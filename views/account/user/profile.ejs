@@ -119,6 +119,9 @@
 
                         <div class="first_fields">
                             <div class="span">
+                                <p id="adhar_msg" style="display: none;color: red;" class="myFont msg">Plz enter Valid
+                                    Adhar No</p>
+                                <br>
                                 <div class="input-contain">
                                     <input type="text" name="adhar" id="adhar" autocomplete="on" value="<%= adhar %>">
                                     <label class="placeholder-text" for="username" id="placeholder-fname">
@@ -127,65 +130,105 @@
                                 </div>
                             </div>
 
-                            <div class="input-contain">
-                                <input type="number" name="age" id="age" autocomplete="on" value="<%= age %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Age</div>
-                                </label>
+                            <div class="span">
+                                <p id="age_msg" style="display: none;color: red;" class="myFont msg">Plz Enter a Valid
+                                    Age</p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="number" name="age" id="age" autocomplete="on" value="<%= age %>">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Age</div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="first_fields">
-                            <div class="input-contain">
-                                <input type="text" name="address" id="address" autocomplete="on" value="<%= address %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Address</div>
-                                </label>
+                            <div class="span">
+                                <p id="addr_msg" style="display: none;color: red;" class="myFont msg">Plz add Address
+                                </p>
+                                <br>
+                                <div class="first_fields">
+                                    <div class="input-contain">
+                                        <input type="text" name="address" id="address" autocomplete="on"
+                                            value="<%= address %>">
+                                        <label class="placeholder-text" for="username" id="placeholder-fname">
+                                            <div class="text">Address</div>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="input-contain">
-                                <input type="text" name="phone" id="phone" autocomplete="on" value="<%= phone %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Phone No</div>
-                                </label>
+
+                            <div class="span">
+                                <p id="phone_msg" style="display: none;color: red;" class="myFont msg">Plz input valid
+                                    Phone
+                                    Number</p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="text" name="phone" id="phone" autocomplete="on" value="<%= phone %>">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Phone No</div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="first_fields">
-                            <div class="input-contain">
-                                <input type="text" name="city" id="city" autocomplete="on" value="<%= city %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">City</div>
-                                </label>
+                            <div class="span">
+                                <p id="city_msg" style="display: none;color: red;" class="myFont msg">Plz add City</p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="text" name="city" id="city" autocomplete="on" value="<%= city %>">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">City</div>
+                                    </label>
+                                </div>
                             </div>
 
-                            <div class="input-contain">
-                                <input type="text" name="region" id="region" autocomplete="on" value="<%= region %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Region</div>
-                                </label>
+                            <div class="span">
+                                <p id="region_msg" style="display: none;color: red;" class="myFont msg">Plz add Region
+                                </p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="text" name="region" id="region" autocomplete="on"
+                                        value="<%= region %>">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Region</div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="first_fields">
 
-                            <div class="input-contain">
-                                <input type="text" name="postcode" id="postcode" autocomplete="on"
-                                    value="<%= postcode %>">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">PostCode</div>
-                                </label>
+                            <div class="span">
+                                <p id="post_msg" style="display: none;color: red;" class="myFont msg">Plz Valid PostCode
+                                </p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="text" name="postcode" id="postcode" autocomplete="on"
+                                        value="<%= postcode %>">
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">PostCode</div>
+                                    </label>
+                                </div>
                             </div>
 
-                            <div class="input-contain">
-                                <input type="text" autocomplete="on" class="gender" value="<%= gender %>" disabled>
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
-                                    <div class="text">Gender</div>
-                                </label>
-                                <select type="select" name="gender" id="gender" class="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                                </select>
+                            <div class="span">
+                                <p id="age_msg" style="display: none;color: red;" class="myFont msg">Plz Select Age
+                                </p>
+                                <br>
+                                <div class="input-contain">
+                                    <input type="text" autocomplete="on" class="gender" value="<%= gender %>" disabled>
+                                    <label class="placeholder-text" for="username" id="placeholder-fname">
+                                        <div class="text">Gender</div>
+                                    </label>
+                                    <select type="select" name="gender" id="gender" class="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

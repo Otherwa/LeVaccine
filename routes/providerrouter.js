@@ -3,7 +3,7 @@ const Router = express.Router()
 const { connect } = require('../config/connect')
 const { providerSchema } = require('../models/methods/provider_meth')
 const { pauth, livepdata, bcrypt } = require('../commonfunctions/commonfunc')
-var moment = require('moment');
+const moment = require('moment');
 
 require('dotenv').config()
 // confidental password

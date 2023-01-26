@@ -248,7 +248,7 @@ div.content {
 }
 
 input {
-    height: 2.7rem;
+    height: 3.1rem;
     width: 20rem;
     border: 1px solid black;
     border-radius: 1rem;
@@ -366,6 +366,11 @@ input:focus+.placeholder-text .text {
     }
 }
 
+.msg {
+    font-size: 0.9rem;
+    margin-left: 0.2rem;
+}
+
 #appos div {
     background-color: #04AA6D;
     padding: 0.8rem;
@@ -402,14 +407,14 @@ input:focus+.placeholder-text .text {
 
 
 .listofappo div {
-    background-color: #04AA6D;
+    background-color: #d3d61c;
     padding: 0.8rem;
     line-height: 1.3rem;
     border-radius: 0.5rem;
 }
 
 #seeappo {
-    background-color: #ffe900d1;
+    background-color: #62ff00d1;
     padding: 1rem;
     border-radius: 0.5rem;
     line-height: 1.6rem;

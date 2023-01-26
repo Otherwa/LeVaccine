@@ -2,7 +2,6 @@ const userSchema = require('../userschema')
 const reset_user_pass = require('../reset_pass')
 const appolist = require('../appolistschema')
 const appos = require('../apposchema')
-const { execSync } = require('child_process');
 const { connect } = require('../../config/connect')
 const {
   bcrypt,
@@ -135,30 +134,57 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
 
   // check if image uploaded or not 2 measure
 
-  userSchema.findOneAndUpdate({ 'email': whichuser }, {
-    $set: {
-      'name.firstname': fname,
-      'name.lastname': lname,
-      'detail.adhar': adhar,
-      'detail.position': [lat, lon],
-      'detail.age': age,
-      'detail.address': addr,
-      'detail.gender': gender,
-      'detail.phone': phone,
-      'detail.city': city,
-      'detail.region': region,
-      'detail.postcode': post
-    }
-  }, (err, result) => {
-    console.log(err)
-    if (err) {
+  if (lat != 0 && lon != 0) {
+    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+      $set: {
+        'name.firstname': fname,
+        'name.lastname': lname,
+        'detail.adhar': adhar,
+        'detail.position': [lat, lon],
+        'detail.age': age,
+        'detail.address': addr,
+        'detail.gender': gender,
+        'detail.phone': phone,
+        'detail.city': city,
+        'detail.region': region,
+        'detail.postcode': post
+      }
+    }, (err, result) => {
       console.log(err)
-    } else {
-      console.log(result)
-      req.flash('success', 'profile updated 👍')
-      res.redirect('/account/user/dash/profile')
-    }
-  })
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(result)
+        req.flash('success', 'profile updated 👍')
+        res.redirect('/account/user/dash/profile')
+      }
+    })
+  }
+  else {
+    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+      $set: {
+        'name.firstname': fname,
+        'name.lastname': lname,
+        'detail.adhar': adhar,
+        'detail.age': age,
+        'detail.address': addr,
+        'detail.gender': gender,
+        'detail.phone': phone,
+        'detail.city': city,
+        'detail.region': region,
+        'detail.postcode': post
+      }
+    }, (err, result) => {
+      console.log(err)
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(result)
+        req.flash('success', 'profile updated 👍')
+        res.redirect('/account/user/dash/profile')
+      }
+    })
+  }
 }
 
 
