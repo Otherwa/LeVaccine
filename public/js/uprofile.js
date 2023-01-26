@@ -112,6 +112,83 @@ const p = [
     [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
 ]
 
+// verifications
+
+// phone number verification
+$('#phone').on('input', () => {
+    var numbers = /^[0-9]+$/;
+    let phone = $('#phone').val()
+    if (phone.match(numbers) && (phone.length <= 10 && phone.length >= 10)) {
+        $('#phone_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#phone_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+
+// address verfication
+// phone number verification
+$('#address').on('input', () => {
+    let address = $('#address').val()
+    if (address.length > 0) {
+        $('#addr_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#addr_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+
+// post code
+$('#postcode').on('input', () => {
+    let post = $('#postcode').val()
+    if (post.length < 7) {
+        $('#post_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#post_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+
+// region
+$('#region').on('input', () => {
+    let region = $('#region').val()
+    if (region.length > 0) {
+        $('#region_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#region_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+
+// city
+// region
+$('#city').on('input', () => {
+    let city = $('#city').val()
+    if (city.length > 0) {
+        $('#city_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#city_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+// age verifiaction
+$('#age').on('input', () => {
+    let age = $('#age').val()
+    if (age < 120 && age > 0) {
+        $('#age_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#age_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
+
+
 // validates Aadhar number received as string
 function validate(aadharNumber) {
     let c = 0
@@ -127,9 +204,11 @@ function validate(aadharNumber) {
 function verify() {
     var aadharNo = $('#adhar').val();
     if (validate(aadharNo)) {
+        $('#adhar_msg').hide('fast');
         $('#adhar').css('color', 'blue')
         $('#profileset').prop('disabled', false)
     } else {
+        $('#adhar_msg').show('fast');
         $('#adhar').css('color', 'red')
         $('#profileset').prop('disabled', true)
     }
@@ -139,3 +218,4 @@ function verify() {
 $('#adhar').on('input', () => {
     verify();
 })
+
