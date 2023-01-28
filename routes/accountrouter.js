@@ -322,7 +322,7 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   var id = req.user._id
   id = id.toString()
   console.log(id)
-  appo.find({ byappo: id }).limit(3).sort({ byappo: -1 }).then((result) => {
+  appo.find({ 'byappo': id }).limit(3).sort({ '_id': -1 }).then((result) => {
     console.log(req.user)
     res.render('account/provider/setappo', {
       data: req.user,
