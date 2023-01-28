@@ -53,7 +53,7 @@ function onDragEnd() {
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            $('#address').val(
+            $('#ngoaddress').val(
                 result.features[0].properties.address_line1 + "," +
                 result.features[0].properties.address_line2)
             $('#city').val(
@@ -65,6 +65,8 @@ function onDragEnd() {
             $('#state').val(
                 result.features[0].properties.state
             )
+            // verifiactions
+            $('#profileset').prop('disabled', false)
         })
         .catch(error => console.log('error', error));
 }

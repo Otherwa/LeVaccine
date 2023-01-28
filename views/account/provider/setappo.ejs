@@ -72,47 +72,52 @@
 
                                     <div class="head" style="flex-direction: column;gap:0.6rem">
                                         <h1>Set your Appointment</h1>
-                                        <code>(Note : Appointmets can only be set 1 day Proir)</code>
-                                        <p class="myFont">
-                                        </p>
+                                        <br>
+                                        <%if(data.auth==false){%>
+                                            <code class="myFont"
+                                                style="color:red">Get Authorized Or Contact Your Nearest Producer</code>
+                                            <%}else{%>
+                                                <code
+                                                    class="myFont">Note : Appointmets can only be set 1 day Proir</code>
+                                                <%}%>
                                     </div>
 
                                     <div class="input-contain">
-                                        <input type="text" name="address" id="address" autocomplete="on">
+                                        <input type="text" required name="address" id="address" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">Address</div>
                                         </label>
                                     </div>
 
                                     <div class="input-contain">
-                                        <input type="text" name="city" id="city" autocomplete="on">
+                                        <input type="text" required name="city" id="city" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">City</div>
                                         </label>
                                     </div>
 
                                     <div class="input-contain">
-                                        <input type="text" name="state" id="state" autocomplete="on">
+                                        <input type="text" required name="state" id="state" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">State</div>
                                         </label>
                                     </div>
 
                                     <div class="input-contain">
-                                        <input type="text" name="postcode" id="postcode" autocomplete="on">
+                                        <input type="text" required name="postcode" id="postcode" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">PostCode</div>
                                         </label>
                                     </div>
 
                                     <div class="input-contain">
-                                        <input type="text" name="forvaccine" id="forvaccine" autocomplete="on">
+                                        <input type="text" required name="forvaccine" id="forvaccine" autocomplete="on">
                                         <label class="placeholder-text" for="username" id="placeholder-fname">
                                             <div class="text">For Vaccine</div>
                                         </label>
                                     </div>
                                     <div class="input-contain">
-                                        <input type="number" name="slots" id="slots" autocomplete="on">
+                                        <input type="number" required name="slots" id="slots" autocomplete="on">
                                         <label class="placeholder-text" for="slots" id="placeholder-fname">
                                             <div class="text">Slots</div>
                                         </label>
@@ -129,9 +134,15 @@
                                             <div class="text">Date</div>
                                         </label>
                                     </div>
-                                    <div class="div">
-                                        <input id="signup" type="submit" value="Set Appointment">
-                                    </div>
+                                    <%if(data.auth==true){%>
+                                        <div class="div">
+                                            <input id="signup" type="submit" value="Set Appointment">
+                                        </div>
+                                        <%}else{%>
+                                            <p>
+                                                Ns Cap Fr.
+                                            </p>
+                                            <%}%>
                                 </form>
                             </div>
                             <div class="items" id="appos"

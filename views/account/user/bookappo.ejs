@@ -61,62 +61,66 @@
                     <h3>Note :</h3><br>
                     <h2>Appointments are based on you Nearest Location 🤖</h2>
                     <br>
-                    <code>(Note: <span style="color:#c0ce2a">yellow</span> indicates Father <span style="color:#04AA6D">green</span> indicates near)</code>
                     <br>
-                    <br>
-                    <div class="listofappo">
-                        <br>
-                        <!-- appo are available -->
-                        <% if(appos.length>0) {%>
-                            <% for(var i=0; i<appos.length; i++) {%>
-                                <!-- appo slots left -->
-                                <!-- appo are available -->
+                    <%if(data.personstatus==false){%>
+                        <code style="color:red" class="myFont">Fill all the Necessary Details First in Profile</code>
+                        <%}else{%>
+                            <code>(Note: <span style="color:#c0ce2a">yellow</span> indicates Father <span style="color:#04AA6D">green</span> indicates near)</code>
+                            <%}%>
+                                <br>
+                                <div class="listofappo">
+                                    <br>
+                                    <!-- appo are available -->
+                                    <% if(appos.length>0) {%>
+                                        <% for(var i=0; i<appos.length; i++) {%>
+                                            <!-- appo slots left -->
+                                            <!-- appo are available -->
 
-                                <% if(appos[i].status !=true) {%>
-                                    <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                        <div class="myFont" <%if(data.detail.postcode==appos[i].postcode){%>
-                                            style="background-color:#04AA6D;"
-                                            <%}%>
-                                                >
-                                                <h4>
-                                                    Address : <%= appos[i].address %>
-                                                </h4>
-                                                <p>
-                                                    City : <%= appos[i].city %>
-                                                </p>
-                                                <p>
-                                                    State : <%= appos[i].state %>
-                                                </p>
-                                                <p>
-                                                    Postal : <%= appos[i].postcode %>
-                                                </p>
-                                                <p>
-                                                    Time : <%= appos[i].details.time %>
-                                                </p>
-                                                <p>
-                                                    Vaccine : <%= appos[i].details.vaccine %>
-                                                </p>
-                                                <p>
-                                                    Date : <%= appos[i].details.date%>
-                                                </p>
-                                                <h4>
-                                                    <% if(appos[i].details.slots<=0) {%>
-                                                        No Slots Available
-                                                        <% } else {%>
-                                                            Slots Avalable : <%= appos[i].details.slots%>
-                                                                <span>
-                                                                    (Few Minutes Ago..)
-                                                                </span>
-                                                                <% } %>
-                                                </h4>
-                                        </div>
-                                    </a>
-                                    <% } %>
-                                        <% } %>
-                                            <% }else{%>
-                                                <p>No Appontmens Nearby</p>
-                                                <% }%>
-                    </div>
+                                            <% if(appos[i].status !=true) {%>
+                                                <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
+                                                    <div class="myFont" <%if(data.detail.postcode==appos[i].postcode){%>
+                                                        style="background-color:#04AA6D;"
+                                                        <%}%>
+                                                            >
+                                                            <h4>
+                                                                Address : <%= appos[i].address %>
+                                                            </h4>
+                                                            <p>
+                                                                City : <%= appos[i].city %>
+                                                            </p>
+                                                            <p>
+                                                                State : <%= appos[i].state %>
+                                                            </p>
+                                                            <p>
+                                                                Postal : <%= appos[i].postcode %>
+                                                            </p>
+                                                            <p>
+                                                                Time : <%= appos[i].details.time %>
+                                                            </p>
+                                                            <p>
+                                                                Vaccine : <%= appos[i].details.vaccine %>
+                                                            </p>
+                                                            <p>
+                                                                Date : <%= appos[i].details.date%>
+                                                            </p>
+                                                            <h4>
+                                                                <% if(appos[i].details.slots<=0) {%>
+                                                                    No Slots Available
+                                                                    <% } else {%>
+                                                                        Slots Avalable : <%= appos[i].details.slots%>
+                                                                            <span>
+                                                                                (Few Minutes Ago..)
+                                                                            </span>
+                                                                            <% } %>
+                                                            </h4>
+                                                    </div>
+                                                </a>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% }else{%>
+                                                            <p>No Appontmens Nearby</p>
+                                                            <% }%>
+                                </div>
                 </div>
                 <br>
                 <br>

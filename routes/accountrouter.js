@@ -90,8 +90,15 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
   console.log(moment(new Date()).format('YYYY-MM-DD'))
   console.log(moment(new Date()).format('hh:mm A'))
 
+  // nearby pincode match
+  let pincode = Number(req.user.detail.postcode)
+  // match nearby pincodes
 
-  appo.find({ 'status': false, $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'details.time': { $gte: moment(new Date()).format('hh:mm A') } }] }, (err, result) => {
+  pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
+
+  console.log(pins)
+
+  appo.find({ $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'status': false }, { 'postcode': { $in: pins } }] }, (err, result) => {
     if (err) console.log(err)
     console.log(result)
 
