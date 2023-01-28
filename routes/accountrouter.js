@@ -322,19 +322,16 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   var id = req.user._id
   id = id.toString()
   console.log(id)
-  appo.find({ byappo: id }).limit(3).then((err, result) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log(req.user)
-      res.render('account/provider/setappo', {
-        data: req.user,
-        token: cookie,
-        appos: result,
-        msg: req.flash('messagesetappo'),
-        csrf_token: req.csrfToken()
-      })
-    }
+  appo.find({ byappo: id }).limit(3).then((result) => {
+    console.log(req.user)
+    res.render('account/provider/setappo', {
+      data: req.user,
+      token: cookie,
+      appos: result,
+      msg: req.flash('messagesetappo'),
+      csrf_token: req.csrfToken()
+    })
+
   })
 })
 
