@@ -2327,6 +2327,17 @@ body {
   background: #f1f1f1;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--ppink);

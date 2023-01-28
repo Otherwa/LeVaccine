@@ -65,6 +65,7 @@ function onDragEnd() {
             $('#state').val(
                 result.features[0].properties.state
             )
+            $('#profileset').prop('disabled', false)
         })
         .catch(error => console.log('error', error));
 }

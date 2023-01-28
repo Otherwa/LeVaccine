@@ -98,21 +98,28 @@
                         </div>
                         <br>
                         <br>
-                        <% if(!check) {%>
-                            <% if(appo.status) {%>
-                                <p style="color:red;font-family:'dot'">Appointments Slots Stopped</p>
-                                <%}else{%>
-                                    <% if(appo.details.slots<=0) {%>
-                                        <p style="color:red;font-family:'dot'">No Slots Remaining</p>
-                                        <% }else{%>
-                                            <input type="submit" id="signup" value="Book Appointment"
-                                                style="width: 100%;">
-                                            <% } %>
-                                                <%}%>
-                                                    <% }else{%>
-                                                        <p style="color:rgb(255, 0, 234);font-family:'dot'">Appointment
-                                                            Booked</p>
-                                                        <% }%>
+
+                        <% if(data.personstatus==true) { %>
+                            <% if(!check) {%>
+                                <% if(appo.status) {%>
+                                    <p style="color:red;font-family:'dot'">Appointments Slots Stopped</p>
+                                    <%}else{%>
+                                        <% if(appo.details.slots<=0) {%>
+                                            <p style="color:red;font-family:'dot'">No Slots Remaining</p>
+                                            <% }else{%>
+                                                <input type="submit" id="signup" value="Book Appointment"
+                                                    style="width: 100%;">
+                                                <% } %>
+                                                    <%}%>
+                                                        <% }else{%>
+                                                            <p style="color:rgb(255, 0, 234);font-family:'dot'">
+                                                                Appointment
+                                                                Booked</p>
+                                                            <% }%>
+                                                                <% }else{%>
+                                                                    <code style="color:red"
+                                                                        class="myFont">Fill all the Necessary Details First in Profile</code>
+                                                                    <% }%>
                     </form>
                 </div>
                 <br>
