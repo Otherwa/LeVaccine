@@ -113,6 +113,8 @@ const p = [
 ]
 
 // verifications
+// start verification
+$('#profileset').prop('disabled', true)
 
 // phone number verification
 $('#phone').on('input', () => {
@@ -128,10 +130,9 @@ $('#phone').on('input', () => {
 })
 
 // address verfication
-// phone number verification
 $('#address').on('input', () => {
     let address = $('#address').val()
-    if (address.length > 0) {
+    if ((address.length <= 100 && address.length >= 3)) {
         $('#addr_msg').hide('fast');
         $('#profileset').prop('disabled', false)
     } else {
@@ -143,7 +144,7 @@ $('#address').on('input', () => {
 // post code
 $('#postcode').on('input', () => {
     let post = $('#postcode').val()
-    if (post.length < 7) {
+    if ((post.length <= 6 && post.length >= 6)) {
         $('#post_msg').hide('fast');
         $('#profileset').prop('disabled', false)
     } else {
@@ -155,7 +156,7 @@ $('#postcode').on('input', () => {
 // region
 $('#region').on('input', () => {
     let region = $('#region').val()
-    if (region.length > 0) {
+    if ((region.length <= 100 && region.length >= 3)) {
         $('#region_msg').hide('fast');
         $('#profileset').prop('disabled', false)
     } else {
@@ -168,7 +169,7 @@ $('#region').on('input', () => {
 // region
 $('#city').on('input', () => {
     let city = $('#city').val()
-    if (city.length > 0) {
+    if ((city.length <= 100 && city.length >= 3)) {
         $('#city_msg').hide('fast');
         $('#profileset').prop('disabled', false)
     } else {

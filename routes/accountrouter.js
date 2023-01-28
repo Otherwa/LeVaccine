@@ -317,13 +317,15 @@ Router.get('/provider/dash/profile', pauth, livepdata, async (req, res) => {
 Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   // token set or
   await connect()
-  const count = await providerSchema.count()
   const cookie = req.cookies.jwt
   console.log(req.user._id)
   var id = req.user._id
   id = id.toString()
   console.log(id)
-  appo.find({ byappo: id }, function (err, result) {
+  appo.find({ byappo: id }, (err, result) => {
+    // check data
+    console.log(result)
+  }).limit(3, (err, result) => {
     if (err) {
       console.error(err)
     } else {
