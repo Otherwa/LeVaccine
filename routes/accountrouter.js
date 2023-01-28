@@ -324,8 +324,12 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   console.log(id)
   appo.find({ byappo: id }, (err, result) => {
     // check data
-    console.log(result)
-  }).limit(3, (err, result) => {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log(result)
+    }
+  }).limit(3).then((err, result) => {
     if (err) {
       console.error(err)
     } else {
