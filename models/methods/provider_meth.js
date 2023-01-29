@@ -146,7 +146,7 @@ providerSchema.prototype.setappo = async (req, res, lat, lon, check, byid, addr,
                 }
             })
         } else {
-            req.flash('messagesetappo', 'Fill the Fields Properly')
+            req.flash('messagesetappo', 'Appointment Can be Only be Set One Day Prior')
             res.redirect('/account/provider/dash/setappo')
         }
     } else {

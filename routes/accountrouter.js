@@ -92,17 +92,25 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
   // nearby pincode match
   let pincode = Number(req.user.detail.postcode)
-  // match nearby pincodes
 
+  // match nearby pincodes
   pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
 
   console.log(pins)
 
-  appo.find({ $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'status': false }, { 'postcode': { $in: pins } }] }, (err, result) => {
+  appo.find({ 'status': false, 'postcode': { $in: pins }, $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'details.time': { $gte: moment(new Date()).format('hh:mm') } }] }, (err, result) => {
     if (err) console.log(err)
     console.log(result)
 
     const pos = result.map(position);
+
+    result.map(time);
+
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      // console.log(item.details.time)
+    }
     // console.log(pos)
     function position(item) {
       return (item.details.position);
@@ -164,6 +172,15 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
     }
 
     console.log(results)
+
+
+    result.map(time);
+
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      // console.log(item.details.time)
+    }
 
     const userappoints = results.map(pos);
     // console.log(pos)
@@ -330,6 +347,16 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   id = id.toString()
   console.log(id)
   appo.find({ 'byappo': id }).limit(3).sort({ '_id': -1 }).then((result) => {
+
+
+    result.map(time);
+
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      // console.log(item.details.time)
+    }
+
     console.log(req.user)
     res.render('account/provider/setappo', {
       data: req.user,
@@ -358,6 +385,15 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
     if (err) {
       console.error(err)
     } else {
+
+
+      result.map(time);
+
+      function time(item) {
+        // change 24.00 to XX.XX AM/PM moment library 
+        item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+        // console.log(item.details.time)
+      }
 
       const pos = result.map(position);
       // console.log(pos)
@@ -407,6 +443,15 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
         } else {
           console.log(result)
 
+
+          result.map(time);
+
+          function time(item) {
+            // change 24.00 to XX.XX AM/PM moment library 
+            item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+            // console.log(item.details.time)
+          }
+
           userSchema.find({ '_id': { $in: peoples } }, (err, results) => {
 
             if (err) {
@@ -455,6 +500,16 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
           console.error(err)
         }
         else {
+
+
+          result.map(time);
+
+          function time(item) {
+            // change 24.00 to XX.XX AM/PM moment library 
+            item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+            // console.log(item.details.time)
+          }
+
           // find user deatils
           userSchema.findOne({ '_id': uid }, (err, results) => {
             if (err) {
