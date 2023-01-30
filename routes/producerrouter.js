@@ -134,7 +134,7 @@ Router.post('/reset', async (req, res) => {
 // profile
 Router.post('/dash/profile', proauth, liveprodata, async (req, res) => {
     console.log(req.body)
-    producer.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode, req.body.ngo, req.body.ngoaddress)
+    producer.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
 
 })
 

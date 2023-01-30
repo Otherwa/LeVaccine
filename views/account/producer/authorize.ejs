@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Sign Up</title>
+    <title>Authorize</title>
     <meta property="og:title" content="Le-Vaccine" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- MS, fb & Whatsapp -->
@@ -39,61 +39,30 @@
         href="https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/60/000000/external-vaccine-baby-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png">
 
     <link rel="stylesheet" href="/css/show/style.css" />
-    <link rel="stylesheet" href="/css/whichlogin/user.css" />
+    <link href="/css/whichlogin/producer.css" rel="stylesheet" />
 </head>
 
 <body>
     <div id="scroll-progress"></div>
-    <div class="preload">
-        <img class="screen" src="https://i.pinimg.com/originals/0c/37/93/0c3793b0eedf868951d660ab88b9063a.gif"
-            alt="loading..">
+    <div class="bridge" style="display: none">
+        <input type="hidden" id="people" name="people" value="<%= people_ %>">
     </div>
     <div id="butter">
-        <div class="home-container">
-            <%- include('../../partial/log-res-nav') %>
+        <%- include('../../partial/producer-nav')%>
+            <div class="container-home">
                 <br>
-                <h1 class="header1">Producer</h1>
+                <div class="con">
+                    <p class="myFont" id="loc" style="font-size:1.01rem">(Appoinments Location)</p>
+                    <br>
+                    <div id='map' style='width: 65rem; height: 310px;border-radius: 0.5rem;'></div>
+                </div>
                 <br>
-                <div class="height-set">
-                    <form class="form" action="/account/producer/signup" method="POST">
-                        <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
-                        <div class="head">
-                            <h1>Sign-up</h1>
-                            <p class="myFont">
-                                <%= msg %>
-                            </p>
-                        </div>
-                        <p id="username-msg"></p>
-                        <div class="input-contain">
-                            <input type="text" name="username" id="username" autocomplete="on">
-                            <label class="placeholder-text" for="username" id="placeholder-fname">
-                                <div class="text">Username</div>
-                            </label>
-                        </div>
-                        <p id="email-msg"></p>
-                        <div class="input-contain">
-                            <input type="email" name="email" id="email" autocomplete="on">
-                            <label class="placeholder-text" for="email" id="placeholder-fname">
-                                <div class="text">Email</div>
-                            </label>
-                        </div>
-                        <p id="pass-msg"></p>
-                        <div class="input-contain">
-                            <input type="password" name="password" id="password" autocomplete="on">
-                            <label class="placeholder-text" for="password" id="placeholder-fname">
-                                <div class="text">Password</div>
-                            </label>
-                        </div>
-                        <div class="div">
-                            <input id="signup" type="submit" value="Sign up">
-                        </div>
-                        <div class="sub">
-                            <p>Already Have An Account?</p>
-                            <p>
-                                <a href="/account/producer">Sign In</a>
-                            </p>
-                        </div>
-                    </form>
+                <div class="appos">
+                    <h2>Authorize People</h2>
+                    <br>
+                    <br>
+                    <div class="listofpeople">
+                    </div>
                 </div>
                 <br>
                 <br>
@@ -102,22 +71,23 @@
                         target="_blank">Otherwa</a>,
                     All Rights Reserved.</span>
                 <br>
-        </div>
+            </div>
     </div>
+    <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
+    <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+    <!-- map libre -->
     <script data-section-id="header" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
         integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script src="/js/signup.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="/js/authorize.js"></script>
 </body>
-
-</html>
 
 </html>

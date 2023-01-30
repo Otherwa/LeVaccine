@@ -81,5 +81,74 @@ $("#stop_appo").bind('click', () => {
     })
 
     $("#stop_appo").prop('disabled', true)
+    $("#start_appo").prop('disabled', false)
 })
 
+
+// ajax start appointments
+$("#start_appo").bind('click', () => {
+    console.log("click")
+
+    let token = $("#_csrf").val();
+    let appo_id = $("#appo_id").val();
+    console.log("csrf token: " + token)
+
+    $.ajax({
+        url: '/account/provider/dash/appos/' + appo_id,
+        type: 'PUT',
+        data: {
+            '_csrf': token,
+            'appo_id': appo_id
+        },
+        success: function (res) {
+            console.log("success")
+            $("#flag").html("On-going").css('color', 'rgb(227, 78, 217)')
+        }
+    })
+
+    $("#stop_appo").prop('disabled', false)
+    $("#start_appo").prop('disabled', true)
+})
+
+
+// update
+function update() {
+
+    let token = $("#_csrf").val();
+    let appo_id = $("#appo_id").val();
+    $.ajax({
+        url: '/account/provider/dash/appos/' + appo_id,
+        type: 'POST',
+        data: {
+            '_csrf': token,
+            'appo_id': appo_id
+        },
+        success: function (res) {
+            console.log("success")
+            $("#flag").html("Completed As Day Was Over").css('color', 'green')
+        }
+    })
+}
+
+// check if appointemnt stopped or not
+$(window).on('load', function () {
+    // Run code
+    console.log($('#appo_status').val())
+    console.log($('#appo_date').val())
+    if (new Date($('#appo_date').val()) < new Date()) {
+        console.log('yes')
+        $("#stop_appo").prop('disabled', true)
+        $("#start_appo").prop('disabled', true)
+        update()
+    } else {
+        if ($('#appo_status').val()) {
+            $("#start_appo").prop('disabled', false)
+            $("#stop_appo").prop('disabled', true)
+            $('#stop_appo').css('pointer-events', 'none');
+        } else {
+            $('#start_appo').css('pointer-events', 'none');
+            $("#stop_appo").prop('disabled', false)
+            $("#start_appo").prop('disabled', true)
+        }
+    }
+});

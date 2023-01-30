@@ -61,6 +61,7 @@
                     <br>
                     <div class="container">
                         <form class="form" action="/account/producer/login" method="POST">
+                            <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
                             <div class="head">
                                 <h1>Login</h1>
                                 <p class="myFont">

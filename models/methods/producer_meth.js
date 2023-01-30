@@ -106,7 +106,7 @@ producerSchema.prototype.reset_otp = async (req, res, email, username) => {
 }
 
 
-producerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lname, adhar, age, addr, gender, phone, city, region, post, ngo, ngoaddress) => {
+producerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lname, adhar, age, addr, gender, phone, city, region, post) => {
     await connect()
     console.log(whichuser)
     console.log(post)
@@ -114,40 +114,63 @@ producerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
     var lon = parseFloat(lon)
 
     // if adhar uploaded
-    if (adhar != null) {
+    if (adhar != " ") {
         producerSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
             if (err) { console.log(err) }
         })
     }
 
     // check if image uploaded or not 2 measure
-
-    producerSchema.findOneAndUpdate({ 'email': whichuser }, {
-        $set: {
-            'name.firstname': fname,
-            'name.lastname': lname,
-            'detail.adhar': adhar,
-            'detail.position': [lat, lon],
-            'detail.age': age,
-            'detail.address': addr,
-            'detail.gender': gender,
-            'detail.phone': phone,
-            'detail.city': city,
-            'detail.region': region,
-            'detail.postcode': post,
-            'detail.ngo': ngo,
-            'detail.ngoaddress': ngoaddress,
-        }
-    }, (err, result) => {
-        console.log(err)
-        if (err) {
+    if (lat != 0 && lon != 0) {
+        producerSchema.findOneAndUpdate({ 'email': whichuser }, {
+            $set: {
+                'name.firstname': fname,
+                'name.lastname': lname,
+                'detail.adhar': adhar,
+                'detail.position': [lat, lon],
+                'detail.age': age,
+                'detail.address': addr,
+                'detail.gender': gender,
+                'detail.phone': phone,
+                'detail.city': city,
+                'detail.region': region,
+                'detail.postcode': post,
+            }
+        }, (err, result) => {
             console.log(err)
-        } else {
-            console.log(result)
-            req.flash('success', 'profile updated 👍')
-            res.redirect('/account/producer/dash/profile')
-        }
-    })
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(result)
+                req.flash('success', 'profile updated 👍')
+                res.redirect('/account/producer/dash/profile')
+            }
+        })
+    } else {
+        producerSchema.findOneAndUpdate({ 'email': whichuser }, {
+            $set: {
+                'name.firstname': fname,
+                'name.lastname': lname,
+                'detail.adhar': adhar,
+                'detail.age': age,
+                'detail.address': addr,
+                'detail.gender': gender,
+                'detail.phone': phone,
+                'detail.city': city,
+                'detail.region': region,
+                'detail.postcode': post,
+            }
+        }, (err, result) => {
+            console.log(err)
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(result)
+                req.flash('success', 'profile updated 👍')
+                res.redirect('/account/producer/dash/profile')
+            }
+        })
+    }
 
 }
 

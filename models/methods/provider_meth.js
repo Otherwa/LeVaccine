@@ -162,7 +162,7 @@ providerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
     var lat = parseFloat(lat)
     var lon = parseFloat(lon)
     // if adhar uploaded
-    if (adhar != null) {
+    if (adhar != " ") {
         providerSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
             if (err) { console.log(err) }
         })
@@ -233,6 +233,12 @@ providerSchema.prototype.stopappo = async (req, res, id) => {
     })
 }
 
+// stop appointemts
+providerSchema.prototype.startappo = async (req, res, id) => {
+    appoSchema.findByIdAndUpdate(id, { status: false }, () => {
+        res.json({ stopped: "done" })
+    })
+}
 
 // stop appointemts
 providerSchema.prototype.personvaccination = async (req, res, id) => {

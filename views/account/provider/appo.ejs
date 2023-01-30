@@ -64,7 +64,11 @@
                     <!-- csrf token -->
                     <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
                     <input type="hidden" name="appo_id" id="appo_id" value="<%=appo_id%>" />
-                    <input type="button" name="stop_appo" id="stop_appo" style="width:100%" value="Stop Appointment">
+                    <div class="flex" style="display: flex;gap: 1.5rem;justify-content: space-around;">
+                        <input type="button" name="stop_appo" id="stop_appo" style="width:50%" value="Stop Appointment">
+                        <input type="button" name="start_appo" id="start_appo" style="width:50%"
+                            value="Start Appointment">
+                    </div>
                     <br>
                     <br>
                     <div id="seeappo" class="myFont" style="line-height:1.3rem">
@@ -87,11 +91,13 @@
                             Vaccine : <%= appo.details.vaccine %>
                         </p>
                         <p>
+                            <input type="hidden" name="appo_date" id="appo_date" value="<%= appo.details.date%>">
                             Date : <%= appo.details.date%>
                         </p>
                         <p>
                             Slots : <%= appo.details.slots%>
                         </p>
+                        <input type="hidden" name="appo_status" id="appo_status" value="<%= appo.details.status%>">
                         <%if(appo.status){%>
                             <p>Status : <span style="color:green">Completed</span></p>
                             <%}else{%>
