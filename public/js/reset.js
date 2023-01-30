@@ -95,7 +95,7 @@ $('#pass1').on('input', () => {
     $('#pass2').val() == ''
   ) {
     $('#password-reset').prop('disabled', true)
-    if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+    if ($('#pass1').val().length < 7) {
       $('#status').html('<span style="color:red">Password Too Short</span>')
     } else {
       $('#status').html('<span style="color:red">Password Not Same</span>')
@@ -111,7 +111,7 @@ $('#pass2').on('input', () => {
   const data = $('#pass2').val()
   if (data != $('#pass1').val() || data == '' || $('#pass2').val() == '') {
     $('#password-reset').prop('disabled', true)
-    if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+    if ($('#pass2').val().length < 7) {
       $('#status').html('<span style="color:red">Password Too Short</span>')
     } else {
       $('#status').html('<span style="color:red">Password Not Same</span>')

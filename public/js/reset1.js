@@ -21,7 +21,7 @@ $('#reset').on('click', () => {
         $.ajax({
             url: '/account/user/reset',
             type: 'POST',
-            data: { email: email },
+            data: { email: email, _csrf: $('#_csrf').val() },
             success: function (res) {
                 console.log(res)
                 // 6 seconds reset
@@ -66,7 +66,7 @@ $('#verify').on('click', () => {
     $.ajax({
         url: '/account/user/reset-password',
         type: 'POST',
-        data: { email, otp },
+        data: { email, otp, _csrf: $('#_csrf').val() },
         success: function (res) {
             // console.log(res)
             if (res == '200') {
@@ -95,7 +95,7 @@ $('#pass1').on('input', () => {
         $('#pass2').val() == ''
     ) {
         $('#password-reset').prop('disabled', true)
-        if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+        if ($('#pass1').val().length < 7) {
             $('#status').html('<span style="color:red">Password Too Short</span>')
         } else {
             $('#status').html('<span style="color:red">Password Not Same</span>')
@@ -111,7 +111,7 @@ $('#pass2').on('input', () => {
     const data = $('#pass2').val()
     if (data != $('#pass1').val() || data == '' || $('#pass2').val() == '') {
         $('#password-reset').prop('disabled', true)
-        if ($('#pass2').val().length < 7 || $('#pass1').val().length < 7) {
+        if ($('#pass2').val().length < 7) {
             $('#status').html('<span style="color:red">Password Too Short</span>')
         } else {
             $('#status').html('<span style="color:red">Password Not Same</span>')
@@ -140,7 +140,7 @@ $('#password-reset').click(() => {
     $.ajax({
         url: '/account/provider/reset-password-ok',
         type: 'POST',
-        data: { email, password, otp },
+        data: { email, password, otp, _csrf: $('#_csrf').val() },
         success: function (res) {
             console.log(res)
             if (res == '200') {

@@ -26,16 +26,6 @@ const details = new schema({
         required: true
 
     },
-    ngo: {
-        type: String,
-        default: ' ',
-        required: true
-    },
-    ngoaddress: {
-        type: String,
-        default: ' ',
-        required: true
-    },
     position: {
         type: [Number],
         default: [0, 0]

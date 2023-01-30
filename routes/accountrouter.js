@@ -381,36 +381,30 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
 
 
 
-  appo.find({ byappo: id }, function (err, result) {
-    if (err) {
-      console.error(err)
-    } else {
+  appo.find({ byappo: id }).sort({ 'details.date': -1 }).then((result) => {
+    result.map(time);
 
-
-      result.map(time);
-
-      function time(item) {
-        // change 24.00 to XX.XX AM/PM moment library 
-        item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
-        // console.log(item.details.time)
-      }
-
-      const pos = result.map(position);
-      // console.log(pos)
-      function position(item) {
-        return (item.details.position);
-      }
-
-
-      console.log(req.user)
-      res.render('account/provider/appos', {
-        data: req.user,
-        token: cookie,
-        appos_: pos,
-        appos: result,
-        csrf_token: req.csrfToken()
-      })
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      // console.log(item.details.time)
     }
+
+    const pos = result.map(position);
+    // console.log(pos)
+    function position(item) {
+      return (item.details.position);
+    }
+
+
+    console.log(req.user)
+    res.render('account/provider/appos', {
+      data: req.user,
+      token: cookie,
+      appos_: pos,
+      appos: result,
+      csrf_token: req.csrfToken()
+    })
   })
 })
 
@@ -443,14 +437,10 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
         } else {
           console.log(result)
 
+          // change 24.00 to XX.XX AM/PM moment library 
+          result.details.time = moment(result.details.time, 'hh:mm').format('hh:mm A');
+          // console.log(item.details.time)
 
-          result.map(time);
-
-          function time(item) {
-            // change 24.00 to XX.XX AM/PM moment library 
-            item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
-            // console.log(item.details.time)
-          }
 
           userSchema.find({ '_id': { $in: peoples } }, (err, results) => {
 
@@ -570,19 +560,20 @@ Router.get('/provider/verify/:email', async (req, res) => {
 Router.get('/producer', (req, res) => {
   res.status(200).render('account/producer', {
     err: req.flash('message'),
-    err1: req.flash('message1')
+    err1: req.flash('message1'),
+    csrf_token: req.csrfToken()
   })
 })
 
 // account creation
 Router.get('/producer/signup', (req, res) => {
-  res.status(200).render('account/producer/signup', { msg: req.flash('message1') })
+  res.status(200).render('account/producer/signup', { msg: req.flash('message1'), csrf_token: req.csrfToken() })
 })
 
 // reset password
 Router.get('/producer/reset', (req, res) => {
   // user reset
-  res.render('account/producer/producer-reset')
+  res.render('account/producer/producer-reset', { csrf_token: req.csrfToken() })
 })
 
 // all middleware functions in common
@@ -592,12 +583,14 @@ Router.get('/producer/dash', proauth, liveprodata, async (req, res) => {
   await connect()
   const count = await providerSchema.count()
   const cookie = req.cookies.jwt
+  const datas = await sendnews();
   // get req user
   console.log(req.user)
   res.render('account/producer/dashboard', {
     data: req.user,
     token: cookie,
-    count
+    csrf_token: req.csrfToken(),
+    datas: datas.articles
   })
 })
 
@@ -622,7 +615,7 @@ Router.get('/producer/verify/:email', async (req, res) => {
         if (err) {
           res.json(err)
         } else {
-          res.render('account/verify')
+          res.render('account/verify', { csrf_token: req.csrfToken() })
         }
       })
     } else {
@@ -641,7 +634,21 @@ Router.get('/producer/dash/profile', proauth, liveprodata, async (req, res) => {
   res.render('account/producer/profile', {
     data: req.user,
     token: cookie,
-    msg: req.flash('success')
+    msg: req.flash('success'),
+    csrf_token: req.csrfToken()
+  });
+})
+
+// update profile
+Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  // console.log(req.user)
+  res.render('account/producer/authorize', {
+    data: req.user,
+    token: cookie,
+    'people_': '',
+    csrf_token: req.csrfToken()
   });
 })
 
