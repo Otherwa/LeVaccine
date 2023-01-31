@@ -90,3 +90,87 @@ map.on('load', function () {
 });
 
 
+// validations
+// address verfication
+$('#address').on('input', () => {
+    let address = $('#address').val()
+    if ((address.length <= 100 && address.length >= 3)) {
+        $('#addr_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#addr_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+$('#city').on('input', () => {
+    let city = $('#city').val()
+    if ((city.length <= 100 && city.length >= 3)) {
+        $('#city_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#city_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+
+// post code
+$('#postcode').on('input', () => {
+    let post = $('#postcode').val()
+    if ((post.length <= 6 && post.length >= 6)) {
+        $('#post_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#post_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+$('#state').on('input', () => {
+    let state = $('#state').val()
+    if ((state.length <= 100 && state.length >= 3)) {
+        $('#state_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#state_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+
+// post code
+$('#postcode').on('input', () => {
+    let post = $('#postcode').val()
+    if ((post.length <= 6 && post.length >= 6)) {
+        $('#post_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#post_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+// post code
+$('#forvaccine').on('input', () => {
+    let post = $('#forvaccine').val()
+    if ((post.length <= 10 && post.length >= 0)) {
+        $('#forvaccine_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#forvaccine_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
+
+// post code
+$('#slots').on('input', () => {
+    let post = $('#slots').val()
+    if ((post <= 20 && post >= 0)) {
+        $('#slot_msg').hide('fast');
+        $('#signup').prop('disabled', false)
+    } else {
+        $('#slot_msg').show('fast');
+        $('#signup').prop('disabled', true)
+    }
+})
