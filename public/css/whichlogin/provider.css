@@ -178,6 +178,11 @@ div.content {
         right: 0;
     }
 
+    #map,
+    .con {
+        width: 100% !important;
+    }
+
     .profileupdate {
         flex-direction: column;
         align-items: center;

@@ -97,8 +97,15 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
   pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
 
   console.log(pins)
-
-  appo.find({ 'status': false, 'postcode': { $in: pins }, $and: [{ 'details.date': { $gte: moment(new Date()).format('YYYY-MM-DD') } }, { 'details.time': { $gte: moment(new Date()).format('hh:mm') } }] }, (err, result) => {
+  console.log(
+    moment(new Date()).format()
+  )
+  appo.find({
+    'status': false, 'postcode': { $in: pins },
+    'details.date': {
+      $gt: moment(new Date()).format('YYYY-MM-DD'),
+    }
+  }, (err, result) => {
     if (err) console.log(err)
     console.log(result)
 
@@ -108,7 +115,8 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
 
     function time(item) {
       // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      item.details.time = moment(item.details.time).format('hh:mm A');
+      item.details.date = moment(item.details.date).format("MMM Do YYYY");
       // console.log(item.details.time)
     }
     // console.log(pos)
@@ -178,7 +186,7 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
 
     function time(item) {
       // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      item.details.time = moment(item.details.time).format('hh:mm A');
       // console.log(item.details.time)
     }
 
@@ -353,7 +361,7 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
 
     function time(item) {
       // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      item.details.time = moment(item.details.time).format('hh:mm A');
       // console.log(item.details.time)
     }
 
@@ -386,7 +394,7 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
 
     function time(item) {
       // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
+      item.details.time = moment(item.details.time).format('hh:mm A');
       // console.log(item.details.time)
     }
 
@@ -438,7 +446,7 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
           console.log(result)
 
           // change 24.00 to XX.XX AM/PM moment library 
-          result.details.time = moment(result.details.time, 'hh:mm').format('hh:mm A');
+          result.details.time = moment(result.details.time).format('hh:mm A');
           // console.log(item.details.time)
 
 
@@ -485,21 +493,12 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
     } else {
       console.log(result)
       // find from appointement list
-      appolists.findOne({ 'appoid': id }, { '_id': 0 }, (err, peoples_result) => {
+      appolists.findOne({ 'appoid': id, 'userid': uid }, { '_id': 0 }, (err, peoples_result) => {
         if (err) {
           console.error(err)
         }
         else {
-
-
-          result.map(time);
-
-          function time(item) {
-            // change 24.00 to XX.XX AM/PM moment library 
-            item.details.time = moment(item.details.time, 'hh:mm').format('hh:mm A');
-            // console.log(item.details.time)
-          }
-
+          console.log(peoples_result)
           // find user deatils
           userSchema.findOne({ '_id': uid }, (err, results) => {
             if (err) {
@@ -510,8 +509,11 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
                 data: req.user,
                 token: cookie,
                 appo: result,
-                peoples: results,
-                peoples_res: peoples_result,
+                peoples: results, //user
+                peoples_res: peoples_result, //appo,
+                appo_id: id,
+                user_id: uid,
+                csrf_token: req.csrfToken()
               })
             }
           })
@@ -520,6 +522,8 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
     }
   })
 })
+
+
 
 
 Router.get('/provider/logout', async (req, res) => {

@@ -42,6 +42,14 @@
     <link href="/css/api/api.css" rel="stylesheet" />
     <link href="/css/contact/contact.css" rel="stylesheet" />
     <style>
+        #help {
+            height: 3.1rem;
+            width: 20rem;
+            border: 1px solid black;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
         .inres {
             background-color: var(--ppink);
             padding: 1rem;
@@ -51,6 +59,32 @@
 
         .resdiv::-webkit-scrollbar {
             display: none;
+        }
+
+        textarea {
+            width: 65vw;
+            height: 100px;
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+            border-image: none;
+            border-radius: 6px 6px 6px 6px;
+            border-style: none solid solid none;
+            border-width: 1px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+            resize: none;
+            font-size: 1em;
+            line-height: 1.4em;
+            padding: 5px 8px;
+            transition: background-color 0.2s ease 0s;
+        }
+
+
+        textarea:focus {
+            background: none repeat scroll 0 0 #FFFFFF;
+            outline-width: 0;
         }
     </style>
 </head>
@@ -62,7 +96,7 @@
             alt="loading..">
     </div>
     <div id="butter">
-        <div class="home-container">
+        <div class="home-container" id="helps">
 
             <header data-role="Header" class="home-header1">
                 <%- include('./partial/nav'); %>
@@ -81,9 +115,10 @@
             width: 80vw;
             flex-direction: column;
             align-items: center;gap:1.2rem;
-            height: 60vh;overflow-y: scroll;">
+            height: auto;overflow-y: scroll;">
                 <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
-                <input type="text" name="prompt" id="prompt">
+                <textarea name="prompt" id="prompt" wrap="off"
+                    style="border-radius: 0.2rem;border-style: solid;"></textarea>
                 <input type="button" value="submit" id="help">
                 <p id="progress"></p>
                 <br>

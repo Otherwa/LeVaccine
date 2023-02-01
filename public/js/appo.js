@@ -140,15 +140,15 @@ $(window).on('load', function () {
         $("#stop_appo").prop('disabled', true)
         $("#start_appo").prop('disabled', true)
         update()
-    } else {
-        if ($('#appo_status').val()) {
-            $("#start_appo").prop('disabled', false)
-            $("#stop_appo").prop('disabled', true)
-            $('#stop_appo').css('pointer-events', 'none');
-        } else {
-            $('#start_appo').css('pointer-events', 'none');
-            $("#stop_appo").prop('disabled', false)
-            $("#start_appo").prop('disabled', true)
-        }
     }
 });
+
+if ($('#appo_status').val() === 'true') {
+    $("#start_appo").prop('disabled', false)
+    $("#stop_appo").prop('disabled', true)
+    // $('#stop_appo').css('pointer-events', 'none');
+} else {
+    // $('#start_appo').css('pointer-events', 'none');
+    $("#stop_appo").prop('disabled', false)
+    $("#start_appo").prop('disabled', true)
+}

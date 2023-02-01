@@ -1,6 +1,7 @@
 const providerSchema = require('../providerschema')
 const reset_user_pass = require('../reset_pass')
 const appoSchema = require('../apposchema')
+const appolistSchema = require('../appolistschema')
 const { connect } = require('../../config/connect')
 
 const {
@@ -236,6 +237,13 @@ providerSchema.prototype.stopappo = async (req, res, id) => {
 // stop appointemts
 providerSchema.prototype.startappo = async (req, res, id) => {
     appoSchema.findByIdAndUpdate(id, { status: false }, () => {
+        res.json({ stopped: "done" })
+    })
+}
+
+// stop appointemts
+providerSchema.prototype.check = async (req, res, id, userid) => {
+    appolistSchema.findOneAndUpdate({ 'appoid': id, 'userid': userid }, { status: true }, () => {
         res.json({ stopped: "done" })
     })
 }
