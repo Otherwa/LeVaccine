@@ -165,6 +165,11 @@ Router.post('/dash/appos/:id', pauth, livepdata, async (req, res) => {
 
 })
 
+// check patients
+Router.put('/dash/appos/check', async (req, res) => {
+    provider.check(req, res, req.body.appoid, req.body.userid)
+})
+
 // stop appointments
 Router.put('/dash/appos/:id', pauth, livepdata, async (req, res) => {
     console.log(req.body)

@@ -97,9 +97,9 @@
                         <p>
                             Slots : <%= appo.details.slots%>
                         </p>
-                        <input type="hidden" name="appo_status" id="appo_status" value="<%= appo.details.status%>">
+                        <input type="hidden" name="appo_status" id="appo_status" value="<%= appo.status%>">
                         <%if(appo.status){%>
-                            <p>Status : <span style="color:green">Completed</span></p>
+                            <p>Status : <span id="flag" style="color:green">Completed</span></p>
                             <%}else{%>
                                 <p>Status : <span id="flag" style="color:rgb(227, 78, 217)">On-going</span></p>
                                 <%}%>

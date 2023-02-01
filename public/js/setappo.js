@@ -154,7 +154,8 @@ $('#postcode').on('input', () => {
 // post code
 $('#forvaccine').on('input', () => {
     let post = $('#forvaccine').val()
-    if ((post.length <= 10 && post.length >= 0)) {
+    console.log(post)
+    if ((post.length <= 10 && post.length >= 3)) {
         $('#forvaccine_msg').hide('fast');
         $('#signup').prop('disabled', false)
     } else {
