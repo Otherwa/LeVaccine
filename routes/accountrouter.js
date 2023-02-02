@@ -199,6 +199,7 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
       function time(item) {
         // change 24.00 to XX.XX AM/PM moment library 
         item.details.time = moment(item.details.time).format('hh:mm A');
+        item.details.date = moment(item.details.date).format("MMM Do YYYY");
         // console.log(item.details.time)
       }
 
@@ -355,6 +356,7 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
     function time(item) {
       // change 24.00 to XX.XX AM/PM moment library 
       item.details.time = moment(item.details.time).format('hh:mm A');
+      item.details.date = moment(item.details.date).format("MMM Do YYYY");
       // console.log(item.details.time)
     }
 
@@ -455,7 +457,6 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
                 appo_pos: result.details.position,
                 appo: result,
                 peoples: results,
-                peoples_result: peoples_result,
                 csrf_token: req.csrfToken(),
                 appo_id: id
               })
@@ -634,7 +635,7 @@ Router.get('/producer/dash/profile', proauth, liveprodata, async (req, res) => {
   });
 })
 
-// update profile
+//authorize providers
 Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt

@@ -9,6 +9,7 @@ const {
     producer_reset,
     generateOTP
 } = require('../../commonfunctions/commonfunc')
+const { providerSchema } = require('./provider_meth')
 // login
 producerSchema.prototype.login = async (req, res, username, password) => {
     await connect()
@@ -174,6 +175,19 @@ producerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
 
 }
 
+// authorize provider
+producerSchema.prototype.authorize = async (req, res, user) => {
+    providerSchema.findByIdAndUpdate(user, { auth: true }).then(resulter => {
+        res.json({ 'status': 'ok' })
+    })
+}
+
+// unauthorize provider
+producerSchema.prototype.unauthorize = async (req, res, user) => {
+    providerSchema.findByIdAndUpdate(user, { auth: false }).then(resulter => {
+        res.json({ 'status': 'ok' })
+    })
+}
 
 // logout using cookies jwt hash protection
 producerSchema.prototype.logout = async (req, res) => {

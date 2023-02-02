@@ -15,7 +15,8 @@ const edurls_schema = new schema({
         type: 'string',
     }
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('edurls', edurls_schema);

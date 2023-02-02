@@ -21,7 +21,8 @@ const appolist = new schema({
         required: true,
     }
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('appointmentslist', appolist)

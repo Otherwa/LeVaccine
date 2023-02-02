@@ -61,3 +61,51 @@ map.addControl(geolocate);
 map.on('load', function () {
     geolocate.trigger();
 });
+
+$('input[type="button"]').click(function (event) {
+    var button = event.target;
+    // alert(button.name);
+    var person = button.name
+    console.log(person)
+
+    // inverse
+    var id = button.id
+    var buttonid = '#' + id
+    $(buttonid).attr('disabled', true);
+    setTimeout(() => { $(buttonid).attr('disabled', false); }, 2000)
+
+
+    flag_id = id.split('_')
+    console.log(flag_id)
+
+    let token = $("#_csrf").val();
+
+
+    if (button.value == 'Authorize') {
+        $.ajax({
+            url: '/account/producer/dash/authorize/authprovider',
+            type: 'PUT',
+            data: {
+                '_csrf': token,
+                'user': person,
+            },
+            success: function (res) {
+                console.log(res)
+                $("#flag" + flag_id[1]).html("Authorzied").css('color', 'green')
+            }
+        })
+    } else {
+        $.ajax({
+            url: '/account/producer/dash/authorize/unauthprovider',
+            type: 'PUT',
+            data: {
+                '_csrf': token,
+                'user': person,
+            },
+            success: function (res) {
+                console.log(res)
+                $("#flag" + flag_id[1]).html("Not Authorzied").css('color', 'red')
+            }
+        })
+    }
+});

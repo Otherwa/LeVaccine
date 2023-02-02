@@ -112,7 +112,8 @@ const producerschema = new schema({
         default: false
     }
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('producer', producerschema)
