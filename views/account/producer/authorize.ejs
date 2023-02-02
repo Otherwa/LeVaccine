@@ -45,7 +45,7 @@
 <body>
     <div id="scroll-progress"></div>
     <div class="bridge" style="display: none">
-        <input type="hidden" id="people" name="people" value="<%= people_ %>">
+        <input type="hidden" id="people" name="people" value="<%= people_pos %>">
     </div>
     <div id="butter">
         <%- include('../../partial/producer-nav')%>
@@ -62,6 +62,7 @@
                     <br>
                     <br>
                     <div class="listofpeople">
+                        <%= people_ %>
                     </div>
                 </div>
                 <br>
