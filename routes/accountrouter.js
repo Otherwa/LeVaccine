@@ -100,12 +100,7 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
   console.log(
     moment(new Date()).format()
   )
-  appo.find({
-    'status': false, 'postcode': { $in: pins },
-    'details.date': {
-      $gt: moment(new Date()).format('YYYY-MM-DD'),
-    }
-  }, (err, result) => {
+  appo.find({ 'status': false, 'postcode': { $in: pins }, 'details.date': { $gt: moment(new Date()).format('YYYY-MM-DD'), } }, (err, result) => {
     if (err) console.log(err)
     console.log(result)
 
@@ -181,15 +176,6 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
 
     console.log(results)
 
-
-    result.map(time);
-
-    function time(item) {
-      // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time).format('hh:mm A');
-      // console.log(item.details.time)
-    }
-
     const userappoints = results.map(pos);
     // console.log(pos)
     function pos(item) {
@@ -202,11 +188,18 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
 
       if (err) { console.log(err) }
 
-
       const pos = result.map(position);
       // console.log(pos)
       function position(item) {
         return (item.details.position);
+      }
+
+      // map time
+      result.map(time);
+      function time(item) {
+        // change 24.00 to XX.XX AM/PM moment library 
+        item.details.time = moment(item.details.time).format('hh:mm A');
+        // console.log(item.details.time)
       }
 
       console.log(result)
@@ -448,8 +441,6 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
           // change 24.00 to XX.XX AM/PM moment library 
           result.details.time = moment(result.details.time).format('hh:mm A');
           // console.log(item.details.time)
-
-
           userSchema.find({ '_id': { $in: peoples } }, (err, results) => {
 
             if (err) {
@@ -648,12 +639,31 @@ Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) =>
   await connect()
   const cookie = req.cookies.jwt
   // console.log(req.user)
-  res.render('account/producer/authorize', {
-    data: req.user,
-    token: cookie,
-    'people_': '',
-    csrf_token: req.csrfToken()
-  });
+  // nearest or approximate provider verify
+
+  let pincode = Number(req.user.detail.postcode)
+
+  // match nearby pincodes
+  pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
+
+  providerSchema.find({ 'detail.postcode': { $in: pins } }).then((data) => {
+    console.log(data)
+
+
+    const pos = data.map(position);
+    // console.log(pos)
+    function position(item) {
+      return (item.detail.position);
+    }
+
+    res.render('account/producer/authorize', {
+      data: req.user,
+      token: cookie,
+      people_: data,
+      people_pos: pos,
+      csrf_token: req.csrfToken()
+    });
+  })
 })
 
 

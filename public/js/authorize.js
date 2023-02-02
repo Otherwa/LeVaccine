@@ -1,3 +1,22 @@
+var people = $('#people').val()
+appos = people.split(',')
+
+var appo_pos = [];
+for (var i = 0; i < appos.length; i++) {
+    var temp = []
+
+    while (temp.length > 0) {
+        temp.pop();
+    }
+
+    temp.push(appos[i]);
+    temp.push(appos[++i]);
+
+    appo_pos.push(temp)
+
+    //clear
+}
+
 // appointemnts all registered
 const map = new maplibregl.Map({
     container: 'map',
@@ -15,6 +34,19 @@ const geolocate = new maplibregl.GeolocateControl({
     trackUserLocation: true
 });
 
+if (appo_pos[0][1] != undefined) {
+    // set all apoints where done
+    for (var i = 0; i < appo_pos.length; i++) {
+        // console.log(appo_pos[i])
+        var appo_ = appo_pos[i]
+
+        new maplibregl.Marker({
+            draggable: false,
+            anchor: 'center',
+            color: '#DC143C'
+        }).setLngLat([appo_[1], appo_[0]]).addTo(map);
+    }
+}
 
 geolocate.on('geolocate', function (data) {
     console.log('A geolocate event has occurred.')
