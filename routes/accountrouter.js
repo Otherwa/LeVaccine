@@ -199,8 +199,7 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
       function time(item) {
         // change 24.00 to XX.XX AM/PM moment library 
         item.details.time = moment(item.details.time).format('hh:mm A');
-        item.details.date = moment(item.details.date).format("MMM Do YYYY");
-        // console.log(item.details.time)
+        item.details.date = moment(item.details.date).format("MMM Do YYYY")
       }
 
       console.log(result)
