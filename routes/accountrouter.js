@@ -182,13 +182,7 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
     console.log(results)
 
 
-    result.map(time);
 
-    function time(item) {
-      // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time).format('hh:mm A');
-      // console.log(item.details.time)
-    }
 
     const userappoints = results.map(pos);
     // console.log(pos)
@@ -202,11 +196,18 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
 
       if (err) { console.log(err) }
 
-
       const pos = result.map(position);
       // console.log(pos)
       function position(item) {
         return (item.details.position);
+      }
+
+      // map time
+      result.map(time);
+      function time(item) {
+        // change 24.00 to XX.XX AM/PM moment library 
+        item.details.time = moment(item.details.time).format('hh:mm A');
+        // console.log(item.details.time)
       }
 
       console.log(result)
