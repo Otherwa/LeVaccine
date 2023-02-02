@@ -13,7 +13,8 @@ const Email_schema = new schema({
         type: 'string',
     },
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('subscribers', Email_schema);

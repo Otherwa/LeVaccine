@@ -15,7 +15,8 @@ const name = new schema({
     }
 
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 const details = new schema({

@@ -62,7 +62,8 @@ const setapposchema = new schema({
         default: false
     }
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('appointments', setapposchema)

@@ -62,7 +62,59 @@
                     <br>
                     <br>
                     <div class="listofpeople">
-                        <%= people_ %>
+                        <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
+                        <% if(people_.length>0) {%>
+                            <% for(var i=0; i<people_.length; i++) {%>
+                                <div class="myFont" style="line-height: 1.5rem;">
+                                    <div>
+                                        <p>
+                                            Name : <%= people_[i].name.firstname + " " + people_[i].name.lastname %>
+                                        </p>
+                                        <p>
+                                            NGO Address : <%= people_[i].detail.ngoaddress %>
+                                        </p>
+                                        <p>
+                                            NGO Name : <%= people_[i].detail.ngo %>
+                                        </p>
+                                        <p>
+                                            Authorize : <% if(people_[i].auth){%>
+                                                <span id="flag<%= + i%>"
+                                                    style="color:rgb(71, 189, 12)">Authorized</span>
+                                                <%}else {%>
+                                                    <span id="flag<%= + i%>" style="color:rgb(189, 12, 12)">Not
+                                                        Authorized</span>
+                                                    <%}%>
+                                        </p>
+                                        <p>
+                                            Verified : <% if(people_[i].verified){%>
+                                                Verified
+                                                <%}else {%>
+                                                    <span style="color:rgb(189, 12, 12)">Not Verified</span>
+                                                    <%}%>
+                                        </p>
+                                        <p>
+                                            Person Status : <% if(people_[i].personstatus){%>
+                                                Verified
+                                                <%}else {%>
+                                                    <span style="color:rgb(189, 12, 12)">Not Verified</span>
+                                                    <%}%>
+                                        </p>
+                                    </div>
+                                    <div class="flex" style="display: flex;gap:0.5rem">
+                                        <div id="realauth<%= + i%>" style="width: 80%">
+                                            <input type="button" value="Authorize"
+                                                style="width:100%;margin-top: 0.4rem;" id="auth_<%= + i%>"
+                                                name="<%=people_[i]._id%>">
+                                        </div>
+                                        <div id="realunauth<%= + i%>" style="width: 80%">
+                                            <input type="button" value="Unauthorize"
+                                                style="width:100%;margin-top: 0.4rem;" id="unauth_<%= + i%>"
+                                                name="<%=people_[i]._id%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }%>
+                                    <%}%>
                     </div>
                 </div>
                 <br>

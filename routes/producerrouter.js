@@ -138,5 +138,16 @@ Router.post('/dash/profile', proauth, liveprodata, async (req, res) => {
 
 })
 
+Router.put('/dash/authorize/authprovider', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.authorize(req, res, req.body.user)
+})
+
+
+Router.put('/dash/authorize/unauthprovider', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.unauthorize(req, res, req.body.user)
+})
+
 
 module.exports = { Router }

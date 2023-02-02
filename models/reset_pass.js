@@ -14,7 +14,8 @@ const reset_otp = new schema({
         type: 'string',
     }
 }, {
-    versionKey: false //here
+    versionKey: false, //here
+    timestamps: true
 })
 
 module.exports = mongoose.model('resetotp', reset_otp);

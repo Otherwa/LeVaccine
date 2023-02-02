@@ -178,6 +178,11 @@ div.content {
         right: 0;
     }
 
+    #map,
+    .con {
+        width: 100% !important;
+    }
+
     .profileupdate {
         flex-direction: column;
         align-items: center;
@@ -347,12 +352,18 @@ input:focus+.placeholder-text .text {
 #reset,
 #profileset,
 #stop_appo,
-#start_appo {
+#start_appo,
+input[type='button']:hover {
     transition: 0.3s ease-in-out;
 }
 
 #stop_appo:hover {
     background-color: rgb(226, 18, 18);
+}
+
+input[type='button']:hover {
+    background-color: black;
+    color: white;
 }
 
 #start_appo:hover {
@@ -396,13 +407,13 @@ input:focus+.placeholder-text .text {
     border-radius: 0.5rem;
 }
 
-.listofappo::-webkit-scrollbar,
+.listofpeople::-webkit-scrollbar,
 #appos::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.listofappo::-webkit-scrollbar,
+.listofpeople::-webkit-scrollbar,
 #appos {
     -ms-overflow-style: none;
     /* IE and Edge */
@@ -423,22 +434,22 @@ input:focus+.placeholder-text .text {
     flex-direction: column;
 }
 
-.listofappo {
+.listofpeople {
     overflow: scroll;
-    height: 45rem;
+    height: 40rem;
     display: flex;
     gap: 2rem;
     flex-direction: column;
 }
 
 
-.listofappo div {
-    background-color: #04AA6D;
-    padding: 0.8rem;
+.listofpeople div {
+    background-color: #eeeeee;
+    padding: 1rem;
     border-radius: 0.5rem;
 }
 
-.listofappo div h5 {
+.listofpeople div h5 {
     font-size: 0.96rem;
     margin-top: 0.5rem;
     font-weight: normal;
