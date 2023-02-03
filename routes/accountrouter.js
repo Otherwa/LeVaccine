@@ -10,6 +10,7 @@ const { producerSchema } = require('../models/methods/producer_meth')
 const { pauth, livepdata, proauth, liveprodata, auth, livedata, bcrypt, sendnews } = require('../commonfunctions/commonfunc')
 const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
+const stonks = require('../models/stonks')
 const appolists = require('../models/appolistschema')
 const moment = require('moment');
 
@@ -649,7 +650,6 @@ Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) =>
   providerSchema.find({ 'detail.postcode': { $in: pins } }).then((data) => {
     console.log(data)
 
-
     const pos = data.map(position);
     // console.log(pos)
     function position(item) {
@@ -671,6 +671,23 @@ Router.get('/producer/logout', async (req, res) => {
   producer.logout(req, res)
 })
 
+// setstonks
+Router.get('/producer/dash/setstonks', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.user._id
+  stonks.find({ 'prodid': id }).then((result) => {
+    res.render('account/producer/setstonks', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      stonks: result,
+      csrf_token: req.csrfToken()
+    });
+  })
+
+
+})
 
 // error custom
 Router.get('*', (req, res) => {

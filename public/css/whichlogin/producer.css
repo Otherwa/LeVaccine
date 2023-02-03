@@ -148,6 +148,9 @@ div.content {
         position: relative;
     }
 
+    .stonks {
+        width: 19rem !important;
+    }
 
     .data {
         flex-direction: column;
@@ -353,7 +356,8 @@ input:focus+.placeholder-text .text {
 #profileset,
 #stop_appo,
 #start_appo,
-input[type='button']:hover {
+input[type='button']:hover,
+input[type='submit']:hover {
     transition: 0.3s ease-in-out;
 }
 
@@ -361,7 +365,8 @@ input[type='button']:hover {
     background-color: rgb(226, 18, 18);
 }
 
-input[type='button']:hover {
+input[type='button']:hover,
+input[type='submit']:hover {
     background-color: black;
     color: white;
 }
@@ -460,4 +465,19 @@ input[type='button']:hover {
     padding: 1rem;
     border-radius: 0.5rem;
     line-height: 1.6rem;
+}
+
+
+/*set stonks css */
+.stonks {
+    width: 36rem;
+}
+
+.first_fields_stonks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
 }

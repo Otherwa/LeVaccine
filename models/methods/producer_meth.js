@@ -1,4 +1,5 @@
 const producerSchema = require('../producerschema')
+const stonks = require('../stonks')
 const reset_user_pass = require('../reset_pass')
 const { connect } = require('../../config/connect')
 
@@ -186,6 +187,27 @@ producerSchema.prototype.authorize = async (req, res, user) => {
 producerSchema.prototype.unauthorize = async (req, res, user) => {
     providerSchema.findByIdAndUpdate(user, { auth: false }).then(resulter => {
         res.json({ 'status': 'ok' })
+    })
+}
+
+// set stonks
+producerSchema.prototype.setstonk = async (req, res, prodid, vacname, vaccode, des, effec, stock, agai) => {
+    const stonk = new stonks({
+        prodid: prodid,
+        vaccine: vacname,
+        vaccinecode: vaccode,
+        description: des,
+        effectiveness: effec,
+        stocks: stock,
+        against: agai
+    })
+
+    stonk.save().then(result => {
+        req.flash('msgstonks', 'stock set 👍')
+        // res.redirect('/account/producer/dash/setstonks')
+        stonks.find({ 'prodid': prodid }).then(result => {
+            res.json(result)
+        })
     })
 }
 
