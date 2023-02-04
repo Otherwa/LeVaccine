@@ -155,7 +155,8 @@ Router.put('/dash/authorize/unauthprovider', proauth, liveprodata, async (req, r
 // stonks set
 Router.get('/dash/setstonks/setajax', proauth, liveprodata, async (req, res) => {
     console.log(req.body)
-    const id = req.body.id
+    // changes minor
+    var id = req.user._id
     await connect()
     stonks.find({ 'prodid': id }).then((result) => {
         res.json({ 'result': result })
