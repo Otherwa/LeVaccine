@@ -23,7 +23,7 @@ $('#set').on('click', (e) => {
                 // console.log(pos)
                 function stocks(item) {
                     return (`
-                    <div>
+                    <div style="color:red">
                         <p>Vaccine Name : ` + item.vaccine + `</p>
                         <p>Vaccine Code : ` + item.vaccinecode + `</p>
                         <p>Description : ` + item.description + `</p>
