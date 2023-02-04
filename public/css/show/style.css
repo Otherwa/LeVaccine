@@ -2420,7 +2420,12 @@ h2 .myFont {
 .container-home {
   display: flex;
   gap: 2rem;
+  width: auto;
   flex-direction: column;
+}
+
+.con {
+  width: 95%;
 }
 
 /* darkamode */

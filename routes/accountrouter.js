@@ -676,7 +676,7 @@ Router.get('/producer/dash/setstonks', proauth, liveprodata, async (req, res) =>
   await connect()
   const cookie = req.cookies.jwt
   const id = req.user._id
-  stonks.find({ 'prodid': id }).then((result) => {
+  stonks.find({ 'prodid': id }).sort({ '_id': -1 }).then((result) => {
     res.render('account/producer/setstonks', {
       data: req.user,
       token: cookie,

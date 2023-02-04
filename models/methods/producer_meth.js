@@ -205,7 +205,7 @@ producerSchema.prototype.setstonk = async (req, res, prodid, vacname, vaccode, d
     stonk.save().then(result => {
         // req.flash('msgstonks', 'stock set 👍')
         // res.redirect('/account/producer/dash/setstonks')
-        stonks.find({ 'prodid': prodid }).then(result => {
+        stonks.find({ 'prodid': prodid }).sort({ '_id': -1 }).then(result => {
             res.json(result)
         })
     })

@@ -23,7 +23,7 @@ $('#set').on('click', (e) => {
                 // console.log(pos)
                 function stocks(item) {
                     return (`
-                    <div style="background-color:red;padding:1rem;margin:1rem">
+                    <div style="background-color:rgb(35, 177, 144);padding:1rem;margin:1rem;border-radius: 0.5rem;">
                         <p>Vaccine Name : ` + item.vaccine + `</p>
                         <p>Vaccine Code : ` + item.vaccinecode + `</p>
                         <p>Description : ` + item.description + `</p>
@@ -34,7 +34,7 @@ $('#set').on('click', (e) => {
                 `);
                 }
                 stock.forEach((item) => {
-                    $("#stockfields").append(item).show();
+                    $("#stockfields").prepend(item).show();
                 })
             }
         })

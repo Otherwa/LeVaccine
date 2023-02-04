@@ -130,9 +130,8 @@ function validate(aadharNumber) {
 $('#profileset').prop('disabled', true)
 
 // FName & LName Validation
-
 $('#fname').on('input', () => {
-    var regix_match = /([A-Z])\w+/;
+    var regix_match = /^[A-Za-z]+$/;
     var value = $('#fname').val()
     if (value.match(regix_match)) {
         $('#fname_msg').hide('fast');
@@ -144,7 +143,7 @@ $('#fname').on('input', () => {
 })
 
 $('#lname').on('input', () => {
-    var regix_match = /([A-Z])\w+/;
+    var regix_match = /^[A-Za-z]+$/;
     var value = $('#lname').val()
     if (value.match(regix_match)) {
         $('#lname_msg').hide('fast');
