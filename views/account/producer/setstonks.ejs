@@ -111,15 +111,37 @@
                                 </label>
                             </div>
                         </div>
-                        <input type="button" value="Set Stock" class="myFont" style="width:100%;margin-top: 0.4rem;"
+                        <input type="button" value="Set Stock" class="myFont" style="width:82%;margin-top: 0.4rem;"
                             id="set">
                     </form>
                     <!-- stonks setted -->
                     <br>
                     <br>
                     <div class="stonks" class="myFont" id="stockfields"
-                        style="background-color: aqua;padding:1rem;border-radius: 0.5rem;height: 38rem;overflow-y: scroll; width: 100%;">
-                        <%= stonks %>
+                        style="background-color: rgb(201, 215, 215);padding:1rem;border-radius: 0.5rem;height: 38rem;overflow-y: scroll; width: 100%;">
+                        <% for(var i=0; i<stonks.length; i++) {%>
+                            <div
+                                style="background-color:rgb(35, 177, 144);padding:1rem;margin:1rem;border-radius: 0.5rem;">
+                                <p>
+                                    Vaccine Name : <%= stonks[i].vaccine %>
+                                </p>
+                                <p>
+                                    Vaccine Code : <%= stonks[i].vaccinecode %>
+                                </p>
+                                <p>
+                                    Description : <%= stonks[i].description %>
+                                </p>
+                                <p>
+                                    Effectiveness : <%= stonks[i].effectiveness %>
+                                </p>
+                                <p>
+                                    Stock : <%= stonks[i].stocks %>
+                                </p>
+                                <p>
+                                    Against : <%= stonks[i].against %>
+                                </p>
+                            </div>
+                            <%}%>
                     </div>
                 </div>
                 <div class="home-separator"></div>
