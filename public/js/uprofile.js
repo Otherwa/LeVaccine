@@ -1,3 +1,5 @@
+const e = require("connect-flash");
+
 const map = new maplibregl.Map({
     container: 'map',
     style: 'https://maps.geoapify.com/v1/styles/osm-carto/style.json?apiKey=0e4ffb970b8f4957bd7450e8df3b2a49', // stylesheet location
@@ -116,6 +118,32 @@ const p = [
 // verifications
 // start verification
 $('#profileset').prop('disabled', true)
+
+// FName & LName Validation
+
+$('#fname').on('input', () => {
+    var regix_match = /([A-Z])\w+/;
+    var value = $('#fname').val()
+    if (value.match(regix_match)) {
+        $('#fname_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#profileset').prop('disabled', true)
+        $('#fname_msg').show('fast');
+    }
+})
+
+$('#lname').on('input', () => {
+    var regix_match = /([A-Z])\w+/;
+    var value = $('#lname').val()
+    if (value.match(regix_match)) {
+        $('#lname_msg').hide('fast');
+        $('#profileset').prop('disabled', false)
+    } else {
+        $('#lname_msg').show('fast');
+        $('#profileset').prop('disabled', true)
+    }
+})
 
 // phone number verification
 $('#phone').on('input', () => {
