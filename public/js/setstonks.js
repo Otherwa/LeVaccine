@@ -34,7 +34,7 @@ $('#set').on('click', (e) => {
                 `);
                 }
                 stock.forEach((item) => {
-                    $("#stockfields").html(item).show();
+                    $("#stockfields").append(item).show();
                 })
             }
         })
