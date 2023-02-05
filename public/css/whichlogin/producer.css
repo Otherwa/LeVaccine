@@ -413,13 +413,15 @@ input[type='submit']:hover {
 }
 
 .listofpeople::-webkit-scrollbar,
-#appos::-webkit-scrollbar {
+#appos::-webkit-scrollbar,
+#stockfields::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .listofpeople::-webkit-scrollbar,
-#appos {
+#appos::-webkit-scrollbar,
+#stockfields::-webkit-scrollbar {
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
@@ -478,6 +480,6 @@ input[type='submit']:hover {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 2rem;
-    width: 100%;
+    width: 80%;
     flex-wrap: wrap;
 }

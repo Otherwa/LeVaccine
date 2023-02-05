@@ -2,7 +2,7 @@ const express = require('express')
 const Router = express.Router()
 const { connect } = require('../config/connect')
 const { producerSchema } = require('../models/methods/producer_meth')
-const stonks = require('../models/stonks')
+// const stonks = require('../models/stonks')
 const { proauth, liveprodata, bcrypt } = require('../commonfunctions/commonfunc')
 
 require('dotenv').config()
@@ -153,20 +153,21 @@ Router.put('/dash/authorize/unauthprovider', proauth, liveprodata, async (req, r
 })
 
 // stonks set
-Router.get('/dash/setstonks/setajax', proauth, liveprodata, async (req, res) => {
-    console.log(req.body)
-    // changes minor
-    var id = req.user._id
-    await connect()
-    stonks.find({ 'prodid': id }).then((result) => {
-        res.json({ 'result': result })
-    })
-})
-
-// stonks set
 Router.post('/dash/setstonks/set', proauth, liveprodata, async (req, res) => {
     console.log(req.body)
     producer.setstonk(req, res, req.user._id, req.body.vacname, req.body.vaccode, req.body.des, req.body.effec, req.body.stonk, req.body.agai)
+})
+
+// stonks set
+Router.put('/dash/setstonks/delete', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.deletestonk(req, res, req.body._id)
+})
+
+// stonks set
+Router.put('/dash/setstonks/update', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.updatestonk(req, res, req.body._id, req.body.vaccine, req.body.vaccinecode, req.body.description, req.body.effectiveness, req.body.stocks, req.body.against)
 })
 
 module.exports = { Router }

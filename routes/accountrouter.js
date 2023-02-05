@@ -685,8 +685,22 @@ Router.get('/producer/dash/setstonks', proauth, liveprodata, async (req, res) =>
       csrf_token: req.csrfToken()
     });
   })
+})
 
-
+// setstonks
+Router.get('/producer/dash/setstonks/:id', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.params.id
+  stonks.findById(id).then((result) => {
+    res.render('account/producer/setstonksupdate', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      stock: result,
+      csrf_token: req.csrfToken()
+    });
+  })
 })
 
 // error custom

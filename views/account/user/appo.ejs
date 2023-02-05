@@ -102,23 +102,22 @@
                         <% if(data.personstatus==true) { %>
                             <% if(!check) {%>
                                 <% if(appo.status) {%>
-                                    <p style="color:red;font-family:'dot'">Appointments Slots Stopped</p>
+                                    <h2 style="color:red;">Appointments Slots Stopped</h2>
                                     <%}else{%>
                                         <% if(appo.details.slots<=0) {%>
-                                            <p style="color:red;font-family:'dot'">No Slots Remaining</p>
+                                            <h2 style="color:red;">No Slots Remaining</h2>
                                             <% }else{%>
                                                 <input type="submit" id="signup" value="Book Appointment"
                                                     style="width: 100%;">
                                                 <% } %>
                                                     <%}%>
                                                         <% }else{%>
-                                                            <p style="color:rgb(255, 0, 234);font-family:'dot'">
-                                                                Appointment
-                                                                Booked</p>
+                                                            <h2 style="color:green;">
+                                                                Appointment Booked</h2>
                                                             <% }%>
                                                                 <% }else{%>
-                                                                    <code style="color:red"
-                                                                        class="myFont">Fill all the Necessary Details First in Profile</code>
+                                                                    <h3 style="color:red">Fill all the Necessary Details
+                                                                        First in Profile</h3>
                                                                     <% }%>
                     </form>
                 </div>

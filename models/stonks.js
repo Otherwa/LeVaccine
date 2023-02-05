@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 const stonk = new schema({
     prodid: {
         required: true,
-        type: 'string',
+        type: 'ObjectId',
     },
     vaccine: {
         required: true,

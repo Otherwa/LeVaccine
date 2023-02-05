@@ -67,21 +67,44 @@ $("#stop_appo").bind('click', () => {
     let appo_id = $("#appo_id").val();
     console.log("csrf token: " + token)
 
-    $.ajax({
-        url: '/account/provider/dash/appos/' + appo_id,
-        type: 'POST',
-        data: {
-            '_csrf': token,
-            'appo_id': appo_id
-        },
-        success: function (res) {
-            console.log("success")
-            $("#flag").html("Completed").css('color', 'green')
-        }
-    })
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Are You Sure You Want Stop Appointments ?',
+        boxWidth: '30%',
+        useBootstrap: false,
+        buttons: {
+            confirm: {
+                btnClass: 'btn-blue',
+                action: function () {
+                    $.ajax({
+                        url: '/account/provider/dash/appos/' + appo_id,
+                        type: 'POST',
+                        data: {
+                            '_csrf': token,
+                            'appo_id': appo_id
+                        },
+                        success: function (res) {
 
-    $("#stop_appo").prop('disabled', true)
-    $("#start_appo").prop('disabled', false)
+                            console.log("success")
+                            $("#flag").html("Completed").css('color', 'green')
+                            $("#stop_appo").prop('disabled', true)
+                            $("#start_appo").prop('disabled', false)
+                        }
+                    })
+
+                }
+            },
+            cancel: {
+                btnClass: 'btn-red',
+                action: function () {
+                    console.log('canceld')
+                }
+            }
+        }
+    });
+
+
+
 })
 
 
@@ -93,21 +116,40 @@ $("#start_appo").bind('click', () => {
     let appo_id = $("#appo_id").val();
     console.log("csrf token: " + token)
 
-    $.ajax({
-        url: '/account/provider/dash/appos/' + appo_id,
-        type: 'PUT',
-        data: {
-            '_csrf': token,
-            'appo_id': appo_id
-        },
-        success: function (res) {
-            console.log("success")
-            $("#flag").html("On-going").css('color', 'rgb(227, 78, 217)')
-        }
-    })
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Are You Sure You Want Start Appointments ?',
+        boxWidth: '30%',
+        useBootstrap: false,
+        buttons: {
+            confirm: {
+                btnClass: 'btn-blue',
+                action: function () {
+                    $.ajax({
+                        url: '/account/provider/dash/appos/' + appo_id,
+                        type: 'PUT',
+                        data: {
+                            '_csrf': token,
+                            'appo_id': appo_id
+                        },
+                        success: function (res) {
+                            console.log("success")
+                            $("#flag").html("On-going").css('color', 'rgb(227, 78, 217)')
+                            $("#stop_appo").prop('disabled', false)
+                            $("#start_appo").prop('disabled', true)
+                        }
+                    })
 
-    $("#stop_appo").prop('disabled', false)
-    $("#start_appo").prop('disabled', true)
+                }
+            },
+            cancel: {
+                btnClass: 'btn-red',
+                action: function () {
+                    console.log('canceld')
+                }
+            }
+        }
+    });
 })
 
 
