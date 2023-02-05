@@ -81,31 +81,53 @@ $('input[type="button"]').click(function (event) {
     let token = $("#_csrf").val();
 
 
-    if (button.value == 'Authorize') {
-        $.ajax({
-            url: '/account/producer/dash/authorize/authprovider',
-            type: 'PUT',
-            data: {
-                '_csrf': token,
-                'user': person,
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Are You Sure You Want Change Authorization ?',
+        boxWidth: '30%',
+        useBootstrap: false,
+        buttons: {
+            confirm: {
+                btnClass: 'btn-blue',
+                action: function () {
+
+                    if (button.value == 'Authorize') {
+                        $.ajax({
+                            url: '/account/producer/dash/authorize/authprovider',
+                            type: 'PUT',
+                            data: {
+                                '_csrf': token,
+                                'user': person,
+                            },
+                            success: function (res) {
+                                console.log(res)
+                                $("#flag" + flag_id[1]).html("Authorzied").css('color', 'green')
+                            }
+                        })
+                    } else {
+                        $.ajax({
+                            url: '/account/producer/dash/authorize/unauthprovider',
+                            type: 'PUT',
+                            data: {
+                                '_csrf': token,
+                                'user': person,
+                            },
+                            success: function (res) {
+                                console.log(res)
+                                $("#flag" + flag_id[1]).html("Not Authorzied").css('color', 'red')
+                            }
+                        })
+                    }
+
+
+                }
             },
-            success: function (res) {
-                console.log(res)
-                $("#flag" + flag_id[1]).html("Authorzied").css('color', 'green')
+            cancel: {
+                btnClass: 'btn-red',
+                action: function () {
+                    console.log('canceld')
+                }
             }
-        })
-    } else {
-        $.ajax({
-            url: '/account/producer/dash/authorize/unauthprovider',
-            type: 'PUT',
-            data: {
-                '_csrf': token,
-                'user': person,
-            },
-            success: function (res) {
-                console.log(res)
-                $("#flag" + flag_id[1]).html("Not Authorzied").css('color', 'red')
-            }
-        })
-    }
+        }
+    });
 });

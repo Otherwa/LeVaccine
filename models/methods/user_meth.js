@@ -126,7 +126,7 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
   var lat = parseFloat(lat)
   var lon = parseFloat(lon)
   // if adhar uploaded
-  if (adhar != '') {
+  if (adhar != '' && fname != '' && lname != '' && age != '' && addr != '' && gender != '' && phone != '' && city != '' && region != '' && post != '') {
     userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
       if (err) { console.log(err) }
     })

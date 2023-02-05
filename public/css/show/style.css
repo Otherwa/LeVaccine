@@ -2514,3 +2514,36 @@ h2 .myFont {
     font-size: 0.9rem;
   }
 }
+
+
+/* custom pop up */
+.jconfirm.jconfirm-my-theme .jconfirm-bg {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box {
+  border-radius: 0.5rem;
+  background-color: #eeeeee;
+}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box.loading {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box.loading:before {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box.loading:after {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-closeIcon {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-title-c {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-content-pane {}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-content {
+  font-family: 'dot';
+}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-buttons {
+  float: right;
+}
+
+.jconfirm.jconfirm-my-theme .jconfirm-box .jconfirm-buttons button {}

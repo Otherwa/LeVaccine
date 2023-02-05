@@ -41,9 +41,10 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 // openapi
 // ScrollReveal().reveal($(".inres"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
+ScrollReveal().reveal($(".stonks"), { delay: 700, distance: '25px', origin: 'top' }, config1);
 // api
 ScrollReveal().reveal($("#helps"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
-ScrollReveal().reveal($(".news"), { delay: 700, distance: '25px', origin: 'right' }, config1);
+ScrollReveal().reveal($(".news"), { delay: 700, distance: '25px', origin: 'top' }, config1);
 ScrollReveal().reveal($(".api-con"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 //book appo
 ScrollReveal().reveal($(".appos"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
@@ -53,7 +54,8 @@ ScrollReveal().reveal($(".listofappo"), { delay: 700, distance: '25px', origin: 
 ScrollReveal().reveal($(".info"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($("#appos"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 // user login
-ScrollReveal().reveal($(".form h1"), { delay: 800, origin: 'right', distance: '25px' }, config1);
+ScrollReveal().reveal($("h1"), { delay: 800, origin: 'right', distance: '25px' }, config1);
+ScrollReveal().reveal($(".form"), { delay: 800, origin: 'right', distance: '25px' }, config1);
 ScrollReveal().reveal($(".header1"), { delay: 900, origin: 'top', distance: '25px' }, config1);
 ScrollReveal().reveal($(".form "), { delay: 700, origin: 'bottom', distance: '25px' }, config1);
 ScrollReveal().reveal($(".div"), { delay: 800, origin: 'top', distance: '25px' }, config1);

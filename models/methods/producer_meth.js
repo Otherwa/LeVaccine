@@ -204,10 +204,36 @@ producerSchema.prototype.setstonk = async (req, res, prodid, vacname, vaccode, d
 
     stonk.save().then(result => {
         // req.flash('msgstonks', 'stock set 👍')
+        console.log(result)
         // res.redirect('/account/producer/dash/setstonks')
-        stonks.find({ 'prodid': prodid }).sort({ '_id': -1 }).then(result => {
+        stonks.find({ 'prodid': prodid }).sort({ '_id': 1 }).then(result => {
             res.json(result)
         })
+    })
+}
+
+// delete stonks
+
+producerSchema.prototype.deletestonk = async (req, res, id) => {
+    stonks.findByIdAndDelete(id, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json({ 'status': 'ok' })
+        }
+    })
+}
+
+// update stonk
+producerSchema.prototype.updatestonk = async (req, res, id, vac, vaccode, des, effec, stock, agai) => {
+    stonks.findByIdAndUpdate(id, { 'vaccine': vac, 'vacccinecode': vaccode, 'description': des, 'effectiveness': effec, 'stocks': stock, 'against': agai }, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json(docs)
+        }
     })
 }
 

@@ -56,7 +56,7 @@
                         <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
                         <input type="hidden" name="prodid" id="prodid" value="<%=data._id%>" />
                         <div class="head" style="flex-direction: column;align-items: flex-start;">
-                            <h1>Set Stonks</h1>
+                            <h1>Update Stonks</h1>
                             <br>
                             <p class="myFont" id="msg" style="color:red;width:10rem;">
                                 <%= msg %>
@@ -68,14 +68,14 @@
                         <div class="first_fields_stonks">
                             <div class="input-contain">
                                 <input type="text" class="stonks" required name="vacname" id="vacname"
-                                    autocomplete="off" value="">
+                                    autocomplete="off" value="<%= stock.vaccine %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Vaccine Name</div>
                                 </label>
                             </div>
                             <div class="input-contain">
                                 <input type="number" class="stonks" required name="vaccode" id="vaccode"
-                                    autocomplete="off" value="">
+                                    autocomplete="off" value="<%= stock.vaccinecode %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Vaccine Code</div>
                                 </label>
@@ -84,15 +84,15 @@
                         <div class="first_fields_stonks">
                             <div class="input-contain">
                                 <input type="text" class="stonks" required name="des" id="des" autocomplete="off"
-                                    value="">
+                                    value="<%= stock.description %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Short Description</div>
                                 </label>
                             </div>
                             <div class="input-contain">
                                 <input type="text" class="stonks" required name="effec" id="effec" autocomplete="off"
-                                    value="">
-                                <label class="placeholder-text" for="username" id="placeholder-fname">
+                                    value="<%= stock.effectiveness  %>">
+                                <label class=" placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Effectiveness</div>
                                 </label>
                             </div>
@@ -100,61 +100,31 @@
                         <div class="first_fields_stonks">
                             <div class="input-contain">
                                 <input type="number" class="stonks" required name="stonk" id="stonk" autocomplete="off"
-                                    value="">
+                                    value="<%= stock.stocks %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Stock</div>
                                 </label>
                             </div>
                             <div class="input-contain">
                                 <input type="text" class="stonks" required name="agai" id="agai" autocomplete="off"
-                                    value="">
+                                    value="<%= stock.against %>">
                                 <label class="placeholder-text" for="username" id="placeholder-fname">
                                     <div class="text">Against</div>
                                 </label>
                             </div>
                         </div>
-                        <input type="button" value="Set Stock" class="myFont" style="width:76%;margin-top: 0.4rem;"
-                            id="set">
+                        <input type="button" name="<%= stock._id %>" value="Update Stock" class="myFont"
+                            style="width:76%;margin-top: 0.4rem;" id="set">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     </form>
                     <!-- stonks setted -->
                     <br>
                     <br>
-                    <h1 style="margin-left: 2%;">Your Stocks</h1>
                     <br>
                     <br>
-                    <div class="stonks" class="myFont" id="stockfields"
-                        style="background-color: #ffffff;padding:1rem;border-radius: 0.5rem;height: 38rem;overflow-y: scroll; width: 99%;">
-                        <% for(var i=0; i<stonks.length; i++) {%>
-                            <div class="myFont" id="<%= stonks[i]._id %>"
-                                style="background-color:#eeeeee;margin-bottom:2.5% !important;padding:1rem;margin:1rem;border-radius: 0.5rem;line-height: 1.5rem;">
-                                <p>
-                                    Vaccine Name : <%= stonks[i].vaccine %>
-                                </p>
-                                <p>
-                                    Vaccine Code : <%= stonks[i].vaccinecode %>
-                                </p>
-                                <p>
-                                    Description : <%= stonks[i].description %>
-                                </p>
-                                <p>
-                                    Effectiveness : <%= stonks[i].effectiveness %>
-                                </p>
-                                <p>
-                                    Stock : <%= stonks[i].stocks %>
-                                </p>
-                                <p>
-                                    Against : <%= stonks[i].against %>
-                                </p>
-                                <div class="updates" style="display:flex;flex-direction:row;gap:1rem">
-                                    <a href="./setstonks/<%= stonks[i]._id %>"
-                                        style="text-decoration:underline;color: rgb(255, 0, 221);">Update</a>
-                                    <button name="<%= stonks[i]._id %>" id="<%= stonks[i].vaccine + " (" +
-                                        stonks[i].vaccinecode +")"%>"
-                                        style="text-decoration:underline;color: red;">Delete</button>
-                                </div>
-                            </div>
-                            <%}%>
-                    </div>
                 </div>
                 <div class="home-separator"></div>
                 <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
@@ -186,7 +156,7 @@
     <!--  -->
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/setstonks.js"></script>
+    <script type="text/javascript" src="/js/setstonksupdate.js"></script>
 </body>
 
 </html>
