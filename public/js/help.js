@@ -1,4 +1,5 @@
 $('#help').click(() => {
+    $('#help').prop('disabled', true);
     let req = $("#prompt").val();
     $("#prompt").val('');
 
@@ -17,9 +18,10 @@ $('#help').click(() => {
             var bgColor = "rgb(" + x + "," + y + "," + z + ")";
             // console.log(res)
             // console.log(res)
-            let data = "<div class=\"inres\" style=\"display:none;background-color:" + bgColor + "\"><code>" + res.message + "</code></div>";
+            let data = "<div class=\"inres myFont\" style=\"display:none;background-color:" + bgColor + "\"><code>" + res.message + "</code></div>";
             $('.res').prepend(data)
             $('.inres').show('slow');
+            $('#help').prop('disabled', false);
             $('#progress').html('<p class=\"myFont\" style=\"color:green\">Facts..</p>')
         }
     })

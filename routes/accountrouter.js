@@ -515,7 +515,49 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
   })
 })
 
+// buy vaccines
+// profle set/update
+Router.get('/provider/dash/buyvaccines', pauth, livepdata, async (req, res) => {
+  // token set or
 
+  await connect()
+
+  const cookie = req.cookies.jwt
+  let pincode = Number(req.user.detail.postcode)
+
+  // match nearby pincodes
+  pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
+  // get req user
+  producerSchema.find({ 'detail.postcode': { $in: pins } }, (err, result) => {
+    if (err) { console.log(err) }
+    // console.log(result)
+    // null if 
+    nearby = []
+
+    if (result) {
+      console.log(result._id)
+      for (var i = 0; i < result.length; i++) {
+        nearby.push(result[i]._id)
+      }
+    }
+
+    stonks.find({ 'prodid': { $in: nearby } }).then(data => {
+      console.log(req.user)
+      res.render('account/provider/buyvaccines', {
+        data: req.user,
+        token: cookie,
+        stonks: data,
+        csrf_token: req.csrfToken()
+      })
+    })
+
+
+
+  })
+
+
+
+})
 
 
 Router.get('/provider/logout', async (req, res) => {

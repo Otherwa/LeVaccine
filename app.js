@@ -197,7 +197,7 @@ app.get('/counter', async (req, res) => {
     var data = await covid();
     // console.log(data);
     await connect();
-    appo.find({}, { 'details.position': 1, '_id': 0 }, (err, result) => {
+    appo.find({ 'status': true }, { 'details.position': 1, '_id': 0 }, (err, result) => {
         const pos = result.map(position);
         // console.log(pos)
         function position(item) {
@@ -231,7 +231,7 @@ app.post('/help', async (req, res) => {
 
     let prompt = req.body.prompt;
 
-    const response = await openai.createCompletion({
+    await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `${prompt}`,
         temperature: 0, // Higher values means the model will take more risks.
@@ -242,6 +242,8 @@ app.post('/help', async (req, res) => {
     }).then((data) => {
         console.log(data.data.choices)
         res.json({ message: data.data.choices[0].text });
+    }).catch(err => {
+        console.log(err)
     })
 })
 

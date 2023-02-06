@@ -69,8 +69,9 @@ $("#stop_appo").bind('click', () => {
 
     $.confirm({
         title: 'Confirm!',
+        theme: 'my-theme',
         content: 'Are You Sure You Want Stop Appointments ?',
-        boxWidth: '30%',
+        boxWidth: '40vw',
         useBootstrap: false,
         buttons: {
             confirm: {
@@ -119,7 +120,7 @@ $("#start_appo").bind('click', () => {
     $.confirm({
         title: 'Confirm!',
         content: 'Are You Sure You Want Start Appointments ?',
-        boxWidth: '30%',
+        boxWidth: '40vw',
         useBootstrap: false,
         buttons: {
             confirm: {

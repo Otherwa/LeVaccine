@@ -9,7 +9,7 @@ $('#set').click(function (event) {
             title: 'Confirm!',
             theme: 'my-theme',
             content: 'Are You Sure You Want To Update ?',
-            boxWidth: '30%',
+            boxWidth: '40vw',
             useBootstrap: false,
             buttons: {
                 confirm: {
@@ -30,17 +30,17 @@ $('#set').click(function (event) {
                             },
                             success: function (res) {
                                 console.log(res)
-                                $('#vacname').val(res.vaccine)
-                                $('#vaccode').val(res.vaccinecode)
-                                $('#des').val(res.description)
-                                $('#effec').val(res.effectiveness)
-                                $('#stock').val(res.stocks)
-                                $('#agai').val(res.against)
+                                // $('#vacname').val(res.vaccine)
+                                // $('#vaccode').val(res.vaccinecode)
+                                // $('#des').val(res.description)
+                                // $('#effec').val(res.effectiveness)
+                                // $('#stock').val(res.stocks)
+                                // $('#agai').val(res.against)
                                 $.alert({
                                     theme: 'my-theme',
                                     title: 'Alert!',
                                     content: 'Stock Updated!',
-                                    boxWidth: '30%',
+                                    boxWidth: '40vw',
                                     useBootstrap: false,
                                     buttons: {
                                         Ok: {
@@ -70,7 +70,7 @@ $('#set').click(function (event) {
             btnClass: 'btn-red',
             title: 'Alert!',
             content: 'Check All Fields!',
-            boxWidth: '30%',
+            boxWidth: '40vw',
             useBootstrap: false,
             buttons: {
                 Ok: {

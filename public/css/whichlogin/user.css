@@ -394,7 +394,7 @@ input:focus+.placeholder-text .text {
 
 .appos {
     padding: 1rem;
-    width: 90%;
+    width: auto;
 }
 
 .listofappo {

@@ -54,72 +54,74 @@
                 <div class="con">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appointment Nearest To You)</p>
                     <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
-                </div>
-                <br>
-                <div class="appos">
-                    <h1>Appointment</h1>
-                    <br>
-                    <p class="myFont" style="font-size:1rem;color: rgb(128, 0, 0);">
-                        <%= err %>
-                    </p>
-                    <br>
-                    <br>
-                    <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
-                        <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
-                        <div id="seeappo" class="myFont">
-                            <h4>
-                                Address : <%= appo.address %>
-                            </h4>
-                            <p>
-                                City : <%= appo.city %>
-                            </p>
-                            <p>
-                                State : <%= appo.state %>
-                            </p>
-                            <p>
-                                Postal : <%= appo.postcode %>
-                            </p>
-                            <p>
-                                Time : <%= appo.details.time %>
-                            </p>
-                            <p>
-                                Vaccine : <%= appo.details.vaccine %>
-                            </p>
-                            <p>
-                                Date : <%= appo.details.date%>
-                            </p>
-                            <h4>
-                                Slots Avalable : <%= appo.details.slots%>
-                                    <span>
-                                        (Few Minutes Ago..)
-                                    </span>
-                            </h4>
-                        </div>
-                        <br>
-                        <br>
+                    <div id='map' style='width: auto; height: 310px;border-radius: 0.5rem;'></div>
 
-                        <% if(data.personstatus==true) { %>
-                            <% if(!check) {%>
-                                <% if(appo.status) {%>
-                                    <h2 style="color:red;">Appointments Slots Stopped</h2>
-                                    <%}else{%>
-                                        <% if(appo.details.slots<=0) {%>
-                                            <h2 style="color:red;">No Slots Remaining</h2>
-                                            <% }else{%>
-                                                <input type="submit" id="signup" value="Book Appointment"
-                                                    style="width: 100%;">
-                                                <% } %>
-                                                    <%}%>
-                                                        <% }else{%>
-                                                            <h2 style="color:green;">
-                                                                Appointment Booked</h2>
-                                                            <% }%>
-                                                                <% }else{%>
-                                                                    <h3 style="color:red">Fill all the Necessary Details
-                                                                        First in Profile</h3>
-                                                                    <% }%>
-                    </form>
+                    <br>
+                    <div class="appos">
+                        <h1>Appointment</h1>
+                        <br>
+                        <p class="myFont" style="font-size:1rem;color: rgb(128, 0, 0);">
+                            <%= err %>
+                        </p>
+                        <br>
+                        <br>
+                        <form method="POST" action="/account/user/dash/bookappo/<%= appo._id %>">
+                            <input type="hidden" name="_csrf" value="<%=csrf_token%>" />
+                            <div id="seeappo" class="myFont">
+                                <h4>
+                                    Address : <%= appo.address %>
+                                </h4>
+                                <p>
+                                    City : <%= appo.city %>
+                                </p>
+                                <p>
+                                    State : <%= appo.state %>
+                                </p>
+                                <p>
+                                    Postal : <%= appo.postcode %>
+                                </p>
+                                <p>
+                                    Time : <%= appo.details.time %>
+                                </p>
+                                <p>
+                                    Vaccine : <%= appo.details.vaccine %>
+                                </p>
+                                <p>
+                                    Date : <%= appo.details.date%>
+                                </p>
+                                <h4>
+                                    Slots Avalable : <%= appo.details.slots%>
+                                        <span>
+                                            (Few Minutes Ago..)
+                                        </span>
+                                </h4>
+                            </div>
+                            <br>
+                            <br>
+
+                            <% if(data.personstatus==true) { %>
+                                <% if(!check) {%>
+                                    <% if(appo.status) {%>
+                                        <h2 style="color:red;">Appointments Slots Stopped</h2>
+                                        <%}else{%>
+                                            <% if(appo.details.slots<=0) {%>
+                                                <h2 style="color:red;">No Slots Remaining</h2>
+                                                <% }else{%>
+                                                    <input type="submit" id="signup" value="Book Appointment"
+                                                        style="width: 100%;">
+                                                    <% } %>
+                                                        <%}%>
+                                                            <% }else{%>
+                                                                <h2 style="color:green;">
+                                                                    Appointment Booked</h2>
+                                                                <% }%>
+                                                                    <% }else{%>
+                                                                        <h3 style="color:red">Fill all the Necessary
+                                                                            Details
+                                                                            First in Profile</h3>
+                                                                        <% }%>
+                        </form>
+                    </div>
                 </div>
                 <br>
                 <br>

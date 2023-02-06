@@ -83,8 +83,9 @@ $('input[type="button"]').click(function (event) {
 
     $.confirm({
         title: 'Confirm!',
+        theme: 'my-theme',
         content: 'Are You Sure You Want Change Authorization ?',
-        boxWidth: '30%',
+        boxWidth: '40vw',
         useBootstrap: false,
         buttons: {
             confirm: {

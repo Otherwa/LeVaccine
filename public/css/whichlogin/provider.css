@@ -455,3 +455,8 @@ input:focus+.placeholder-text .text {
     border-radius: 0.5rem;
     line-height: 1.6rem;
 }
+
+/* orders */
+.orders {
+    padding: 1rem;
+}
