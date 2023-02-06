@@ -5,7 +5,7 @@ $('#set').on('click', (e) => {
             title: 'Confirm!',
             theme: 'my-theme',
             content: 'Are You Sure You Want To Insert ?',
-            boxWidth: '30%',
+            boxWidth: '40vw',
             useBootstrap: false,
             buttons: {
                 confirm: {
@@ -114,7 +114,7 @@ $('.updates button').click(function (event) {
         title: 'Confirm!',
         theme: 'my-theme',
         content: 'Are You Sure You Want To Delete ' + button.id + " ?",
-        boxWidth: '30%',
+        boxWidth: '40vw',
         useBootstrap: false,
         buttons: {
             confirm: {

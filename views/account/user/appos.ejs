@@ -54,52 +54,53 @@
                 <div class="con">
                     <p class="myFont" id="loc" style="font-size:1.01rem">(Appoinments Location)</p>
                     <br>
-                    <div id='map' style='width: 72vw; height: 310px;border-radius: 0.5rem;'></div>
-                </div>
-                <br>
-                <div class="appos">
-                    <h1>Your Appoinments</h1>
+                    <div id='map' style='width: auto; height: 310px;border-radius: 0.5rem;'></div>
+
                     <br>
-                    <br>
-                    <div class="listofappo">
+                    <div class="appos">
+                        <h1>Your Appoinments</h1>
                         <br>
-                        <% if(appos.length>0) {%>
-                            <% for(var i=0; i<appos.length; i++) {%>
-                                <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
-                                    <div id="seeappo" style="background-color: aquamarine;" class="myFont">
-                                        <h4>
-                                            Address : <%= appos[i].address %>
-                                        </h4>
-                                        <p>
-                                            City : <%= appos[i].city %>
-                                        </p>
-                                        <p>
-                                            State : <%= appos[i].state %>
-                                        </p>
-                                        <p>
-                                            Postal : <%= appos[i].postcode %>
-                                        </p>
-                                        <p>
-                                            Time : <%= appos[i].details.time %>
-                                        </p>
-                                        <p>
-                                            Vaccine : <%= appos[i].details.vaccine %>
-                                        </p>
-                                        <p>
-                                            Date : <%= appos[i].details.date%>
-                                        </p>
-                                        <h4>
-                                            Slots Avalable : <%= appos[i].details.slots%>
-                                                <span>
-                                                    (Few Minutes Ago..)
-                                                </span>
-                                        </h4>
-                                    </div>
-                                </a>
-                                <% } %>
-                                    <% }else{%>
-                                        <p class="myFont">No Appontments Booked</p>
-                                        <% }%>
+                        <br>
+                        <div class="listofappo">
+                            <br>
+                            <% if(appos.length>0) {%>
+                                <% for(var i=0; i<appos.length; i++) {%>
+                                    <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
+                                        <div id="seeappo" style="background-color: aquamarine;" class="myFont">
+                                            <h4>
+                                                Address : <%= appos[i].address %>
+                                            </h4>
+                                            <p>
+                                                City : <%= appos[i].city %>
+                                            </p>
+                                            <p>
+                                                State : <%= appos[i].state %>
+                                            </p>
+                                            <p>
+                                                Postal : <%= appos[i].postcode %>
+                                            </p>
+                                            <p>
+                                                Time : <%= appos[i].details.time %>
+                                            </p>
+                                            <p>
+                                                Vaccine : <%= appos[i].details.vaccine %>
+                                            </p>
+                                            <p>
+                                                Date : <%= appos[i].details.date%>
+                                            </p>
+                                            <h4>
+                                                Slots Avalable : <%= appos[i].details.slots%>
+                                                    <span>
+                                                        (Few Minutes Ago..)
+                                                    </span>
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <% } %>
+                                        <% }else{%>
+                                            <p class="myFont">No Appontments Booked</p>
+                                            <% }%>
+                        </div>
                     </div>
                 </div>
                 <br>

@@ -61,30 +61,33 @@
             display: none;
         }
 
-        textarea {
-            width: 65vw;
-            height: 100px;
-            -moz-border-bottom-colors: none;
-            -moz-border-left-colors: none;
-            -moz-border-right-colors: none;
-            -moz-border-top-colors: none;
-            border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
-            border-image: none;
-            border-radius: 6px 6px 6px 6px;
-            border-style: none solid solid none;
-            border-width: 1px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+        .textarea {
+            background-color: #dddddd;
+            color: #666666;
+            padding: 1em;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            outline: none;
+            font-family: 'dot';
+            font-weight: 500;
+            font-size: 16px;
             resize: none;
-            font-size: 1em;
-            line-height: 1.4em;
-            padding: 5px 8px;
-            transition: background-color 0.2s ease 0s;
+            line-height: 1.4;
+            width: 50vw;
+            height: 100px;
+            transition: all 0.2s;
         }
 
+        .textarea:hover {
+            cursor: pointer;
+            background-color: #eeeeee;
+        }
 
-        textarea:focus {
-            background: none repeat scroll 0 0 #FFFFFF;
-            outline-width: 0;
+        .textarea:focus {
+            cursor: text;
+            color: #333333;
+            background-color: white;
+            border-color: #333333;
         }
     </style>
 </head>
@@ -112,18 +115,17 @@
             </h1>
             <br>
             <div class="resdiv" style="display: flex;
-            width: 80vw;
+            width: 50vw;
             flex-direction: column;
             align-items: center;gap:1.2rem;
             height: auto;overflow-y: scroll;">
                 <input type="hidden" name="_csrf" id="_csrf" value="<%=csrf_token%>" />
-                <textarea name="prompt" id="prompt" wrap="off"
-                    style="border-radius: 0.2rem;border-style: solid;"></textarea>
-                <input type="button" value="submit" id="help">
+                <textarea name="prompt" class="textarea" id="prompt" wrap="off"
+                    placeholder="Enter a message..."></textarea>
+                <input type="button" class="myFont" style="width:100%" value="Submit" id="help">
                 <p id="progress"></p>
-                <br>
                 <div class="res" style="padding: 1rem;line-height: 2rem;display: flex;gap:1rem;flex-direction:column ;">
-                    <div class="inres" style="width: 20rem;"><code>Ask me Anything 🤖</code></div>
+                    <div class="inres myFont" style="width: 50vw;"><code>Ask me Anything 🤖</code></div>
                 </div>
             </div>
             <div class="home-separator"></div>
