@@ -543,6 +543,7 @@ Router.get('/provider/dash/buyvaccines', pauth, livepdata, async (req, res) => {
 
     stonks.find({ 'prodid': { $in: nearby } }).then(data => {
       console.log(req.user)
+      console.log(data)
       res.render('account/provider/buyvaccines', {
         data: req.user,
         token: cookie,
@@ -554,10 +555,26 @@ Router.get('/provider/dash/buyvaccines', pauth, livepdata, async (req, res) => {
 
 
   })
-
-
-
 })
+
+Router.get('/provider/dash/buyvaccines/:id', pauth, livepdata, async (req, res) => {
+  // token set or
+  await connect()
+
+  const cookie = req.cookies.jwt
+  id = req.params.id
+  stonks.findById(id).then(data => {
+    console.log(data)
+    res.render('account/provider/buyvaccine', {
+      data: req.user,
+      token: cookie,
+      stonks: data,
+      csrf_token: req.csrfToken()
+    })
+  })
+})
+
+
 
 
 Router.get('/provider/logout', async (req, res) => {

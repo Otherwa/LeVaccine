@@ -180,4 +180,12 @@ Router.put('/dash/appos/:id', pauth, livepdata, async (req, res) => {
 
 })
 
+// stop appointments
+Router.put('/dash/buyvaccines/buy', pauth, livepdata, async (req, res) => {
+    console.log(req.body)
+    //stop appointemts
+    provider.buyvaccine(req, res, req.body.prodid, req.body.proid, req.body.stonkid, 'Pending', req.body.stock, req.body.email)
+
+})
+
 module.exports = { Router }

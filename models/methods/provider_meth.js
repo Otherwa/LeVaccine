@@ -2,6 +2,8 @@ const providerSchema = require('../providerschema')
 const reset_user_pass = require('../reset_pass')
 const appoSchema = require('../apposchema')
 const appolistSchema = require('../appolistschema')
+const stonks = require('../stonks')
+const orders = require('../orders')
 const { connect } = require('../../config/connect')
 
 const {
@@ -9,7 +11,8 @@ const {
     jwt,
     sendSignupEmail1,
     provider_reset,
-    generateOTP
+    generateOTP,
+    sendrecept
 } = require('../../commonfunctions/commonfunc')
 // login
 providerSchema.prototype.login = async (req, res, username, password) => {
@@ -249,8 +252,22 @@ providerSchema.prototype.check = async (req, res, id, userid) => {
 }
 
 // stop appointemts
-providerSchema.prototype.personvaccination = async (req, res, id) => {
-    // 
+providerSchema.prototype.buyvaccine = async (req, res, prodid, proid, stonkid, status, stock, email) => {
+
+    stonks.findByIdAndUpdate(stonkid, { $inc: { stocks: -Number(stock) } }).then(() => {
+        new orders({
+            prodid: prodid,
+            proid: proid,
+            stonkid: stonkid,
+            status: status,
+            stock: stock,
+            date: new Date()
+        }).save((err, result) => {
+            if (err) { console.log(err) }
+            sendrecept(email)
+            res.send(result)
+        })
+    })
 }
 
 module.exports = { providerSchema }

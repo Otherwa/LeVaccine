@@ -486,6 +486,24 @@ async function liveprodata(req, res, next) {
   }
 }
 
+// send signup email for user
+function sendrecept(email) {
+  var mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Thanks For Registering',
+    text: 'Thanks For Registering',
+    html:
+      `Order Confirmed Details ???`
+  }
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error)
+    } else {
+      console.log('Email sent: ' + info.response)
+    }
+  })
+}
 
 module.exports = {
   sendmail,
@@ -509,6 +527,7 @@ module.exports = {
   user_reset,
   provider_reset,
   producer_reset,
-  user_bookappo
+  user_bookappo,
+  sendrecept
 }
 

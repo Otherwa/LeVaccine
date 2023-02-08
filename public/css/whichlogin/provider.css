@@ -349,11 +349,20 @@ input:focus+.placeholder-text .text {
 
 #login,
 #signup,
+#buy,
 #reset,
 #profileset,
 #stop_appo,
 #start_appo {
     transition: 0.3s ease-in-out;
+}
+
+#buy:hover {
+    color: rgb(255, 255, 255);
+    background-color: var(--ppink);
+    box-shadow: 0.5rem 0.5rem black !important;
+    transition: 0.4s;
+    translate: -0.25rem -0.252rem;
 }
 
 #stop_appo:hover {
@@ -459,4 +468,43 @@ input:focus+.placeholder-text .text {
 /* orders */
 .orders {
     padding: 1rem;
+    width: 92%;
+}
+
+.orders .layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.layout .inlayout {
+    border-style: solid;
+    border-width: 1px;
+    padding: 1rem;
+    line-height: 1.5rem;
+    width: 45%;
+    height: 50%;
+    border-radius: 0.5rem;
+}
+
+.inlayout p {
+    font-family: 'dot';
+    margin-left: 1.5%;
+}
+
+@media (max-width: 1024px) {
+    .layout div {
+        width: 15rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout div {
+        width: 100% !important;
+    }
 }
