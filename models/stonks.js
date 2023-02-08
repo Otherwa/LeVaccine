@@ -23,8 +23,8 @@ const stonk = new schema({
         type: 'string',
     },
     stocks: {
-        required: true,
         type: 'Number',
+        required: true,
     }
     ,
     against: {

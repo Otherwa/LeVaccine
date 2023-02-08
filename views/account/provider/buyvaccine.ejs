@@ -50,49 +50,56 @@
                 <br>
                 <br>
                 <div class="appos">
-                    <h2>Buy Vaccines</h2>
-                    <br>
+                    <h1>
+                        Buy <%= stonks.vaccine %>
+                    </h1>
                     <br>
                 </div>
-                <br>
                 <div class="orders">
+                    <input type="hidden" id="_csrf" name="_csrf" value="<%=csrf_token%>" />
+                    <input type="hidden" id="prodid" value="<%=stonks.prodid%>" />
+                    <input type="hidden" id="stonkid" value="<%=stonks._id%>" />
+                    <input type="hidden" id="proid" value="<%=data._id%>" />
+                    <input type="hidden" id="email" value="<%=data.email%>" />
                     <section class="layout">
-                        <% if(stonks.length> 0){%>
-                            <% for(var i=0; i < stonks.length; i++) {%>
-                                <div class="inlayout">
-                                    <p>
-                                        Vaccine Name : <%= stonks[i].vaccine %>
-                                    </p>
-                                    <p>
-                                        Vaccine Code : <%= stonks[i].vaccinecode %>
-                                    </p>
-                                    <p>
-                                        Description : <%= stonks[i].description %>
-                                    </p>
-                                    <p>
-                                        Effectiveness : <%= stonks[i].effectiveness %>
-                                    </p>
-                                    <p>
-                                        Stocks : <%= stonks[i].stocks %>
-                                    </p>
-                                    <p>
-                                        Against : <%= stonks[i].against %>
-                                    </p>
-                                    <div style="padding: 0.5rem;font-style: normal;">
-                                        <a href="/account/provider/dash/buyvaccines/<%= stonks[i]._id %>"><u>
-                                                <h2>Buy</h2>
-                                            </u></a>
-                                    </div>
+                        <div class="inlayout"
+                            style="width: 100% !important;background-color: white;border-style: solid;border-width: 1px;">
+                            <p>
+                                Vaccine Name : <%= stonks.vaccine %>
+                            </p>
+                            <p>
+                                Vaccine Code : <%= stonks.vaccinecode %>
+                            </p>
+                            <p>
+                                Description : <%= stonks.description %>
+                            </p>
+                            <p>
+                                Effectiveness : <%= stonks.effectiveness %>
+                            </p>
+                            <p>
+                                Stocks : <span id="flag">
+                                    <%= stonks.stocks %>
+                                </span>
+                            </p>
+                            <p>
+                                Against : <%= stonks.against %>
+                            </p>
+                            <br>
+                            <div style="padding: 0.5rem;font-style: normal;width: 100% !important;">
+                                <div class="input-contain" style="width: 100% !important;">
+                                    <input type="number" style="width: 100% !important;" name="stock" value="1"
+                                        id="stock" autocomplete="on">
+                                    <label class="placeholder-text" style="top: 17px !important;
+                                    width: 3%;" for="stock" id="placeholder-fname">
+                                        <div class="text">Stock</div>
+                                    </label>
                                 </div>
-                                <% }%>
-                                    <% }else{%>
-                                        <h1>No Stonks</h1>
-                                        <% }%>
+                                <br>
+                                <input type="button" id="buy" style="width: 100% !important;" value="Buy">
+                            </div>
+                        </div>
                     </section>
                 </div>
-                <br>
-                <br>
-                <br>
                 <br>
                 <div class="home-separator"></div>
                 <span class="home-text81 myFont">© 2021 <a href="mailto:atharvdesai2002@gmail.com"
@@ -119,7 +126,7 @@
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/buyvaccines.js"></script>
+    <script type="text/javascript" src="/js/buyvaccine.js"></script>
 </body>
 
 </html>
