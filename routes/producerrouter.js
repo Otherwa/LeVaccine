@@ -170,4 +170,10 @@ Router.put('/dash/setstonks/update', proauth, liveprodata, async (req, res) => {
     producer.updatestonk(req, res, req.body._id, req.body.vaccine, req.body.vaccinecode, req.body.description, req.body.effectiveness, req.body.stocks, req.body.against)
 })
 
+// stonks set
+Router.put('/dash/orders/update', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.updateorder(req, res, req.body.id, req.body.status)
+})
+
 module.exports = { Router }

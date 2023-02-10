@@ -11,6 +11,7 @@ const {
     generateOTP
 } = require('../../commonfunctions/commonfunc')
 const { providerSchema } = require('./provider_meth')
+const orders = require('../orders')
 // login
 producerSchema.prototype.login = async (req, res, username, password) => {
     await connect()
@@ -228,6 +229,18 @@ producerSchema.prototype.deletestonk = async (req, res, id) => {
 // update stonk
 producerSchema.prototype.updatestonk = async (req, res, id, vac, vaccode, des, effec, stock, agai) => {
     stonks.findByIdAndUpdate(id, { 'vaccine': vac, 'vacccinecode': vaccode, 'description': des, 'effectiveness': effec, 'stocks': stock, 'against': agai }, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json(docs)
+        }
+    })
+}
+
+// update stonk
+producerSchema.prototype.updateorder = async (req, res, id, status) => {
+    orders.findByIdAndUpdate(id, { 'status': status }, function (err, docs) {
         if (err) {
             console.log(err)
         }
