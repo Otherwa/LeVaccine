@@ -25,7 +25,22 @@ $('input[type="button"]').click(function (event) {
                     } else if (status_final == "Transit") {
                         real_status = "Transit"
                     }
-                    else {
+                    else if (status_final == "Delete") {
+                        $.ajax({
+                            url: '/account/producer/dash/orders/delete',
+                            type: 'PUT',
+                            data: {
+                                '_csrf': token,
+                                'id': id,
+                            },
+                            success: function (res) {
+                                console.log("success")
+                                console.log(res)
+                                // $("#status").html(real_status)
+                                window.location.replace('/account/producer/dash/orders');
+                            }
+                        })
+                    } else {
                         real_status = "Completed"
                     }
                     console.log("buying")

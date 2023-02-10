@@ -47,7 +47,7 @@
     <div class="bridge" style="display: none">
     </div>
     <div id="butter">
-        <%- include('../../partial/producer-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <div style="width: 97%;">
                     <br>
@@ -58,7 +58,7 @@
                     <div class="myFont" id="stockfields"
                         style="background-color: #ffffff;padding:1rem;border-radius: 0.5rem;height: 38rem;overflow-y: scroll; width: 99%;">
                         <div class="myFont" id="<%= order._id %>"
-                            style="background-color:#eeeeee;margin-bottom:2.5% !important;padding:1rem;margin:1rem;border-radius: 0.5rem;line-height: 1.6rem;">
+                            style="background-color:#eeeeee;margin-bottom:2.5% !important;padding:1rem;margin:1rem;border-radius: 0.5rem;line-height: 1.7rem;">
                             <p>
                                 Stock : <%= order.stock %>
                             </p>
@@ -66,7 +66,7 @@
                                 Vaccine-Code : <%= order.vaccinecode %>
                             </p>
                             <p>
-                                Status Code : <span id="status">
+                                Status Code : <span style="font-weight:bold">
                                     <%= order.status %>
                                 </span>
                             </p>
@@ -85,7 +85,6 @@
                             <p>
                                 City : <%= order.details.city %>
                             </p>
-                            <br>
                         </div>
                     </div>
                 </div>

@@ -43,6 +43,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 // ScrollReveal().reveal($(".inres"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($(".stonks"), { delay: 700, distance: '25px', origin: 'top' }, config1);
 // api
+ScrollReveal().reveal($("#stockfields"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($("#helps"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($(".inlayout"), { delay: 700, distance: '25px', origin: 'bottom' }, config1);
 ScrollReveal().reveal($(".news"), { delay: 700, distance: '25px', origin: 'top' }, config1);

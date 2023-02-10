@@ -3,7 +3,7 @@ const Router = express.Router()
 const { connect } = require('../config/connect')
 const { producerSchema } = require('../models/methods/producer_meth')
 // const stonks = require('../models/stonks')
-const { proauth, liveprodata, bcrypt } = require('../commonfunctions/commonfunc')
+const { proauth, bcrypt } = require('../commonfunctions/commonfunc')
 
 require('dotenv').config()
 // confidental password
@@ -133,47 +133,53 @@ Router.post('/reset', async (req, res) => {
 })
 
 // profile
-Router.post('/dash/profile', proauth, liveprodata, async (req, res) => {
+Router.post('/dash/profile', proauth, async (req, res) => {
     console.log(req.body)
     producer.profile(req, res, req.body.lat, req.body.lon, req.user.email, req.body.fname, req.body.lname, req.body.adhar, req.body.age, req.body.address, req.body.gender, req.body.phone, req.body.city, req.body.region, req.body.postcode)
 
 })
 
 // authorize
-Router.put('/dash/authorize/authprovider', proauth, liveprodata, async (req, res) => {
+Router.put('/dash/authorize/authprovider', proauth, async (req, res) => {
     console.log(req.body)
     producer.authorize(req, res, req.body.user)
 })
 
 
 // unauthorize
-Router.put('/dash/authorize/unauthprovider', proauth, liveprodata, async (req, res) => {
+Router.put('/dash/authorize/unauthprovider', proauth, async (req, res) => {
     console.log(req.body)
     producer.unauthorize(req, res, req.body.user)
 })
 
 // stonks set
-Router.post('/dash/setstonks/set', proauth, liveprodata, async (req, res) => {
+Router.post('/dash/setstonks/set', proauth, async (req, res) => {
     console.log(req.body)
     producer.setstonk(req, res, req.user._id, req.body.vacname, req.body.vaccode, req.body.des, req.body.effec, req.body.stonk, req.body.agai)
 })
 
 // stonks set
-Router.put('/dash/setstonks/delete', proauth, liveprodata, async (req, res) => {
+Router.put('/dash/setstonks/delete', proauth, async (req, res) => {
     console.log(req.body)
     producer.deletestonk(req, res, req.body._id)
 })
 
 // stonks set
-Router.put('/dash/setstonks/update', proauth, liveprodata, async (req, res) => {
+Router.put('/dash/setstonks/update', proauth, async (req, res) => {
     console.log(req.body)
     producer.updatestonk(req, res, req.body._id, req.body.vaccine, req.body.vaccinecode, req.body.description, req.body.effectiveness, req.body.stocks, req.body.against)
 })
 
 // stonks set
-Router.put('/dash/orders/update', proauth, liveprodata, async (req, res) => {
+Router.put('/dash/orders/update', proauth, async (req, res) => {
     console.log(req.body)
     producer.updateorder(req, res, req.body.id, req.body.status)
+})
+
+// stonks set
+Router.put('/dash/orders/delete', proauth, async (req, res) => {
+    console.log(req.body)
+    producer.deleteorder(req, res, req.body.id)
 })
 
 module.exports = { Router }

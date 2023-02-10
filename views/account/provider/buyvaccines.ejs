@@ -57,39 +57,43 @@
                 <br>
                 <div class="orders" style="min-height: 100vh">
                     <section class="layout">
-                        <% if(stonks.length> 0){%>
-                            <% for(var i=0; i < stonks.length; i++) {%>
-                                <% if(stonks[i].stocks> 0){%>
-                                    <div class="inlayout">
-                                        <p>
-                                            Vaccine Name : <%= stonks[i].vaccine %>
-                                        </p>
-                                        <p>
-                                            Vaccine Code : <%= stonks[i].vaccinecode %>
-                                        </p>
-                                        <p>
-                                            Description : <%= stonks[i].description %>
-                                        </p>
-                                        <p>
-                                            Effectiveness : <%= stonks[i].effectiveness %>
-                                        </p>
-                                        <p>
-                                            Stocks : <%= stonks[i].stocks %>
-                                        </p>
-                                        <p>
-                                            Against : <%= stonks[i].against %>
-                                        </p>
-                                        <div style="padding: 0.5rem;font-style: normal;">
-                                            <a href="/account/provider/dash/buyvaccines/<%= stonks[i]._id %>"><u>
-                                                    <h2>Buy</h2>
-                                                </u></a>
+                        <% if(data.auth==true){ %>
+                            <% if(stonks.length> 0){%>
+                                <% for(var i=0; i < stonks.length; i++) {%>
+                                    <% if(stonks[i].stocks> 0){%>
+                                        <div class="inlayout">
+                                            <p>
+                                                Vaccine Name : <%= stonks[i].vaccine %>
+                                            </p>
+                                            <p>
+                                                Vaccine Code : <%= stonks[i].vaccinecode %>
+                                            </p>
+                                            <p>
+                                                Description : <%= stonks[i].description %>
+                                            </p>
+                                            <p>
+                                                Effectiveness : <%= stonks[i].effectiveness %>
+                                            </p>
+                                            <p>
+                                                Stocks : <%= stonks[i].stocks %>
+                                            </p>
+                                            <p>
+                                                Against : <%= stonks[i].against %>
+                                            </p>
+                                            <div style="padding: 0.5rem;font-style: normal;">
+                                                <a href="/account/provider/dash/buyvaccines/<%= stonks[i]._id %>"><u>
+                                                        <h2>Buy</h2>
+                                                    </u></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <% }%>
                                         <% }%>
-                                            <% }else{%>
-                                                <h1>No Stonks</h1>
-                                                <% }%>
+                                            <% }%>
+                                                <% }else{%>
+                                                    <h1>No Stonks</h1>
+                                                    <% }%>
+                                                        <% }else{%>
+                                                            <h1>Get Authorized</h1>
+                                                            <% }%>
                     </section>
                 </div>
                 <br>

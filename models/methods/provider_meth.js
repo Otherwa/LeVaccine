@@ -14,6 +14,7 @@ const {
     generateOTP,
     sendrecept
 } = require('../../commonfunctions/commonfunc')
+const { producerSchema } = require('./producer_meth')
 // login
 providerSchema.prototype.login = async (req, res, username, password) => {
     await connect()
@@ -266,8 +267,10 @@ providerSchema.prototype.buyvaccine = async (req, res, prodid, proid, stonkid, d
             date: new Date()
         }).save((err, result) => {
             if (err) { console.log(err) }
-            sendrecept(email)
-            res.send(result)
+            producerSchema.findById(prodid).then(data => {
+                sendrecept(email, result, data)
+                res.send(result)
+            })
         })
     })
 }
