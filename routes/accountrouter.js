@@ -148,6 +148,9 @@ Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
         console.log(err)
       }
 
+      result.details.time = moment(result.details.time).format('hh:mm A')
+      result.details.date = moment(result.details.date).format("MMM Do YYYY");
+
       console.log(results)
 
       res.render('account/user/appo', {

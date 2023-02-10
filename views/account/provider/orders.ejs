@@ -47,7 +47,7 @@
     <div class="bridge" style="display: none">
     </div>
     <div id="butter">
-        <%- include('../../partial/producer-nav')%>
+        <%- include('../../partial/provider-nav')%>
             <div class="container-home">
                 <div style="width: 97%;">
                     <br>
@@ -67,7 +67,9 @@
                                     Vaccine-Code : <%= orders[i].vaccinecode %>
                                 </p>
                                 <p>
-                                    Status Code : <%= orders[i].status %>
+                                    Status Code : <span style="font-weight:bold">
+                                        <%= orders[i].status %>
+                                    </span>
                                 </p>
                                 <p>
                                     To : <%= orders[i].details.ngo %>

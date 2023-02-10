@@ -3,7 +3,7 @@ const { connect } = require('../config/connect')
 require('dotenv').config()
 // jwt
 const jwt = require('jsonwebtoken')
-
+const moment = require('moment');
 // nodemailer
 const htmlcontent = require('../config/connection_config').htmlcontent
 
@@ -44,7 +44,7 @@ function sendSignupEmail1(email) {
     text: 'Thanks For Registering',
     html:
       `
-        <a href="https://drug-lord.onrender.com/account/provider/verify/` +
+        <a href="https://onlyvaccine.onrender.com/account/provider/verify/` +
       email +
       '">' +
       `Verify</a>
@@ -70,7 +70,7 @@ function sendSignupEmail2(email) {
     text: 'Thanks For Registering',
     html:
       `
-        <a href="https://drug-lord.onrender.com/account/producer/verify/` +
+        <a href="https://onlyvaccine.onrender.com/account/producer/verify/` +
       email +
       '">' +
       `Verify</a>
@@ -96,7 +96,7 @@ function sendSignupEmail(email) {
     text: 'Thanks For Registering',
     html:
       `
-        <a href="https://drug-lord.onrender.com/account/user/verify/` +
+        <a href="https://onlyvaccine.onrender.com/account/user/verify/` +
       email +
       '">' +
       `Verify</a>
@@ -223,15 +223,23 @@ function sendmail(email) {
 // mail service for subscription
 function user_bookappo(email, username, result) {
 
-
-
-  console.log(result.address)
+  console.log(result)
   var mailOptions = {
     from: process.env.EMAIL,
     to: email,
     subject: 'Appointment Booked',
     text: 'Your Appointment was booked',
-    html: result.address
+    html: `
+    Dear `+ username + `, <br>
+  
+    Your appointment on `+ result.details.date + " & " + moment(result.details.time).format('hh:mm A') + ` At ` + result.addresses + `is Booked Successfully Our team is looking forward to seeing you soon! <br>
+  
+    As always, we want to give you the best quality of care. If you have any questions or you\'d like to talk to us about your upcoming services, feel free to reach out anytime. We\'ll get back to you as soon as possible. <br>
+  
+    Please let us know if there\'s anything else we can do for you. <br>
+  
+    Warm regards, <br>
+    Location : https://www.google.com/maps/place/`+ result.details.position[0] + `%20` + result.details.position[1] + ``
   }
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -487,15 +495,30 @@ async function liveprodata(req, res, next) {
 }
 
 // send signup email for user
-function sendrecept(email) {
+function sendrecept(email, result, data) {
+  console.log(data)
   var mailOptions = {
     from: process.env.EMAIL,
     to: email,
-    subject: 'Thanks For Registering',
-    text: 'Thanks For Registering',
-    html:
-      `Order Confirmed Details ???`
+    subject: 'Order Confirmed',
+    text: 'Thanks For Ordering',
+    html: `  
+  Hello User,<br>
+
+  We\'re happy to let you know that we\'ve received your order. <br>
+
+  Once your package ships, it will be updated in the Orders Section. <br> 
+  
+  <li>Quantiy x `+ result.stock + `</li>
+  <li>Vaccine Code (CPT) `+ result.vaccinecode + `</li>
+  <li>Delivery Address `+ result.details.ngoaddress + `</li>
+
+  <br>
+  If you have any questions, contact us here or call us on `+ data.detail.phone + ` We are here to help! <br>
+
+  Returns: If you would like to return your product(s), please see us at our location <cite>`+ data.detail.address + `</cite> or contact us. <br>`
   }
+
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error)

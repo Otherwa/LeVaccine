@@ -176,4 +176,10 @@ Router.put('/dash/orders/update', proauth, liveprodata, async (req, res) => {
     producer.updateorder(req, res, req.body.id, req.body.status)
 })
 
+// stonks set
+Router.put('/dash/orders/delete', proauth, liveprodata, async (req, res) => {
+    console.log(req.body)
+    producer.deleteorder(req, res, req.body.id)
+})
+
 module.exports = { Router }

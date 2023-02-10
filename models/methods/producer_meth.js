@@ -250,6 +250,18 @@ producerSchema.prototype.updateorder = async (req, res, id, status) => {
     })
 }
 
+// update stonk
+producerSchema.prototype.deleteorder = async (req, res, id, status) => {
+    orders.findByIdAndDelete(id, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json(docs)
+        }
+    })
+}
+
 // logout using cookies jwt hash protection
 producerSchema.prototype.logout = async (req, res) => {
     res.clearCookie('jwt') // clear cookie
