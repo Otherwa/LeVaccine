@@ -183,8 +183,9 @@ Router.put('/dash/appos/:id', pauth, livepdata, async (req, res) => {
 // stop appointments
 Router.put('/dash/buyvaccines/buy', pauth, livepdata, async (req, res) => {
     console.log(req.body)
+    // console.log(req.user)
     //stop appointemts
-    provider.buyvaccine(req, res, req.body.prodid, req.body.proid, req.body.stonkid, 'Pending', req.body.stock, req.body.email)
+    provider.buyvaccine(req, res, req.body.prodid, req.body.proid, req.body.stonkid, req.user.detail, req.body.vaccinecode, 'Pending', req.body.stock, req.body.email)
 
 })
 

@@ -38,7 +38,6 @@ const apposchema = require('./models/apposchema');
 
 // open ai
 const { Configuration, OpenAIApi } = require("openai");
-
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
@@ -82,7 +81,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 //no cache session cookie issue more loade time 
-app.use(nocache());
+// app.use(nocache());
 
 // compression for fast loads
 app.use(compression())
@@ -228,7 +227,6 @@ app.get('/help', (req, res) => {
 })
 
 app.post('/help', async (req, res) => {
-
     let prompt = req.body.prompt;
 
     await openai.createCompletion({

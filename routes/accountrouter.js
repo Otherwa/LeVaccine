@@ -12,6 +12,7 @@ const rateLimit = require('express-rate-limit')
 const appo = require('../models/apposchema')
 const stonks = require('../models/stonks')
 const appolists = require('../models/appolistschema')
+const orders = require('../models/orders')
 const moment = require('moment');
 
 
@@ -574,7 +575,38 @@ Router.get('/provider/dash/buyvaccines/:id', pauth, livepdata, async (req, res) 
   })
 })
 
+// setstonks
+Router.get('/provider/dash/orders', pauth, livepdata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.user._id
+  orders.find({ 'proid': id }).sort({ '_id': -1 }).then((result) => {
+    res.render('account/provider/orders', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      orders: result,
+      csrf_token: req.csrfToken()
+    });
+  })
+})
 
+// setstonks
+Router.get('/provider/dash/orders/:id', pauth, livepdata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.params.id
+  orders.findById(id).then((result) => {
+    console.log(result)
+    res.render('account/provider/order', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      order: result,
+      csrf_token: req.csrfToken()
+    });
+  })
+})
 
 
 Router.get('/provider/logout', async (req, res) => {
@@ -757,6 +789,39 @@ Router.get('/producer/dash/setstonks/:id', proauth, liveprodata, async (req, res
       token: cookie,
       msg: req.flash('msgstonks'),
       stock: result,
+      csrf_token: req.csrfToken()
+    });
+  })
+})
+
+// setstonks
+Router.get('/producer/dash/orders', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.user._id
+  orders.find({ 'prodid': id }).sort({ '_id': -1 }).then((result) => {
+    res.render('account/producer/orders', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      orders: result,
+      csrf_token: req.csrfToken()
+    });
+  })
+})
+
+// setstonks
+Router.get('/producer/dash/orders/:id', proauth, liveprodata, async (req, res) => {
+  await connect()
+  const cookie = req.cookies.jwt
+  const id = req.params.id
+  orders.findById(id).then((result) => {
+    console.log(result)
+    res.render('account/producer/order', {
+      data: req.user,
+      token: cookie,
+      msg: req.flash('msgstonks'),
+      order: result,
       csrf_token: req.csrfToken()
     });
   })

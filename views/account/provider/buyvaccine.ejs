@@ -61,10 +61,12 @@
                     <input type="hidden" id="stonkid" value="<%=stonks._id%>" />
                     <input type="hidden" id="proid" value="<%=data._id%>" />
                     <input type="hidden" id="email" value="<%=data.email%>" />
+                    <input type="hidden" id="vaccode" value="<%=stonks.vaccinecode%>" />
                     <section class="layout">
                         <div class="inlayout"
                             style="width: 100% !important;background-color: white;border-style: solid;border-width: 1px;">
                             <p>
+                                <input type="hidden" id="max_stock" value="<%= stonks.stocks %>">
                                 Vaccine Name : <%= stonks.vaccine %>
                             </p>
                             <p>

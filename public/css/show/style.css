@@ -2504,6 +2504,13 @@ h2 .myFont {
 
 @media (max-width: 768px) {
 
+  .resdiv,
+  .resdiv .textarea,
+  .resdiv .res,
+  .resdiv .inres {
+    width: 98% !important;
+  }
+
   /* preload */
   .preload .canvas {
     width: 100vw;

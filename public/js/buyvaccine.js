@@ -1,9 +1,11 @@
 $('#stock').on('input', () => {
+    var max_stock = $('#max_stock').val()
     var stock = $('#stock').val()
-    if (stock > 0) {
-        $('#buy').prop('disabled', false)
-    } else {
+    console.log(stock + "<" + max_stock)
+    if (stock <= 0 || stock >= (Number(max_stock) + 1)) {
         $('#buy').prop('disabled', true)
+    } else {
+        $('#buy').prop('disabled', false)
     }
 })
 
@@ -28,6 +30,7 @@ $('#buy').on('click', () => {
                     let prodid = $("#prodid").val();
                     let stock = $("#stock").val();
                     let email = $("#email").val();
+                    let vaccode = $("#vaccode").val();
                     var count = $('#flag').html()
                     $("#flag").html("Buying")
                     console.log("buying")
@@ -39,12 +42,15 @@ $('#buy').on('click', () => {
                             'prodid': prodid,
                             'proid': proid,
                             'stonkid': stonkid,
+                            'vaccinecode': vaccode,
                             'stock': stock,
                             'email': email
                         },
                         success: function (res) {
                             console.log("success")
+                            window.location.replace('/account/provider/dash/buyvaccines');
                             $("#flag").html(count - stock)
+                            $("#stock").val(1)
                         }
                     })
                 }
