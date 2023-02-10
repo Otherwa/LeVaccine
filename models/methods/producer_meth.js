@@ -10,7 +10,10 @@ const {
     producer_reset,
     generateOTP
 } = require('../../commonfunctions/commonfunc')
-const { providerSchema } = require('./provider_meth')
+
+// function
+const providerSchema = require('../providerschema')
+
 const orders = require('../orders')
 // login
 producerSchema.prototype.login = async (req, res, username, password) => {
@@ -178,16 +181,26 @@ producerSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, 
 }
 
 // authorize provider
-producerSchema.prototype.authorize = async (req, res, user) => {
-    providerSchema.findByIdAndUpdate(user, { auth: true }).then(resulter => {
-        res.json({ 'status': 'ok' })
+producerSchema.prototype.authorize = async (req, res, id) => {
+    providerSchema.findByIdAndUpdate(id, { auth: true }, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json({ 'status': 'ok' })
+        }
     })
 }
 
 // unauthorize provider
-producerSchema.prototype.unauthorize = async (req, res, user) => {
-    providerSchema.findByIdAndUpdate(user, { auth: false }).then(resulter => {
-        res.json({ 'status': 'ok' })
+producerSchema.prototype.unauthorize = async (req, res, id) => {
+    providerSchema.findByIdAndUpdate(id, { auth: false }, function (err, docs) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.json({ 'status': 'ok' })
+        }
     })
 }
 
