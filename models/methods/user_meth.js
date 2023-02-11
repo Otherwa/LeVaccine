@@ -222,15 +222,15 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
               if (err) console.error(err)
 
               console.log(result)
-              req.flash('msg', "Appointment Booked")
-              res.redirect('/account/user/dash/bookappo/' + appoid);
+              // req.flash('msg', "Appointment Booked")
+              res.json({ status: '200' })
               user_bookappo(req.user.email, req.user.username, results)
               return results
             })
           })
         } else {
-          req.flash('err', "Appointment Was Not Booked")
-          res.redirect('/account/user/dash/bookappo/' + appoid);
+          // req.flash('err', "Appointment Was Not Booked")
+          res.json({ status: '404' })
         }
       })
 

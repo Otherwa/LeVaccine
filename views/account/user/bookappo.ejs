@@ -66,7 +66,7 @@
                             <code style="color:red"
                                 class="myFont">Fill all the Necessary Details First in Profile</code>
                             <%}else{%>
-                                <code>(Note: <span style="color:#c0ce2a">yellow</span> indicates Father <span style="color:#04AA6D">green</span> indicates near)</code>
+                                <code>(Note: <span style="color:#04AA6D">green</span> indicates near)</code>
                                 <%}%>
                                     <br>
                                     <div class="listofappo">
@@ -81,7 +81,7 @@
                                                     <a href="/account/user/dash/bookappo/<%= appos[i]._id %>">
                                                         <div class="myFont"
                                                             <%if(data.detail.postcode==appos[i].postcode){%>
-                                                            style="background-color:#04AA6D;"
+                                                            style="color:#04AA6D;"
                                                             <%}%>
                                                                 >
                                                                 <h4>
@@ -145,6 +145,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- ajax popup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <!--  -->
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
     <script type="text/javascript" src="/js/butter/butter.js"></script>
