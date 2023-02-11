@@ -48,7 +48,7 @@ $('#buy').on('click', () => {
                         },
                         success: function (res) {
                             console.log("success")
-                            window.location.replace('/account/provider/dash/buyvaccines');
+                            window.location.replace('/account/provider/dash/orders');
                             $("#flag").html(count - stock)
                             $("#stock").val(1)
                         }

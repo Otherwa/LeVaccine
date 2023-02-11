@@ -195,3 +195,48 @@ if ($('#appo_status').val() === 'true') {
     $("#stop_appo").prop('disabled', false)
     $("#start_appo").prop('disabled', true)
 }
+
+// book appo
+// book appo
+$('#book-appo').on('click', function () {
+    let token = $("#_csrf").val();
+    console.log(token)
+    let appo_id = $("#id").val();
+
+    $.confirm({
+        title: 'Confirm!',
+        theme: 'my-theme',
+        content: 'Are You Sure You Want Book An Appointment ?',
+        boxWidth: '40vw',
+        useBootstrap: false,
+        buttons: {
+            confirm: {
+                btnClass: 'btn-blue',
+                action: function () {
+                    $.ajax({
+                        url: '/account/user/dash/bookappo/' + appo_id,
+                        type: 'POST',
+                        data: {
+                            '_csrf': token,
+                            'appo_id': appo_id
+                        },
+                        success: function (res) {
+                            console.log("success")
+                            if (res.status == '200') {
+                                $("#status").html("Appointment Booked").css('color', 'purple')
+                            } else {
+                                $("#status").html("Appointment Was Not Booked").css('color', 'red')
+                            }
+                        },
+                    })
+                },
+                cancel: {
+                    btnClass: 'btn-red',
+                    action: function () {
+                        console.log('canceld')
+                    }
+                }
+            }
+        }
+    })
+})

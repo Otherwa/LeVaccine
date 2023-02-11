@@ -59,3 +59,5 @@ map.addControl(geolocate);
 map.on('load', function () {
     geolocate.trigger();
 });
+
+

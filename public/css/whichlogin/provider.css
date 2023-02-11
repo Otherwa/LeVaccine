@@ -405,7 +405,8 @@ input:focus+.placeholder-text .text {
 }
 
 #appos div {
-    background-color: #04AA6D;
+    border-style: solid;
+    border-width: 1px;
     padding: 0.8rem;
     border-radius: 0.5rem;
 }
@@ -447,7 +448,8 @@ input:focus+.placeholder-text .text {
 
 
 .listofappo div {
-    background-color: #04AA6D;
+    border-style: solid;
+    border-width: 1px;
     padding: 0.8rem;
     border-radius: 0.5rem;
 }
@@ -459,7 +461,8 @@ input:focus+.placeholder-text .text {
 }
 
 #seeappo {
-    background-color: #00ffa2d1;
+    border-style: solid;
+    border-width: 1px;
     padding: 1rem;
     border-radius: 0.5rem;
     line-height: 1.6rem;
