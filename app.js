@@ -135,7 +135,7 @@ app.get('/', async (req, res) => {
     // GET
     const data = await sendnews();
     // console.log(data.articles);
-    res.render('index', { data: data.articles });
+    res.render('index', { data: data.articles, csrf_token: req.csrfToken() });
 })
 
 // email Register

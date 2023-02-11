@@ -342,7 +342,8 @@ input:focus+.placeholder-text .text {
 #login,
 #signup,
 #reset,
-#profileset {
+#profileset,
+#book-appo {
     transition: 0.3s ease-in-out;
 }
 
@@ -352,7 +353,8 @@ input:focus+.placeholder-text .text {
 }
 
 #login:hover,
-#reset:hover {
+#reset:hover,
+#book-appo:hover {
     background-color: var(--ppink);
 }
 
