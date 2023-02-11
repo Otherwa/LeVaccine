@@ -41,13 +41,14 @@ function showPosition(position) {
 $('#emailclick').click(() => {
     const email = $('#emailval').val();
     $('#emailval').val('')
+    console.log($('#csrf').val())
     const date = new Date();
     if (validateEmail(email)) {
         console.log(email);
         $.ajax({
             url: '/',
             type: 'POST',
-            data: { email: email, lat: lat, lon: lon, date: date },
+            data: { '_csrf': $('#csrf').val(), email: email, lat: lat, lon: lon, date: date },
             success: function (res) {
                 // console.log(res)
                 if (res.alreadysubscribed == "404") {
