@@ -230,11 +230,11 @@ $('#book-appo').on('click', function () {
                         },
                     })
                 },
-                cancel: {
-                    btnClass: 'btn-red',
-                    action: function () {
-                        console.log('canceld')
-                    }
+
+            }, cancel: {
+                btnClass: 'btn-red',
+                action: function () {
+                    console.log('canceld')
                 }
             }
         }
