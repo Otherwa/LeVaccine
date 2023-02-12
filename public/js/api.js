@@ -15,12 +15,6 @@ $('#signup').click(() => {
     console.log('nice');
 
     var token = $('#csrf').val()
-    // $.ajaxSetup({
-    //     beforeSend: function (xhr) {
-    //         xhr.setRequestHeader('Csrf-Token', token);
-    //     }
-    // });
-
     $.ajax({
         url: '/api',
         type: 'POST',
