@@ -55,7 +55,7 @@ Router.get('/user', (req, res) => {
 Router.post('/user/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await userSchema.findOne({ 'username': username }).count()
+  const check = await userSchema.findOne({ 'username': { $eq: username } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
@@ -66,7 +66,7 @@ Router.post('/user/check', async (req, res) => {
 Router.post('/user/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await userSchema.findOne({ 'email': email }).count()
+  const check = await userSchema.findOne({ 'email': { $eq: email } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
@@ -322,7 +322,7 @@ Router.get('/provider/signup', (req, res) => {
 Router.post('/provider/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await providerSchema.findOne({ 'username': username }).count()
+  const check = await providerSchema.findOne({ 'username': { $eq: username } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
@@ -333,7 +333,7 @@ Router.post('/provider/check', async (req, res) => {
 Router.post('/provider/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await providerSchema.findOne({ 'email': email }).count()
+  const check = await providerSchema.findOne({ 'email': { $eq: email } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
@@ -710,7 +710,7 @@ Router.get('/producer/signup', (req, res) => {
 Router.post('/producer/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await producerSchema.findOne({ 'username': username }).count()
+  const check = await producerSchema.findOne({ 'username': { $eq: username } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
@@ -721,7 +721,7 @@ Router.post('/producer/check', async (req, res) => {
 Router.post('/user/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await producerSchema.findOne({ 'email': email }).count()
+  const check = await producerSchema.findOne({ 'email': { $eq: email } }).count()
   if (check > 0) {
     res.send({ 'status': 'found' })
   } else {
