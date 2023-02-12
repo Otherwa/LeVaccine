@@ -491,7 +491,7 @@ input:focus+.placeholder-text .text {
     padding: 1rem;
     line-height: 1.5rem;
     width: 45%;
-    height: 50%;
+    height: auto;
     border-radius: 0.5rem;
 }
 
