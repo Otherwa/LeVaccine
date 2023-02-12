@@ -252,7 +252,7 @@ app.get('/api', isauthvalid, (req, res) => {
 
 // api key genration
 app.post('/api', async (req, res) => {
-    const key = generateApiKey();
+    const key = generateApiKey({ method: 'string', min: 10, max: 20 });
     const date = new Date();
     const api_in = new api({
         apikey: key,

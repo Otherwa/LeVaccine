@@ -51,6 +51,29 @@ Router.get('/user', (req, res) => {
   })
 })
 
+// user check
+Router.post('/user/check', async (req, res) => {
+  await connect()
+  const username = req.body.username
+  const check = await userSchema.findOne({ 'username': { $eq: username } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
+
+Router.post('/user/checkmail', async (req, res) => {
+  await connect()
+  const email = req.body.email
+  const check = await userSchema.findOne({ 'email': { $eq: email } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
+
 // account creation
 Router.get('/user/signup', (req, res) => {
   res.status(200).render('account/user/signup', { msg: req.flash('message1'), csrf_token: req.csrfToken() })
@@ -293,6 +316,29 @@ Router.get('/provider/signup', (req, res) => {
       csrf_token: req.csrfToken()
     }
   )
+})
+
+// provider check
+Router.post('/provider/check', async (req, res) => {
+  await connect()
+  const username = req.body.username
+  const check = await providerSchema.findOne({ 'username': { $eq: username } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
+
+Router.post('/provider/checkmail', async (req, res) => {
+  await connect()
+  const email = req.body.email
+  const check = await providerSchema.findOne({ 'email': { $eq: email } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
 })
 
 
@@ -658,6 +704,29 @@ Router.get('/producer', (req, res) => {
 // account creation
 Router.get('/producer/signup', (req, res) => {
   res.status(200).render('account/producer/signup', { msg: req.flash('message1'), csrf_token: req.csrfToken() })
+})
+
+// user check
+Router.post('/producer/check', async (req, res) => {
+  await connect()
+  const username = req.body.username
+  const check = await producerSchema.findOne({ 'username': { $eq: username } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
+
+Router.post('/user/checkmail', async (req, res) => {
+  await connect()
+  const email = req.body.email
+  const check = await producerSchema.findOne({ 'email': { $eq: email } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
 })
 
 // reset password
