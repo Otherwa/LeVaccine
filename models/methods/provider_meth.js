@@ -255,24 +255,34 @@ providerSchema.prototype.check = async (req, res, id, userid) => {
 // stop appointemts
 providerSchema.prototype.buyvaccine = async (req, res, prodid, proid, stonkid, details, vac, status, stock, email) => {
 
-    stonks.findByIdAndUpdate(stonkid, { $inc: { stocks: -Number(stock) } }).then(() => {
-        new orders({
-            prodid: prodid,
-            proid: proid,
-            stonkid: stonkid,
-            details: details,
-            vaccinecode: vac,
-            status: status,
-            stock: stock,
-            date: new Date()
-        }).save((err, result) => {
-            if (err) { console.log(err) }
-            producerSchema.findById(prodid).then(data => {
-                sendrecept(email, result, data)
-                res.send(result)
+    stonks.findById(stonkid, (err, data) => {
+        if (err) { console.log(err) }
+        console.log(data)
+        if (data.stocks > 0) {
+            stonks.findByIdAndUpdate(stonkid, { $inc: { stocks: -Number(stock) } }).then(() => {
+                new orders({
+                    prodid: prodid,
+                    proid: proid,
+                    stonkid: stonkid,
+                    details: details,
+                    vaccinecode: vac,
+                    status: status,
+                    stock: stock,
+                    date: new Date()
+                }).save((err, result) => {
+                    if (err) { console.log(err) }
+                    producerSchema.findById(prodid).then(data => {
+                        sendrecept(email, result, data)
+                        res.send(result)
+                    })
+                })
             })
-        })
+        } else {
+            res.send('no')
+        }
+
     })
+
 }
 
 module.exports = { providerSchema }
