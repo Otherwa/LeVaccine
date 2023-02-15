@@ -48,9 +48,28 @@ $('#buy').on('click', () => {
                         },
                         success: function (res) {
                             console.log("success")
-                            window.location.replace('/account/provider/dash/orders');
-                            $("#flag").html(count - stock)
-                            $("#stock").val(1)
+                            if (res != 'no') {
+                                window.location.replace('/account/provider/dash/orders');
+                                $("#flag").html(count - stock)
+                                $("#stock").val(1)
+                            } else {
+                                $.alert({
+                                    title: 'Confirm!',
+                                    theme: 'my-theme',
+                                    content: 'Stocks Empty !!',
+                                    boxWidth: '40vw',
+                                    useBootstrap: false,
+                                    buttons: {
+                                        confirm: {
+                                            btnClass: 'btn-red',
+                                            action: function () {
+                                                $('#check').attr('disabled', true);
+                                                window.location.replace('/account/provider/dash/orders');
+                                            }
+                                        }
+                                    }
+                                })
+                            }
                         }
                     })
                 }

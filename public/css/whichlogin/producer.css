@@ -407,7 +407,8 @@ input[type='submit']:hover {
 }
 
 #appos div {
-    background-color: #04AA6D;
+    border-style: solid;
+    border-width: 1px;
     padding: 0.8rem;
     border-radius: 0.5rem;
 }
@@ -450,10 +451,15 @@ input[type='submit']:hover {
 }
 
 
-.listofpeople div {
-    background-color: #eeeeee;
+.listofpeople .myFont {
+    border-style: solid;
+    border-width: 1px;
     padding: 1rem;
     border-radius: 0.5rem;
+}
+
+.listofpeople div {
+    padding: 1rem;
 }
 
 .listofpeople div h5 {
@@ -463,7 +469,8 @@ input[type='submit']:hover {
 }
 
 #seeappo {
-    background-color: #00ffa2d1;
+    border-style: solid;
+    border-width: 1px;
     padding: 1rem;
     border-radius: 0.5rem;
     line-height: 1.6rem;
@@ -473,6 +480,12 @@ input[type='submit']:hover {
 /*set stonks css */
 .stonks {
     width: 26rem;
+}
+
+.stonks .myFont {
+    border-style: solid;
+    background-color: white !important;
+    border-width: 1px;
 }
 
 .first_fields_stonks {
