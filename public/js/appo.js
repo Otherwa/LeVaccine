@@ -223,6 +223,7 @@ $('#book-appo').on('click', function () {
                         success: function (res) {
                             console.log("success")
                             if (res.status == '200') {
+                                $('#book-appo').remove()
                                 $("#status").html("Appointment Booked").css('color', 'purple')
                             } else {
                                 $("#status").html("Appointment Was Not Booked").css('color', 'red')
