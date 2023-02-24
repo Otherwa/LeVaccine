@@ -31,7 +31,8 @@ var limiter = rateLimit({
 
 // routes for all action idividual
 const accountRouter = require('./routes/accountrouter').Router;
-const { isauthvalid, auth } = require('./commonfunctions/commonfunc');
+
+const { isauthvalid } = require('./commonfunctions/commonfunc');
 const { providerSchema } = require('./models/methods/provider_meth');
 const { producerSchema } = require('./models/methods/producer_meth');
 const apposchema = require('./models/apposchema');

@@ -213,23 +213,30 @@ $('#book-appo').on('click', function () {
             confirm: {
                 btnClass: 'btn-blue',
                 action: function () {
-                    $.ajax({
-                        url: '/account/user/dash/bookappo/' + appo_id,
-                        type: 'POST',
-                        data: {
-                            '_csrf': token,
-                            'appo_id': appo_id
-                        },
-                        success: function (res) {
-                            console.log("success")
-                            if (res.status == '200') {
-                                $('#book-appo').remove()
-                                $("#status").html("Appointment Booked").css('color', 'purple')
-                            } else {
-                                $("#status").html("Appointment Was Not Booked").css('color', 'red')
-                            }
-                        },
-                    })
+                    $('#book-appo').attr('disabled', true);
+                    setTimeout(() => {
+                        $.ajax({
+                            url: '/account/user/dash/bookappo/' + appo_id,
+                            type: 'POST',
+                            data: {
+                                '_csrf': token,
+                                'appo_id': appo_id
+                            },
+                            success: function (res) {
+                                console.log("success")
+                                if (res.status == '200') {
+                                    $('#book-appo').remove()
+                                    $("#status").html("Appointment Booked").css('color', 'blue')
+                                } else {
+                                    $("#status").html("Appointment Was Not Booked").css('color', 'red')
+                                    setTimeout(() => {
+                                        $('#book-appo').attr('disabled', false);
+                                    }, 3000);
+                                }
+                            },
+                        })
+                    }, Math.round((Math.random() * (4000 - 1000) + 1000) / 1000) * 1000)
+
                 },
 
             }, cancel: {
