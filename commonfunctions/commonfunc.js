@@ -232,7 +232,7 @@ function user_bookappo(email, username, result) {
     html: `
     Dear `+ username + `, <br>
   
-    Your appointment on `+ result.details.date + " & " + moment(result.details.time).format('hh:mm A') + ` At ` + result.addresses + `is Booked Successfully Our team is looking forward to seeing you soon! <br>
+    Your appointment on `+ result.details.date + " & " + moment(result.details.time).format('hh:mm A') + ` At ` + result.address + `is Booked Successfully Our team is looking forward to seeing you soon! <br>
   
     As always, we want to give you the best quality of care. If you have any questions or you\'d like to talk to us about your upcoming services, feel free to reach out anytime. We\'ll get back to you as soon as possible. <br>
   

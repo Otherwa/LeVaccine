@@ -195,15 +195,6 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
 
   async function awaitUpdate() {
     try {
-      // const doc = await MyModel.findOne({
-      //   firstName: 'franklin',
-      //   lastName: 'roosevelt'
-      // });
-
-      // doc.middleName = 'delano';
-
-      // console.log(await doc.save());
-
       appos.findById(appoid).then((doc) => {
         // awaiting resposne
         if (doc.details.slots > 0 && Boolean(doc.status) == false) {
