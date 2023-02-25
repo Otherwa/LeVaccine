@@ -1,7 +1,10 @@
+// global port
+let status_get = $("#status_check").val()
 $(window).on('load', () => {
-    let status_get = $("#status_check").val()
     $('#' + status_get).attr('disabled', true);
 });
+// changes
+// get previous state update and refresh
 
 $('input[type="button"]').click(function (event) {
     var button_ = event.target;
@@ -18,7 +21,11 @@ $('input[type="button"]').click(function (event) {
                 btnClass: 'btn-blue',
                 action: function () {
                     let status_final = status;
-                    $('#check').attr('disabled', true);
+
+                    $('#' + button_.id).attr('disabled', true);
+
+                    $('#' + status_get).attr('disabled', false);
+
                     let token = $("#_csrf").val();
                     let id = $("#statuss").val();
                     var real_status = null;
@@ -41,7 +48,7 @@ $('input[type="button"]').click(function (event) {
                             success: function (res) {
                                 console.log("success")
                                 console.log(res)
-                                // $("#status").html(real_status)
+                                $("#status").html(real_status)
                                 window.location.replace('/account/producer/dash/orders');
                             }
                         })
@@ -61,6 +68,7 @@ $('input[type="button"]').click(function (event) {
                             console.log("success")
                             console.log(res)
                             $("#status").html(real_status)
+                            window.location.reload()
                         }
                     })
                 }

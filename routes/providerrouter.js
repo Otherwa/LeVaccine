@@ -32,7 +32,7 @@ Router.post('/login', async (req, res) => {
 })
 
 Router.post('/reset', async (req, res) => {
-    // user reset
+    // provider reset
     const key = req.cookies.Status
     console.log(key)
     if (key === 'Reset') {
