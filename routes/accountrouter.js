@@ -345,7 +345,7 @@ Router.post('/provider/checkmail', async (req, res) => {
 // reset password
 Router.get('/provider/reset', (req, res) => {
   // user reset
-  res.render('account/provider/provider-reset')
+  res.render('account/provider/provider-reset', { csrf_token: req.csrfToken() })
 })
 
 // reset password otp sent

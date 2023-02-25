@@ -69,6 +69,7 @@
                                 Status Code : <span id="status">
                                     <%= order.status %>
                                 </span>
+                                <input type="hidden" id="status_check" value="<%= order.status %>">
                             </p>
                             <p>
                                 To : <%= order.details.ngo %>
