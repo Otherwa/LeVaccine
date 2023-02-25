@@ -1,3 +1,8 @@
+$(window).on('load', () => {
+    let status_get = $("#status_check").val()
+    $('#'+status_get).attr('disabled', true);
+});
+
 $('input[type="button"]').click(function (event) {
     var button_ = event.target;
     // alert(button.name);
@@ -16,7 +21,7 @@ $('input[type="button"]').click(function (event) {
                     $('#check').attr('disabled', true);
                     let token = $("#_csrf").val();
                     let id = $("#statuss").val();
-                    var real_status
+                    var real_status = null;
                     if (status_final == "Dispacted") {
                         real_status = "Dispacted"
                     }
