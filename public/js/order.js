@@ -1,6 +1,6 @@
 $(window).on('load', () => {
     let status_get = $("#status_check").val()
-    $('#'+status_get).attr('disabled', true);
+    $('#' + status_get).attr('disabled', true);
 });
 
 $('input[type="button"]').click(function (event) {
@@ -10,7 +10,7 @@ $('input[type="button"]').click(function (event) {
     $.confirm({
         title: 'Confirm!',
         theme: 'my-theme',
-        content: 'Are You Sure You Want To Buy?',
+        content: 'Are You Sure You Want To Change?',
         boxWidth: '40vw',
         useBootstrap: false,
         buttons: {
