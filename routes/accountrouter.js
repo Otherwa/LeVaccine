@@ -115,43 +115,49 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
   console.log(moment(new Date()).format('YYYY-MM-DD'))
   console.log(moment(new Date()).format('hh:mm A'))
 
-  // nearby pincode match
-  let pincode = Number(req.user.detail.postcode)
+  if (req.user.detail) {
 
-  // match nearby pincodes
-  pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
+    // nearby pincode match
+    let pincode = Number(req.user.detail.postcode)
 
-  console.log(pins)
-  console.log(
-    moment(new Date()).format()
-  )
-  appo.find({ 'status': false, 'postcode': { $in: pins }, 'details.date': { $gt: moment(new Date()).format('YYYY-MM-DD'), } }, (err, result) => {
-    if (err) console.log(err)
-    console.log(result)
+    // match nearby pincodes
+    pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
 
-    const pos = result.map(position);
+    console.log(pins)
+    console.log(
+      moment(new Date()).format()
+    )
+    appo.find({ 'status': false, 'postcode': { $in: pins }, 'details.date': { $gt: moment(new Date()).format('YYYY-MM-DD'), } }, (err, result) => {
+      if (err) console.log(err)
+      console.log(result)
 
-    result.map(time);
+      const pos = result.map(position);
 
-    function time(item) {
-      // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time).format('hh:mm A');
-      item.details.date = moment(item.details.date).format("MMM Do YYYY");
-      // console.log(item.details.time)
-    }
-    // console.log(pos)
-    function position(item) {
-      return (item.details.position);
-    }
+      result.map(time);
 
-    res.render('account/user/bookappo', {
-      data: req.user,
-      token: cookie,
-      appos: result,
-      appos_: pos,
-      csrf_token: req.csrfToken()
-    });
-  })
+      function time(item) {
+        // change 24.00 to XX.XX AM/PM moment library 
+        item.details.time = moment(item.details.time).format('hh:mm A');
+        item.details.date = moment(item.details.date).format("MMM Do YYYY");
+        // console.log(item.details.time)
+      }
+      // console.log(pos)
+      function position(item) {
+        return (item.details.position);
+      }
+
+      res.render('account/user/bookappo', {
+        data: req.user,
+        token: cookie,
+        appos: result,
+        appos_: pos,
+        csrf_token: req.csrfToken()
+      });
+    })
+  } else {
+    req.flash('success', 'Fill All Details First')
+    res.redirect('/account/user/dash/profile')
+  }
 })
 
 // book a appointment
@@ -422,7 +428,28 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   })
 })
 
+// producer check mail
+Router.post('/producer/check', async (req, res) => {
+  await connect()
+  const username = req.body.username
+  const check = await producerSchema.findOne({ 'username': { $eq: username } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
 
+Router.post('/producer/checkmail', async (req, res) => {
+  await connect()
+  const email = req.body.email
+  const check = await producerSchema.findOne({ 'email': { $eq: email } }).count()
+  if (check > 0) {
+    res.send({ 'status': 'found' })
+  } else {
+    res.send({ 'status': 'gg' })
+  }
+})
 // appointment list
 Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
   // token set or
@@ -804,29 +831,41 @@ Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) =>
   const cookie = req.cookies.jwt
   // console.log(req.user)
   // nearest or approximate provider verify
+  if (req.user.detail) {
+    let pincode = Number(req.user.detail.postcode)
 
-  let pincode = Number(req.user.detail.postcode)
-
-  // match nearby pincodes
-  pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
-
-  providerSchema.find({ 'detail.postcode': { $in: pins } }).then((data) => {
-    console.log(data)
-
-    const pos = data.map(position);
-    // console.log(pos)
-    function position(item) {
-      return (item.detail.position);
+    // match nearby pincodes
+    pins = []
+    for (i = 10; i > 0; i--) {
+      pins.push(pincode - i)
     }
 
-    res.render('account/producer/authorize', {
-      data: req.user,
-      token: cookie,
-      people_: data,
-      people_pos: pos,
-      csrf_token: req.csrfToken()
-    });
-  })
+    for (i = 0; i < 10; i++) {
+      pins.push(pincode + i)
+    }
+    console.log(pins)
+
+    providerSchema.find({ 'detail.postcode': { $in: pins } }).then((data) => {
+      console.log(data)
+
+      const pos = data.map(position);
+      // console.log(pos)
+      function position(item) {
+        return (item.detail.position);
+      }
+
+      res.render('account/producer/authorize', {
+        data: req.user,
+        token: cookie,
+        people_: data,
+        people_pos: pos,
+        csrf_token: req.csrfToken()
+      });
+    })
+  } else {
+    req.flash('success', 'Fill All Details First')
+    res.redirect('/account/producer/dash/profile')
+  }
 })
 
 

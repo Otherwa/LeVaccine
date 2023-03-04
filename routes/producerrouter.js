@@ -19,7 +19,9 @@ Router.post('/signup', async (req, res) => {
     const username = req.body.username
     const email = req.body.email
     const password = req.body.password
-    await producer.signup(req, res, username, email, password)
+    const key = req.body.key
+    console.log(key)
+    await producer.signup(req, res, username, email, password, key)
 })
 
 // if login is successful

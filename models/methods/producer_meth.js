@@ -2,7 +2,8 @@ const producerSchema = require('../producerschema')
 const stonks = require('../stonks')
 const reset_user_pass = require('../reset_pass')
 const { connect } = require('../../config/connect')
-
+// implemented usermodel added methods in prototype and create a instanceof user
+require('dotenv').config()
 const {
     bcrypt,
     jwt,
@@ -59,45 +60,50 @@ producerSchema.prototype.logout = async (req, res) => {
 }
 
 // sign up pass hash
-producerSchema.prototype.signup = async (req, res, username, email, password) => {
-    if (username.length > 0 && email.length > 0 && password.length > 0) {
-        await connect()
-        console.log(email + 'email: ' + username)
+producerSchema.prototype.signup = async (req, res, username, email, password, key) => {
+    if (key == process.env.KEY) {
+        if (username.length > 0 && email.length > 0 && password.length > 0) {
+            await connect()
+            console.log(email + 'email: ' + username)
 
-        const exists = await producerSchema.exists({ email })
-        if (exists) {
-            req.flash('message', 'Account Exsist')
-            res.redirect('/account/producer')
-        } else {
-            bcrypt.genSalt(10, function (err, salt) {
-                if (err) return next(err)
-                bcrypt.hash(password, salt, function (err, hash) {
+            const exists = await producerSchema.exists({ email })
+            if (exists) {
+                req.flash('message', 'Account Exsist')
+                res.redirect('/account/producer')
+            } else {
+                bcrypt.genSalt(10, function (err, salt) {
                     if (err) return next(err)
+                    bcrypt.hash(password, salt, function (err, hash) {
+                        if (err) return next(err)
 
-                    const producer = new producerSchema({
-                        username,
-                        email,
-                        password: hash
-                    })
+                        const producer = new producerSchema({
+                            username,
+                            email,
+                            password: hash
+                        })
 
-                    producer.save((err, result) => {
-                        if (err) {
-                            console.log(err)
-                            req.flash('message1', 'Dude that\'s not cool')
-                            res.redirect('/account/producer/signup')
-                        } else {
-                            // console.log(result)
-                            sendSignupEmail2(email)
-                            req.flash('message1', 'Login 🛐')
-                            res.redirect('/account/producer')
-                        }
+                        producer.save((err, result) => {
+                            if (err) {
+                                console.log(err)
+                                req.flash('message1', 'Dude that\'s not cool')
+                                res.redirect('/account/producer/signup')
+                            } else {
+                                // console.log(result)
+                                sendSignupEmail2(email)
+                                req.flash('message1', 'Login 🛐')
+                                res.redirect('/account/producer')
+                            }
+                        })
                     })
                 })
-            })
+            }
+        } else {
+            req.flash('message1', 'Not Valid Dude')
+            res.redirect('/account/user/signup')
         }
     } else {
-        req.flash('message1', 'Not Valid Dude')
-        res.redirect('/account/user/signup')
+        req.flash('message1', 'Key Not Valid')
+        res.redirect('/account/producer/signup')
     }
 }
 

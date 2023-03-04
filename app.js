@@ -82,7 +82,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 //no cache session cookie issue more loade time 
-// app.use(nocache());
+app.use(nocache());
 
 // compression for fast loads
 app.use(compression())
