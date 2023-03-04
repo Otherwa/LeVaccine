@@ -7,6 +7,14 @@ document.addEventListener('contextmenu', function (e) {
 });
 
 
+$('form').on('submit', (e) => {
+    $('#signup').attr('disabled', true)
+    setTimeout(() => {
+        $('#signup').attr('disabled', false);
+    }, 2000)
+})
+
+
 // username val
 $('#username').on('input', () => {
     console.log($('#username').val().length)

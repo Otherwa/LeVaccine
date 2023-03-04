@@ -11,3 +11,10 @@ $('#password').on('input', () => {
         $('#pass-msg').html("<span style=\"color:green\">Bread 👍</span>");
     }
 });
+
+$('form').on('submit', (e) => {
+    $('#login').attr('disabled', true)
+    setTimeout(() => {
+        $('#login').attr('disabled', false);
+    }, 2000)
+})

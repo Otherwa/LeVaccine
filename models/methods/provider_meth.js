@@ -62,37 +62,41 @@ providerSchema.prototype.logout = async (req, res) => {
 providerSchema.prototype.signup = async (req, res, username, email, password) => {
     await connect()
     console.log(email + 'email: ' + username)
-
-    const exists = await providerSchema.exists({ email })
-    if (exists) {
-        req.flash('message', 'Account Exsist')
-        res.redirect('/account/provider')
-    } else {
-        bcrypt.genSalt(10, function (err, salt) {
-            if (err) return next(err)
-            bcrypt.hash(password, salt, function (err, hash) {
+    if (username.length > 0 && email.length > 0 && password.length > 0) {
+        const exists = await providerSchema.exists({ email })
+        if (exists) {
+            req.flash('message', 'Account Exsist')
+            res.redirect('/account/provider')
+        } else {
+            bcrypt.genSalt(10, function (err, salt) {
                 if (err) return next(err)
+                bcrypt.hash(password, salt, function (err, hash) {
+                    if (err) return next(err)
 
-                const provider = new providerSchema({
-                    username,
-                    email,
-                    password: hash
-                })
+                    const provider = new providerSchema({
+                        username,
+                        email,
+                        password: hash
+                    })
 
-                provider.save((err, result) => {
-                    if (err) {
-                        console.log(err)
-                        req.flash('message1', 'Dude that\'s not cool')
-                        res.redirect('/account/provider/signup')
-                    } else {
-                        // console.log(result)
-                        sendSignupEmail1(email)
-                        req.flash('message1', 'Login 🛐')
-                        res.redirect('/account/provider')
-                    }
+                    provider.save((err, result) => {
+                        if (err) {
+                            console.log(err)
+                            req.flash('message1', 'Dude that\'s not cool')
+                            res.redirect('/account/provider/signup')
+                        } else {
+                            // console.log(result)
+                            sendSignupEmail1(email)
+                            req.flash('message1', 'Login 🛐')
+                            res.redirect('/account/provider')
+                        }
+                    })
                 })
             })
-        })
+        }
+    } else {
+        req.flash('message1', 'Not Valid Dude')
+        res.redirect('/account/user/signup')
     }
 }
 
