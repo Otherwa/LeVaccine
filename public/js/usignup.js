@@ -6,6 +6,9 @@ document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 });
 
+flag_0 = 0
+flag_1 = 0
+
 $('form').on('submit', (e) => {
     $('#signup').attr('disabled', true)
     setTimeout(() => {
@@ -13,20 +16,23 @@ $('form').on('submit', (e) => {
     }, 2000)
 })
 
+
 // username val
 $('#username').on('input', () => {
     console.log($('#username').val().length)
     if ($('#username').val() != '' && $('#username').val().length > 5) {
         $('#username-msg').hide();
+        flag_0 = 1;
     } else {
         $('#signup').prop('disabled', true);
         $('#username-msg').html("<span style=\"color:red\">Username Too Short</span>");
         $('#username-msg').fadeIn(400);
+        flag_0 = 0;
     }
 });
 
 // username val
-$('#username').on('change', () => {
+$('#username').on('focusout', () => {
     const token = $('#_csrf').val();
     console.log($('#username').val())
     $.ajax({
@@ -43,8 +49,10 @@ $('#username').on('change', () => {
                 $('#signup').prop('disabled', true);
                 $('#username-msg').html("<span style=\"color:red\">Try Different Username</span>");
                 $('#username-msg').fadeIn(400);
+                flag_0 = 0;
             } else {
                 $('#username-msg').hide();
+                flag_0 = 1;
             }
         }
     });
@@ -54,15 +62,17 @@ $('#username').on('change', () => {
 $('#email').on('input', () => {
     if ($('#email').val() != '' && $('#email').val().length > 5 && $('#email').val().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
         $('#email-msg').hide();
+        flag_1 = 1
     } else {
         $('#signup').prop('disabled', true);
         $('#email-msg').html("<span style=\"color:red\">Valid Email ?</span>");
         $('#email-msg').fadeIn(400);
+        flag_1 = 0
     }
 });
 
 // username val
-$('#email').on('change', () => {
+$('#email').on('focusout', () => {
     const token = $('#_csrf').val();
     console.log($('#email').val())
     $.ajax({
@@ -79,8 +89,10 @@ $('#email').on('change', () => {
                 $('#signup').prop('disabled', true);
                 $('#email-msg').html("<span style=\"color:red\">Email Already Registerd</span>");
                 $('#email-msg').fadeIn(400);
+                flag_1 = 0
             } else {
                 $('#email-msg').hide();
+                flag_1 = 1;
             }
         }
     });
@@ -104,4 +116,11 @@ $('#password').on('input', () => {
     }
 });
 
-
+setInterval(() => {
+    if (flag_0 == 1 && flag_1 == 1) {
+        $('#signup').prop('disabled', false);
+    } else {
+        $('#signup').prop('disabled', true);
+    }
+    console.log(122323)
+}, 900)
