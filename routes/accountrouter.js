@@ -837,20 +837,12 @@ Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) =>
   // console.log(req.user)
   // nearest or approximate provider verify
   if (req.user.detail) {
-    let pincode = Number(req.user.detail.postcode)
+    let pincode = req.user.detail.postcode
 
-    // match nearby pincodes
-    pins = []
-    for (i = 10; i > 0; i--) {
-      pins.push(pincode - i)
-    }
+    pins = pincode.substring(0, 2)
 
-    for (i = 0; i < 10; i++) {
-      pins.push(pincode + i)
-    }
-    console.log(pins)
 
-    providerSchema.find({ 'detail.postcode': { $in: pins } }).then((data) => {
+    providerSchema.find({ 'detail.postcode': { $regex: "^" + pins } }).then((data) => {
       console.log(data)
 
       const pos = data.map(position);
