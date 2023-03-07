@@ -131,6 +131,12 @@ app.get('/robots.txt', (req, res, next) => {
     });
 })
 
+// health
+app.get('/health', async (req, res) => {
+    // GET
+    res.status(200).send("OK");
+})
+
 // default route
 app.get('/', async (req, res) => {
     // GET
