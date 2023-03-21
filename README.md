@@ -1,6 +1,60 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/badge/master)](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/overview/master)
 [![CodeQL](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/codeql.yml/badge.svg)](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/codeql.yml)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
 # Drug_Lord_v1.3
+
+
+## Usage/Examples
+
+```javascript
+# download the repo
+
+ 1. npm install
+ 2. npm run dev (For Debugging)
+ 3. npm run start (For Service)
+
+ see package.json for more info...
+```
+
+
+
+## API Reference
+
+#### Get Edurls
+
+```http
+  GET /api/edurls/url&des&[apikey]
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `apikey` | `string` | **Required**. Your API key |
+
+#### Get item
+
+```http
+  GET /api/people&[apikey]
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `apikey` | `string` | **Required**. Your API key |
+
+#### Get Appointments Data
+
+```http
+  GET /api/appos&[apikey]
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `apikey` | `string` | **Required**. Your API key |
+
+
 
 # Stats
 
