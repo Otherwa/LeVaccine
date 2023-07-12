@@ -19,6 +19,6 @@ modification, are permitted provided that the following conditions are met:
 
    b. Modify, adapt, or create derivative works based on the vaccineation website project for the purpose of circumventing its intended functionality or providing unauthorized access to sensitive       information.
 
-5. Any legal disputes arising from the use of the vaccineation website project shall be governed by and construed in accordance with the laws of [Jurisdiction]. Both parties submit to the exclusive jurisdiction of the courts of India.
+5. Any legal disputes arising from the use of the vaccineation website project shall be governed by and construed in accordance with the laws of India. Both parties submit to the exclusive jurisdiction of the courts of India.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
