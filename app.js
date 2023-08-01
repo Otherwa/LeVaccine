@@ -200,8 +200,12 @@ app.get('/contact', (req, res) => {
 
 // blogs
 app.get('/counter', async (req, res) => {
+    try{
     var data = await covid();
-    // console.log(data);
+    console.log(data);
+    }catch(e){
+        console.error(e);
+    }
     await connect();
     appo.find({ 'status': true }, { 'details.position': 1, '_id': 0 }, (err, result) => {
         const pos = result.map(position);
