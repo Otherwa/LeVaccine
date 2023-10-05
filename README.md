@@ -1,4 +1,4 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/badge/master)](https://www.codefactor.io/repository/github/otherwa/drug_lord_v1.10/overview/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/otherwa/druglord/badge)](https://www.codefactor.io/repository/github/otherwa/druglord)
 [![CodeQL](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/codeql.yml/badge.svg)](https://github.com/Otherwa/Drug_Lord_v1.10/actions/workflows/codeql.yml)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
