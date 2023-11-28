@@ -68,3 +68,20 @@ $('#emailclick').click(() => {
         $('#error').fadeIn();
     }
 });
+
+// callback
+fetch("https://pingback-1-s5803083.deta.app/api/v1/events", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "X-Api-Key": "1bc5d376-b6ab-420b-b4bc-4116042a7e6d",
+    },
+    body: JSON.stringify({
+        project: "Levaccine",
+        channel: "default",
+        name: "test",
+        title: "Page Get 👩‍🚀🚀",
+        description: "Noice",
+        icon: ":rocket:",
+    })
+});
