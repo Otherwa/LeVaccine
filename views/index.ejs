@@ -238,164 +238,178 @@
 
       <h1 class="home-text23">News</h1>
 
-      <div class="home-gallery">
+          <div class="home-gallery">
         <div class="home-container09">
           <div class="home-container10">
-            <p class="home-text24 head">
-              <%= data[0].title %>
-                <cite>
-                  <%= data[0].author %>
-                </cite>
-            </p>
-            <br>
-            <span class="home-text25">
-              <span>
+            <% if (data.length> 0) { %>
+              <p class="home-text24 head">
+                <%= data[0].title %>
+                  <cite>
+                    <%= data[0].author %>
+                  </cite>
+              </p>
+              <br>
+              <span class="home-text25">
+                <span>
+                  <p>
+                    <%= data[0].source.name %>
+                  </p>
+                  <span>
+                    <%= data[0].description %>
+                  </span>
+                  <span>
+                    <%= data[0].publishedAt %>
+                  </span>
+                  <span>
+                    <br>
+                    <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
+                  </span>
+                </span>
+              </span>
+              <% } else { %>
+                <p>No articles available.</p>
+                <% } %>
+          </div>
+        </div>
+
+        <div class="home-container11">
+          <div class="home-container12">
+            <% if (data.length> 1) { %>
+              <p class="home-text27 head">
+                <%= data[1].title %>
+                  <cite>
+                    <%= data[1].author %>
+                  </cite>
+              </p>
+              <br>
+              <span class="home-text28">
                 <p>
-                  <%= data[0].source.name %>
+                  <%= data[1].source.name %>
                 </p>
                 <span>
-                  <%= data[0].description %>
+                  <%= data[1].description %>
                 </span>
                 <span>
-                  <%= data[0].publishedAt %>
+                  <%= data[1].publishedAt %>
                 </span>
                 <span>
                   <br>
-                  <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
+                  <a style="color:yellow" href="<%= data[1].url %>" target="_blank"> More ...</a>
                 </span>
               </span>
-            </span>
+              <% } %>
           </div>
         </div>
-        <div class="home-container11">
-          <div class="home-container12">
-            <p class="home-text27 head">
-              <%= data[1].title %>
-                <cite>
-                  <%= data[1].author %>
-                </cite>
-            </p>
-            <br>
-            <span class="home-text28">
-              <p>
-                <%= data[1].source.name %>
-              </p>
-              <span>
-                <%= data[1].description %>
-              </span>
-              <span>
-                <%= data[1].publishedAt %>
-              </span>
-              <span>
-                <br>
-                <a style="color:yellow" href="<%= data[1].url %>" target="_blank"> More ...</a>
-              </span>
-            </span>
-          </div>
-        </div>
+
         <div class="home-container13">
           <div class="home-container14">
-            <p class="home-text30 head">
-              <%= data[2].title %>
-                <cite>
-                  <%= data[2].author %>
-                </cite>
-            </p>
-            <span class="home-text31">
-              <p>
-                <%= data[2].source.name %>
+            <% if (data.length> 2) { %>
+              <p class="home-text30 head">
+                <%= data[2].title %>
+                  <cite>
+                    <%= data[2].author %>
+                  </cite>
               </p>
-              <span>
-                <%= data[2].description %>
+              <span class="home-text31">
+                <p>
+                  <%= data[2].source.name %>
+                </p>
+                <span>
+                  <%= data[2].description %>
+                </span>
+                <span>
+                  <%= data[2].publishedAt %>
+                </span>
+                <span>
+                  <br>
+                  <a style="color:yellow" href="<%= data[2].url %>" target="_blank"> More ...</a>
+                </span>
               </span>
-              <span>
-                <%= data[2].publishedAt %>
-              </span>
-              <span>
-                <br>
-                <a style="color:yellow" href="<%= data[2].url %>" target="_blank"> More ...</a>
-              </span>
-            </span>
-            </span>
-            </span>
+              <% } %>
           </div>
         </div>
+
         <div class="home-container15">
           <div class="home-container16">
-            <p class="home-text33 head">
-              <%= data[3].title %>
-                <cite>
-                  <%= data[3].author %>
-                </cite>
-            </p>
-            <span class="home-text34">
-              <p>
-                <%= data[3].source.name %>
+            <% if (data.length> 3) { %>
+              <p class="home-text33 head">
+                <%= data[3].title %>
+                  <cite>
+                    <%= data[3].author %>
+                  </cite>
               </p>
-              <span>
-                <%= data[3].description %>
+              <span class="home-text34">
+                <p>
+                  <%= data[3].source.name %>
+                </p>
+                <span>
+                  <%= data[3].description %>
+                </span>
+                <span>
+                  <%= data[3].publishedAt %>
+                </span>
+                <span>
+                  <br>
+                  <a style="color:yellow" href="<%= data[3].url %>" target="_blank"> More ...</a>
+                </span>
               </span>
-              <span>
-                <%= data[3].publishedAt %>
-              </span>
-              <span>
-                <br>
-                <a style="color:yellow" href="<%= data[3].url %>" target="_blank"> More ...</a>
-              </span>
-            </span>
-            </span>
+              <% } %>
           </div>
         </div>
+
         <div class="home-container17">
           <div class="home-container18">
-            <p class="home-text36 head">
-              <%= data[4].title %>
-                <cite>
-                  <%= data[4].author %>
-                </cite>
-            </p>
-            <span class="home-text37">
-              <p>
-                <%= data[4].source.name %>
+            <% if (data.length> 4) { %>
+              <p class="home-text36 head">
+                <%= data[4].title %>
+                  <cite>
+                    <%= data[4].author %>
+                  </cite>
               </p>
-              <span>
-                <%= data[4].description %>
+              <span class="home-text37">
+                <p>
+                  <%= data[4].source.name %>
+                </p>
+                <span>
+                  <%= data[4].description %>
+                </span>
+                <span>
+                  <%= data[4].publishedAt %>
+                </span>
+                <span>
+                  <br>
+                  <a style="color:yellow" href="<%= data[4].url %>" target="_blank"> More ...</a>
+                </span>
               </span>
-              <span>
-                <%= data[4].publishedAt %>
-              </span>
-              <span>
-                <br>
-                <a style="color:yellow" href="<%= data[4].url %>" target="_blank"> More ...</a>
-              </span>
-            </span>
-            </span>
+              <% } %>
           </div>
         </div>
+
         <div class="home-container19">
           <div class="home-container20">
-            <p class="home-text39 head">
-              <%= data[5].title %>
-                <cite>
-                  <%= data[5].author %>
-                </cite>
-            </p>
-            <span class="home-text40">
-              <p>
-                <%= data[5].source.name %>
+            <% if (data.length> 5) { %>
+              <p class="home-text39 head">
+                <%= data[5].title %>
+                  <cite>
+                    <%= data[5].author %>
+                  </cite>
               </p>
-              <span>
-                <%= data[5].description %>
+              <span class="home-text40">
+                <p>
+                  <%= data[5].source.name %>
+                </p>
+                <span>
+                  <%= data[5].description %>
+                </span>
+                <span>
+                  <%= data[5].publishedAt %>
+                </span>
+                <span>
+                  <br>
+                  <a style="color:yellow" href="<%= data[5].url %>" target="_blank"> More ...</a>
+                </span>
               </span>
-              <span>
-                <%= data[5].publishedAt %>
-              </span>
-              <span>
-                <br>
-                <a style="color:yellow" href="<%= data[5].url %>" target="_blank"> More ...</a>
-              </span>
-            </span>
-            </span>
+              <% } %>
           </div>
         </div>
       </div>
