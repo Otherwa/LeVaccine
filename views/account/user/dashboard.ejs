@@ -121,41 +121,33 @@
                                 <h3>News:</h3>
                                 <br>
                                 <div>
-                                    <p class="home-text24 head">
+                                
+                                    <% if (datas.length> 0) { %>
+                                      <p class="home-text24 head">
                                         <%= datas[0].title %>
-                                            <cite>
-                                                <%= datas[0].author %>
-                                            </cite>
-                                    </p>
-                                    <br>
-                                    <span class="home-text25">
+                                          <cite>
+                                            <%= datas[0].author %>
+                                          </cite>
+                                      </p>
+                                      <br>
+                                      <span class="home-text25">
                                         <span>
-                                              <% if (data.length> 0) { %>
-              <p class="home-text24 head">
-                <%= data[0].title %>
-                  <cite>
-                    <%= data[0].author %>
-                  </cite>
-              </p>
-              <br>
-              <span class="home-text25">
-                <span>
-                  <p>
-                    <%= data[0].source.name %>
-                  </p>
-                  <span>
-                    <%= data[0].description %>
-                  </span>
-                  <span>
-                    <%= data[0].publishedAt %>
-                  </span>
-                  <span>
-                    <br>
-                    <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
-                  </span>
-                </span>
-              </span>
-              <% } %>
+                                          <p>
+                                            <%= datas[0].source.name %>
+                                          </p>
+                                          <span>
+                                            <%= datas[0].description %>
+                                          </span>
+                                          <span>
+                                            <%= datas[0].publishedAt %>
+                                          </span>
+                                          <span>
+                                            <br>
+                                            <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
+                                          </span>
+                                        </span>
+                                      </span>
+                                      <% } %>
                                         </span>
                                     </span>
                                 </div>
