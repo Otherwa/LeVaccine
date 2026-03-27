@@ -241,7 +241,7 @@
           <div class="home-gallery">
         <div class="home-container09">
           <div class="home-container10">
-            <% if (data.length> 0) { %>
+            <% if (data && data.length > 0) { %>
               <p class="home-text24 head">
                 <%= data[0].title %>
                   <cite>
@@ -266,9 +266,9 @@
                   </span>
                 </span>
               </span>
-              <% } else { %>
-                <p>No articles available.</p>
-                <% } %>
+            <% } else { %>
+              <p>No articles available.</p>
+            <% } %>
           </div>
         </div>
 

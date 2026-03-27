@@ -115,6 +115,7 @@
                             <div class="news appo">
                                 <h3>News:</h3>
                                 <br>
+                                <% if (datas && datas.length > 0) { %>
                                 <div>
                                     <p class="home-text24 head">
                                         <%= datas[0].title %>
@@ -142,6 +143,11 @@
                                         </span>
                                     </span>
                                 </div>
+                                <% } else { %>
+                                <div>
+                                    <p>No news available at the moment.</p>
+                                </div>
+                                <% } %>
                             </div>
                         </div>
                     </div>

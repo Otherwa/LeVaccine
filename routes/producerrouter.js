@@ -92,37 +92,31 @@ Router.post('/reset-password-ok', async (req, res) => {
     const key = req.cookies.Status
     console.log(key)
     if (key === 'Reset') {
-        bcrypt.genSalt(10, (err, salt) => {
-            if (err) return next(err)
-            bcrypt.hash(password, salt, function (err, hash) {
-                if (err) return next(err)
+        try {
+            const salt = await bcrypt.genSalt(10)
+            const hash = await bcrypt.hash(password, salt)
 
-                const filter = { email: { $eq: email } }
-                const update = { $set: { password: hash } }
-                producerSchema.findOneAndUpdate(filter, update, async (err, data) => {
-                    if (err) {
-                        res.json('404')
-                    } else {
+            const filter = { email: { $eq: email } }
+            const update = { $set: { password: hash } }
+            const data = await producerSchema.findOneAndUpdate(filter, update)
 
-                        const exsist = await reset_otp.deleteOne({
-                            email: { $eq: email },
-                            otp: { $eq: otp }
-                        })
-
-                        console.log(data);
-                        console.log(exsist)
-
-                        if (exsist) {
-                            res.clearCookie('Status')
-                            res.send('200')
-                        } else {
-                            res.send('404')
-                        }
-
-                    }
-                })
+            const exsist = await reset_otp.deleteOne({
+                email: { $eq: email },
+                otp: { $eq: otp }
             })
-        })
+
+            console.log(data);
+            console.log(exsist)
+
+            if (exsist) {
+                res.clearCookie('Status')
+                res.send('200')
+            } else {
+                res.send('404')
+            }
+        } catch (err) {
+            res.json('404')
+        }
     }
 })
 

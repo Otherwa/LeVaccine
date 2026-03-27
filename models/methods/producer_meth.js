@@ -227,63 +227,53 @@ producerSchema.prototype.setstonk = async (req, res, prodid, vacname, vaccode, d
         against: agai
     })
 
-    stonk.save().then(result => {
-        // req.flash('msgstonks', 'stock set 👍')
-        console.log(result)
-        // res.redirect('/account/producer/dash/setstonks')
-        stonks.find({ 'prodid': prodid }).sort({ '_id': 1 }).then(result => {
-            res.json(result)
-        })
-    })
+    const result = await stonk.save()
+    // req.flash('msgstonks', 'stock set 👍')
+    console.log(result)
+    // res.redirect('/account/producer/dash/setstonks')
+    const stocks = await stonks.find({ 'prodid': prodid }).sort({ '_id': 1 })
+    res.json(stocks)
 }
 
 // delete stonks
 
 producerSchema.prototype.deletestonk = async (req, res, id) => {
-    stonks.findByIdAndDelete(id, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            res.json({ 'status': 'ok' })
-        }
-    })
+    try {
+        await stonks.findByIdAndDelete(id)
+        res.json({ 'status': 'ok' })
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 // update stonk
 producerSchema.prototype.updatestonk = async (req, res, id, vac, vaccode, des, effec, stock, agai) => {
-    stonks.findByIdAndUpdate(id, { 'vaccine': vac, 'vacccinecode': vaccode, 'description': des, 'effectiveness': effec, 'stocks': stock, 'against': agai }, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            res.json(docs)
-        }
-    })
+    try {
+        const docs = await stonks.findByIdAndUpdate(id, { 'vaccine': vac, 'vacccinecode': vaccode, 'description': des, 'effectiveness': effec, 'stocks': stock, 'against': agai })
+        res.json(docs)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 // update stonk
 producerSchema.prototype.updateorder = async (req, res, id, status) => {
-    orders.findByIdAndUpdate(id, { 'status': status }, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            res.json(docs)
-        }
-    })
+    try {
+        const docs = await orders.findByIdAndUpdate(id, { 'status': status })
+        res.json(docs)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 // update stonk
 producerSchema.prototype.deleteorder = async (req, res, id, status) => {
-    orders.findByIdAndDelete(id, function (err, docs) {
-        if (err) {
-            console.log(err)
-        }
-        else {
-            res.json(docs)
-        }
-    })
+    try {
+        const docs = await orders.findByIdAndDelete(id)
+        res.json(docs)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 // logout using cookies jwt hash protection

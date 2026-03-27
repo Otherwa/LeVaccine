@@ -55,8 +55,8 @@ Router.get('/user', (req, res) => {
 Router.post('/user/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await userSchema.findOne({ 'username': { $eq: username } }).count()
-  if (check > 0) {
+  const check = await userSchema.exists({ 'username': { $eq: username } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -66,8 +66,8 @@ Router.post('/user/check', async (req, res) => {
 Router.post('/user/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await userSchema.findOne({ 'email': { $eq: email } }).count()
-  if (check > 0) {
+  const check = await userSchema.exists({ 'email': { $eq: email } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -91,7 +91,7 @@ Router.get('/user/dash', auth, livedata, async (req, res) => {
   // token set or
 
   await connect()
-  const count = await userSchema.count()
+  const count = await userSchema.countDocuments()
   const cookie = req.cookies.jwt
   const datas = await sendnews();
   // get req user
@@ -127,33 +127,31 @@ Router.get('/user/dash/bookappo', auth, livedata, async (req, res) => {
     console.log(
       moment(new Date()).format()
     )
-    appo.find({ 'status': false, 'postcode': { $in: pins }, 'details.date': { $gt: moment(new Date()).format('YYYY-MM-DD'), } }, (err, result) => {
-      if (err) console.log(err)
-      console.log(result)
+    const result = await appo.find({ 'status': false, 'postcode': { $in: pins }, 'details.date': { $gt: moment(new Date()).format('YYYY-MM-DD'), } })
+    console.log(result)
 
-      const pos = result.map(position);
+    const pos = result.map(position);
 
-      result.map(time);
+    result.map(time);
 
-      function time(item) {
-        // change 24.00 to XX.XX AM/PM moment library 
-        item.details.time = moment(item.details.time).format('hh:mm A');
-        item.details.date = moment(item.details.date).format("MMM Do YYYY");
-        // console.log(item.details.time)
-      }
-      // console.log(pos)
-      function position(item) {
-        return (item.details.position);
-      }
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time).format('hh:mm A');
+      item.details.date = moment(item.details.date).format("MMM Do YYYY");
+      // console.log(item.details.time)
+    }
+    // console.log(pos)
+    function position(item) {
+      return (item.details.position);
+    }
 
-      res.render('account/user/bookappo', {
-        data: req.user,
-        token: cookie,
-        appos: result,
-        appos_: pos,
-        csrf_token: req.csrfToken()
-      });
-    })
+    res.render('account/user/bookappo', {
+      data: req.user,
+      token: cookie,
+      appos: result,
+      appos_: pos,
+      csrf_token: req.csrfToken()
+    });
   } else {
     req.flash('success', 'Fill All Details First')
     res.redirect('/account/user/dash/profile')
@@ -165,48 +163,38 @@ Router.get('/user/dash/bookappo/:id', auth, livedata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt
   const id = req.params.id.toString()
-  appo.findById(id, (err, result) => {
+  try {
+    const result = await appo.findById(id)
+    const results = await appolists.findOne({ 'userid': req.user._id.toString(), 'appoid': id })
 
-    if (err) {
-      console.log(err)
-      res.redirect('user/dash/bookappo')
-    }
-    // check if user already selected the appointment or not
-    appolists.findOne({ 'userid': req.user._id.toString(), 'appoid': id }, (err, results) => {
-      if (err) {
-        console.log(err)
-      }
+    result.details.time = moment(result.details.time).format('hh:mm A')
+    result.details.date = moment(result.details.date).format("MMM Do YYYY");
 
-      result.details.time = moment(result.details.time).format('hh:mm A')
-      result.details.date = moment(result.details.date).format("MMM Do YYYY");
+    console.log(results)
 
-      console.log(results)
-
-      res.render('account/user/appo', {
-        data: req.user,
-        token: cookie,
-        appo: result,
-        appo_pos: result.details.position,
-        msg: req.flash('msg'),
-        err: req.flash('err'),
-        check: results,
-        csrf_token: req.csrfToken()
-      })
+    res.render('account/user/appo', {
+      data: req.user,
+      token: cookie,
+      appo: result,
+      appo_pos: result.details.position,
+      msg: req.flash('msg'),
+      err: req.flash('err'),
+      check: results,
+      csrf_token: req.csrfToken()
     })
-
-  })
+  } catch (err) {
+    console.log(err)
+    res.redirect('user/dash/bookappo')
+  }
 })
 
 Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt
 
-
-  // check if user already selected the appointment or not
-  appolists.find({ 'userid': req.user._id.toString() }, { 'appoid': 1, '_id': 0 }, (err, results) => {
-    if (err) {
-      console.log(err)
-    }
+  try {
+    // check if user already selected the appointment or not
+    const results = await appolists.find({ 'userid': req.user._id.toString() }, { 'appoid': 1, '_id': 0 })
 
     console.log(results)
 
@@ -218,40 +206,37 @@ Router.get('/user/dash/appointments', auth, livedata, async (req, res) => {
 
     console.log(userappoints)
 
-    appo.find({ '_id': { $in: userappoints } }, (err, result) => {
+    const result = await appo.find({ '_id': { $in: userappoints } })
 
-      if (err) { console.log(err) }
+    const pos_ = result.map(position);
+    // console.log(pos)
+    function position(item) {
+      return (item.details.position);
+    }
 
-      const pos = result.map(position);
-      // console.log(pos)
-      function position(item) {
-        return (item.details.position);
-      }
+    // map time
+    result.map(time);
+    function time(item) {
+      // change 24.00 to XX.XX AM/PM moment library 
+      item.details.time = moment(item.details.time).format('hh:mm A');
+      item.details.date = moment(item.details.date).format("MMM Do YYYY")
+    }
 
-      // map time
-      result.map(time);
-      function time(item) {
-        // change 24.00 to XX.XX AM/PM moment library 
-        item.details.time = moment(item.details.time).format('hh:mm A');
-        item.details.date = moment(item.details.date).format("MMM Do YYYY")
-      }
+    console.log(result)
+    console.log(pos_)
 
-      console.log(result)
-      console.log(pos)
-
-      res.render('account/user/appos', {
-        data: req.user,
-        token: cookie,
-        appos: result,
-        appos_: pos,
-        msg: req.flash('msg'),
-        check: results,
-        csrf_token: req.csrfToken()
-      })
+    res.render('account/user/appos', {
+      data: req.user,
+      token: cookie,
+      appos: result,
+      appos_: pos_,
+      msg: req.flash('msg'),
+      check: results,
+      csrf_token: req.csrfToken()
     })
-
-  })
-
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 // update profile
@@ -287,13 +272,8 @@ Router.get('/user/verify/:email', async (req, res) => {
       const filter = { email }
       const update = { $set: { verified: true } }
 
-      userSchema.findOneAndUpdate(filter, update, (err, result) => {
-        if (err) {
-          res.json(err)
-        } else {
-          res.render('account/verify')
-        }
-      })
+      await userSchema.findOneAndUpdate(filter, update)
+      res.render('account/verify')
     } else {
       res.redirect('/')
     }
@@ -328,8 +308,8 @@ Router.get('/provider/signup', (req, res) => {
 Router.post('/provider/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await providerSchema.findOne({ 'username': { $eq: username } }).count()
-  if (check > 0) {
+  const check = await providerSchema.exists({ 'username': { $eq: username } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -339,8 +319,8 @@ Router.post('/provider/check', async (req, res) => {
 Router.post('/provider/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await providerSchema.findOne({ 'email': { $eq: email } }).count()
-  if (check > 0) {
+  const check = await providerSchema.exists({ 'email': { $eq: email } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -363,7 +343,7 @@ Router.get('/provider/dash', pauth, livepdata, async (req, res) => {
   // token set or
 
   await connect()
-  const count = await providerSchema.count()
+  const count = await providerSchema.countDocuments()
   const cookie = req.cookies.jwt
   const datas = await sendnews();
   // get req user
@@ -383,7 +363,7 @@ Router.get('/provider/dash/profile', pauth, livepdata, async (req, res) => {
   // token set or
 
   await connect()
-  const count = await providerSchema.count()
+  const count = await providerSchema.countDocuments()
   const cookie = req.cookies.jwt
   // get req user
   console.log(req.user)
@@ -404,27 +384,24 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
   var id = req.user._id
   id = id.toString()
   console.log(id)
-  appo.find({ 'byappo': id }).limit(3).sort({ '_id': -1 }).then((result) => {
+  const result = await appo.find({ 'byappo': id }).limit(3).sort({ '_id': -1 })
 
+  result.map(time);
 
-    result.map(time);
+  function time(item) {
+    // change 24.00 to XX.XX AM/PM moment library 
+    item.details.time = moment(item.details.time).format('hh:mm A');
+    item.details.date = moment(item.details.date).format("MMM Do YYYY");
+    // console.log(item.details.time)
+  }
 
-    function time(item) {
-      // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time).format('hh:mm A');
-      item.details.date = moment(item.details.date).format("MMM Do YYYY");
-      // console.log(item.details.time)
-    }
-
-    console.log(req.user)
-    res.render('account/provider/setappo', {
-      data: req.user,
-      token: cookie,
-      appos: result,
-      msg: req.flash('messagesetappo'),
-      csrf_token: req.csrfToken()
-    })
-
+  console.log(req.user)
+  res.render('account/provider/setappo', {
+    data: req.user,
+    token: cookie,
+    appos: result,
+    msg: req.flash('messagesetappo'),
+    csrf_token: req.csrfToken()
   })
 })
 
@@ -432,8 +409,8 @@ Router.get('/provider/dash/setappo', pauth, livepdata, async (req, res) => {
 Router.post('/producer/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await producerSchema.findOne({ 'username': { $eq: username } }).count()
-  if (check > 0) {
+  const check = await producerSchema.exists({ 'username': { $eq: username } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -443,8 +420,8 @@ Router.post('/producer/check', async (req, res) => {
 Router.post('/producer/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await producerSchema.findOne({ 'email': { $eq: email } }).count()
-  if (check > 0) {
+  const check = await producerSchema.exists({ 'email': { $eq: email } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -459,32 +436,28 @@ Router.get('/provider/dash/appos', pauth, livepdata, async (req, res) => {
   var id = req.user._id
   id = id.toString()
 
+  const result = await appo.find({ byappo: id }).sort({ 'details.date': -1 })
+  result.map(time);
 
+  function time(item) {
+    // change 24.00 to XX.XX AM/PM moment library 
+    item.details.time = moment(item.details.time).format('hh:mm A');
+    // console.log(item.details.time)
+  }
 
-  appo.find({ byappo: id }).sort({ 'details.date': -1 }).then((result) => {
-    result.map(time);
+  const pos = result.map(position);
+  // console.log(pos)
+  function position(item) {
+    return (item.details.position);
+  }
 
-    function time(item) {
-      // change 24.00 to XX.XX AM/PM moment library 
-      item.details.time = moment(item.details.time).format('hh:mm A');
-      // console.log(item.details.time)
-    }
-
-    const pos = result.map(position);
-    // console.log(pos)
-    function position(item) {
-      return (item.details.position);
-    }
-
-
-    console.log(req.user)
-    res.render('account/provider/appos', {
-      data: req.user,
-      token: cookie,
-      appos_: pos,
-      appos: result,
-      csrf_token: req.csrfToken()
-    })
+  console.log(req.user)
+  res.render('account/provider/appos', {
+    data: req.user,
+    token: cookie,
+    appos_: pos,
+    appos: result,
+    csrf_token: req.csrfToken()
   })
 })
 
@@ -497,52 +470,40 @@ Router.get('/provider/dash/appos/:id', pauth, livepdata, async (req, res) => {
   const cookie = req.cookies.jwt
   console.log(req.user._id)
 
-  appolists.find({ 'appoid': id }, { '_id': 0 }, (err, peoples_result) => {
-    if (err) {
-      console.error(err)
-    } else {
+  try {
+    const peoples_result = await appolists.find({ 'appoid': id }, { '_id': 0 })
 
-      const peoples = peoples_result.map(ids)
+    const peoples = peoples_result.map(ids)
 
-      function ids(item) {
-        return (item.userid.toString());
-      }
-
-      console.log(peoples)
-
-
-      appo.findById(id, function (err, result) {
-        if (err) {
-          console.error(err)
-        } else {
-          console.log(result)
-
-          // change 24.00 to XX.XX AM/PM moment library 
-          result.details.time = moment(result.details.time).format('hh:mm A');
-          // console.log(item.details.time)
-          userSchema.find({ '_id': { $in: peoples } }, (err, results) => {
-
-            if (err) {
-              console.error(err)
-            } else {
-              console.log(results)
-              console.log(peoples_result)
-
-              res.render('account/provider/appo', {
-                data: req.user,
-                token: cookie,
-                appo_pos: result.details.position,
-                appo: result,
-                peoples: results,
-                csrf_token: req.csrfToken(),
-                appo_id: id
-              })
-            }
-          })
-        }
-      })
+    function ids(item) {
+      return (item.userid.toString());
     }
-  })
+
+    console.log(peoples)
+
+    const result = await appo.findById(id)
+    console.log(result)
+
+    // change 24.00 to XX.XX AM/PM moment library 
+    result.details.time = moment(result.details.time).format('hh:mm A');
+    // console.log(item.details.time)
+    const results = await userSchema.find({ '_id': { $in: peoples } })
+
+    console.log(results)
+    console.log(peoples_result)
+
+    res.render('account/provider/appo', {
+      data: req.user,
+      token: cookie,
+      appo_pos: result.details.position,
+      appo: result,
+      peoples: results,
+      csrf_token: req.csrfToken(),
+      appo_id: id
+    })
+  } catch (err) {
+    console.error(err)
+  }
 })
 
 // change vaccinated or not tag
@@ -555,41 +516,29 @@ Router.get('/provider/dash/appos/:appoid/:userid', pauth, livepdata, async (req,
   const cookie = req.cookies.jwt
   console.log(req.user._id)
 
-  // get appointemnt
-  appo.findById(id, function (err, result) {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log(result)
-      // find from appointement list
-      appolists.findOne({ 'appoid': id, 'userid': uid }, { '_id': 0 }, (err, peoples_result) => {
-        if (err) {
-          console.error(err)
-        }
-        else {
-          console.log(peoples_result)
-          // find user deatils
-          userSchema.findOne({ '_id': uid }, (err, results) => {
-            if (err) {
-              console.error(err)
-            } else {
-              console.log(results)
-              res.render('account/provider/appopersondetails', {
-                data: req.user,
-                token: cookie,
-                appo: result,
-                peoples: results, //user
-                peoples_res: peoples_result, //appo,
-                appo_id: id,
-                user_id: uid,
-                csrf_token: req.csrfToken()
-              })
-            }
-          })
-        }
-      })
-    }
-  })
+  try {
+    // get appointemnt
+    const result = await appo.findById(id)
+    console.log(result)
+    // find from appointement list
+    const peoples_result = await appolists.findOne({ 'appoid': id, 'userid': uid }, { '_id': 0 })
+    console.log(peoples_result)
+    // find user deatils
+    const results = await userSchema.findOne({ '_id': uid })
+    console.log(results)
+    res.render('account/provider/appopersondetails', {
+      data: req.user,
+      token: cookie,
+      appo: result,
+      peoples: results, //user
+      peoples_res: peoples_result, //appo,
+      appo_id: id,
+      user_id: uid,
+      csrf_token: req.csrfToken()
+    })
+  } catch (err) {
+    console.error(err)
+  }
 })
 
 // buy vaccines
@@ -608,30 +557,26 @@ Router.get('/provider/dash/buyvaccines', pauth, livepdata, async (req, res) => {
     // match nearby pincodes
     pins = [pincode - 2, pincode - 1, pincode, pincode + 1, pincode + 2]
     // get req user
-    producerSchema.find({ 'detail.postcode': { $in: pins } }, (err, result) => {
-      if (err) { console.log(err) }
-      // console.log(result)
-      // null if 
-      nearby = []
+    const result = await producerSchema.find({ 'detail.postcode': { $in: pins } })
+    // console.log(result)
+    // null if 
+    nearby = []
 
-      if (result) {
-        console.log(result._id)
-        for (var i = 0; i < result.length; i++) {
-          nearby.push(result[i]._id)
-        }
+    if (result) {
+      console.log(result._id)
+      for (var i = 0; i < result.length; i++) {
+        nearby.push(result[i]._id)
       }
+    }
 
-      stonks.find({ 'prodid': { $in: nearby } }).then(data => {
-        console.log(req.user)
-        console.log(data)
-        res.render('account/provider/buyvaccines', {
-          data: req.user,
-          token: cookie,
-          stonks: data,
-          csrf_token: req.csrfToken()
-        })
-      })
-
+    const data = await stonks.find({ 'prodid': { $in: nearby } })
+    console.log(req.user)
+    console.log(data)
+    res.render('account/provider/buyvaccines', {
+      data: req.user,
+      token: cookie,
+      stonks: data,
+      csrf_token: req.csrfToken()
     })
   } else {
     req.flash('success', 'Fill All Details First')
@@ -645,14 +590,13 @@ Router.get('/provider/dash/buyvaccines/:id', pauth, livepdata, async (req, res) 
 
   const cookie = req.cookies.jwt
   id = req.params.id
-  stonks.findById(id).then(data => {
-    console.log(data)
-    res.render('account/provider/buyvaccine', {
-      data: req.user,
-      token: cookie,
-      stonks: data,
-      csrf_token: req.csrfToken()
-    })
+  const data = await stonks.findById(id)
+  console.log(data)
+  res.render('account/provider/buyvaccine', {
+    data: req.user,
+    token: cookie,
+    stonks: data,
+    csrf_token: req.csrfToken()
   })
 })
 
@@ -661,15 +605,14 @@ Router.get('/provider/dash/orders', pauth, livepdata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt
   const id = req.user._id
-  orders.find({ 'proid': id }).sort({ '_id': -1 }).then((result) => {
-    res.render('account/provider/orders', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      orders: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await orders.find({ 'proid': id }).sort({ '_id': -1 })
+  res.render('account/provider/orders', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    orders: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 // setstonks
@@ -677,16 +620,15 @@ Router.get('/provider/dash/orders/:id', pauth, livepdata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt
   const id = req.params.id
-  orders.findById(id).then((result) => {
-    console.log(result)
-    res.render('account/provider/order', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      order: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await orders.findById(id)
+  console.log(result)
+  res.render('account/provider/order', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    order: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 
@@ -709,13 +651,8 @@ Router.get('/provider/verify/:email', async (req, res) => {
       const filter = { email }
       const update = { $set: { verified: true } }
 
-      providerSchema.findOneAndUpdate(filter, update, (err, result) => {
-        if (err) {
-          res.json(err)
-        } else {
-          res.json({ msg: 'verifed redirecting any minute', res: result })
-        }
-      })
+      await providerSchema.findOneAndUpdate(filter, update)
+      res.json({ msg: 'verifed redirecting any minute' })
     } else {
       res.json({ msg: 'Already Verified' })
     }
@@ -742,8 +679,8 @@ Router.get('/producer/signup', (req, res) => {
 Router.post('/producer/check', async (req, res) => {
   await connect()
   const username = req.body.username
-  const check = await producerSchema.findOne({ 'username': { $eq: username } }).count()
-  if (check > 0) {
+  const check = await producerSchema.exists({ 'username': { $eq: username } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -753,8 +690,8 @@ Router.post('/producer/check', async (req, res) => {
 Router.post('/user/checkmail', async (req, res) => {
   await connect()
   const email = req.body.email
-  const check = await producerSchema.findOne({ 'email': { $eq: email } }).count()
-  if (check > 0) {
+  const check = await producerSchema.exists({ 'email': { $eq: email } })
+  if (check) {
     res.send({ 'status': 'found' })
   } else {
     res.send({ 'status': 'gg' })
@@ -772,7 +709,7 @@ Router.get('/producer/dash', proauth, liveprodata, async (req, res) => {
   // token set or
 
   await connect()
-  const count = await providerSchema.count()
+  const count = await providerSchema.countDocuments()
   const cookie = req.cookies.jwt
   const datas = await sendnews();
   // get req user
@@ -802,13 +739,8 @@ Router.get('/producer/verify/:email', async (req, res) => {
       const filter = { email }
       const update = { $set: { verified: true } }
 
-      producerSchema.findOneAndUpdate(filter, update, (err, result) => {
-        if (err) {
-          res.json(err)
-        } else {
-          res.render('account/verify', { csrf_token: req.csrfToken() })
-        }
-      })
+      await producerSchema.findOneAndUpdate(filter, update)
+      res.render('account/verify', { csrf_token: req.csrfToken() })
     } else {
       res.redirect('/')
     }
@@ -841,24 +773,22 @@ Router.get('/producer/dash/authorize', proauth, liveprodata, async (req, res) =>
 
     pins = pincode.substring(0, 2)
 
+    const data = await providerSchema.find({ 'detail.postcode': { $regex: "^" + pins } })
+    console.log(data)
 
-    providerSchema.find({ 'detail.postcode': { $regex: "^" + pins } }).then((data) => {
-      console.log(data)
+    const pos = data.map(position);
+    // console.log(pos)
+    function position(item) {
+      return (item.detail.position);
+    }
 
-      const pos = data.map(position);
-      // console.log(pos)
-      function position(item) {
-        return (item.detail.position);
-      }
-
-      res.render('account/producer/authorize', {
-        data: req.user,
-        token: cookie,
-        people_: data,
-        people_pos: pos,
-        csrf_token: req.csrfToken()
-      });
-    })
+    res.render('account/producer/authorize', {
+      data: req.user,
+      token: cookie,
+      people_: data,
+      people_pos: pos,
+      csrf_token: req.csrfToken()
+    });
   } else {
     req.flash('success', 'Fill All Details First')
     res.redirect('/account/producer/dash/profile')
@@ -875,15 +805,14 @@ Router.get('/producer/dash/setstonks', proauth, liveprodata, async (req, res) =>
   await connect()
   const cookie = req.cookies.jwt
   const id = req.user._id
-  stonks.find({ 'prodid': id }).sort({ '_id': -1 }).then((result) => {
-    res.render('account/producer/setstonks', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      stonks: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await stonks.find({ 'prodid': id }).sort({ '_id': -1 })
+  res.render('account/producer/setstonks', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    stonks: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 // setstonks
@@ -891,15 +820,14 @@ Router.get('/producer/dash/setstonks/:id', proauth, liveprodata, async (req, res
   await connect()
   const cookie = req.cookies.jwt
   const id = req.params.id
-  stonks.findById(id).then((result) => {
-    res.render('account/producer/setstonksupdate', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      stock: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await stonks.findById(id)
+  res.render('account/producer/setstonksupdate', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    stock: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 // setstonks
@@ -907,15 +835,14 @@ Router.get('/producer/dash/orders', proauth, liveprodata, async (req, res) => {
   await connect()
   const cookie = req.cookies.jwt
   const id = req.user._id
-  orders.find({ 'prodid': id }).sort({ '_id': -1 }).then((result) => {
-    res.render('account/producer/orders', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      orders: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await orders.find({ 'prodid': id }).sort({ '_id': -1 })
+  res.render('account/producer/orders', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    orders: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 // setstonks
@@ -923,16 +850,15 @@ Router.get('/producer/dash/orders/:id', proauth, liveprodata, async (req, res) =
   await connect()
   const cookie = req.cookies.jwt
   const id = req.params.id
-  orders.findById(id).then((result) => {
-    console.log(result)
-    res.render('account/producer/order', {
-      data: req.user,
-      token: cookie,
-      msg: req.flash('msgstonks'),
-      order: result,
-      csrf_token: req.csrfToken()
-    });
-  })
+  const result = await orders.findById(id)
+  console.log(result)
+  res.render('account/producer/order', {
+    data: req.user,
+    token: cookie,
+    msg: req.flash('msgstonks'),
+    order: result,
+    csrf_token: req.csrfToken()
+  });
 })
 
 // error custom

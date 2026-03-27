@@ -22,8 +22,8 @@ providerSchema.prototype.login = async (req, res, username, password) => {
     const provider = await providerSchema.findOne({ username }).lean()
     // console.log(user);
     if (provider != null) {
-        bcrypt.compare(password, provider.password, function (err, data) {
-            if (err) res.send({ msg: 'somethings wrong' })
+        try {
+            const data = await bcrypt.compare(password, provider.password)
             // if both match than you can do anything
             if (data) {
                 // return res.status(200).json({ msg: "Login success" })
@@ -45,7 +45,9 @@ providerSchema.prototype.login = async (req, res, username, password) => {
                 req.flash('message', 'Wrong Password')
                 res.redirect('/account/provider')
             }
-        })
+        } catch (err) {
+            res.send({ msg: 'somethings wrong' })
+        }
     } else {
         req.flash('message', 'No such user exsist')
         res.redirect('/account/provider')
@@ -68,31 +70,26 @@ providerSchema.prototype.signup = async (req, res, username, email, password) =>
             req.flash('message', 'Account Exsist')
             res.redirect('/account/provider')
         } else {
-            bcrypt.genSalt(10, function (err, salt) {
-                if (err) return next(err)
-                bcrypt.hash(password, salt, function (err, hash) {
-                    if (err) return next(err)
+            try {
+                const salt = await bcrypt.genSalt(10)
+                const hash = await bcrypt.hash(password, salt)
 
-                    const provider = new providerSchema({
-                        username,
-                        email,
-                        password: hash
-                    })
-
-                    provider.save((err, result) => {
-                        if (err) {
-                            console.log(err)
-                            req.flash('message1', 'Dude that\'s not cool')
-                            res.redirect('/account/provider/signup')
-                        } else {
-                            // console.log(result)
-                            sendSignupEmail1(email)
-                            req.flash('message1', 'Login 🛐')
-                            res.redirect('/account/provider')
-                        }
-                    })
+                const provider = new providerSchema({
+                    username,
+                    email,
+                    password: hash
                 })
-            })
+
+                await provider.save()
+                // console.log(result)
+                sendSignupEmail1(email)
+                req.flash('message1', 'Login 🛐')
+                res.redirect('/account/provider')
+            } catch (err) {
+                console.log(err)
+                req.flash('message1', 'Dude that\'s not cool')
+                res.redirect('/account/provider/signup')
+            }
         }
     } else {
         req.flash('message1', 'Not Valid Dude')
@@ -259,33 +256,26 @@ providerSchema.prototype.check = async (req, res, id, userid) => {
 // stop appointemts
 providerSchema.prototype.buyvaccine = async (req, res, prodid, proid, stonkid, details, vac, status, stock, email) => {
 
-    stonks.findById(stonkid, (err, data) => {
-        if (err) { console.log(err) }
-        console.log(data)
-        if (data.stocks > 0) {
-            stonks.findByIdAndUpdate(stonkid, { $inc: { stocks: -Number(stock) } }).then(() => {
-                new orders({
-                    prodid: prodid,
-                    proid: proid,
-                    stonkid: stonkid,
-                    details: details,
-                    vaccinecode: vac,
-                    status: status,
-                    stock: stock,
-                    date: new Date()
-                }).save((err, result) => {
-                    if (err) { console.log(err) }
-                    producerSchema.findById(prodid).then(data => {
-                        sendrecept(email, result, data)
-                        res.send(result)
-                    })
-                })
-            })
-        } else {
-            res.send('no')
-        }
-
-    })
+    const data = await stonks.findById(stonkid)
+    console.log(data)
+    if (data.stocks > 0) {
+        await stonks.findByIdAndUpdate(stonkid, { $inc: { stocks: -Number(stock) } })
+        const result = await new orders({
+            prodid: prodid,
+            proid: proid,
+            stonkid: stonkid,
+            details: details,
+            vaccinecode: vac,
+            status: status,
+            stock: stock,
+            date: new Date()
+        }).save()
+        const producerData = await producerSchema.findById(prodid)
+        sendrecept(email, result, producerData)
+        res.send(result)
+    } else {
+        res.send('no')
+    }
 
 }
 

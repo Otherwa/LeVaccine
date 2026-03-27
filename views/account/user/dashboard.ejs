@@ -120,37 +120,39 @@
                             <div class="news appo">
                                 <h3>News:</h3>
                                 <br>
+                                <% if (datas && datas.length > 0) { %>
                                 <div>
-                                
-                                    <% if (datas.length> 0) { %>
-                                      <p class="home-text24 head">
+                                    <p class="home-text24 head">
                                         <%= datas[0].title %>
-                                          <cite>
-                                            <%= datas[0].author %>
-                                          </cite>
-                                      </p>
-                                      <br>
-                                      <span class="home-text25">
+                                            <cite>
+                                                <%= datas[0].author %>
+                                            </cite>
+                                    </p>
+                                    <br>
+                                    <span class="home-text25">
                                         <span>
-                                          <p>
-                                            <%= datas[0].source.name %>
-                                          </p>
-                                          <span>
-                                            <%= datas[0].description %>
-                                          </span>
-                                          <span>
-                                            <%= datas[0].publishedAt %>
-                                          </span>
-                                          <span>
-                                            <br>
-                                            <a style="color:yellow" href="<%= data[0].url %>" target="_blank"> More ...</a>
-                                          </span>
-                                        </span>
-                                      </span>
-                                      <% } %>
+                                            <p>
+                                                <%= datas[0].source.name %>
+                                            </p>
+                                            <span>
+                                                <%= datas[0].description %>
+                                            </span>
+                                            <span>
+                                                <%= datas[0].publishedAt %>
+                                            </span>
+                                            <span>
+                                                <br>
+                                                <a style="color:yellow" href="<%= datas[0].url %>" target="_blank"> More
+                                                    ...</a>
+                                            </span>
                                         </span>
                                     </span>
                                 </div>
+                                <% } else { %>
+                                <div>
+                                    <p>No news available at the moment.</p>
+                                </div>
+                                <% } %>
                             </div>
                         </div>
                     </div>

@@ -19,8 +19,8 @@ userSchema.prototype.login = async (req, res, username, password) => {
   const user = await userSchema.findOne({ username }).lean()
   // console.log(user);
   if (user != null) {
-    bcrypt.compare(password, user.password, function (err, data) {
-      if (err) res.send({ msg: 'somethings wrong' })
+    try {
+      const data = await bcrypt.compare(password, user.password)
       // if both match than you can do anything
       if (data) {
         // return res.status(200).json({ msg: "Login success" })
@@ -42,7 +42,9 @@ userSchema.prototype.login = async (req, res, username, password) => {
         req.flash('message', 'Wrong Password')
         res.redirect('/account/user')
       }
-    })
+    } catch (err) {
+      res.send({ msg: 'somethings wrong' })
+    }
   } else {
     req.flash('message', 'No such user exsist')
     res.redirect('/account/user')
@@ -68,30 +70,24 @@ userSchema.prototype.signup = async (req, res, username, email, password) => {
       req.flash('message', 'Account Exsist')
       res.redirect('/account/user')
     } else {
-      bcrypt.genSalt(10, function (err, salt) {
-        if (err) return next(err)
-        bcrypt.hash(password, salt, function (err, hash) {
-          if (err) return next(err)
+      try {
+        const salt = await bcrypt.genSalt(10)
+        const hash = await bcrypt.hash(password, salt)
 
-          const user = new userSchema({
-            username,
-            email,
-            password: hash,
-          })
-
-
-          user.save((err, result) => {
-            if (err) {
-              console.log(err)
-            } else {
-              // console.log(result)
-              sendSignupEmail(email)
-              req.flash('message1', 'Login 🛐')
-              res.redirect('/account/user')
-            }
-          })
+        const user = new userSchema({
+          username,
+          email,
+          password: hash,
         })
-      })
+
+        await user.save()
+        // console.log(result)
+        sendSignupEmail(email)
+        req.flash('message1', 'Login 🛐')
+        res.redirect('/account/user')
+      } catch (err) {
+        console.log(err)
+      }
     }
   } else {
     req.flash('message1', 'Not Valid Dude')
@@ -127,15 +123,13 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
   var lon = parseFloat(lon)
   // if adhar uploaded
   if (adhar != '' && fname != '' && lname != '' && age != '' && addr != '' && gender != '' && phone != '' && city != '' && region != '' && post != '') {
-    userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } }, (err, result) => {
-      if (err) { console.log(err) }
-    })
+    await userSchema.updateOne({ 'email': whichuser }, { $set: { 'personstatus': true } })
   }
 
   // check if image uploaded or not 2 measure
 
   if (lat != 0 && lon != 0) {
-    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+    await userSchema.findOneAndUpdate({ 'email': whichuser }, {
       $set: {
         'name.firstname': fname,
         'name.lastname': lname,
@@ -149,19 +143,12 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
         'detail.region': region,
         'detail.postcode': post
       }
-    }, (err, result) => {
-      console.log(err)
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(result)
-        req.flash('success', 'profile updated 👍')
-        res.redirect('/account/user/dash/profile')
-      }
     })
+    req.flash('success', 'profile updated 👍')
+    res.redirect('/account/user/dash/profile')
   }
   else {
-    userSchema.findOneAndUpdate({ 'email': whichuser }, {
+    await userSchema.findOneAndUpdate({ 'email': whichuser }, {
       $set: {
         'name.firstname': fname,
         'name.lastname': lname,
@@ -174,16 +161,9 @@ userSchema.prototype.profile = async (req, res, lat, lon, whichuser, fname, lnam
         'detail.region': region,
         'detail.postcode': post
       }
-    }, (err, result) => {
-      console.log(err)
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(result)
-        req.flash('success', 'profile updated 👍')
-        res.redirect('/account/user/dash/profile')
-      }
     })
+    req.flash('success', 'profile updated 👍')
+    res.redirect('/account/user/dash/profile')
   }
 }
 
@@ -195,36 +175,30 @@ userSchema.prototype.bookappo = async (req, res, appoid, userid) => {
 
   async function awaitUpdate() {
     try {
-      appos.findById(appoid).then((doc) => {
-        // awaiting resposne
-        if (doc.details.slots > 0 && Boolean(doc.status) == false) {
-          appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } }, (err, results) => {
-            if (err) console.log(err)
+      const doc = await appos.findById(appoid)
+      // awaiting resposne
+      if (doc.details.slots > 0 && Boolean(doc.status) == false) {
+        const results = await appos.findByIdAndUpdate(appoid, { $inc: { 'details.slots': '-1' } })
 
-            console.log(results)
+        console.log(results)
 
-            const appo = new appolist({
-              appoid: appoid,
-              userid: userid,
-              date: new Date()
-            })
+        const appo = new appolist({
+          appoid: appoid,
+          userid: userid,
+          date: new Date()
+        })
 
-            appo.save((err, result) => {
-              if (err) console.error(err)
+        const result = await appo.save()
 
-              console.log(result)
-              // req.flash('msg', "Appointment Booked")
-              res.json({ status: '200' })
-              user_bookappo(req.user.email, req.user.username, results)
-              return results
-            })
-          })
-        } else {
-          // req.flash('err', "Appointment Was Not Booked")
-          res.json({ status: '404' })
-        }
-      })
-
+        console.log(result)
+        // req.flash('msg', "Appointment Booked")
+        res.json({ status: '200' })
+        user_bookappo(req.user.email, req.user.username, results)
+        return results
+      } else {
+        // req.flash('err', "Appointment Was Not Booked")
+        res.json({ status: '404' })
+      }
     }
     catch (err) {
       handleError(err);

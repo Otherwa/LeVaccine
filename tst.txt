@@ -1,6 +1,0 @@
-POST https://onlyvaccine.onrender.com HTTP/1.1
-content-type: application/json
-
-{
-    "name": "sample"
-}

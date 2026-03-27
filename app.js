@@ -156,19 +156,18 @@ app.post('/', async (req, res) => {
         date: req.body.date
     })
 
-    var user_check = usersemails.findOne({ email: req.body.email })
-    if (req.body.email === user_check.email) {
+    var user_check = await usersemails.findOne({ email: req.body.email })
+    if (user_check && req.body.email === user_check.email) {
         console.log("error")
     } else {
         // subscriber added
-        userData.save(err => {
-            if (err) {
-                res.send({ alreadysubscribed: "404" }).status(404)
-            } else {
-                res.send({ alreadysubscribed: "200" }).status(200)
-                sendmail(req.body.email);
-            }
-        });
+        try {
+            await userData.save()
+            res.send({ alreadysubscribed: "200" }).status(200)
+            sendmail(req.body.email);
+        } catch (err) {
+            res.send({ alreadysubscribed: "404" }).status(404)
+        }
         // await dis()
     }
     // email sent
@@ -178,19 +177,11 @@ app.post('/', async (req, res) => {
 app.get('/education', async (req, res) => {
     await connect();
     // var data = edurls.findOne({});
-    edurls.find({}, { "_id": 0, "url": 1, "date": 1, "description": 1 }, (err, data) => {
-        if (err) {
-            res.render('error')
-        } else {
-            // console.log(data)
-            edurls.countDocuments({}, (err, usercount) => {
-                // console.log(usercount)
-                res.render('education', { data: data, count: usercount })
-            })
-
-        }
-    })
-});
+    const data = await edurls.find({}, { "_id": 0, "url": 1, "date": 1, "description": 1 })
+    const usercount = await edurls.countDocuments({})
+    // console.log(usercount)
+    res.render('education', { data: data, count: usercount })
+})
 
 
 // contact
@@ -207,19 +198,19 @@ app.get('/counter', async (req, res) => {
         console.error(e);
     }
     await connect();
-    appo.find({ 'status': true }, { 'details.position': 1, '_id': 0 }, (err, result) => {
-        const pos = result.map(position);
-        // console.log(pos)
-        function position(item) {
-            return (item.details.position);
-        }
+    const result = await appo.find({ 'status': true }, { 'details.position': 1, '_id': 0 })
+    const pos = result.map(position);
+    // console.log(pos)
+    function position(item) {
+        return (item.details.position);
+    }
 
-        data = data.response;
-        res.render('counter', { data: data[0], appo: pos });
-    })
-    // get base india
+    data = data.response;
+    res.render('counter', { data: data[0], appo: pos });
 
 })
+    // get base india
+
 
 // services
 app.get('/services', (req, res) => {
@@ -240,7 +231,7 @@ app.get('/help', (req, res) => {
 app.post('/help', async (req, res) => {
     let prompt = req.body.prompt;
 
-    await openai.createCompletion({
+    const data = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `${prompt}`,
         temperature: 0, // Higher values means the model will take more risks.
@@ -248,12 +239,9 @@ app.post('/help', async (req, res) => {
         top_p: 1, // alternative to sampling with temperature, called nucleus sampling
         frequency_penalty: 0.5, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
         presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
-    }).then((data) => {
-        console.log(data.data.choices)
-        res.json({ message: data.data.choices[0].text });
-    }).catch(err => {
-        console.log(err)
     })
+    console.log(data.data.choices)
+    res.json({ message: data.data.choices[0].text });
 })
 
 // apis
@@ -323,18 +311,13 @@ app.get('/api/peoples&:api', async (req, res) => {
     // gets an object contain
     // console.log(exsist)
     if (exsist != null) {
-        usersSchema.find().count((err, user) => {
-            if (err) console.log(err)
-            console.log(user)
-            providerSchema.find().count((err, provider) => {
-                if (err) console.log(err)
-                console.log(provider)
-                producerSchema.find().count((err, producer) => {
-                    console.log(producer)
-                    res.json({ users: user, provider: provider, producer: producer })
-                })
-            })
-        })
+        const user = await usersSchema.countDocuments()
+        console.log(user)
+        const provider = await providerSchema.countDocuments()
+        console.log(provider)
+        const producer = await producerSchema.countDocuments()
+        console.log(producer)
+        res.json({ users: user, provider: provider, producer: producer })
     } else {
         res.json({ msg: 'err' })
     }
@@ -348,9 +331,8 @@ app.get('/api/appos&:api', async (req, res) => {
     // gets an object contain
     // console.log(exsist)
     if (exsist != null) {
-        apposchema.find({}, (err, docs) => {
-            res.json(docs)
-        })
+        const docs = await apposchema.find({})
+        res.json(docs)
     } else {
         res.json({ msg: 'err' })
     }
